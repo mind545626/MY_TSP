@@ -1,0 +1,96 @@
+<div class="my-form">
+  <div id="content" class="result-container">
+    <p-breadcrumb id="breadcrumb" [model]="items" [home]="home"></p-breadcrumb>
+  </div>
+  <div id="content" class="result-container result-color">
+    <div class="card">
+      <div class="title">
+        <span>我的會員資料</span>
+        <div class="btn-right">
+          <button type="button" id="left-btn" class="btn btn-org btn-lg" (click)="[goModifyMemberProfile(),outputUserData.emit(this.UserData)]"><i
+              class="fa fa-lg fa-fw fa-file-text"></i>編輯會員資料</button>
+          <button type="button" class="btn btn-primary btn-lg" (click)="goBack()"><i
+              class="fa fa-lg fa-fw fa-arrow-right"></i>返回</button>
+        </div>
+      </div>
+      <form class="form-horizontal">
+        <div class="notice-container">
+          <table class="confirmTable">
+            <thead class="line">
+              <h3>基本資料</h3>
+            </thead>
+            <tbody style="text-align: left;">
+              <tr>
+                <th>公司名稱</th>
+                <td>{{ CorporateName }}</td>
+              </tr>
+              <tr>
+                <th>負責人</th>
+                <td>{{ Representative }}</td>
+              </tr>
+              <tr>
+                <th>公司統編(會員帳號)</th>
+                <td>{{ TaxIDNumber }}</td>
+              </tr>
+              <tr>
+                <th>登入密碼</th>
+                <td>{{ Password }}</td>
+              </tr>
+              <tr>
+                <th>公司電話</th>
+                <td>{{ PhoneNumber }}</td>
+              </tr>
+              <tr>
+                <th>公司傳真</th>
+                <td>{{ Fax }}</td>
+              </tr>
+              <tr>
+                <th>事業別</th>
+                <td>{{ CareerType }}&#xA0;>&#xA0;{{ CareerSubType }}</td>
+              </tr>
+              <tr>
+                <th>管制編號</th>
+                <td>{{ ControlNumber }}</td>
+              </tr>
+            </tbody>
+            <hr>
+            <tbody style="text-align: left;">
+              <tr>
+                <th>聯絡人</th>
+                <td>{{ ContactPerson }}</td>
+              </tr>
+              <tr>
+                <th>聯絡人電話</th>
+                <td>{{ ContactPhoneNumber }}<span>分機{{ ContactPhoneExtension }}</span></td>
+              </tr>
+              <tr>
+                <th>聯絡人手機</th>
+                <td>{{ ContactMobilePhone }}</td>
+              </tr>
+              <tr>
+                <th>聯絡信箱</th>
+                <td>{{ ContactMail }}</td>
+              </tr>
+              <tr>
+                <th>帳收地址</th>
+                <td>{{ BillingZipCode }}&#xA0;{{ BillingCity }}{{ BillingDistrict }}{{ BillingRoad }}</td>
+              </tr>
+              <tr>
+                <th>通訊地址</th>
+                <td>{{ MailingZipCode }}&#xA0;{{ MailingCity }}{{ MailingDistrict }}{{ MailingRoad }}</td>
+              </tr>
+            </tbody>
+            <hr>
+            <tbody class="border-none">
+              <tr>
+                <th>備援信箱</th>
+                <td>{{ BackupMail }}</td>
+              </tr>
+            </tbody>
+            <tbody class="line"></tbody>
+          </table>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

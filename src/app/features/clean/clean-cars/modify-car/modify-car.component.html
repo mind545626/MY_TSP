@@ -1,0 +1,253 @@
+<div class="my-form">
+    <div id="content" class="result-container">
+        <p-breadcrumb id="breadcrumb" [model]="items" [home]="home"></p-breadcrumb>
+    </div>
+    <div id="content" class="result-container result-color">
+        <form class="form-horizontal">
+            <div class="card">
+                <div class="title">
+                    <span>編輯車輛</span>
+                    <div class="btn-right">
+                        <!-- <a routerLink="/company/order-progress/modify-order"> -->
+                        <button id="left-btn" type="button" class="btn btn-success btn-lg" data-toggle="modal"
+                            data-target="#myModal8"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i>編輯完成</button>
+                        <!-- </a> -->
+                        <button type="button" class="btn btn-primary btn-lg" (click)="goBack()"><i
+                                class="fa fa-lg fa-fw fa-arrow-right"></i>返回</button>
+                    </div>
+                </div>
+                <div class="form-container">
+                    <!-- container -->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">基本資料</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th class="control-label">
+                                    <label for="CarNumber">車輛編號</label>
+                                </th>
+                                <td>
+                                    <input type="text" class="form-control" id="CarNumber" value="BTW-254"
+                                        placeholder="車輛編號" />
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                <th class="control-label">
+                                    <label for="ContractID">合約編號</label>
+                                </th>
+                                <td>
+                                    <select class="form-control" id="ContractID">
+                                        <option value="">請選擇訂單合約</option>
+                                        <option>CO9055122</option>
+                                        <option>CO9006150</option>
+                                        <option>CO9000110</option>
+                                    </select>
+                                </td>
+                            </tr> -->
+                            <tr>
+                                <th class="control-label">
+                                    <label for="NewCarDate">車輛新增日期</label>
+                                </th>
+                                <td>
+                                    <input type="text" class="form-control" id="NewCarDate" value="2020-10-05"
+                                        placeholder="車輛新增日期" readonly />
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                <th class="control-label">
+                                    <label for="CarConsignDate">車輛提交日期</label>
+                                </th>
+                                <td>
+                                    <input type="text" class="form-control" id="CarConsignDate" value="2020-10-11"
+                                        placeholder="車輛提交日期" readonly />
+                                </td>
+                            </tr> -->
+                            <tr>
+                                <th class="control-label">
+                                    <label for="companyName">公司名稱</label>
+                                </th>
+                                <td>
+                                    <input type="text" class="form-control" id="companyName" value="安扁廢棄物清理有限公司"
+                                        placeholder="清除單位" readonly />
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                <th class="control-label">
+                                    <label for="Industry">事業別</label>
+                                </th>
+                                <td>
+                                    <div class="industry">
+                                        <div class="d-flex">
+                                            <input type="text" class="form-control" id="Industry1"
+                                                value="C類 (14)木竹製品製造業" placeholder="中類別" readonly />
+                                            <input type="text" class="form-control" id="Industry2"
+                                                value="(140)合板及組合木材製造業" placeholder="小類別" readonly />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr> -->
+                            <tr>
+                                <th class="control-label">
+                                    <label for="username">聯絡人</label>
+                                </th>
+                                <td>
+                                    <input type="text" class="form-control" id="username" value="李小承" placeholder="聯絡人"
+                                        readonly />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="control-label">
+                                    <label for="userPhone">聯絡電話</label>
+                                </th>
+                                <td>
+                                    <div class="userPhone">
+                                        <div class="d-flex">
+                                            <input type="text" class="form-control" id="userPhone1" value="02-22548116"
+                                                placeholder="連絡電話" readonly />
+                                            <input type="text" class="form-control" id="userPhone2" value="#775"
+                                                placeholder="分機" readonly />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                <th class="control-label">
+                                    <label for="ControlNumber">管制編號</label>
+                                </th>
+                                <td>
+                                    <input type="text" class="form-control" id="ControlNumber" value="無"
+                                        placeholder="管制編號" readonly />
+                                </td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">車輛資料</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th class="control-label">
+                                    <label for="">車種</label>
+                                </th>
+                                <td>
+                                    <select class="form-control">
+                                        <option>請選擇車種</option>
+                                        <option>3.5噸以下貨車</option>
+                                        <option>3.5~10噸貨車</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="control-label">
+                                    <label for="">車身樣式</label>
+                                </th>
+                                <td>
+                                    <select class="form-control">
+                                        <option>請選擇樣式</option>
+                                        <option>平板式</option>
+                                        <option>傾卸式</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="control-label">
+                                    <label for="">出廠年月</label>
+                                </th>
+                                <td>
+                                    <p-calendar [(ngModel)]="date2" name="Date2" [locale]="tw" appendTo="body"
+                                        showButtonBar="true" [showIcon]="true" placeholder="請選擇出廠年月" view="month"
+                                        dateFormat="yy-mm" [yearNavigator]="true" yearRange="1990:2021">
+                                    </p-calendar>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="control-label">
+                                    <label for="">載重噸數</label>
+                                </th>
+                                <td>
+                                    <select class="form-control">
+                                        <option>請選擇樣式</option>
+                                        <option>3.5噸以下貨車</option>
+                                        <option>3.5~10貨車</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="control-label">
+                                    <label for="InspectionCycle">驗車週期</label>
+                                </th>
+                                <td>
+                                    <select class="form-control" id="InspectionCycle">
+                                        <option value="驗車週期">請選擇週期</option>
+                                        <option>半年</option>
+                                        <option>一年</option>
+                                        <option>三年</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="control-label">
+                                    <label for="LastInspectionDate">上次驗車日期</label>
+                                </th>
+                                <td>
+                                    <p-calendar [(ngModel)]="date" [locale]="tw" appendTo="body" showButtonBar="true"
+                                        [showIcon]="true" placeholder="請選擇上次驗車日期" name="LastInspectionDate"
+                                        id="LastInspectionDate" dateFormat="yy-mm-dd">
+                                    </p-calendar>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="control-label">
+                                    <label for="EquipmentCycle">消防器材週期</label>
+                                </th>
+                                <td>
+                                    <select class="form-control" id="EquipmentCycle">
+                                        <option value="更新週期">請選擇週期</option>
+                                        <option>一年</option>
+                                        <option>三年</option>
+                                        <option>五年</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="control-label">
+                                    <label for="EquipmentDate">消防器材更新日期</label>
+                                </th>
+                                <td>
+                                    <p-calendar [(ngModel)]="date1" [locale]="tw" appendTo="body" showButtonBar="true"
+                                        [showIcon]="true" placeholder="請選擇消防器材更新日期" name="EquipmentDate"
+                                        id="EquipmentDate" dateFormat="yy-mm-dd">
+                                    </p-calendar>
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                <th class="control-label">
+                                    <label for=" PaymentTerm">付款方式</label>
+                                </th>
+                                <td>
+                                    <input type="text" class="form-control" id=" PaymentTerm" value="現金"
+                                        placeholder="付款方式" readonly />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="control-label">
+                                    <label for=" PaymentItem">付款項目</label>
+                                </th>
+                                <td>
+                                    <input type="text" class="form-control" id=" PaymentItem" value="付現"
+                                        placeholder="付款項目" readonly />
+                                </td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

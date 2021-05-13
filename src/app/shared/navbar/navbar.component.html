@@ -1,0 +1,81 @@
+<!-- 企業單位 -->
+<div class="page-top nav-hide">
+  <nav class="nav-cl" id="Corporate" *ngIf="Corporate">
+    <div class="my-nav">
+      <ul class="inline-block-nav">
+        <li routerLinkActive="active">
+          <a routerLink="/company/order-progress"><i class="fa fa-lg fa-fw fa-home"></i>
+            <span class="menu-item-parent">{{'我的會員首頁'}}</span></a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/company/quotation"><i class="fa fa-lg fa-fw fa-file-text"></i>
+            <span class="menu-item-parent">{{'估價申請管理'}}</span></a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/company/contract"><i class="fa fa-lg fa-fw fa-book"></i> <span
+              class="menu-item-parent">{{'合約管理'}}</span></a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/company/statistical"><i class="fa fa-lg fa-fw fa-binoculars"></i> <span
+              class="menu-item-parent">{{'統計資料查詢'}}</span></a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/company/member-profile"><i class="fa fa-lg fa-fw fa-user"></i> <span
+              class="menu-item-parent">{{'會員資料設定'}}</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 清除業者 -->
+  <nav class="nav-co" id="WasteMove" *ngIf="WasteMove">
+    <div class="my-nav">
+      <ul class="inline-block-nav">
+        <li routerLinkActive="active">
+          <a routerLink="/clean/clean-dispatch" (click)="visibleSidebar = false"><i class="fa fa-lg fa-fw  fa-home"></i>
+            <span class="menu-item-parent">{{'我的會員首頁(清除)'}}</span></a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/clean/clean-cars" (click)="visibleSidebar = false"><i class="fa fa-lg fa-fw  fa-truck"></i>
+            <span class="menu-item-parent">{{'車輛管理'}}</span></a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/clean/contract" (click)="visibleSidebar = false"><i class="fa fa-lg fa-fw fa-book"></i>
+            <span class="menu-item-parent">{{'合約管理'}}</span></a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/clean/statistical" (click)="visibleSidebar = false"><i
+              class="fa fa-lg fa-fw fa-binoculars"></i> <span class="menu-item-parent">{{'統計資料查詢'}}</span></a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/clean/member-profile" (click)="visibleSidebar = false"><i class="fa fa-lg fa-fw fa-user"></i>
+            <span class="menu-item-parent">{{'會員資料設定'}}</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 處理業者 -->
+  <nav class="nav-rp" id="WasteDeal" *ngIf="WasteDeal">
+    <div class="my-nav">
+      <ul class="inline-block-nav">
+        <li routerLinkActive="active">
+          <a routerLink="/refuse-processing/clean-dispatch" (click)="visibleSidebar = false"><i
+              class="fa fa-lg fa-fw  fa-home"></i> <span class="menu-item-parent">{{'我的會員首頁(處理)'}}</span></a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/refuse-processing/contract" (click)="visibleSidebar = false"><i
+              class="fa fa-lg fa-fw fa-book"></i> <span class="menu-item-parent">{{'合約管理'}}</span></a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/refuse-processing/statistical" (click)="visibleSidebar = false"><i
+              class="fa fa-lg fa-fw fa-binoculars"></i> <span class="menu-item-parent">{{'統計資料查詢'}}</span></a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/refuse-processing/member-profile" (click)="visibleSidebar = false"><i
+              class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">{{'會員資料設定'}}</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

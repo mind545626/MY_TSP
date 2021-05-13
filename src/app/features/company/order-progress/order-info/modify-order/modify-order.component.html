@@ -1,0 +1,351 @@
+<div class="my-form">
+  <div id="content" class="result-container">
+    <p-breadcrumb id="breadcrumb" [model]="items" [home]="home"></p-breadcrumb>
+  </div>
+  <div id="content" class="result-container result-color">
+    <div class="card">
+      <div class="title">
+        <span>編輯訂單</span>
+        <!-- <div class="btn-right">
+                        <button id="left-btn" type="button" class="btn btn-success btn-lg" data-toggle="modal"
+                            data-target="#myModal8"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i>編輯完成</button>
+                        <button type="button" class="btn btn-primary btn-lg" (click)="goBack()"><i
+                                class="fa fa-lg fa-fw fa-arrow-right"></i>返回</button>
+                    </div> -->
+      </div>
+      <div class="form-container" id="readonly_border">
+        <div class="form-horizontal">
+          <table class="table">
+            <thead>
+              <tr>
+                <th colspan="2">基本資料</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="control-label">
+                  <label for="companyName">公司名稱</label>
+                </th>
+                <td>
+                  {{CorporateName}}
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for="CareerType" class="control-label">事業別</label>
+                </th>
+                <td>
+                  {{CareerTypeDesc}} > {{CareerSubTypeDesc}}
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for="username">聯絡人</label>
+                </th>
+                <td>
+                  {{ContactPerson}}
+                </td>
+              </tr>
+              <tr *ngIf="PhoneNumber">
+                <th class="control-label">
+                  <label for="userPhone">聯絡電話</label>
+                </th>
+                <td>
+                  {{ContactPhoneNumber}} #{{ContactPhoneExtension}}
+                </td>
+              </tr>
+              <tr *ngIf="MobilePhone">
+                <th class="control-label">
+                  <label for="userPhone">聯絡手機</label>
+                </th>
+                <td>
+                  {{ContactMobilePhone}}
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for="ControlNumber">管制編號</label>
+                </th>
+                <td>
+                  {{ControlNumber}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <form class="form-horizontal" [formGroup]="ModifyOrderDataForm">
+          <table class="table">
+            <thead>
+              <tr>
+                <th colspan="2">清運資料</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="control-label">
+                  <label for="ContractCode">合約編號</label>
+                </th>
+                <td>
+                  <div class="contractList">
+                    <div class="d-flex">
+                      <p-dropdown placeholder="請選擇要載入的合約" [showClear]="true" (onChange)="ChangeIsNull()"
+                        [options]="ContractCodeList$ | async" [required]="true" inputId="ContractCode"
+                        formControlName="ContractCode">
+                      </p-dropdown>
+                      <button type="button" class="btn btn-success btn-lg" (click)="loadcontract()">
+                        <i class="fa fa-lg fa-fw fa-file-text-o"></i>載入合約
+                      </button>
+                    </div>
+                    <small [hidden]=" !ModifyOrderDataForm.controls.ContractCode.hasError('required')">
+                      必填欄位，請選擇載入合約
+                    </small>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for="StartDateTime">合約生效日期</label>
+                </th>
+                <td>
+                  {{ StartDateTime }}
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for="EndDateTime">合約結束日期</label>
+                </th>
+                <td>
+                  {{ EndDateTime }}
+                </td>
+              </tr>
+              <tr [ngSwitch]="CollectFrequency">
+                <th class="control-label">
+                  <label for="CollectFrequency">收集頻率</label>
+                </th>
+                <td *ngSwitchCase="null"></td>
+                <td *ngSwitchDefault>
+                  {{ CollectFrequency }}&#xA0; ; &#xA0;{{ CollectWeekDay }}
+                </td>
+              </tr>
+              <tr [ngSwitch]="AcceptableAmount">
+                <th class="control-label">
+                  <label for="AcceptableAmount">允收量</label>
+                </th>
+                <td *ngSwitchCase="null"></td>
+                <td *ngSwitchDefault>{{ AcceptableAmount }} /公斤</td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for="ApplyWasteType">申請廢棄物類型</label>
+                </th>
+                <td>
+                  {{ ApplyWasteType }}
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for="ClearAddress">清運地址</label>
+                </th>
+                <td>
+                  {{ ClearAddress }}
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for="WasteStoragePlace">廢棄物貯存地點</label>
+                </th>
+                <td>
+                  {{ WasteStoragePlace }}
+                </td>
+              </tr>
+              <tr [ngSwitch]="ContractStatus">
+                <th class="control-label">
+                  <label for="ContractStatus">合約狀態</label>
+                </th>
+                <td *ngSwitchCase="null"></td>
+                <td *ngSwitchDefault>
+                  <button [class]="'status-'+ContractStatus">
+                    {{ ContractStatusName }}
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for="PayMethod">付款方式</label>
+                </th>
+                <td>
+                  {{ PayMethod }}
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for="PayItem">付款項目</label>
+                </th>
+                <td>
+                  {{ PayItem }}
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for="IsAgreeSignFree">是否同意免簽</label>
+                </th>
+                <td [ngSwitch]="IsAgreeSignFree">
+                  <p *ngSwitchCase="true">
+                    是
+                  </p>
+                  <p *ngSwitchCase="false">
+                    否
+                  </p>
+                  <p *ngSwitchDefault>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <th>退水費、妥善處理記錄、派送三聯單</th>
+                <td [ngSwitch]="IsNeedRecord">
+                  <p *ngSwitchCase="true">
+                    是
+                  </p>
+                  <p *ngSwitchCase="false">
+                    否
+                  </p>
+                  <p *ngSwitchDefault>
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table">
+            <colgroup>
+              <col style="width: 12%">
+              <col style="width: 46%">
+              <col style="width: 12%">
+              <col style="width: 12%">
+              <col style="width: 13%">
+            </colgroup>
+            <thead>
+              <tr>
+                <th colspan="5">其他需求項目
+                </th>
+              </tr>
+            </thead>
+            <tbody formArrayName="ProvideEquip">
+              <tr class="tbodyTh">
+                <th>需求項目</th>
+                <th>需求內容</th>
+                <th>數量(個)</th>
+                <th>單價(元)</th>
+                <th>功能</th>
+              </tr>
+              <tr *ngFor="let ProvideEquipArray of ProvideEquipData().controls; let i = index;">
+                <ng-container [formGroupName]="i">
+                  <td><span style="margin-right: 1rem"> {{i+1}}. </span></td>
+                  <td>
+                    <input type="text" class="form-control" pInputText placeholder="請輸入設備名稱"
+                      formControlName="QuoteProvideEquipName" readonly />
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" pInputText placeholder="請輸入數量" formControlName="Qty"
+                      readonly />
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" pInputText placeholder="請輸入價格" formControlName="Price"
+                      readonly />
+                  </td>
+                  <td>
+                    <div class="btn-certer">
+                      <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                        (click)="removeContact(i)">
+                      </button>
+                    </div>
+                  </td>
+                </ng-container>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table">
+            <thead>
+              <tr>
+                <th colspan="6">廢棄物列表</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="tbodyTh">
+                <th>廢棄物代碼</th>
+                <th>廢棄物名稱</th>
+                <th style="width: 11%">廢棄物性質</th>
+                <th style="width: 11%">申請數量</th>
+                <th style="width: 11%">單位</th>
+                <th style="width: 11%">單價(元)</th>
+              </tr>
+              <tr>
+                <td>
+                  <p-dropdown placeholder="請選擇代碼" [showClear]="true" (onChange)="ChangeWasteCode($event);totalPrice()"
+                    [options]="WasteCode$ | async" [required]="true" inputId="WasteCode" formControlName="WasteCode">
+                  </p-dropdown>
+                  <small [hidden]=" !ModifyOrderDataForm.controls.WasteCode.hasError('required')">
+                    必填欄位
+                  </small>
+                </td>
+                <td>
+                  <input type="text" class="form-control" pInputText placeholder="廢棄物名稱" formControlName="WasteName"
+                    readonly />
+                </td>
+                <td>
+                  <input type="text" class="form-control" pInputText placeholder="性質" formControlName="WasteStatusName"
+                    readonly />
+                </td>
+                <td>
+                  <input type="text" class="form-control" id="input_border" pInputText placeholder="請輸入數量"
+                    (keyup)="totalPrice();cantZore()" formControlName="MonthlyQty" />
+                  <small [hidden]=" !ModifyOrderDataForm.controls.MonthlyQty.hasError('required')">
+                    必填欄位
+                  </small>
+                </td>
+                <td>
+                  <input type="text" class="form-control" pInputText placeholder="單位" formControlName="WasteUnitName"
+                    readonly />
+                </td>
+                <td>
+                  <input type="text" class="form-control" pInputText placeholder="單價" formControlName="Price"
+                    readonly />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+        <table class="table last-total">
+          <tbody>
+            <tr>
+              <td>
+                <div>
+                  <label for="TotalPlace">預估訂單總價</label>
+                  <input type="text" class="form-control" pInputText placeholder="合計" value={{TotalPlace}} readonly />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="form-group row">
+          <div class="justify-content-center btn-center">
+            <button type="button" class="btn btn-primary btn-lg" (click)="goBack()">
+              <i class="fa fa-lg fa-fw fa-arrow-right"></i>返回
+            </button>
+            <button id="left-btn" type="submit" class="btn btn-success btn-lg" (click)="onSubmit()">
+              <i class="fa fa-lg fa-fw fa-pencil-square-o"></i>新增訂單
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<p-toast position="bottom-right"></p-toast>
+
+<div id="progressSpinner" class="background-black" *ngIf="progressSpinner">
+  <div class="progress-spinner">
+    <p-progressSpinner class="customProgress"></p-progressSpinner>
+  </div>
+</div>

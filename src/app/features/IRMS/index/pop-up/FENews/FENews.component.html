@@ -1,0 +1,23 @@
+<!-- <div class="modal-header">
+    <div class="mymodal-title">
+        {{ configFENews.data.Title}}
+    </div>
+</div> -->
+<div class="modal-body">
+    <div class="align-middle">
+        <div class="row">
+            <div class="col-6">
+                <i class="pi pi-calendar"></i>
+                <label>
+                    {{ configFENews.data.UP_DateTime}}
+                </label>
+            </div>
+        </div>
+        <label>
+            {{ configFENews.data.Content }}
+        </label>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-success btn-lg"  (click)="ngOnDestroy()" >確認</button>
+</div>

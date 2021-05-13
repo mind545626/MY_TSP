@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    margin: 0;
+// 以下添加
+    padding-right: 0 !important ;
+    /* overflow-y: scroll !important; */
+    overflow-x: hidden;
+}
+
+html, body { 
+    height: 100%; 
+}
+header { 
+    height: 100%; 
+    position: relative;
+}
+
+
+html, body { height: 100%; }
+body {
+    font-size: 14px;
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
+
+
+@media (max-width: 420px) {
+    .page-top{
+        margin-top: 64px;
+    }
+}
+@media (min-width: 421px) and (max-width: 767px) {
+    .page-top{
+        margin-top: 84px;
+    }
+
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .page-top{
+        margin-top: 84px;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    .page-top{
+        margin-top: 84px;
+    }
+}
+@media (min-width: 1200px) {
+    .page-top{
+        margin-top: 84px;
+    }
+}
+
+.p-Browse{
+    padding:0 1rem;
+}

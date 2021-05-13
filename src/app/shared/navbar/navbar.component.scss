@@ -1,0 +1,222 @@
+@media screen and (max-width: 350px) {
+    .nav-hide {
+        display: none ;
+    }
+    nav {
+        .my-nav {
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+            // margin-left: -5px;
+            margin: 0 auto;
+            justify-content: space-between;
+        }
+        ul {
+            text-overflow: ellipsis;
+            list-style: none; /* 移除項目符號 */
+            margin: 0;
+            text-align: center;
+            padding: 0;
+            font-size: 0; /* 移除 <li> 之間的空隙 */
+            i {
+                color: #fff;
+                font-size: 1.5rem;
+                display: block;
+                margin: 5px auto;
+            }
+            a {
+                color: inherit; /* 移除超連結顏色 */
+                display: block; /* 讓 <a> 填滿 <li> */
+                padding: 1px;
+                text-decoration: none; /* 移除超連結底線 */
+                span {
+                    color: #fff;
+                    font-size: 6px;
+                    -webkit-text-size-adjust: none;
+                }
+            }
+            li {
+                display: inline-block;
+                margin-right: -5px;
+                margin-left: -5px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 351px) and (max-width: 649px) {
+    // .bg-green {
+    //     background-color: #136a50;
+    // }
+
+    // .navbar-nav .active > .nav-link {
+    //     color: #fff;
+    // }
+
+    // .navbar-nav .nav-link {
+    //     color: #fff;
+    // }
+    .nav-hide {
+        display: none ;
+    }
+
+    nav {
+        .my-nav {
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+            // margin-left: -5px;
+            margin: 0 auto;
+            justify-content: space-between;
+        }
+        ul {
+            list-style: none; /* 移除項目符號 */
+            margin: 0;
+            text-align: center;
+            padding: 0;
+            font-size: 0; /* 移除 <li> 之間的空隙 */
+            i {
+                color: #fff;
+                font-size: 1.5rem;
+                display: block;
+                margin: 5px auto;
+            }
+            a {
+                color: inherit; /* 移除超連結顏色 */
+                display: block; /* 讓 <a> 填滿 <li> */
+                padding: 2px;
+                text-decoration: none; /* 移除超連結底線 */
+                span {
+                    color: #fff;
+                    font-size: 5px;
+                    -webkit-text-size-adjust: none;
+                }
+            }
+            li {
+                display: inline-block;
+                // margin-right: -4px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 650px) and (max-width: 1024px) {
+    // .bg-green {
+    //     background-color: #136a50;
+    // }
+
+    // .navbar-nav .active > .nav-link {
+    //     color: #fff;
+    // }
+
+    // .navbar-nav .nav-link {
+    //     color: #fff;
+    // }
+    nav {
+        .my-nav {
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        ul {
+            list-style: none; /* 移除項目符號 */
+            margin: 0 auto;
+            text-align: center;
+            padding: 0;
+            font-size: 0; /* 移除 <li> 之間的空隙 */
+            i {
+                color: #fff;
+                font-size: 1.2rem;
+            }
+            a {
+                color: inherit; /* 移除超連結顏色 */
+                display: block; /* 讓 <a> 填滿 <li> */
+                padding: 10px;
+                text-decoration: none; /* 移除超連結底線 */
+                span {
+                    color: #fff;
+                    font-size: 1.2rem;
+                }
+            }
+            li {
+                display: inline-block;
+                margin-right: -4px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    // .bg-green {
+    //     background-color: #136a50;
+    // }
+
+    // .navbar-nav .active > .nav-link {
+    //     color: #fff;
+    // }
+
+    // .navbar-nav .nav-link {
+    //     color: #fff;
+    // }
+    nav {
+        .my-nav {
+            width: 75%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        ul {
+            list-style: none; /* 移除項目符號 */
+            margin: 0;
+            padding: 0;
+            text-align: left;
+            font-size: 0; /* 移除 <li> 之間的空隙 */
+            i {
+                color: #fff;
+                font-size: 1.2rem;
+            }
+            a {
+                color: inherit; /* 移除超連結顏色 */
+                display: block; /* 讓 <a> 填滿 <li> */
+                padding: 10px;
+                text-decoration: none; /* 移除超連結底線 */
+                span {
+                    color: #fff;
+                    font-size: 1.2rem;
+                }
+            }
+            li {
+                display: inline-block;
+                margin-right: -4px;
+            }
+        }
+    }
+}
+
+.nav-cl {
+    background-color: #136a50;
+}
+.nav-cl > div > ul > li:hover {
+    background-color: #109c5b;
+    color: white;
+}
+
+.nav-co {
+    background-color: #0c8621;
+}
+.nav-co > div > ul > li:hover {
+    background-color: #08c528;
+    color: white;
+}
+
+.nav-rp {
+    background-color: #0672b1;
+}
+.nav-rp > div > ul > li:hover {
+    background-color: #028fe0;
+    color: white;
+}
+
+
+.menu-control{
+  display:none
+}

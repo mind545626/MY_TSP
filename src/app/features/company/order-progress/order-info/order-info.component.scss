@@ -1,0 +1,800 @@
+.input-text {
+    border-color: #000;
+    border-style: solid;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 1px;
+    border-left-width: 0px;
+}
+
+input[readonly] {
+    background-color: #ffffff;
+}
+
+@media screen and (max-width: 350px) {
+    .order-tall01 {
+        font-size: 0.65rem;
+        text-align: center;
+    }
+
+    .order-tall02 {
+        font-size: 0.65rem;
+        text-align: center;
+    }
+
+    .ipnut-width {
+        width: 25%;
+        margin: 0;
+    }
+
+    .order-right {
+        display: flex;
+        justify-content: center;
+    }
+
+    .my-form {
+        background: #fff;
+    }
+    .result-container {
+        width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .btn-right {
+        float: right;
+        margin-right: 1rem;
+    }
+
+    .btn-lg {
+        padding: 0.2rem;
+        font-size: 0.8rem;
+    }
+
+    .card {
+        overflow-x: auto;
+        .title {
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            margin-left: 1rem;
+            font-size: 1.2em;
+            font-weight: 700;
+            height: 34px;
+            color: #136a50;
+
+            p {
+                font-size: 2.4em;
+                font-weight: 700;
+                color: #136a50;
+                margin: 0;
+            }
+            #left-btn {
+                margin-right: 0.6rem;
+            }
+            #left-btn2 {
+                margin-right: 0.6rem;
+            }
+            // button {
+            // }
+        }
+        .form-container {
+            width: 100%;
+            min-height: 350px;
+            padding: 3% 3%;
+            table {
+                thead {
+                    background-color: rgb(250, 250, 250);
+                }
+                border: 2px solid #ccc;
+                th {
+                    font-size: 15px;
+                }
+                tr {
+                    font-size: 13px;
+                    td {
+                        border: 1px solid #ccc;
+                        font-size: 13px;
+                    }
+                }
+                tbody {
+                    tr {
+                        th {
+                            padding: 0.35rem;
+                            width: 30%;
+                            font-weight: bolder;
+                            font-size: 1em;
+                            color: #575757;
+                        }
+                        &.tbodyTh {
+                            th {
+                                width: auto;
+                                border: 1px solid #ccc;
+                            }
+                        }
+                        td {
+                            padding: 0.35rem;
+                        }
+                        button {
+                            font-size: 13px;
+                        }
+                    }
+                }
+            }
+            div > button {
+                margin-top: 2rem;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}
+@media screen and (min-width: 351px) and (max-width: 420px) {
+    .order-tall01 {
+        font-size: 0.8rem;
+        text-align: center;
+    }
+
+    .order-tall02 {
+        font-size: 0.8rem;
+        text-align: center;
+    }
+
+    .ipnut-width {
+        width: 25%;
+        margin: 0;
+    }
+
+    .order-right {
+        display: flex;
+        justify-content: center;
+    }
+
+    .my-form {
+        background: #fff;
+    }
+    .result-container {
+        width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .btn-right {
+        float: right;
+        margin-right: 0.9rem;
+    }
+
+    .btn-lg {
+        padding: 0.3rem;
+        font-size: 0.9rem;
+    }
+
+    .card {
+        overflow-x: auto;
+        .title {
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            margin-left: 1rem;
+            font-size: 1.2em;
+            font-weight: 700;
+            height: 34px;
+            color: #136a50;
+            p {
+                font-size: 2.4em;
+                font-weight: 700;
+                color: #136a50;
+                margin: 0;
+            }
+            #left-btn {
+                margin-right: 0.7rem;
+            }
+            #left-btn2 {
+                margin-right: 0.7rem;
+            }
+            // button {
+            // }
+        }
+        .form-container {
+            width: 100%;
+            min-height: 350px;
+            padding: 3% 3%;
+            table {
+                thead {
+                    background-color: rgb(250, 250, 250);
+                }
+                border: 2px solid #ccc;
+                th {
+                    font-size: 15px;
+                }
+                tr {
+                    font-size: 15px;
+                    td {
+                        border: 1px solid #ccc;
+                        font-size: 15px;
+                    }
+                }
+                tbody {
+                    tr {
+                        th {
+                            padding: 0.35rem;
+                            width: 30%;
+                            font-weight: bolder;
+                            font-size: 1em;
+                            color: #575757;
+                        }
+                        &.tbodyTh {
+                            th {
+                                width: auto;
+                                border: 1px solid #ccc;
+                            }
+                        }
+                        td {
+                            padding: 0.35rem;
+                        }
+                        button {
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+            div > button {
+                margin-top: 2rem;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}
+@media screen and (min-width: 421px) and (max-width: 767px) {
+    .order-tall01 {
+        font-size: 0.8rem;
+        text-align: center;
+    }
+
+    .order-tall02 {
+        font-size: 0.8rem;
+        text-align: center;
+    }
+
+    .ipnut-width {
+        width: 25%;
+        margin: 0;
+    }
+
+    .order-right {
+        display: flex;
+        justify-content: center;
+    }
+
+    .my-form {
+        background: #fff;
+    }
+    .result-container {
+        width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .btn-right {
+        float: right;
+        margin-right: 0.9rem;
+    }
+
+    .btn-lg {
+        padding: 0.3rem;
+        font-size: 0.9rem;
+    }
+
+    .card {
+        .title {
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            margin-left: 1rem;
+            font-size: 1.8em;
+            font-weight: 700;
+            height: 34px;
+            color: #136a50;
+
+            p {
+                font-size: 2.4em;
+                font-weight: 700;
+                color: #136a50;
+                margin: 0;
+            }
+            #left-btn {
+                margin-right: 1rem;
+            }
+            #left-btn2 {
+                margin-right: 1rem;
+            }
+            // button {
+            // }
+        }
+        .form-container {
+            width: 100%;
+            min-height: 350px;
+            padding: 5% 8%;
+            table {
+                thead {
+                    background-color: rgb(250, 250, 250);
+                }
+                border: 2px solid #ccc;
+                th {
+                    font-size: 20px;
+                }
+                tr {
+                    td {
+                        border: 1px solid #ccc;
+                        font-size: 18px;
+                    }
+                }
+                tbody {
+                    tr {
+                        th {
+                            padding: 0.75rem;
+                            width: 30%;
+                            font-weight: bolder;
+                            font-size: 1.2em;
+                            color: #575757;
+                        }
+                        &.tbodyTh {
+                            th {
+                                width: auto;
+                                border: 1px solid #ccc;
+                            }
+                        }
+                        td {
+                            padding: 0.75rem;
+                        }
+                        button {
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+            div > button {
+                margin-top: 4rem;
+            }
+        }
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .order-tall01 {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .order-tall02 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .ipnut-width {
+        width: 20%;
+        margin: 0 1rem;
+    }
+
+    .order-right {
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .my-form {
+        background: #ccc;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+    .result-container {
+        width: 85%;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 15px;
+    }
+
+    .btn-right {
+        float: right;
+        margin-right: 2rem;
+        margin-top: 1rem;
+    }
+
+    .card {
+        .title {
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            margin-left: 1rem;
+            font-size: 1.8em;
+            font-weight: 700;
+            height: 34px;
+            color: #136a50;
+
+            p {
+                font-size: 2.4em;
+                font-weight: 700;
+                color: #136a50;
+                margin: 0;
+            }
+            #left-btn {
+                margin-right: 1.5rem;
+            }
+            #left-btn2 {
+                margin-right: 1.5rem;
+            }
+            // button {
+            // }
+        }
+        .form-container {
+            width: 100%;
+            min-height: 350px;
+            padding: 5% 8%;
+            table {
+                thead {
+                    background-color: rgb(250, 250, 250);
+                }
+                border: 2px solid #ccc;
+                th {
+                    font-size: 20px;
+                }
+                tr {
+                    td {
+                        border: 1px solid #ccc;
+                        font-size: 18px;
+                    }
+                }
+                tbody {
+                    tr {
+                        th {
+                            padding: 0.75rem;
+                            width: 30%;
+                            font-weight: bolder;
+                            font-size: 1.2em;
+                            color: #575757;
+                        }
+                        &.tbodyTh {
+                            th {
+                                width: auto;
+                                border: 1px solid #ccc;
+                            }
+                        }
+                        td {
+                            padding: 0.75rem;
+                        }
+                        button {
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+            div > button {
+                margin-top: 3rem;
+            }
+        }
+    }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .order-tall01 {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .order-tall02 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .ipnut-width {
+        width: 20%;
+        margin: 0 1rem;
+    }
+
+    .order-right {
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .my-form {
+        background: #ccc;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+    .result-container {
+        width: 80%;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 15px;
+    }
+    .btn-right {
+        float: right;
+        margin-right: 2rem;
+        margin-top: 1rem;
+    }
+    .card {
+        .title {
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            margin-left: 1rem;
+            font-size: 1.8em;
+            font-weight: 700;
+            height: 34px;
+            color: #136a50;
+
+            p {
+                font-size: 2.4em;
+                font-weight: 700;
+                color: #136a50;
+                margin: 0;
+            }
+            #left-btn {
+                margin-right: 1.5rem;
+            }
+            #left-btn2 {
+                margin-right: 1.5rem;
+            }
+            // button {
+            // }
+        }
+        .form-container {
+            width: 100%;
+            min-height: 350px;
+            padding: 5% 8%;
+            table {
+                thead {
+                    background-color: rgb(250, 250, 250);
+                }
+                border: 2px solid #ccc;
+                th {
+                    font-size: 20px;
+                }
+                tr {
+                    td {
+                        border: 1px solid #ccc;
+                        font-size: 18px;
+                    }
+                }
+                tbody {
+                    tr {
+                        th {
+                            padding: 0.75rem;
+                            width: 30%;
+                            font-weight: bolder;
+                            font-size: 1.2em;
+                            color: #575757;
+                        }
+                        &.tbodyTh {
+                            th {
+                                width: auto;
+                                border: 1px solid #ccc;
+                            }
+                        }
+                        td {
+                            padding: 0.75rem;
+                        }
+                        button {
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+            div > button {
+                margin-top: 3.25rem;
+            }
+        }
+    }
+    // .title {
+    //     margin-top: 1rem;
+    //     margin-bottom: 2rem;
+    //     margin-left: 1rem;
+    //     font-size: 1.6em;
+    //     font-weight: 700;
+    //     height: 34px;
+    //     color: #136a50;
+    // }
+}
+@media screen and (min-width: 1200px) {
+    .order-tall01 {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .order-tall02 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .ipnut-width {
+        width: 20%;
+        margin: 0 1rem;
+    }
+
+    .order-right {
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .my-form {
+        background: #ccc;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+    .result-container {
+        width: 75%;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 15px;
+    }
+
+    .btn-right {
+        float: right;
+        margin-right: 2rem;
+        margin-top: 1rem;
+    }
+
+    .card {
+        .title {
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            margin-left: 1rem;
+            font-size: 1.8em;
+            font-weight: 700;
+            height: 34px;
+            color: #136a50;
+
+            p {
+                font-size: 2.4em;
+                font-weight: 700;
+                color: #136a50;
+                margin: 0;
+            }
+            #left-btn {
+                margin-right: 1.5rem;
+            }
+            #left-btn2 {
+                margin-right: 1.5rem;
+            }
+            // button {
+            // }
+        }
+        .form-container {
+            width: 100%;
+            min-height: 350px;
+            padding: 5% 8%;
+            table {
+                thead {
+                    background-color: rgb(250, 250, 250);
+                }
+                border: 2px solid #ccc;
+                th {
+                    font-size: 20px;
+                }
+                tr {
+                    td {
+                        border: 1px solid #ccc;
+                        font-size: 18px;
+                    }
+                }
+                tbody {
+                    tr {
+                        th {
+                            padding: 0.75rem;
+                            width: 30%;
+                            font-weight: bolder;
+                            font-size: 1.2em;
+                            color: #575757;
+                        }
+                        &.tbodyTh {
+                            th {
+                                width: auto;
+                                border: 1px solid #ccc;
+                            }
+                        }
+                        td {
+                            padding: 0.75rem;
+                        }
+                        button {
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+            div > button {
+                margin-top: 4rem;
+            }
+        }
+    }
+}
+
+.btn-org {
+    color: #fff;
+    background-color: #fd7e14;
+    border-color: #fd7e14;
+}
+.btn-org:hover {
+    color: #fff;
+    background-color: #d3660d;
+    border-color: #e67700;
+}
+.btn-org:focus,
+.btn-org.focus {
+    color: #fff;
+    background-color: #fd7e14;
+    border-color: #e67700;
+    box-shadow: 0 0 0 0.2rem rgba(254, 216, 84, 0.5);
+}
+.btn-org.disabled,
+.btn-org:disabled {
+    color: #fff;
+    background-color: #fd7e14;
+    border-color: #fd7e14;
+}
+.btn-org:not(:disabled):not(.disabled):active,
+.btn-org:not(:disabled):not(.disabled).active,
+.show > .btn-org.dropdown-toggle {
+    color: #fff;
+    background-color: #e67700;
+    border-color: rgb(223, 145, 0);
+}
+.btn-org:not(:disabled):not(.disabled):active:focus,
+.btn-org:not(:disabled):not(.disabled).active:focus,
+.show > .btn-org.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(254, 216, 84, 0.5);
+}
+
+
+
+.background-black {
+  z-index: 998;
+  background-color:rgba(10, 10, 10, 0.65);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 999;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  .progress-spinner {
+    position: fixed;
+    opacity: 1;
+    z-index: 999;
+    overflow: show;
+    margin: auto;
+    width: 2em;
+    height: 2em;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+@keyframes ui-progress-spinner-color {
+  100%,
+  0% {
+    stroke: #ffffff;
+  }
+  40% {
+    stroke: #ffffff;
+  }
+  66% {
+    stroke: #ffffff;
+  }
+  80%,
+  90% {
+    stroke: #ffffff;
+  }
+}
+
+
+P{
+  margin-top: 0;
+  margin-bottom: 0
+}
+
+.btn-center {
+  margin: 0 auto;
+  text-align: center;
+  button:nth-child(2) {
+    margin-left: 10px;
+  }
+}

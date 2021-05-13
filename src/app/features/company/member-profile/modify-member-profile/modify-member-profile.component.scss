@@ -1,0 +1,1325 @@
+.input-text {
+  border-color: #000;
+  border-style: solid;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 1px;
+  border-left-width: 0px;
+}
+
+input[readonly] {
+  background-color: #ffffff;
+}
+:host ::ng-deep {
+  @media screen and (max-width: 350px) {
+    .form-control {
+      font-size: 0.9em;
+    }
+    .my-form {
+      padding-top: 64px;
+      background: #ccc;
+      .result-container {
+        width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+        .card {
+          #left-btn {
+            margin-right: 0.6rem;
+          }
+          .join-card {
+            text-align: center;
+            margin: 0 auto;
+            background-color: #fff;
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            border-radius: 15px;
+            .h1-style {
+              padding-bottom: 10px;
+              display: flex;
+              justify-content: center;
+              font-size: 1.1em;
+              font-weight: 600;
+              color: #136a50;
+            }
+            form {
+              margin-top: 30px;
+              overflow: hidden;
+              margin-bottom: 50px;
+              .form-control {
+                font-size: 0.9em;
+              }
+              .noticeinfo-container {
+                font-size: 0.8em;
+                margin: 0 0 30px;
+                width: 100%;
+                min-height: 350px;
+                background-color: #fff;
+                border: 1px solid #aaa;
+                border-radius: 10px;
+                box-shadow: 0 0 5px #aaa;
+                .formcol {
+                  border-bottom: 1px solid #000;
+                  &:first-child .title {
+                    border-radius: 10px 0 0 0;
+                  }
+                  &:last-child {
+                    border-bottom: none;
+                    .title {
+                      border-radius: 0 0 0 10px;
+                    }
+                  }
+                  .title {
+                    width: 10%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #aaa;
+                    font-size: 0.8em;
+                    font-weight: 700;
+                  }
+                  .inputGroup {
+                    text-align: center;
+                    width: 90%;
+                    padding: 10px;
+                    label {
+                      text-align: left;
+                      font-weight: 700;
+                    }
+                    input,
+                    select {
+                      border-radius: 5px !important;
+                      &[placeholder="分機號碼"] {
+                        width: 30%;
+                        margin-left: 10px;
+                      }
+                    }
+                    .check-label {
+                      margin-top: 1rem;
+                      font-weight: unset !important;
+                      input {
+                        width: 15px;
+                        height: 15px;
+                      }
+                    }
+                    .industry {
+                      select:nth-child(1) {
+                        width: 40%;
+                      }
+                      select:nth-child(2) {
+                        margin-left: 10px;
+                        width: 60%;
+                      }
+                    }
+                    .ContactPhone {
+                      input:nth-child(1) {
+                        margin-right: 4px;
+                        width: 80%;
+                      }
+                      input:nth-child(2) {
+                        margin-left: 4px;
+                        width: 20%;
+                      }
+                    }
+                  }
+                }
+              }
+
+              .register-btn {
+                font-size: 1.25em;
+                margin-top: 2%;
+              }
+              .btn-top {
+                margin-top: 4rem;
+              }
+              .btn-lg {
+                padding: 0.3rem;
+                font-size: 0.9rem;
+              }
+              .checkbox {
+                margin: 0 auto;
+                text-align: center;
+                width: 75%;
+                font-size: 0.7rem;
+                input {
+                  width: 11px !important;
+                  height: 11px !important;
+                }
+              }
+              .tips {
+                font-size: 0.8rem;
+                a {
+                  margin: 0 10px;
+                  // font-style: 1rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .btn-right {
+      float: right;
+      margin-right: 0.9rem;
+    }
+    .btn-lg {
+      padding: 0.2rem;
+      font-size: 0.8rem;
+    }
+  }
+  @media screen and (min-width: 351px) and (max-width: 420px) {
+    .form-control {
+      font-size: 0.9em;
+    }
+    .my-form {
+      padding-top: 64px;
+      background: #ccc;
+      .result-container {
+        width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+        .card {
+          #left-btn {
+            margin-right: 0.7rem;
+          }
+          .join-card {
+            text-align: center;
+            margin: 0 auto;
+            background-color: #fff;
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            border-radius: 15px;
+            .h1-style {
+              padding-bottom: 15px;
+              display: flex;
+              justify-content: center;
+              font-size: 1.4em;
+              font-weight: 600;
+              color: #136a50;
+            }
+            form {
+              margin-top: 30px;
+              overflow: hidden;
+              margin-bottom: 50px;
+              .form-control {
+                font-size: 0.9em;
+              }
+              .noticeinfo-container {
+                font-size: 1em;
+                margin: 0 0 30px;
+                width: 100%;
+                min-height: 350px;
+                background-color: #fff;
+                border: 1px solid #aaa;
+                border-radius: 15px;
+                box-shadow: 0 0 5px #aaa;
+                .formcol {
+                  border-bottom: 1px solid #000;
+                  &:first-child .title {
+                    border-radius: 14px 0 0 0;
+                  }
+                  &:last-child {
+                    border-bottom: none;
+                    .title {
+                      border-radius: 0 0 0 14px;
+                    }
+                  }
+                  .title {
+                    width: 10%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #aaa;
+                    font-size: 1em;
+                    font-weight: 700;
+                  }
+                  .inputGroup {
+                    text-align: center;
+                    width: 90%;
+                    padding: 10px;
+                    label {
+                      text-align: left;
+                      font-weight: 700;
+                    }
+                    input,
+                    select {
+                      border-radius: 5px !important;
+                      &[placeholder="分機號碼"] {
+                        width: 30%;
+                        margin-left: 10px;
+                      }
+                    }
+                    .check-label {
+                      margin-top: 1rem;
+                      font-weight: unset !important;
+                      input {
+                        width: 18px;
+                        height: 18px;
+                      }
+                    }
+                    .industry {
+                      select:nth-child(1) {
+                        width: 40%;
+                      }
+                      select:nth-child(2) {
+                        margin-left: 10px;
+                        width: 60%;
+                      }
+                    }
+                    .ContactPhone {
+                      input:nth-child(1) {
+                        margin-right: 4px;
+                        width: 80%;
+                      }
+                      input:nth-child(2) {
+                        margin-left: 4px;
+                        width: 20%;
+                      }
+                    }
+                  }
+                }
+              }
+
+              .register-btn {
+                font-size: 1.25em;
+                margin-top: 2%;
+              }
+              .btn-top {
+                margin-top: 4rem;
+              }
+              .btn-lg {
+                padding: 0.3rem;
+                font-size: 0.9rem;
+              }
+              .checkbox {
+                font-size: 0.8rem;
+                input {
+                  width: 13px !important;
+                  height: 13px !important;
+                }
+              }
+              .tips {
+                font-size: 0.9rem;
+                a {
+                  margin: 0 10px;
+                  // font-style: 1rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .btn-right {
+      float: right;
+      margin-right: 0.9rem;
+    }
+    .btn-lg {
+      padding: 0.3rem;
+      font-size: 0.9rem;
+    }
+  }
+  @media screen and (min-width: 421px) and (max-width: 767px) {
+    .form-control {
+      font-size: 0.9em;
+    }
+    .my-form {
+      padding-top: 64px;
+      background: #ccc;
+      .result-container {
+        width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+        .card {
+          #left-btn {
+            margin-right: 0.9rem;
+          }
+          .join-card {
+            text-align: center;
+            margin: 0 auto;
+            background-color: #fff;
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            border-radius: 15px;
+            .h1-style {
+              padding-bottom: 30px;
+              display: flex;
+              justify-content: center;
+              font-size: 1.6em;
+              font-weight: 600;
+              color: #136a50;
+            }
+            form {
+              margin-top: 30px;
+              overflow: hidden;
+              margin-bottom: 50px;
+              .form-control {
+                font-size: 0.9em;
+              }
+              .noticeinfo-container {
+                font-size: 1.1em;
+                margin: 0 0 30px;
+                width: 100%;
+                min-height: 350px;
+                background-color: #fff;
+                border: 1px solid #aaa;
+                border-radius: 15px;
+                box-shadow: 0 0 5px #aaa;
+                .formcol {
+                  border-bottom: 1px solid #000;
+                  &:first-child .title {
+                    border-radius: 14px 0 0 0;
+                  }
+                  &:last-child {
+                    border-bottom: none;
+                    .title {
+                      border-radius: 0 0 0 14px;
+                    }
+                  }
+                  .title {
+                    width: 14%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #aaa;
+                    font-size: 1.2em;
+                    font-weight: 700;
+                  }
+                  .inputGroup {
+                    width: 80%;
+                    padding: 20px;
+                    label {
+                      text-align: left;
+                      font-weight: 700;
+                    }
+                    input,
+                    select {
+                      border-radius: 5px !important;
+                      &[placeholder="分機號碼"] {
+                        width: 30%;
+                        margin-left: 10px;
+                      }
+                    }
+                    .check-label {
+                      margin-top: 1rem;
+                      font-weight: unset !important;
+                      input {
+                        width: 18px;
+                        height: 18px;
+                      }
+                    }
+                    .industry {
+                      select:nth-child(1) {
+                        width: 40%;
+                      }
+                      select:nth-child(2) {
+                        margin-left: 10px;
+                        width: 60%;
+                      }
+                    }
+                    .ContactPhone {
+                      input:nth-child(1) {
+                        margin-right: 4px;
+                        width: 80%;
+                      }
+                      input:nth-child(2) {
+                        margin-left: 4px;
+                        width: 20%;
+                      }
+                    }
+                  }
+                }
+              }
+
+              .register-btn {
+                font-size: 1.25em;
+                margin-top: 2%;
+              }
+              .btn-top {
+                margin-top: 4rem;
+              }
+              .btn-lg {
+                padding: 0.3rem;
+                font-size: 0.9rem;
+              }
+              .checkbox {
+                font-size: 1.1rem;
+              }
+              .tips {
+                font-size: 1.2rem;
+                a {
+                  margin: 0 10px;
+                  // font-style: 1rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .btn-right {
+      float: right;
+      margin-right: 0.9rem;
+    }
+    .btn-lg {
+      padding: 0.3rem;
+      font-size: 0.9rem;
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .form-control {
+      font-size: 0.9em;
+    }
+    .my-form {
+      background: #ccc;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+      .result-container {
+        width: 85%;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 15px;
+        .card {
+          #left-btn {
+            margin-right: 1.2rem;
+          }
+          .join-card {
+            text-align: center;
+            margin: 0 auto;
+            background-color: #fff;
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            border-radius: 15px;
+            .h1-style {
+              padding-bottom: 30px;
+              display: flex;
+              justify-content: center;
+              font-size: 2em;
+              font-weight: 600;
+              color: #136a50;
+            }
+            form {
+              margin-top: 30px;
+              overflow: hidden;
+              margin-bottom: 50px;
+              .form-control {
+                font-size: 0.9em;
+              }
+              .noticeinfo-container {
+                font-size: 1.3em;
+                margin: 0 0 30px;
+                width: 100%;
+                min-height: 350px;
+                background-color: #fff;
+                border: 1px solid #aaa;
+                border-radius: 15px;
+                box-shadow: 0 0 5px #aaa;
+                .formcol {
+                  border-bottom: 1px solid #000;
+                  &:first-child .title {
+                    border-radius: 14px 0 0 0;
+                  }
+                  &:last-child {
+                    border-bottom: none;
+                    .title {
+                      border-radius: 0 0 0 14px;
+                    }
+                  }
+                  .title {
+                    width: 18%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #aaa;
+                    font-size: 1.3em;
+                    font-weight: 700;
+                  }
+                  .inputGroup {
+                    width: 75%;
+                    padding: 20px;
+                    label {
+                      text-align: left;
+                      font-weight: 700;
+                    }
+                    input,
+                    select {
+                      border-radius: 5px !important;
+                      &[placeholder="分機號碼"] {
+                        width: 30%;
+                        margin-left: 10px;
+                      }
+                    }
+                    .check-label {
+                      margin-top: 1rem;
+                      font-weight: unset !important;
+                      input {
+                        width: 18px;
+                        height: 18px;
+                      }
+                    }
+                    // span{
+                    //     font-size: 1.5em;
+                    //     color: red;
+                    //     padding-right: 10px;
+                    // }
+                    .industry {
+                      select:nth-child(1) {
+                        width: 40%;
+                      }
+                      select:nth-child(2) {
+                        margin-left: 10px;
+                        width: 60%;
+                      }
+                    }
+                    .ContactPhone {
+                      input:nth-child(1) {
+                        margin-right: 4px;
+                        width: 80%;
+                      }
+                      input:nth-child(2) {
+                        margin-left: 4px;
+                        width: 20%;
+                      }
+                    }
+                  }
+                }
+              }
+              .register-btn {
+                font-size: 1.25em;
+                margin-top: 2%;
+              }
+              .btn-top {
+                margin-top: 4rem;
+              }
+              // .btn-lg {
+              //     padding: 0.3rem;
+              //     font-size: 0.9rem;
+              // }
+              .tips {
+                a {
+                  margin: 0 10px;
+                  font-style: 1rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .btn-right {
+      float: right;
+      margin-right: 2rem;
+      margin-top: 1rem;
+    }
+  }
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    .form-control {
+      font-size: 0.9em;
+    }
+    .my-form {
+      background: #ccc;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+      .result-container {
+        width: 85%;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 15px;
+        .card {
+          #left-btn {
+            margin-right: 1.5rem;
+          }
+          .join-card {
+            text-align: center;
+            margin: 0 auto;
+            background-color: #fff;
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            border-radius: 15px;
+            .h1-style {
+              padding-bottom: 30px;
+              display: flex;
+              justify-content: center;
+              font-size: 2em;
+              font-weight: 600;
+              color: #136a50;
+            }
+            form {
+              margin-top: 30px;
+              overflow: hidden;
+              margin-bottom: 50px;
+              .form-control {
+                font-size: 0.9em;
+              }
+              .noticeinfo-container {
+                font-size: 1.3em;
+                margin: 0 0 30px;
+                width: 100%;
+                min-height: 350px;
+                background-color: #fff;
+                border: 1px solid #aaa;
+                border-radius: 15px;
+                box-shadow: 0 0 5px #aaa;
+                .formcol {
+                  border-bottom: 1px solid #000;
+                  &:first-child .title {
+                    border-radius: 14px 0 0 0;
+                  }
+                  &:last-child {
+                    border-bottom: none;
+                    .title {
+                      border-radius: 0 0 0 14px;
+                    }
+                  }
+                  .title {
+                    width: 18%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #aaa;
+                    font-size: 1.3em;
+                    font-weight: 700;
+                  }
+                  .inputGroup {
+                    width: 75%;
+                    padding: 20px;
+                    label {
+                      text-align: left;
+                      font-weight: 700;
+                    }
+                    input,
+                    select {
+                      border-radius: 5px !important;
+                      &[placeholder="分機號碼"] {
+                        width: 30%;
+                        margin-left: 10px;
+                      }
+                    }
+                    .check-label {
+                      margin-top: 1rem;
+                      font-weight: unset !important;
+                      input {
+                        width: 18px;
+                        height: 18px;
+                      }
+                    }
+                    .industry {
+                      select:nth-child(1) {
+                        width: 40%;
+                      }
+                      select:nth-child(2) {
+                        margin-left: 10px;
+                        width: 60%;
+                      }
+                    }
+                    .ContactPhone {
+                      input:nth-child(1) {
+                        margin-right: 4px;
+                        width: 80%;
+                      }
+                      input:nth-child(2) {
+                        margin-left: 4px;
+                        width: 20%;
+                      }
+                    }
+                  }
+                }
+              }
+              .register-btn {
+                font-size: 1.25em;
+                margin-top: 2%;
+              }
+              .btn-top {
+                margin-top: 4rem;
+              }
+              // .btn-lg {
+              //     padding: 0.3rem;
+              //     font-size: 0.9rem;
+              // }
+              .tips {
+                a {
+                  margin: 0 10px;
+                  font-style: 1rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .btn-right {
+      float: right;
+      margin-right: 2rem;
+      margin-top: 1rem;
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    .form-control {
+      font-size: 0.9em;
+    }
+    .my-form {
+      background: #ccc;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+      .result-container {
+        width: 75%;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 15px;
+        .card {
+          #left-btn {
+            margin-right: 1.5rem;
+          }
+          .join-card {
+            text-align: center;
+            margin: 0 auto;
+            background-color: #fff;
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            border-radius: 15px;
+            .h1-style {
+              padding-bottom: 30px;
+              display: flex;
+              justify-content: center;
+              font-size: 2em;
+              font-weight: 600;
+              color: #136a50;
+            }
+            form {
+              margin-top: 30px;
+              overflow: hidden;
+              margin-bottom: 50px;
+              .form-control {
+                font-size: 0.9em;
+              }
+              .noticeinfo-container {
+                font-size: 1.3em;
+                margin: 0 0 30px;
+                width: 100%;
+                min-height: 350px;
+                background-color: #fff;
+                border: 1px solid #aaa;
+                border-radius: 15px;
+                box-shadow: 0 0 5px #aaa;
+                .formcol {
+                  border-bottom: 1px solid #000;
+                  &:first-child .title {
+                    border-radius: 14px 0 0 0;
+                  }
+                  &:last-child {
+                    border-bottom: none;
+                    .title {
+                      border-radius: 0 0 0 14px;
+                    }
+                  }
+                  .title {
+                    width: 18%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #aaa;
+                    font-size: 1.3em;
+                    font-weight: 700;
+                  }
+                  .inputGroup {
+                    width: 75%;
+                    padding: 20px;
+                    label {
+                      text-align: left;
+                      font-weight: 700;
+                    }
+
+                    .ui-dropdown {
+                      border-radius: 5px !important;
+                    }
+
+                    .check-label {
+                      margin-top: 1rem;
+                      font-weight: unset !important;
+                      input {
+                        width: 18px;
+                        height: 18px;
+                      }
+                    }
+                    .industry {
+                      select:nth-child(1) {
+                        width: 40%;
+                      }
+                      select:nth-child(2) {
+                        margin-left: 10px;
+                        width: 60%;
+                      }
+                    }
+                    .ContactPhone {
+                      input:nth-child(1) {
+                        margin-right: 4px;
+                        width: 80%;
+                      }
+                      input:nth-child(2) {
+                        margin-left: 4px;
+                        width: 20%;
+                      }
+                    }
+                  }
+                }
+              }
+              .register-btn {
+                font-size: 1.25em;
+                margin-top: 2%;
+              }
+              .btn-top {
+                margin-top: 4rem;
+              }
+              .tips {
+                a {
+                  margin: 0 10px;
+                  font-style: 1rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .btn-right {
+      float: right;
+      margin-right: 2rem;
+      margin-top: 1rem;
+    }
+  }
+
+  form {
+    margin-top: 30px;
+    overflow: hidden;
+    margin-bottom: 50px;
+  }
+
+  .control-label {
+    font-weight: 700;
+  }
+
+  .checkbox {
+    text-align: left;
+  }
+
+  @media screen and (max-width: 350px) {
+    .ipnut-width {
+      width: 25%;
+      margin: 0;
+    }
+
+    // .my-form {
+    //     background: #fff;
+    // }
+    .result-container {
+      width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .btn-right {
+      float: right;
+      margin-right: 1rem;
+    }
+
+    .btn-lg {
+      padding: 0.2rem;
+      font-size: 0.8rem;
+    }
+
+    .card {
+      overflow-x: auto;
+      #title {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        margin-left: 1rem;
+        font-size: 1.2em;
+        font-weight: 700;
+        height: 34px;
+        color: #136a50;
+
+        p {
+          font-size: 2.4em;
+          font-weight: 700;
+          color: #136a50;
+          margin: 0;
+        }
+        #left-btn {
+          margin-right: 0.6rem;
+        }
+      }
+    }
+  }
+  @media screen and (min-width: 351px) and (max-width: 420px) {
+    .ipnut-width {
+      width: 25%;
+      margin: 0;
+    }
+
+    // .my-form {
+    //     background: #fff;
+    // }
+    .result-container {
+      width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .btn-right {
+      float: right;
+      margin-right: 0.9rem;
+    }
+
+    .btn-lg {
+      padding: 0.3rem;
+      font-size: 0.9rem;
+    }
+
+    .card {
+      overflow-x: auto;
+      #title {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        margin-left: 1rem;
+        font-size: 1.2em;
+        font-weight: 700;
+        height: 34px;
+        color: #136a50;
+        p {
+          font-size: 2.4em;
+          font-weight: 700;
+          color: #136a50;
+          margin: 0;
+        }
+        #left-btn {
+          margin-right: 0.7rem;
+        }
+      }
+    }
+  }
+  @media screen and (min-width: 421px) and (max-width: 767px) {
+    .ipnut-width {
+      width: 25%;
+      margin: 0;
+    }
+
+    .result-container {
+      width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .btn-right {
+      float: right;
+      margin-right: 0.9rem;
+    }
+
+    .btn-lg {
+      padding: 0.3rem;
+      font-size: 0.9rem;
+    }
+
+    .card {
+      #title {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        margin-left: 1rem;
+        font-size: 1.4em;
+        font-weight: 700;
+        height: 34px;
+        color: #136a50;
+
+        p {
+          font-size: 2.4em;
+          font-weight: 700;
+          color: #136a50;
+          margin: 0;
+        }
+        #left-btn {
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .ipnut-width {
+      width: 20%;
+      margin: 0 1rem;
+    }
+
+    .my-form {
+      background: #ccc;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+    .result-container {
+      width: 85%;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 15px;
+    }
+
+    .btn-right {
+      float: right;
+      margin-right: 2rem;
+      margin-top: 1rem;
+    }
+
+    .card {
+      #title {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        margin-left: 1rem;
+        font-size: 1.6em;
+        font-weight: 700;
+        height: 34px;
+        color: #136a50;
+
+        p {
+          font-size: 2.4em;
+          font-weight: 700;
+          color: #136a50;
+          margin: 0;
+        }
+        #left-btn {
+          margin-right: 1.5rem;
+        }
+      }
+    }
+  }
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    .ipnut-width {
+      width: 20%;
+      margin: 0 1rem;
+    }
+
+    .my-form {
+      background: #ccc;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+    .result-container {
+      width: 80%;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 15px;
+    }
+    .btn-right {
+      float: right;
+      margin-right: 2rem;
+      margin-top: 1rem;
+    }
+    .card {
+      #title {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        margin-left: 1rem;
+        font-size: 1.6em;
+        font-weight: 700;
+        height: 34px;
+        color: #136a50;
+
+        p {
+          font-size: 2.4em;
+          font-weight: 700;
+          color: #136a50;
+          margin: 0;
+        }
+        #left-btn {
+          margin-right: 1.5rem;
+        }
+        // button {
+        // }
+      }
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    .ipnut-width {
+      width: 20%;
+      margin: 0 1rem;
+    }
+
+    .my-form {
+      background: #ccc;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+    .result-container {
+      width: 75%;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 15px;
+    }
+
+    .btn-right {
+      float: right;
+      margin-right: 2rem;
+      margin-top: 1rem;
+    }
+
+    .card {
+      #title {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        margin-left: 1rem;
+        font-size: 1.8em;
+        font-weight: 700;
+        height: 34px;
+        color: #136a50;
+
+        p {
+          font-size: 2.4em;
+          font-weight: 700;
+          color: #136a50;
+          margin: 0;
+        }
+        #left-btn {
+          margin-right: 1.5rem;
+        }
+      }
+    }
+  }
+}
+.btn-org {
+  color: #fff;
+  background-color: #fd7e14;
+  border-color: #fd7e14;
+}
+.btn-org:hover {
+  color: #fff;
+  background-color: #d3660d;
+  border-color: #e67700;
+}
+.btn-org:focus,
+.btn-org.focus {
+  color: #fff;
+  background-color: #fd7e14;
+  border-color: #e67700;
+  box-shadow: 0 0 0 0.2rem rgba(254, 216, 84, 0.5);
+}
+.btn-org.disabled,
+.btn-org:disabled {
+  color: #fff;
+  background-color: #fd7e14;
+  border-color: #fd7e14;
+}
+.btn-org:not(:disabled):not(.disabled):active,
+.btn-org:not(:disabled):not(.disabled).active,
+.show > .btn-org.dropdown-toggle {
+  color: #fff;
+  background-color: #e67700;
+  border-color: rgb(223, 145, 0);
+}
+.btn-org:not(:disabled):not(.disabled):active:focus,
+.btn-org:not(:disabled):not(.disabled).active:focus,
+.show > .btn-org.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(254, 216, 84, 0.5);
+}
+
+.form-group {
+  .CareerSelsct {
+    p-dropdown {
+      &:nth-child(1) {
+        width: 50%;
+      }
+      &:nth-child(2) {
+        width: 50%;
+        margin-left: 10px;
+      }
+    }
+  }
+  .addressSelsct {
+    .d-flex {
+      input {
+        width: 30%;
+      }
+      p-dropdown {
+        width: 35%;
+        margin-left: 10px;
+      }
+    }
+  }
+  .addressInput {
+    margin-top: 10px;
+    width: 100%;
+  }
+}
+
+.ui-dropdown-panel .ui-dropdown-items-wrapper {
+  overflow: auto;
+  height: 200px;
+  // width: 200px;
+  overflow-y: scroll;
+}
+
+.btn-center {
+  margin: 0 auto;
+  text-align: center;
+  button:nth-child(2) {
+    margin-left: 10px;
+  }
+}
+
+small {
+  color: #ff4454;
+  text-align: left;
+}
+.small-style {
+  text-align: left;
+}
+
+.background-black {
+  z-index: 998;
+  background-color:rgba(10, 10, 10, 0.65);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 999;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  .progress-spinner {
+    position: fixed;
+    opacity: 1;
+    z-index: 999;
+    overflow: show;
+    margin: auto;
+    width: 2em;
+    height: 2em;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+@keyframes ui-progress-spinner-color {
+  100%,
+  0% {
+    stroke: #ffffff;
+  }
+  40% {
+    stroke: #ffffff;
+  }
+  66% {
+    stroke: #ffffff;
+  }
+  80%,
+  90% {
+    stroke: #ffffff;
+  }
+}

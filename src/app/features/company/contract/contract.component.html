@@ -1,0 +1,30 @@
+<div class="my-form">
+    <div id="content" class="result-container">
+        <p-breadcrumb id="breadcrumb" [model]="items" [home]="home"></p-breadcrumb>
+    </div>
+    <div id="content" class="result-container result-color">
+        <div class="card">
+            <div class="title">
+                <span>合約管理列表</span>
+                <!-- <div class="btn-right">
+                    <a routerLink="/company/quotation/new-quotation">
+                        <button type="button" class="btn btn-success btn-lg"><i
+                                class="fa fa-lg fa-fw fa-file-text"></i>合約估價申請</button>
+                    </a>
+                </div> -->
+            </div>
+            <mat-tab-group mat-align-tabs="start" class="tab-top">
+
+                <mat-tab label="近三年合約清單({{ContractLength}})">
+                    <app-recent-contract (ContractListEvt)="ContractListEvtCal($event)"></app-recent-contract>
+                </mat-tab>
+
+                <!-- <mat-tab label="近期失效合約(8)">
+                    <app-expired-contract></app-expired-contract>
+                </mat-tab> -->
+
+            </mat-tab-group>
+            <p class="p-Browse">建議使用Google chrome瀏覽器，以達到最佳瀏覽效果。</p>
+        </div>
+    </div>
+</div>

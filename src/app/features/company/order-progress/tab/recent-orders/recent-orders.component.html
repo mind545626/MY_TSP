@@ -1,0 +1,189 @@
+<div class="my-tab">
+    <p-table #dt [columns]="cols" [value]="order" [paginator]="true" [scrollable]="true" [rows]="5"
+        [(selection)]="selectedOrders" [resizableColumns]="true" [style]="{width: '100%'}"
+        [showCurrentPageReport]="true" currentPageReportTemplate="顯示 {first} 至 {last} 共 {totalRecords} 筆資料"
+        [rowsPerPageOptions]="[5,10]" styleClass="p-datatable-customers">
+        <ng-template pTemplate="colgroup" let-columns>
+
+            <colgroup>
+                <col *ngFor="let col of columns" [style.width]="col.width">
+            </colgroup>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns">
+                    {{col.header}}
+                </th>
+            </tr>
+            <tr id="tr-td">
+                <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                    <div style="width: 60px;" *ngSwitchCase="'select'"></div>
+                    <input *ngSwitchCase="'Code'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field,'contains')">
+                    <input *ngSwitchCase="'ApplyDateTime'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field,'contains')">
+                    <input *ngSwitchCase="'CarPlate'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field, 'contains')">
+                    <input *ngSwitchCase="'CorporateName'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field, 'contains')">
+                    <input *ngSwitchCase="'ClearAddress'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field, 'contains')">
+                    <input *ngSwitchCase="'WasteCode'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field, 'contains')">
+                    <input *ngSwitchCase="'CompleteDateTime'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field, 'contains')">
+                    <input *ngSwitchCase="'EstimatedPrice'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field, 'contains')">
+                    <input *ngSwitchCase="'ActualPrice'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field, 'contains')">
+                    <p-dropdown *ngSwitchCase="'ProcessStatus'" appendTo="body" [showClear]="true" placeholder="全部"
+                        [options]="ProcessStatus$ | async" (onChange)="dt.filter($event.value, col.field, 'equals')">
+                    </p-dropdown>
+                    <p-dropdown *ngSwitchCase="'TransactionStatus'" appendTo="body" [showClear]="true" placeholder="全部"
+                        [options]="TransactionStatus" (onChange)="dt.filter($event.value, col.field, 'equals')">
+                    </p-dropdown>
+                    <p-dropdown *ngSwitchCase="'PaymentStatus'" appendTo="body" [showClear]="true" placeholder="全部"
+                        [options]="PaymentStatus" (onChange)="dt.filter($event.value, col.field, 'equals')">
+                    </p-dropdown>
+                    <!-- <p-dropdown *ngSwitchCase="'Payment'" appendTo="body" [showClear]="true" [options]="payment"
+                        (onChange)="dt.filter($event.value, col.field, 'equals')">
+                    </p-dropdown> -->
+                    <!-- <p-calendar *ngSwitchCase="'OrderDate'" [locale]="tw" appendTo="body" showButtonBar="true"
+                        (onSelect)="onDateSelect($event)" (onClearClick)="dt.filter('', 'date', 'equals')"
+                        [showButtonBar]="true" styleClass="p-column-filter" placeholder="選擇日期" [readonlyInput]="true"
+                        dateFormat="yy-mm-dd">
+                    </p-calendar>
+                    <p-calendar *ngSwitchCase="'OrderFulfillDate'" [locale]="tw" appendTo="body" showButtonBar="true"
+                        (onSelect)="onDateSelect($event)" (onClearClick)="dt.filter('', 'date', 'equals')"
+                        [showButtonBar]="true" styleClass="p-column-filter" placeholder="選擇日期" [readonlyInput]="true"
+                        dateFormat="yy-mm-dd">
+                    </p-calendar> -->
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns" let-order let-i="rowIndex">
+            <tr>
+                <td *ngFor="let col of columns">
+                    <ng-container *ngIf="col.field == 'no'">
+                        <div class="td-center">
+                          {{i+1}}
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="col.field == 'Code'">
+                        <div class="td-center">
+                            <!-- <a routerLink="/company/order-progress/order-info" class="td-a-color">
+                                {{rowData[col.field]}}
+                            </a> -->
+                            <a class="td-a-color" (click)="getOrderId(rowData[col.field])">
+                              {{rowData[col.field]}}
+                            </a>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="col.field == 'CarNumber'">
+                        {{rowData[col.field]}}
+                    </ng-container>
+                    <ng-container *ngIf="col.field == 'WasteCode'">
+                         {{rowData[col.field]}} {{rowData.WasteCodeName}}
+                    </ng-container>
+                    <!-- 圖片 -->
+                    <!-- <ng-container *ngIf="col.field == 'OrderImage'">
+                        <div class="img-certer">
+                            <img [src]="rowData[col.field]" class="col-img">
+                        </div>
+                    </ng-container> -->
+                    <!-- <ng-container *ngIf="col.field == 'OrderItems'">
+                        {{rowData[col.field][0]}}<br>{{rowData[col.field][1]}}<br>{{rowData[col.field][2]}}
+                    </ng-container> -->
+                    <ng-container *ngIf="col.field == 'ProcessStatus'">
+                      <div class="td-center" [ngSwitch]="rowData.ProcessStatus">
+                        <div *ngFor="let ProcessStatus of ProcessStatus">
+                          <button *ngSwitchCase="ProcessStatus.value" [class]="'OLstatus-'+ ProcessStatus.value">
+                              <p>
+                                {{rowData.ProcessStatusName}}
+                              </p>
+                              <p *ngSwitchDefault>
+                              </p>
+                          </button>
+                        </div>
+                      </div>
+                    </ng-container>
+                    <ng-container *ngIf="col.field == 'TransactionStatus'">
+                      <div class="td-center" [ngSwitch]="rowData.TransactionStatus.toString()">
+                          <button *ngSwitchCase="'true'" [class]="'OLstatus-'+ rowData.TransactionStatus">
+                              <p>正常</p>
+                          </button>
+                          <button *ngSwitchCase="'false'" [class]="'OLstatus-'+ rowData.TransactionStatus">
+                              <p>停止</p>
+                          </button>
+                          <p *ngSwitchDefault>
+                          </p>
+                          <!-- <td [ngSwitch]="IsAgreeSignFree">
+                            <p *ngSwitchCase="true">
+                                是
+                            </p>
+                            <p *ngSwitchCase="false">
+                                否
+                            </p>
+                            <p *ngSwitchDefault>
+                            </p>
+                           </td> -->
+                      </div>
+                    </ng-container>
+                    <ng-container *ngIf="col.field == 'PaymentStatus'">
+                      <div class="td-center" [ngSwitch]="rowData.PaymentStatus.toString()">
+                        <button *ngSwitchCase="'true'" [class]="'OLstatus-'+ rowData.PaymentStatus">
+                            <p>已完成</p>
+                        </button>
+                        <button *ngSwitchCase="'false'" [class]="'OLstatus-'+ rowData.PaymentStatus">
+                            <p>未完成</p>
+                        </button>
+                        <p *ngSwitchDefault>
+                        </p>
+                      </div>
+                    </ng-container>
+                    <ng-container *ngIf="col.field == 'Edit'">
+                        <div class="td-center" [ngSwitch]="rowData.ProcessStatus.toString()">
+                            <!-- <a routerLink="/company/order-progress/order-info">
+                                <button pButton pRipple icon="pi pi-eye"
+                                    class="p-button-rounded p-button-success p-mr-2" (click)="editProduct(product)">
+                                </button>
+                            </a> -->
+                            <!-- <a routerLink="/company/order-progress/modify-order">
+                                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-org p-mr-2"
+                                    (click)="editProduct()">
+                                </button>
+                            </a> -->
+                            <button *ngSwitchCase="1" pButton pRipple icon="pi pi-trash" class=" p-button-rounded p-button-warning"
+                                (click)="deleteProduct(rowData.Code)">
+                            </button>
+                            <p *ngSwitchDefault>
+                            </p>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="
+                        col.field !== 'no' &&
+                        col.field !== 'Code' &&
+                        col.field !== 'ProcessStatus' &&
+                        col.field !== 'TransactionStatus' &&
+                        col.field !== 'PaymentStatus' &&
+                        col.field !== 'CarNumber' &&
+                        col.field !== 'WasteCode'
+                        ">
+                        {{rowData[col.field]}}
+                    </ng-container>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            沒有資料
+        </ng-template>
+    </p-table>
+</div>
+
+<p-toast position="bottom-right"></p-toast>
+
+<div id="progressSpinner" class="background-black" *ngIf="progressSpinner">
+  <div class="progress-spinner">
+    <p-progressSpinner class="customProgress"></p-progressSpinner>
+  </div>
+</div>

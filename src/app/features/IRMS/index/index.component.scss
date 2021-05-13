@@ -1,0 +1,256 @@
+@import "src/app/app.component.scss";
+
+$status_default: #c0c0c0;
+$status_true: #3cb371;
+$status_false: #dc3545;
+
+:host ::ng-deep {
+    .ui-button{
+        height: 2.3em;
+        white-space: nowrap;
+    }
+}
+.carousel {
+    height: 100vh;
+}
+.carousel-inner,
+.carousel-item {
+    height: 100%;
+}
+.carousel-item {
+    background-size: cover;
+    background-position: center;
+}
+.carousel-item:nth-of-type(1) {
+    background-image: url(/assets/img/portfolio/IRMS01.png);
+}
+.carousel-item:nth-of-type(2) {
+    background-image: url(/assets/img/portfolio/IRMS02.png);
+}
+.carousel-item:nth-of-type(3) {
+    background-image: url(/assets/img/portfolio/IRMS03.png);
+}
+
+@media screen and (max-width: 450px) {
+    .carousel-item:nth-of-type(1) {
+        background-image: url(/assets/img/portfolio/IRMS-SM-01.png);
+    }
+    .carousel-item:nth-of-type(2) {
+        background-image: url(/assets/img/portfolio/IRMS-SM-02.png);
+    }
+    .carousel-item:nth-of-type(3) {
+        background-image: url(/assets/img/portfolio/IRMS-SM-03.png);
+    }
+    .IRMS-style {
+        // -webkit-box-sizing: border-box;
+        // -moz-box-sizing: border-box;
+        //      box-sizing: border-box;
+        // position: absolute;
+        position: absolute;
+        margin-top: 15rem;
+        margin-left: 2rem;
+        width: auto;
+        text-shadow: 0.1em 0.1em 1.2em black;
+        z-index: 550;
+    }
+}
+
+.carousel-caption {
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+    left: 15%;
+    right: 60%;
+    bottom: auto;
+    top: 15%;
+    display: none;
+}
+.carousel-caption p {
+    font-size: 13px;
+}
+
+.box-stretched {
+    height: 100%;
+}
+
+.sample-layout {
+    margin: 0;
+}
+
+.sample-layout > div {
+    border: 1px solid #ffffff;
+}
+
+.vertical-container {
+    margin: 0;
+    height: 200px;
+    background: #efefef;
+    border-radius: 4px;
+}
+
+.nested-grid .p-col-4 {
+    padding-bottom: 1em;
+}
+
+// ----------公佈欄樣式--------
+.prime-ng-table {
+    padding: 10px;
+}
+.title {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    height: 34px;
+    color: #088357;
+    background-color: #fff;
+}
+
+.notice-container {
+    // margin: 0 0 30px;
+    padding: 15px 0;
+    width: 100%;
+    min-height: 350px;
+    background-color: #fff;
+    // border: 1px solid #ccc;
+}
+// ------------------
+
+.header-size {
+    font-size: 1.2rem;
+    color: #088357 !important;
+    text-align: center;
+}
+
+.body-size {
+    font-size: 1.2rem;
+    text-align: center;
+    &:nth-child(2){
+        text-align: left;
+    }
+}
+
+.prime-table-style {
+    min-height: 430px;
+}
+
+.no-padding {
+    padding: unset;
+}
+
+.masthead-unpadding {
+    padding: unset !important;
+}
+
+.statusColornew {
+    margin: 0 auto;
+    text-align: center;
+    width: 30px;
+    color: #fff;
+    border-radius: 3px;
+    &[ng-reflect-ng-switch] {
+        background: $status_default;
+    }
+    &[ng-reflect-ng-switch="false"] {
+        background: $status_false;
+    }
+    &[ng-reflect-ng-switch="true"] {
+        background: $status_true;
+    }
+
+    // ------------------------SAM
+    p {
+        text-align: center;
+        padding: 3px 0;
+        font-size: 0.9em;
+        letter-spacing: 1px;
+    }
+}
+
+
+@media screen and (max-width: 350px) {
+    .carousel-caption {
+        display: block;
+    }
+    .IRMS-style {
+        position: absolute;
+        margin-top: 10rem;
+        margin-left: 1.2rem;
+        width: auto;
+        text-shadow: 0.1em 0.1em 1.2em black;
+        z-index: 550;
+    }
+}
+
+@media screen and (min-width: 351px) and (max-width: 420px) {
+    .carousel-caption {
+        display: block;
+    }
+    .IRMS-style {
+        position: absolute;
+        margin-top: 12rem;
+        margin-left: 2rem;
+        width: auto;
+        text-shadow: 0.1em 0.1em 1.2em black;
+        z-index: 550;
+    }
+}
+@media screen and (min-width: 421px) and (max-width: 767px) {
+    .carousel-caption {
+        display: block;
+    }
+    .IRMS-style {
+        // -webkit-box-sizing: border-box;
+        // -moz-box-sizing: border-box;
+        //      box-sizing: border-box;
+        // position: absolute;
+        position: absolute;
+        margin-top: 15rem;
+        margin-left: 2rem;
+        width: auto;
+        text-shadow: 0.1em 0.1em 1.2em black;
+        z-index: 550;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .carousel-caption {
+        display: block;
+    }
+    .IRMS-style {
+        position: absolute;
+        margin-top: 15rem;
+        margin-left: 2rem;
+        width: auto;
+        text-shadow: 0.1em 0.1em 1.2em black;
+        z-index: 550;
+    }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .carousel-caption {
+        display: block;
+    }
+    .IRMS-style {
+        position: absolute;
+        margin-top: 15rem;
+        margin-left: 2rem;
+        width: auto;
+        text-shadow: 0.1em 0.1em 1.2em black;
+        z-index: 550;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .carousel-caption {
+        display: block;
+    }
+    .IRMS-style {
+        position: absolute;
+        margin-top: 15rem;
+        margin-left: 8rem;
+        width: auto;
+        text-shadow: 0.1em 0.1em 1.2em black;
+        z-index: 550;
+    }
+}

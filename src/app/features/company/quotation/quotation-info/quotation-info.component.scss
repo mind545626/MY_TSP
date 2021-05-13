@@ -1,0 +1,107 @@
+@import "src/app/features/company/order-progress/order-info/order-info.component.scss";
+
+
+.background-black {
+  z-index: 998;
+  background-color:rgba(10, 10, 10, 0.65);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 999;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  .progress-spinner {
+    position: fixed;
+    opacity: 1;
+    z-index: 999;
+    overflow: show;
+    margin: auto;
+    width: 2em;
+    height: 2em;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+@keyframes ui-progress-spinner-color {
+  100%,
+  0% {
+    stroke: #ffffff;
+  }
+  40% {
+    stroke: #ffffff;
+  }
+  66% {
+    stroke: #ffffff;
+  }
+  80%,
+  90% {
+    stroke: #ffffff;
+  }
+}
+
+.td_btn-center{
+  text-align: center;
+  margin: 0 auto;
+}
+
+.btn-center {
+  margin: 0 auto;
+  text-align: center;
+  button:nth-child(2) {
+    margin-left: 10px;
+  }
+}
+
+
+.add-table {
+  background-color: #fafafa !important;
+  width: 100%;
+}
+
+.card .form-container {
+  table {
+    min-height: unset;
+  }
+}
+
+.btn-certer {
+  text-align: center;
+}
+.thisbtn-right {
+  float: right;
+  margin-right: 2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+
+.last_table{
+  margin-bottom: unset !important;
+}
+
+.card .form-container {
+  table {
+    min-height: unset;
+  }
+}
+
+
+.p-button-add {
+  margin-top: unset !important;
+  color: #ffffff;
+  background-color: #3bac4e !important;
+  border: #3bac4e !important;
+}
+
+.p-button-disabled {
+  margin-top: unset !important;
+  background-color: #9c9c9c !important;
+  border: #9c9c9c !important;
+}

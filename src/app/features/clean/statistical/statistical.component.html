@@ -1,0 +1,24 @@
+<div class="my-form">
+    <div id="content" class="result-container">
+        <p-breadcrumb id="breadcrumb" [model]="items" [home]="home"></p-breadcrumb>
+    </div>
+    <div id="content" class="result-container result-color">
+        <div class="card">
+            <div class="title">
+                <span>統計資料查詢</span>
+            </div>
+            <mat-tab-group mat-align-tabs="start" class="tab-top">
+
+                <mat-tab label="歷史派車單查詢(24)">
+                    <app-all-dispatch></app-all-dispatch>
+                </mat-tab>
+
+                <mat-tab label="歷史合約查詢(16)">
+                    <app-all-contract></app-all-contract>
+                </mat-tab>
+
+            </mat-tab-group>
+            <p class="p-Browse">建議使用Google chrome瀏覽器，以達到最佳瀏覽效果。</p>
+        </div>
+    </div>
+</div>

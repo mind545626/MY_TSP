@@ -1,0 +1,174 @@
+<div class="my-tab">
+    <p-table #dt [columns]="cols" [value]="quotation" [paginator]="true" [scrollable]="true" [rows]="5"
+        [(selection)]="selectedOrders" [resizableColumns]="true" [style]="{width: '100%'}"
+        [showCurrentPageReport]="true" currentPageReportTemplate="顯示 {first} 至 {last} 共 {totalRecords} 筆資料"
+        [rowsPerPageOptions]="[5,10]" styleClass="p-datatable-customers">
+        <ng-template pTemplate="colgroup" let-columns>
+            <colgroup>
+                <col *ngFor="let col of columns" [style.width]="col.width">
+            </colgroup>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns">
+                    {{col.header}}
+                </th>
+            </tr>
+            <tr id="tr-td">
+                <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                    <div style="width: 60px;" *ngSwitchCase="'select'"></div>
+                    <input *ngSwitchCase="'Code'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field,'contains')">
+                    <input *ngSwitchCase="'ApplyWasteType'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field,'contains')">
+                    <input *ngSwitchCase="'ClearAddress'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field,'contains')">
+                    <input *ngSwitchCase="'ApplyDateTime'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field,'contains')">
+                    <input *ngSwitchCase="'QuoteDateTime'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field,'contains')">
+                    <input *ngSwitchCase="'QuoteReplyDateTime'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field,'contains')">
+                    <input *ngSwitchCase="'QuoteCompleteDateTime'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field,'contains')">
+
+                    <p-dropdown *ngSwitchCase="'QuoteStatus'" appendTo="body" [showClear]="true" placeholder="全部"
+                        [options]="QuoteStatus" (onChange)="dt.filter($event.value, col.field, 'equals')">
+                    </p-dropdown>
+                    <!-- <p-dropdown *ngSwitchCase="'ClearAddress'" appendTo="body" [showClear]="true"
+                        [options]="ClearAddress" (onChange)="dt.filter($event.value, col.field, 'equals')">
+                    </p-dropdown> -->
+                    <p-dropdown *ngSwitchCase="'QuoteType'" appendTo="body" [showClear]="true" placeholder="全部"
+                        [options]="QuoteType$ | async" (onChange)="dt.filter($event.value, col.field, 'equals')">
+                    </p-dropdown>
+                    <!-- <p-calendar *ngSwitchCase="'ApplyDateTime'" [locale]="tw" appendTo="body" showButtonBar="true"
+                        (onSelect)="onDateSelect($event)" (onClearClick)="dt.filter('', 'date', 'equals')"
+                        [showButtonBar]="true" styleClass="p-column-filter" placeholder="選擇日期" [readonlyInput]="true"
+                        dateFormat="yy-mm-dd">
+                    </p-calendar>
+                    <p-calendar *ngSwitchCase="'QuoteDateTime'" [locale]="tw" appendTo="body"
+                        showButtonBar="true" (onSelect)="onDateSelect($event)"
+                        (onClearClick)="dt.filter('', 'date', 'equals')" [showButtonBar]="true"
+                        styleClass="p-column-filter" placeholder="選擇日期" [readonlyInput]="true" dateFormat="yy-mm-dd">
+                    </p-calendar>
+                    <p-calendar *ngSwitchCase="'QuoteReplyDateTime'" [locale]="tw" appendTo="body" showButtonBar="true"
+                        (onSelect)="onDateSelect($event)" (onClearClick)="dt.filter('', 'date', 'equals')"
+                        [showButtonBar]="true" styleClass="p-column-filter" placeholder="選擇日期" [readonlyInput]="true"
+                        dateFormat="yy-mm-dd">
+                    </p-calendar>
+                    <p-calendar *ngSwitchCase="'QuoteCompleteDateTime'" [locale]="tw" appendTo="body" showButtonBar="true"
+                        (onSelect)="onDateSelect($event)" (onClearClick)="dt.filter('', 'date', 'equals')"
+                        [showButtonBar]="true" styleClass="p-column-filter" placeholder="選擇日期" [readonlyInput]="true"
+                        dateFormat="yy-mm-dd">
+                    </p-calendar> -->
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns" let-order let-i="rowIndex">
+            <tr>
+                <td *ngFor="let col of columns">
+                    <ng-container *ngIf="col.field == 'no'">
+                        <div class="td-center">
+                                {{i+1}}
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="col.field == 'Code'">
+                        <div class="td-center">
+                            <!-- <a routerLink="/company/quotation/quotation-info" class="td-a-color"> -->
+                            <!-- <button type="submit" class="link" (click)="getQuotId(i)">
+                              <span>{{rowData[col.field]}}</span>
+                            </button> -->
+                            <a class="td-a-color" (click)="getQuotId(rowData[col.field])">
+                                {{rowData[col.field]}}
+                            </a>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="col.field == 'ApplyWasteType'">
+                          <div class="td-center">
+                                {{rowData.ApplyWasteType}}類 / {{rowData.ApplyWasteTypeName}}
+                          </div>
+                          <!-- <div *ngFor="let WasteItem of rowData.WasteItem">
+                                  {{WasteItem.WasteCode}} {{rowData.WasteItem.length}}
+                              </div> -->
+                          <!-- <div *ngFor="let item of rowData[col.field]">
+                                {{item.WasteCode}} {{item.WasteName}}
+                          </div> -->
+                    </ng-container>
+                    <ng-container *ngIf="col.field == 'QuoteType'">
+                      <div class="td-center" [ngSwitch]="rowData.QuoteType">
+                        <div *ngFor="let QuoteType of QuoteType">
+                          <p *ngSwitchCase="QuoteType.value">
+                              {{QuoteType.label}}
+                          </p>
+                          <p *ngSwitchDefault>
+                          </p>
+                        </div>
+                      </div>
+                      <!-- <div class="td-center" [ngSwitch]="rowData.QuoteType">
+                        <p *ngSwitchCase="1">
+                            現場估價
+                        </p>
+                        <p *ngSwitchCase="2">
+                            線上報價
+                        </p>
+                        <p *ngSwitchDefault>
+                        </p>
+                      </div> -->
+                    </ng-container>
+                  <ng-container *ngIf="col.field == 'QuoteStatus'">
+                      <div class="td-center" [ngSwitch]="rowData.QuoteStatus">
+                        <div *ngFor="let QuoteStatus of QuoteStatus">
+                          <button *ngSwitchCase="QuoteStatus.value" [class]="'status-'+ QuoteStatus.value">
+                              <p>
+                                {{QuoteStatus.label}}
+                              </p>
+                              <p *ngSwitchDefault>
+                              </p>
+                          </button>
+                        </div>
+                      </div>
+                  </ng-container>
+                    <!-- <ng-container *ngIf="col.field == 'QuoteStatus'">
+                        <div class="td-center">
+                            <button [class]="'status-' + rowData.status">
+                                {{rowData[col.field]}}
+                            </button>
+                        </div>
+                    </ng-container> -->
+                    <ng-container *ngIf="col.field == 'Edit'">
+                        <div class="td-center" [ngSwitch]="rowData.QuoteStatus">
+                          <div *ngSwitchCase="1">
+                            <!-- <a routerLink="/company/order-progress/modify-order"></a> -->
+                            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-org p-mr-2"
+                                (click)="editProduct(rowData.Code)">
+                            </button>
+                            <!-- <button pButton pRipple icon="pi pi-trash" class=" p-button-rounded p-button-warning"
+                                (click)="deleteProduct(rowData.Code)">
+                            </button> -->
+                          </div>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="
+                        col.field !== 'no' &&
+                        col.field !== 'Code' &&
+                        col.field !== 'QuoteStatus' &&
+                        col.field !== 'WasteItem' &&
+                        col.field !== 'QuoteType' &&
+                        col.field !== 'ApplyWasteType'
+                        ">
+                        {{rowData[col.field]}}
+                    </ng-container>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            沒有資料
+        </ng-template>
+    </p-table>
+</div>
+
+<div id="progressSpinner" class="background-black" *ngIf="progressSpinner">
+  <div class="progress-spinner">
+    <p-progressSpinner class="customProgress"></p-progressSpinner>
+  </div>
+</div>

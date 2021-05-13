@@ -1,0 +1,260 @@
+<section class="masthead masthead-unpadding page-top" id="page-top">
+  <div class="container text-left IRMS-style">
+    <div class="masthead-style1">IRMS</div>
+    <div class="masthead-style2">智慧回收媒合平台</div>
+    <div class="masthead-style3">廢棄物的環保經紀人</div>
+  </div>
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="5000">
+    <!-- 以下是 slider 下方的指示器 -->
+    <ol class="carousel-indicators" style="width:unset">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <!-- 以下是 slider 中的影像圖片區 -->
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-item active">
+        <!-- 下方 div 是標題說明區 -->
+      </div>
+      <div class="carousel-item">
+        <!-- 下方 div 是標題說明區 -->
+      </div>
+      <div class="carousel-item">
+        <!-- 下方 div 是標題說明區 -->
+      </div>
+    </div>
+    <!-- 以下是 slider 左右方向的控制區 -->
+    <a class="carousel-control-prev" data-target="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" data-target="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</section>
+
+<section class="no-padding">
+  <div class="p-grid sample-layout notice-container">
+    <div class="p-md-12 p-lg-12 p-xl-6 p-col-12">
+      <div class="title">
+        <span>{{'公告項目'}}</span>
+      </div>
+      <div id="dt" class="prime-ng-table prime-table-style">
+        <p-table #dt [columns]="cols" [value]="FEBillboard"
+          styleClass="p-datatable-lg" [scrollable]="true" scrollWidth="200px" [totalRecords]="totalRecords"
+           [style]="{width: '100%'}" [paginator]="true" [showCurrentPageReport]="true"
+          [rowsPerPageOptions]="[5,10]" [rows]="5" currentPageReportTemplate="顯示 {first} 至 {last} 共 {totalRecords} 筆資料">
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns" [style.width]="col.width" class="header-size">
+                {{col.header}}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-FEBillboard let-columns="columns" let-i="rowIndex">
+            <tr>
+              <td *ngFor="let col of columns" [style.width]="col.width" class="body-size">
+                <!-- <ng-container *ngIf="col.field == 'IsTop'">
+                  <div class="statusColornew" [ngSwitch]="FEBillboard.IsTop">
+                    <p *ngSwitchCase="false">
+                        否
+                    </p>
+                    <p *ngSwitchCase="true">
+                        是
+                    </p>
+                    <p *ngSwitchDefault>
+                    </p>
+                </div>
+                </ng-container> -->
+                <ng-container *ngIf="col.field == 'Title'">
+                  {{FEBillboard.Title}}
+                </ng-container>
+                <ng-container *ngIf="col.field == 'UP_DateTime'">
+                  {{FEBillboard.UP_DateTime}}
+                  <!-- [ngSwitch]="FileList[i]" -->
+                  <!-- <div *NgSwitchDefault>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success"
+                        (click)="downloadProduct(i)">
+                    </button>
+                  </div>
+                  <div *ngSwitchCase="null">
+                  </div> -->
+                </ng-container>
+                <ng-container *ngIf="col.field == 'Function'">
+                  <!-- <a routerLink="#" class="td-a-color" data-toggle="modal" data-target="#myModal7">
+                    <p-button label="檢視" styleClass="p-button-success p-button-sm" (click)="getdata()">
+                    </p-button>
+                  </a> -->
+                  <!-- <a routerLink="/{{FEBillboard.Id}}" class="td-a-color"> -->
+                    <p-button label="檢視" styleClass="p-button-success p-button-sm" (click)="showBillboard(FEBillboard)">
+                    </p-button>
+                  <!-- </a> -->
+                </ng-container>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            沒有資料
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+
+
+
+    <div class="p-md-12 p-lg-12 p-xl-6 p-col-12">
+      <div class="title">
+        <span>{{'最新消息'}}</span>
+      </div>
+      <div id="dt1" class="prime-ng-table prime-table-style">
+        <p-table #dt1 [columns]="cols2" [value]="FENews"
+          styleClass="p-datatable-lg" [scrollable]="true" scrollWidth="200px" [totalRecords]="totalRecords2"
+           [style]="{width: '100%'}" [paginator]="true" [showCurrentPageReport]="true"
+          [rowsPerPageOptions]="[5,10]" [rows]="5" currentPageReportTemplate="顯示 {first} 至 {last} 共 {totalRecords} 筆資料">
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns" [style.width]="col.width" class="header-size">
+                {{col.header}}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-FENews let-columns="columns">
+            <tr>
+              <td *ngFor="let col of columns" [style.width]="col.width" class="body-size">
+                <!-- <ng-container *ngIf="col.field == 'IsTop'">
+                  <div class="statusColornew" [ngSwitch]="FENews.IsTop">
+                    <p *ngSwitchCase="false">
+                        否
+                    </p>
+                    <p *ngSwitchCase="true">
+                        是
+                    </p>
+                    <p *ngSwitchDefault>
+                    </p>
+                </div>
+                </ng-container> -->
+                <ng-container *ngIf="col.field == 'Title'">
+                  {{FENews.Title}}
+                </ng-container>
+                <ng-container *ngIf="col.field == 'UP_DateTime'">
+                  {{FENews.UP_DateTime}}
+                </ng-container>
+                <ng-container *ngIf="col.field == 'Function'">
+                    <p-button label="檢視" styleClass="p-button-success p-button-sm" (click)="showNews(FENews)">
+                    </p-button>
+                </ng-container>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            沒有資料
+          </ng-template>
+        </p-table>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="bg-light" id="services">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <div class="p-5">
+          <img class="img-fluid rounded-circle" src="/assets/img/portfolio/28906.jpg" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6 text-center-style">
+        <!-- <div class="p-5"> -->
+        <div>
+          <!-- <h5 class="display-4">環保整合平台服務項目</h5> -->
+          <p class="services-style-h2">環保整合平台服務項目</p>
+          <p>
+          <ul class="services-style-h3 clear-list">
+            <li>環境風險管理</li>
+            <li>專案管理</li>
+            <li>專業顧問</li>
+            <li>環保代書</li>
+            <li>快速媒合</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" id="join_us">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase joinus-style-h2">加入媒合平台</h2>
+      <h3 class="text-muted">選擇您的角色，以了解更多資訊</h3>
+    </div>
+    <!-- Page Features -->
+    <div class="row text-center">
+      <div class="col-lg-4 col-md-4 mb-12">
+        <div class="card">
+          <!-- <div class="card h-100"> -->
+          <img class="card-img-top card-img-style" src="/assets/img/portfolio/office-building.png" alt="">
+          <div class="card-body">
+            <p class="services-style-h2 card-title">事業單位</p>
+          </div>
+          <div class="card-footer-style">
+            <a href="#" class="btn btn-success btn-radius">點我了解更多</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 mb-12">
+        <div class="card">
+          <img class="card-img-top  card-img-style" src="/assets/img/portfolio/dump-truck.png" alt="">
+          <div class="card-body">
+            <p class="services-style-h2 card-title">清除業者</p>
+          </div>
+          <div class="card-footer-style">
+            <a href="#" class="btn btn-success btn-radius">點我了解更多</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 mb-12">
+        <div class="card">
+          <img class="card-img-top  card-img-style" src="/assets/img/portfolio/factory.png" alt="">
+          <div class="card-body">
+            <p class="services-style-h2 card-title">處理業者</p>
+          </div>
+          <div class="card-footer-style">
+            <a href="#" class="btn btn-success btn-radius">點我了解更多</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Contact-->
+<section class="bg-light" id="team">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 order-lg-2">
+        <div class="p-5">
+          <img class="img-fluid" src="/assets/img/portfolio/team.jpg" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6 text-center-style">
+        <!-- <div class="p-5"> -->
+        <div>
+          <!-- <h5 class="display-4">環保整合平台服務項目</h5> -->
+          <p class="services-style-h2">最專業的服務團隊</p>
+          <p class="services-style-h3">
+            在線為您免費諮詢、線上估價以及其他專業的服務和需求
+          </p>
+          <div class="card-footer-style">
+            <a href="#" type="button" class="btn btn-success btn-radius" (click)="showCreateContact()">體驗線上客服</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

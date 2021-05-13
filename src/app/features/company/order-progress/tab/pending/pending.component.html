@@ -1,0 +1,129 @@
+<div class="my-tab">
+    <p-table #dt [columns]="cols" [value]="order" [paginator]="true" [scrollable]="true" [rows]="5"
+        [resizableColumns]="true" [style]="{width: '100%'}"
+        [showCurrentPageReport]="true" currentPageReportTemplate="顯示 {first} 至 {last} 共 {totalRecords} 筆資料"
+        [rowsPerPageOptions]="[5,10]" styleClass="p-datatable-customers">
+        <ng-template pTemplate="colgroup" let-columns>
+
+            <colgroup>
+                <col *ngFor="let col of columns" [style.width]="col.width">
+            </colgroup>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns">
+                    {{col.header}}
+                </th>
+            </tr>
+            <tr id="tr-td">
+                <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                    <div style="width: 60px;" *ngSwitchCase="'select'"></div>
+                    <input *ngSwitchCase="'OrderID'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field,'contains')">
+                    <input *ngSwitchCase="'CarNumber'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field,'contains')">
+                    <input *ngSwitchCase="'OrderItems'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field, 'contains')">
+                    <input *ngSwitchCase="'OrderPrice'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field, 'contains')">
+                    <input *ngSwitchCase="'PreOrderPrice'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field, 'contains')">
+                    <p-dropdown *ngSwitchCase="'CleanAddress'" appendTo="body" [showClear]="true"
+                        [options]="cleanaddress" (onChange)="dt.filter($event.value, col.field, 'equals')">
+                    </p-dropdown>
+                    <p-dropdown *ngSwitchCase="'OrderProgress'" appendTo="body" [showClear]="true"
+                        [options]="orderprogress" (onChange)="dt.filter($event.value, col.field, 'equals')">
+                    </p-dropdown>
+                    <p-dropdown *ngSwitchCase="'Progress'" appendTo="body" [showClear]="true" [options]="progress"
+                        (onChange)="dt.filter($event.value, col.field, 'equals')">
+                    </p-dropdown>
+                    <p-dropdown *ngSwitchCase="'Payment'" appendTo="body" [showClear]="true" [options]="payment"
+                        (onChange)="dt.filter($event.value, col.field, 'equals')">
+                    </p-dropdown>
+                    <p-calendar *ngSwitchCase="'OrderDate'" [locale]="tw" appendTo="body" showButtonBar="true"
+                        (onSelect)="onDateSelect($event)" (onClearClick)="dt.filter('', 'date', 'equals')"
+                        [showButtonBar]="true" styleClass="p-column-filter" placeholder="選擇日期" [readonlyInput]="true"
+                        dateFormat="yy-mm-dd">
+                    </p-calendar>
+                    <p-calendar *ngSwitchCase="'OrderFulfillDate'" [locale]="tw" appendTo="body" showButtonBar="true"
+                        (onSelect)="onDateSelect($event)" (onClearClick)="dt.filter('', 'date', 'equals')"
+                        [showButtonBar]="true" styleClass="p-column-filter" placeholder="選擇日期" [readonlyInput]="true"
+                        dateFormat="yy-mm-dd">
+                    </p-calendar>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns" let-order>
+            <tr>
+                <td *ngFor="let col of columns">
+                    <ng-container *ngIf="col.field == 'no'">
+                        <div class="td-center">
+                            {{rowData[col.field]}}
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="col.field == 'OrderID'">
+                        <div class="td-center">
+                            <a routerLink="/company/order-progress/order-info" class="td-a-color">
+                                {{rowData[col.field]}}
+                            </a>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="col.field == 'CarNumber'">
+                        {{rowData[col.field]}}
+                    </ng-container>
+                    <ng-container *ngIf="col.field == 'OrderItems'">
+                        {{rowData[col.field][0]}}<br>{{rowData[col.field][1]}}<br>{{rowData[col.field][2]}}
+                    </ng-container>
+                    <ng-container *ngIf="col.field == 'OrderProgress'">
+                        <div class="td-center">
+                            <button [class]="'status-' + order.status[0]">
+                                {{rowData[col.field]}}
+                            </button>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="col.field == 'Progress'">
+                        <div class="td-center">
+                            <button [class]="'status-' + order.status[1]">
+                                {{rowData[col.field]}}
+                            </button>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="col.field == 'Payment'">
+                        <div class="td-center">
+                            <button [class]="'status-' + order.status[2]">
+                                {{rowData[col.field]}}
+                            </button>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="col.field == 'Edit'">
+                        <div class="td-center">
+                            <a routerLink="/company/order-progress/modify-order">
+                                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-org p-mr-2"
+                                    (click)="editProduct()">
+                                </button>
+                            </a>
+                            <button pButton pRipple icon="pi pi-trash" class=" p-button-rounded p-button-warning"
+                                (click)="deleteProduct()">
+                            </button>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="
+                        col.field !== 'no' &&
+                        col.field !== 'OrderID' &&
+                        col.field !== 'OrderProgress' &&
+                        col.field !== 'OrderImage' &&
+                        col.field !== 'OrderItems' &&
+                        col.field !== 'Progress' &&
+                        col.field !== 'CarNumber' &&
+                        col.field !== 'Payment'
+                        ">
+                        {{rowData[col.field]}}
+                    </ng-container>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            沒有資料
+        </ng-template>
+    </p-table>
+</div>

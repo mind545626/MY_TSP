@@ -1,0 +1,395 @@
+<div class="my-form">
+  <div id="content" class="result-container">
+    <p-breadcrumb id="breadcrumb" [model]="items" [home]="home"></p-breadcrumb>
+  </div>
+  <div id="content" class="result-container result-color">
+    <div class="card">
+      <div class="title">
+        <span>編輯估價單</span>
+      </div>
+      <div class="form-container">
+        <div class="form-horizontal">
+          <table class="table">
+            <thead>
+              <tr>
+                <th colspan="2">基本資料</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="control-label">
+                  <label for="QuotationID">估價單編號</label>
+                </th>
+                <td>
+                  {{Code}}
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for="companyName">公司名稱</label>
+                </th>
+                <td>
+                  {{CorporateName}}
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for="CareerType" class="control-label">事業別</label>
+                </th>
+                <td>
+                  {{CareerTypeDesc}} > {{CareerSubTypeDesc}}
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for="username">聯絡人</label>
+                </th>
+                <td>
+                  {{ContactPerson}}
+                </td>
+              </tr>
+              <tr *ngIf="PhoneNumber">
+                <th class="control-label">
+                  <label for="userPhone">聯絡電話</label>
+                </th>
+                <td>
+                  {{ContactPhoneNumber}} #{{ContactPhoneExtension}}
+                </td>
+              </tr>
+              <tr *ngIf="MobilePhone">
+                <th class="control-label">
+                  <label for="userPhone">聯絡手機</label>
+                </th>
+                <td>
+                  {{ContactMobilePhone}}
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for="ControlNumber">管制編號</label>
+                </th>
+                <td>
+                  {{ControlNumber}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <form class="form-horizontal" [formGroup]="QuoteDataForm">
+          <table class="table">
+            <thead>
+              <tr>
+                <th colspan="2">平台估價資料</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="control-label">
+                  <label for="WasteType">申請廢棄物類型</label>
+                </th>
+                <td>
+                  <p-dropdown placeholder="請選擇廢棄物類型" [showClear]="true" [options]="ApplyWasteType$ | async"
+                    [required]="true" (onChange)="WasteCode$ = onWasteTypeChange($event, WasteCode)"
+                    inputId="ApplyWasteType" formControlName="ApplyWasteType">
+                  </p-dropdown>
+                  <small [hidden]=" !QuoteDataForm.controls.ApplyWasteType.hasError('required')">
+                    必填欄位，請選擇廢棄物類型
+                  </small>
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for="QuotationType">估價處理方式</label>
+                </th>
+                <td>
+                  <p-dropdown placeholder="請選擇估價方式" [options]="QuoteType$ | async" [required]="true" inputId="QuoteType"
+                    formControlName="QuoteType">
+                  </p-dropdown>
+                  <div class="small-style">
+                    <small [hidden]=" !QuoteDataForm.controls.QuoteType.hasError('required')">
+                      必填欄位，請選擇估價方式
+                    </small>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for="OrderFrequency">收集頻率</label>
+                </th>
+                <td>
+                  <div class="orderfrequency">
+                    <div class="d-flex">
+                      <p-dropdown placeholder="請選擇訂單頻率" [options]="CollectFrequency$ | async" [required]="true"
+                        inputId="CollectFrequency" formControlName="CollectFrequency">
+                      </p-dropdown>
+                      <p-dropdown placeholder="請選擇訂單日期" [options]="CollectWeekDay$ | async" [required]="true"
+                        inputId="CollectWeekDay" formControlName="CollectWeekDay">
+                      </p-dropdown>
+                    </div>
+                  </div>
+                  <small [hidden]=" !QuoteDataForm.controls.CollectFrequency.hasError('required')&&
+                                                      !QuoteDataForm.controls.CollectWeekDay.hasError('required')
+                                    ">
+                    必填欄位，請選擇訂單頻率與訂單日期
+                  </small>
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for="WasteAddress">清運地址</label>
+                </th>
+                <td class="address">
+                  <div class="addressSelsct">
+                    <div class="d-flex">
+                      <input oninput="value=value.replace(/[^\d]/g,'')" type="text" maxlength="3" class="form-control"
+                        placeholder="郵遞區號" pInputText id="ClearZipCode" formControlName="ClearZipCode" />
+                      <p-dropdown placeholder="選擇縣市" [showClear]="true" [required]="true" [options]="ClearCity$ | async"
+                        [filter]="true" itemSize="15" [virtualScroll]="true"
+                        (onChange)="ClearDistrict$ = onCityChange($event, ClearDistrict)" inputId="ClearCity"
+                        formControlName="ClearCity">
+                      </p-dropdown>
+                      <p-dropdown #ClearDistrict placeholder="選擇區鄉鎮" [showClear]="true" [required]="true"
+                        [options]="ClearDistrict$ | async" [filter]="true" itemSize="15" [virtualScroll]="true"
+                        inputId="ClearDistrict" formControlName="ClearDistrict">
+                      </p-dropdown>
+                    </div>
+                    <div class="addressInput">
+                      <input type="text" class="form-control" pInputText placeholder="請輸入詳細地址" id="ClearRoad"
+                        formControlName="ClearRoad" />
+                    </div>
+                    <small [hidden]=" !QuoteDataForm.controls.ClearCity.hasError('required') &&
+                                                      !QuoteDataForm.controls.ClearDistrict.hasError('required') &&
+                                                      !QuoteDataForm.controls.ClearRoad.hasError('required')
+                                                      ">
+                      必填欄位，請填寫正確完整的地址
+                    </small>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for="StoragePlace">廢棄物貯存地點</label>
+                </th>
+                <td>
+                  <p-dropdown placeholder="請選擇貯存地點" [options]="WasteStoragePlace$ | async" [required]="true"
+                    inputId="WasteStoragePlace" formControlName="WasteStoragePlace">
+                  </p-dropdown>
+                  <small [hidden]=" !QuoteDataForm.controls.WasteStoragePlace.hasError('required')">
+                    必填欄位，請選擇廢棄物貯存地點
+                  </small>
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for=" PaymentTerm">付款方式</label>
+                </th>
+                <td>
+                  <p-dropdown #PayMethod placeholder="請選擇付款方式" [options]="PayMethod$ | async" [required]="true"
+                    (onChange)="PayItem$ = onPayMethodChange($event, PayItem)" inputId="PayMethod"
+                    formControlName="PayMethod">
+                  </p-dropdown>
+                  <small [hidden]=" !QuoteDataForm.controls.PayMethod.hasError('required')">
+                    必填欄位，請選擇付款方式
+                  </small>
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for=" PaymentItem">付款項目</label>
+                </th>
+                <td>
+                  <p-dropdown #PayItem placeholder="請選擇付款項目" [options]="PayItem$ | async" [required]="true"
+                    inputId="PayItem" formControlName="PayItem">
+                  </p-dropdown>
+                  <small [hidden]=" !QuoteDataForm.controls.PayItem.hasError('required')">
+                    必填欄位，請選擇付款項目
+                  </small>
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for="Nosignature">是否同意免簽</label>
+                </th>
+                <td>
+                  <p-dropdown placeholder="請選擇" [options]="SelectIsTrue" [required]="true" inputId="IsAgreeSignFree"
+                    formControlName="IsAgreeSignFree">
+                  </p-dropdown>
+                  <small [hidden]=" !QuoteDataForm.controls.IsAgreeSignFree.hasError('required')">
+                    必填欄位，請選擇是否同意免簽
+                  </small>
+                </td>
+              </tr>
+              <tr>
+                <th class="control-label">
+                  <label for="PaymentItem">退水費、妥善處理記錄、派送三聯單</label>
+                </th>
+                <td>
+                  <p-dropdown placeholder="請選擇是否需要處理記錄服務" [options]="SelectIsTrue" [required]="true"
+                    inputId="IsNeedRecord" formControlName="IsNeedRecord">
+                  </p-dropdown>
+                  <small [hidden]=" !QuoteDataForm.controls.IsNeedRecord.hasError('required')">
+                    必填欄位，請選擇是否需要處理記錄服務
+                  </small>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table" style="margin-bottom:unset">
+            <thead>
+              <tr>
+                <th colspan="4">其他需求項目
+                </th>
+              </tr>
+            </thead>
+            <tbody formArrayName="ProvideEquip">
+              <tr class="tbodyTh">
+                <th style="width: 10%">項次</th>
+                <th style="width: 40%">需求內容</th>
+                <th style="width: 25%">數量(個)</th>
+                <th style="width: 20%">功能</th>
+              </tr>
+              <tr *ngFor="let ProvideEquipArray of ProvideEquipData().controls; let i = index;">
+                <ng-container [formGroupName]="i">
+                  <td><span style="margin-right: 1rem"> {{i+1}}. </span></td>
+                  <td>
+                    <p-dropdown placeholder="請選擇設備項目" [options]="QuoteProvideEquip$ | async" [required]="true"
+                      inputId="QuoteProvideEquip" formControlName="QuoteProvideEquip">
+                    </p-dropdown>
+                    <small [hidden]=" !ProvideEquipData().controls[i].get('QuoteProvideEquip').hasError('required')">
+                      *必填
+                    </small>
+                    <small [hidden]=" !ProvideEquipData().controls[i].get('QuoteProvideEquip').hasError('unique')">
+                      *代碼不可相同
+                    </small>
+                  </td>
+                  <td>
+                    <input type="text" oninput="value=value.replace(/[^\d]/g,'')" placeholder="請輸入數量"
+                      class="form-control" pInputText inputId="Qty" formControlName="Qty" />
+                    <small [hidden]=" !ProvideEquipData().controls[i].get('Qty').hasError('required')">
+                      *必填
+                    </small>
+                  </td>
+                  <td>
+                    <div class="btn-certer">
+                      <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                        (click)="removeContact(i)">
+                      </button>
+                    </div>
+                  </td>
+                </ng-container>
+              </tr>
+            </tbody>
+          </table>
+          <table class="add-table">
+            <div class="thisbtn-right">
+              <button pButton pRipple *ngIf="add_btn" label="新增設備" icon="pi pi-plus" class="p-button-rounded p-button-add"
+                style="margin-right: 1rem;" (click)="addContactForm();addbtn()">
+              </button>
+              <button pButton pRipple label="全部刪除" icon="pi pi-minus" class="p-button-rounded p-button-warning"
+                (click)="removeAll()">
+              </button>
+            </div>
+          </table>
+          <!-- 廢棄物列表 -->
+          <table class="table" style="margin-bottom:unset;min-width: 550px">
+            <thead>
+              <tr>
+                <th colspan="7">廢棄物列表
+                </th>
+              </tr>
+            </thead>
+            <tbody formArrayName="WasteData">
+              <tr class="tbodyTh">
+                <th style="width: 10%">項次</th>
+                <th style="width: 15%">廢棄物代碼</th>
+                <th style="min-width: 100px ;width: 22%">廢棄物名稱</th>
+                <th style="width: 15%">廢棄物性質</th>
+                <th style="width: 13%">預估申請量(月)</th>
+                <th style="width: 15%">單位</th>
+                <th style="width: 10%">功能</th>
+              </tr>
+              <tr *ngFor="let WasteDataArray of WasteDataData().controls; let id = index;">
+                <ng-container [formGroupName]="id">
+                  <td><span style="margin-right: 1rem">{{id+1}}. </span></td>
+                  <td>
+                    <p-dropdown #WasteCode placeholder="選擇代碼" appendTo="body" [options]="WasteCode$ | async"
+                      [filter]="true" itemSize="15" [virtualScroll]="true" (onChange)="OnChangeslabel($event,id)"
+                      inputId="WasteCode" formControlName="WasteCode">
+                    </p-dropdown>
+                    <small [hidden]=" !WasteDataData().controls[id].get('WasteCode').hasError('required')">
+                      *必填
+                    </small>
+                    <small [hidden]=" !WasteDataData().controls[id].get('WasteCode').hasError('unique')">
+                      *代碼不可相同
+                    </small>
+                  </td>
+                  <td id="WaseDate">
+                    <textarea pInputTextarea [rows]="1" [cols]="30" autoResize="autoResize" readonly id="WasteCodename"
+                      formControlName="WasteCodename"></textarea>
+                  </td>
+                  <td>
+                    <p-dropdown #WasteStatus placeholder="選擇性質" appendTo="body" [options]="WasteStatus$ | async"
+                      [required]="true" onWasteTypeChange inputId="WasteStatus" formControlName="WasteStatus">
+                    </p-dropdown>
+                    <small [hidden]=" ! WasteDataData().controls[id].get('WasteStatus').hasError('required')">
+                      *必填
+                    </small>
+                  </td>
+                  <td>
+                    <input type="text" oninput="value=value.replace(/[^\d]/g,'')" placeholder="數量" class="form-control"
+                      pInputText id="MonthlyQty" formControlName="MonthlyQty" />
+                    <small [hidden]=" ! WasteDataData().controls[id].get('MonthlyQty').hasError('required')">
+                      *必填
+                    </small>
+                  </td>
+                  <td>
+                    <p-dropdown placeholder="單位" appendTo="body" [options]="WasteUnit$ | async" [required]="true"
+                      inputId="WasteUnit" formControlName="WasteUnit">
+                    </p-dropdown>
+                    <small [hidden]=" ! WasteDataData().controls[id].get('WasteUnit').hasError('required')">
+                      *必填
+                    </small>
+                  </td>
+                  <td>
+                    <div class="btn-certer">
+                      <button *ngIf="id > 0" pButton pRipple icon="pi pi-trash"
+                        class="p-button-rounded p-button-warning" (click)="removeWasteData(id)">
+                      </button>
+                    </div>
+                  </td>
+                </ng-container>
+              </tr>
+            </tbody>
+          </table>
+          <table class="add-table" style="min-width: 550px">
+            <div class="thisbtn-right">
+              <button pButton pRipple label="新增代碼" icon="pi pi-plus" class="p-button-rounded p-button-add"
+                style="margin-right: 1rem;" (click)="addWasteDataForm()">
+              </button>
+              <button pButton pRipple label="全部刪除" icon="pi pi-minus" class="p-button-rounded p-button-warning"
+                (click)="removeWasteDataAll()">
+              </button>
+            </div>
+          </table>
+          <div class="form-group row">
+            <div class="justify-content-center btn-center">
+              <button type="button" class="btn btn-primary btn-lg" (click)="goBack()">
+                <i class="fa fa-lg fa-fw fa-arrow-right"></i>返回
+              </button>
+              <button id="left-btn" type="button" class="btn btn-org btn-lg" (click)="onSubmit()">
+                <i class="fa fa-lg fa-fw fa-pencil-square-o"></i>儲存編輯
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<p-toast position="bottom-right"></p-toast>
+
+<div id="progressSpinner" class="background-black" *ngIf="progressSpinner">
+  <div class="progress-spinner">
+    <p-progressSpinner class="customProgress"></p-progressSpinner>
+  </div>
+</div>

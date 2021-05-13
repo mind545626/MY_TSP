@@ -1,0 +1,140 @@
+{
+    "data": [
+        {
+            "no": "1",
+            "ContractID": "CO9000110",
+            "CleanAddress": "彰化縣員林鎮中山路218號",
+            "ContractDateApply": "2020-02-20 10:33",
+            "ContractDateStart": "2020-03-01 11:42",
+            "ContractDateEnd": "2021-03-01 11:42",
+            "ContractItems": [
+                "申報項目1",
+                "申報項目2"
+            ],
+            "ContractPrice": [
+                "3500",
+                "4200"
+            ],
+            "status": "3",
+            "ContractProgress": "正常"
+        },
+        {
+            "no": "2",
+            "ContractID": "CO9000120",
+            "CleanAddress": "台北市大安區信義路四段205號",
+            "ContractDateApply": "2020-02-25 16:35",
+            "ContractDateStart": "2020-03-11 12:00",
+            "ContractDateEnd": "2021-03-11 12:00",
+            "ContractItems": [
+                "申報項目1"
+            ],
+            "ContractPrice": [
+                "3600"
+            ],
+            "status": "3",
+            "ContractProgress": "正常"
+        },
+        {
+            "no": "3",
+            "ContractID": "CO9000164",
+            "CleanAddress": "台北市信義區福德街5號",
+            "ContractDateApply": "2020-03-20 16:42",
+            "ContractDateStart": "2020-04-01 13:30",
+            "ContractDateEnd": "2021-04-01 13:30",
+            "ContractItems": [
+                "申報項目4"
+            ],
+            "ContractPrice": [
+                "5000"
+            ],
+            "status": "3",
+            "ContractProgress": "正常"
+        },
+        {
+            "no": "4",
+            "ContractID": "CO9000310",
+            "CleanAddress": "台中市中區中正路116號",
+            "ContractDateApply": "2020-03-14 10:45",
+            "ContractDateStart": "2020-05-01 13:35",
+            "ContractDateEnd": "2021-05-01 13:35",
+            "ContractItems": [
+                "申報項目3",
+                "申報項目2"
+            ],
+            "ContractPrice": [
+                "3200",
+                "2200"
+            ],
+            "status": "4",
+            "ContractProgress": "停止"
+        },
+        {
+            "no": "5",
+            "ContractID": "CO9000350",
+            "CleanAddress": "彰化縣員林鎮中山路218號",
+            "ContractDateApply": "2020-02-20 10:33",
+            "ContractDateStart": "2020-03-01 11:42",
+            "ContractDateEnd": "2021-03-01 11:42",
+            "ContractItems": [
+                "申報項目1",
+                "申報項目2"
+            ],
+            "ContractPrice": [
+                "3500",
+                "1200"
+            ],
+            "status": "3",
+            "ContractProgress": "正常"
+        },
+        {
+            "no": "6",
+            "ContractID": "CO9000320",
+            "CleanAddress": "台北市大安區信義路四段205號",
+            "ContractDateApply": "2020-02-25 16:35",
+            "ContractDateStart": "2020-03-11 12:00",
+            "ContractDateEnd": "2021-03-11 12:00",
+            "ContractItems": [
+                "申報項目1"
+            ],
+            "ContractPrice": [
+                "3600"
+            ],
+            "status": "3",
+            "ContractProgress": "正常"
+        },
+        {
+            "no": "7",
+            "ContractID": "CO9000664",
+            "CleanAddress": "台北市信義區福德街5號",
+            "ContractDateApply": "2020-03-20 16:42",
+            "ContractDateStart": "2020-04-01 13:30",
+            "ContractDateEnd": "2021-04-01 13:30",
+            "ContractItems": [
+                "申報項目4"
+            ],
+            "ContractPrice": [
+                "5000"
+            ],
+            "status": "3",
+            "ContractProgress": "正常"
+        },
+        {
+            "no": "8",
+            "ContractID": "CO9000987",
+            "CleanAddress": "台中市中區中正路116號",
+            "ContractDateApply": "2020-03-14 10:45",
+            "ContractDateStart": "2020-05-01 13:35",
+            "ContractDateEnd": "2021-05-01 13:35",
+            "ContractItems": [
+                "申報項目3",
+                "申報項目2"
+            ],
+            "ContractPrice": [
+                "3500",
+                "2100"
+            ],
+            "status": "4",
+            "ContractProgress": "停止"
+        }
+    ]
+}

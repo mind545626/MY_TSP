@@ -1,0 +1,297 @@
+<div class="my-form">
+    <div id="content" class="result-container">
+        <p-breadcrumb id="breadcrumb" [model]="items" [home]="home"></p-breadcrumb>
+    </div>
+    <div id="content" class="result-container result-color">
+        <form class="form-horizontal">
+            <div class="card">
+                <div class="title">
+                    <span>訂單資料</span>
+                    <div class="btn-right">
+                        <!-- <a routerLink="/company/order-progress/modify-order">
+                            <button id="left-btn" type="button" class="btn btn-primary btn-lg"><i
+                                    class="fa fa-lg fa-fw fa-pencil-square-o"></i>編輯訂單</button>
+                        </a> -->
+                        <button type="button" class="btn btn-primary  btn-lg" (click)="goBack()"><i
+                                class="fa fa-lg fa-fw fa-arrow-right"></i>返回</button>
+                    </div>
+                </div>
+                <div class="form-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">基本資料</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th class="col-2">訂單編號</th>
+                                <td class="col-10">WW9000532</td>
+                            </tr>
+                            <tr>
+                                <th>派車單編號</th>
+                                <td>
+                                    <a routerLink="#" class="td-a-color" data-toggle="modal" data-target="#myModal6">
+                                        ASS9000516
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>申請日期</th>
+                                <td>2020-02-25 16:35</td>
+                            </tr>
+                            <tr>
+                                <th>申請單位</th>
+                                <td>承助營造公司</td>
+                            </tr>
+                            <tr>
+                                <th>事業別</th>
+                                <td>1402 合板及組合木材製造業 </td>
+                            </tr>
+                            <tr>
+                                <th>聯絡人</th>
+                                <td>李小承</td>
+                            </tr>
+                            <tr>
+                                <th>聯絡電話</th>
+                                <td>02-22548116 #775</td>
+                            </tr>
+                            <tr>
+                                <th>管制編號</th>
+                                <td>無</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">清運資料</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>清運車號</th>
+                                <td>WBT-385</td>
+                            </tr>
+                            <tr>
+                                <th>收集頻率</th>
+                                <td>每單周 / 次 ; 週四</td>
+                            </tr>
+                            <tr>
+                                <th>同意免簽</th>
+                                <td>否</td>
+                            </tr>
+                            <tr>
+                                <th>申請廢棄物類型</th>
+                                <td>生活垃圾</td>
+                            </tr>
+                            <tr>
+                                <th>清運地址</th>
+                                <td>106 台北市大安區敦化南路一段160巷100號</td>
+                            </tr>
+                            <tr>
+                                <th>廢棄物者貯存地點</th>
+                                <td>廠外</td>
+                            </tr>
+                            <tr>
+                                <th>廢棄物數量預估(重量)/月</th>
+                                <td>1,300 KG</td>
+                            </tr>
+                            <tr>
+                                <th>廢棄物數量預估(桶)/月</th>
+                                <td>3 桶</td>
+                            </tr>
+                            <tr>
+                                <th>處理狀態</th>
+                                <td>
+                                    <button type="button" class="status-3">已處理</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>交易狀態</th>
+                                <td>
+                                    <button type="button" class="status-3">正常</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>完成日期</th>
+                                <td>2020-02-28 17:45</td>
+                            </tr>
+                            <tr>
+                                <th>完成照片</th>
+                                <td>
+                                    <button type="button"
+                                        class="btn btn-primary justify-content-center align-items-center"
+                                        data-toggle="modal" data-target="#myModal2">查看照片</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>付款方式</th>
+                                <td>現金</td>
+                            </tr>
+                            <tr>
+                                <th>付款項目</th>
+                                <td>付現</td>
+                            </tr>
+                            <tr>
+                                <th>付款狀況</th>
+                                <td><button class="status-4">未完成</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th colspan="7">其他需求項目</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tbodyTh">
+                                <th>需求項目</th>
+                                <th>需求內容</th>
+                                <th>數量</th>
+                                <th>單位</th>
+                                <th>單價(元)</th>
+                                <th>合計(元)</th>
+                                <th>備註</th>
+                            </tr>
+                            <tr>
+                                <th>是否提供設備</th>
+                                <td>1立方子車</td>
+                                <td>2</td>
+                                <td>個</td>
+                                <td>500</td>
+                                <td>1000</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>退水費</th>
+                                <td>是</td>
+                                <td>1</td>
+                                <td>筆</td>
+                                <td>500</td>
+                                <td>500</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>妥善處理紀錄</th>
+                                <td>無</td>
+                                <td>N/A</td>
+                                <td>份</td>
+                                <td>300</td>
+                                <td>N/A</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>派送三聯單</th>
+                                <td>無</td>
+                                <td>N/A</td>
+                                <td>份</td>
+                                <td>300</td>
+                                <td>N/A</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th colspan="11">廢棄物列表</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tbodyTh">
+                                <th>項次</th>
+                                <th>廢棄物代碼</th>
+                                <th>廢棄物名稱</th>
+                                <th>廢棄物性質</th>
+                                <th>申請數量</th>
+                                <th>實際數量</th>
+                                <th>單位</th>
+                                <th>單價(元)</th>
+                                <th>合計(元)</th>
+                                <th>項目核對</th>
+                                <th>不符回報照片</th>
+                                <th>備註</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>D-0299</td>
+                                <td>廢塑膠混合物</td>
+                                <td>固態</td>
+                                <td>4.5</td>
+                                <td>5</td>
+                                <td>噸</td>
+                                <td>500</td>
+                                <td>2500</td>
+                                <td>符合</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>D-0701</td>
+                                <td>廢木材棧板</td>
+                                <td>固態</td>
+                                <td>5.5</td>
+                                <td>6</td>
+                                <td>噸</td>
+                                <td>500</td>
+                                <td>3000</td>
+                                <td>符合</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>D-0799</td>
+                                <td>廢木材混合物</td>
+                                <td>固態</td>
+                                <td>3</td>
+                                <td>6.5</td>
+                                <td>噸</td>
+                                <td>500</td>
+                                <td>3250</td>
+                                <td>不符合</td>
+                                <td>
+                                    <button type="button"
+                                        class="btn btn-primary btn-xs justify-content-center align-items-center"
+                                        data-toggle="modal" data-target="#myModal3">查看圖片</button>
+                                </td>
+                                <td>實際超過訂單重量，本次平台接受處理</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>D-1399</td>
+                                <td>其他單一非有害金屬或金屬廢料混合物</td>
+                                <td>半固態</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>桶</td>
+                                <td>1000</td>
+                                <td>3000</td>
+                                <td>符合</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="form-group">
+                        <div class="btn-right order-right">
+                            <label class="control-label order-tall01" for="FullName">預估訂單總價：</label>
+                            <div class="ipnut-width">
+                                <input type="text" class="form-control input-text order-tall01" id="EstimatedPrice"
+                                    value="11,000" readonly="readonly">
+                            </div>
+                            <label class="control-label order-tall02" for="FullName">實際訂單總價：</label>
+                            <div class="ipnut-width">
+                                <input type="text" class="form-control input-text order-tall02" id="ActualPrice"
+                                    value="13,250" readonly="readonly">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

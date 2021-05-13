@@ -1,0 +1,232 @@
+@import "./src/app/app.component.scss";
+
+.top-navber {
+  /* position: fixed; */
+  top: 0;
+  right: 0 !important;
+  z-index: 1030;
+  overflow: hidden;
+}
+
+//   .navbar{
+//   padding: unset;
+// }
+
+a {
+  text-decoration: none;
+  display: block;
+}
+.box {
+  width: 100%;
+  margin: 0 auto;
+}
+.menu > li {
+  & a {
+    text-decoration: none;
+    color: #136a50;
+    font-weight: 750;
+    padding: 0.5em;
+    // border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+  & li > a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 750;
+    padding: 0.5em;
+    font-size: 1.2rem;
+    border: none;
+  }
+  & a:hover,
+  a.active {
+    background: #136a50;
+    color: #fff;
+  }
+  & li > a:hover,
+  a.active {
+    background: #136a50;
+    color: #fff;
+  }
+  .li-last {
+    border: none !important;
+  }
+}
+
+.inmenu {
+  list-style-type: none;
+  display: none;
+}
+.inmenu > li {
+  padding: 0.5em;
+}
+
+.menu {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.modal-body {
+  padding: 1rem 0rem;
+}
+
+// 固定header
+.header-fix {
+  position: fixed;
+  z-index: 1025;
+  top: 0;
+  width: 100%;
+}
+
+.my-menu {
+  color: #136a50;
+  font-weight: 750;
+}
+
+@media screen and (max-width: 350px) {
+  .menu-btn {
+    font-size: 0.85rem;
+  }
+  .navbar-brand {
+    margin-right: 0rem;
+    font-size: 0.85rem;
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+  }
+  .IRMS-style {
+    margin-top: 13rem;
+    margin-left: 3rem;
+  }
+  .btn {
+    padding: 0.25rem 0.45rem;
+  }
+  .my-menu {
+    padding: 0rem 0rem 0.25em 0rem;
+    font-size: 1.5rem;
+  }
+  .menu > li {
+    & a {
+      font-size: 1.2rem;
+    }
+  }
+  .btn-lg {
+    font-size: 1.2rem !important;
+    padding: 0.15rem 0.5rem !important;
+  }
+}
+
+@media screen and (min-width: 351px) and (max-width: 420px) {
+  .navbar-brand {
+    margin-right: 0rem;
+    font-size: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .IRMS-style {
+    margin-top: 13rem;
+    margin-left: 3rem;
+  }
+  .my-menu {
+    padding: 0rem 0rem 0.25em 0rem;
+    font-size: 1.5rem;
+  }
+  .menu > li {
+    & a {
+      font-size: 1.2rem;
+    }
+  }
+  .btn-lg {
+    font-size: 1.2rem !important;
+    padding: 0.15rem 0.5rem !important;
+  }
+}
+
+@media screen and (min-width: 421px) and (max-width: 767px) {
+  .navbar-brand {
+    font-size: 1.5rem;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    // padding-top: 0.3125rem;
+    // padding-bottom: 0.3125rem;
+  }
+  .IRMS-style {
+    margin-top: 18rem;
+    margin-left: 3rem;
+  }
+  .my-menu {
+    padding: 0rem 0rem 0.25em 0rem;
+    font-size: 2rem;
+  }
+  .menu > li {
+    & a {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .navbar-brand {
+    font-size: 1.8rem;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+  }
+  .IRMS-style {
+    margin-top: 20rem;
+    margin-left: 5rem;
+  }
+  .my-menu {
+    padding: 0rem 0rem 0.25em 0rem;
+    font-size: 2rem;
+  }
+  .menu > li {
+    & a {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .navbar-brand {
+    font-size: 2.2rem;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+  }
+  .IRMS-style {
+    margin-top: 15rem;
+    margin-left: 8rem;
+  }
+  .my-menu {
+    padding: 0rem 0rem 0.25em 0rem;
+    font-size: 2rem;
+  }
+  .menu > li {
+    & a {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .navbar-brand {
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+  }
+  .IRMS-style {
+    margin-top: 18rem;
+    margin-left: 12rem;
+  }
+  .my-menu {
+    padding: 0rem 0rem 0.25em 0rem;
+    font-size: 2rem;
+  }
+  .menu > li {
+    & a {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.menu-control{
+  display:none
+}
+
+

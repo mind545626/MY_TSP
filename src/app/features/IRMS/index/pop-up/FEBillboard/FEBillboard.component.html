@@ -1,0 +1,95 @@
+<!-- <h4 class="modal-title">公告標題</h4> -->
+<!-- <div class="modal-header">
+    <div class="mymodal-title">
+        {{ configFEBillboard.data.Title}}
+    </div>
+</div> -->
+<div class="modal-body">
+  <div class="align-middle">
+    <div class="row">
+      <div class="col-6">
+        <i class="pi pi-calendar"></i>
+        <label>
+          {{ configFEBillboard.data.UP_DateTime}}
+        </label>
+      </div>
+    </div>
+    <label>
+      {{ configFEBillboard.data.Content }}
+    </label>
+    <div>
+      <ng-template pTemplate="body" ngFor let-FileList [ngForOf]="FileList" let-i="index">
+        <a download="{{FileList.FileName}}" href="{{downloadUrl}}{{FileList.FilePath}}">{{FileList.FileName}}</a><br>
+        <!-- <a download="{{FileList.FileName}}"  (click)="downloadProduct(i)">{{FileList.FileName}}</a><br> -->
+        <!-- <button pButton pRipple icon="pi pi-download" class="p-button-rounded p-button-add"
+          (click)="downloadProduct(i)">{{FileList.FileID}}
+        </button> -->
+      </ng-template>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-success btn-lg" (click)="ngOnDestroy()">確認</button>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="align-middle">
+    <div class="row">
+        <div class="col-4">
+            <i class="pi pi-calendar"></i>
+            <label>
+                {{ config.data.UP_DateTime}}
+            </label>
+        </div>
+        <div class="col-2">
+            <i class="pi pi-clock"></i>
+            <label>
+                10:25
+            </label>
+        </div>
+    </div>
+    <label>
+        {{ config.data | json}}
+        {{ config.data.Content }}
+        草屯垃圾場火災，昨（22）日經各界群策群力，火勢已控制，現場雖已無明火，惟仍須持續灑水警戒觀察，為有效全面監控垃圾堆溫度，環保署採用高科技儀器熱顯像儀，如監測溫度有過高之處，將通知消防灑水，以避免死灰復燃。
+        環保署自昨（22）日火滅之後，仍不敢鬆懈，持續派人留守指揮中心，截至今日已投入50人力以上協助救災及監控現場，昨晚掩埋面一度閃起明火，隨即調派消防水線灑水後，已迅速將火熄滅，經昨晚同仁輪班徹夜監視，目前已全面控制，已無悶燒。
+        行政院中部聯合服務中心蔡培慧執行長本（23）日一早8時第4次親自到場與環保署及水利署等同仁會勘救災最新進度，以及慰勞關心現場救災人員。蔡培慧表示，這幾天，不管是中央的環保署、消防署、水利署，還是南投縣消防局與環保局、鎮公所，以及民間業者犧牲假日在現場全力調度機具，齊心協力無非就是希望儘早澈底滅火。後續的垃圾移除計畫及協調去化也將盡力協調促成。
+        環保署表示，會全力協助草屯垃圾場火災善後工作，災後工作重點，在於掩埋場整理整頓、受損設施復建、強化消防設施及監控系統，以及後續垃圾移除工作，環保署將提供專業人力協助草屯鎮公所研擬計畫，並給予必要之經費，惟仍需請南投縣政府及草屯鎮公所積極配合。
+        環保署最後強調，環保設施管理及垃圾處理依廢棄物清理法規定屬於地方政府權責，南投縣政府應虛心面對此次事件，深刻檢討，並且全面盤點所有環保設施防災量能，落實管理，避免類似事件再次發生。長遠規劃，南投縣政府應帶領各鄉鎮市一同積極面對垃圾處理問題，應做好廢棄物管理各項工作與積極籌建自主處理垃圾設施，為縣民環境品質改善而努力，如有相關經費需求可向環保署提出請求。
+    </label>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-success btn-lg" data-dismiss="modal">確認</button>
+</div> -->
+
+
+<!-- <p-table [value]="products" [paginator]="true" [rows]="5" [responsive]="true">
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="name">Name <p-sortIcon field="vin"></p-sortIcon></th>
+            <th pSortableColumn="year">Image</th>
+            <th pSortableColumn="price">Brand <p-sortIcon field="price"></p-sortIcon></th>
+            <th pSortableColumn="inventoryStatus">Status <p-sortIcon field="inventoryStatus"></p-sortIcon></th>
+            <th style="width:4em"></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+        <tr>
+            <td>{{product.name}}</td>
+            <td><img src="assets/showcase/images/demo/product/{{product.image}}" [alt]="product.image" class="product-image" /></td>
+            <td>{{product.price}}</td>
+            <td><span [class]="'product-badge status-'+product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span></td>
+            <td>
+                <button type="button" pButton icon="pi pi-search" (click)="selectProduct(product)"></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table> -->

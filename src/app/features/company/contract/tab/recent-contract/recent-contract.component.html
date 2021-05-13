@@ -1,0 +1,175 @@
+<div class="my-tab">
+    <p-table #dt [columns]="cols" [value]="contract" [paginator]="true" [scrollable]="true" [rows]="5"
+        [(selection)]="selecteContracts" [resizableColumns]="true" [style]="{width: '100%'}"
+        [showCurrentPageReport]="true" currentPageReportTemplate="顯示 {first} 至 {last} 共 {totalRecords} 筆資料"
+        [rowsPerPageOptions]="[5,10]" styleClass="p-datatable-customers">
+        <ng-template pTemplate="colgroup" let-columns>
+
+            <colgroup>
+                <col *ngFor="let col of columns" [style.width]="col.width">
+            </colgroup>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns">
+                    {{col.header}}
+                </th>
+            </tr>
+            <tr id="tr-td">
+                <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                    <div style="width: 60px;" *ngSwitchCase="'select'"></div>
+                    <input *ngSwitchCase="'Code'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field,'contains')">
+                    <input *ngSwitchCase="'CorporateName'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field,'contains')">
+                    <input *ngSwitchCase="'ClearAddress'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field,'contains')">
+                    <input *ngSwitchCase="'ApplyDateTime'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field,'contains')">
+                    <input *ngSwitchCase="'StartDateTime'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field,'contains')">
+                    <input *ngSwitchCase="'EndDateTime'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field,'contains')">
+                    <input *ngSwitchCase="'ApplyWasteType'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field,'contains')">
+                    <!-- <div [ngSwitch]="col.subfield">
+                      <input *ngSwitchCase="'WasteCodeName'" pInputText type="text"
+                        (input)="dt.filter($event.target.value,'WasteCodeName','contains')">
+                    </div> -->
+                    <!-- <input *ngSwitchCase="'WasteDataName'" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)"> -->
+                    <!-- <input pInputText type="text" (input)="dt.filter($event.target.value, 'date', 'contains')"
+                        [value]="dt.filters['date'] ? dt.filters['date'].value : ''"> -->
+                    <p-dropdown *ngSwitchCase="'ContractStatus'" appendTo="body" [showClear]="true" placeholder="全部"
+                        [options]="ContractStatus" (onChange)="dt.filter($event.value, col.field, 'equals')">
+                    </p-dropdown>
+                    <!-- <p-dropdown *ngSwitchCase="'ContractProgress'" appendTo="body" [showClear]="true"
+                        [options]="contractprogress" (onChange)="dt.filter($event.value, col.field, 'equals')">
+                    </p-dropdown> -->
+                    <!-- <p-calendar *ngSwitchCase="'ContractDateApply'" [locale]="tw" appendTo="body" showButtonBar="true"
+                        (onSelect)="onDateSelect($event)" (onClearClick)="dt.filter('', 'date', 'equals')"
+                        [showButtonBar]="true" styleClass="p-column-filter" placeholder="選擇日期" [readonlyInput]="true"
+                        dateFormat="yy-mm-dd">
+                    </p-calendar> -->
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns" let-order let-i="rowIndex">
+            <tr [pSelectableRow]="rowData">
+                <td *ngFor="let col of columns">
+                  <!-- <div *ngIf="col.subfield;then nested_object_content"></div> -->
+                    <ng-container *ngIf="col.field == 'no'">
+                        <div class="td-center">
+                            {{i+1}}
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="col.field == 'Code'">
+                        <div class="td-center">
+                            <!-- <a routerLink="/company/contract/contract-info" class="td-a-color">
+                                {{rowData[col.field]}}
+                            </a> -->
+                            <a class="td-a-color" (click)="getContId(rowData[col.field])">
+                              {{rowData[col.field]}}
+                            </a>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="col.field == 'ApplyWasteType'">
+                      <div class="td-center">
+                            {{rowData[col.field]}}類 / {{rowData.ApplyWasteTypeName}}
+                      </div>
+                      <!-- <div *ngFor="let WasteItem of rowData.WasteItem">
+                              {{WasteItem.WasteCode}} {{rowData.WasteItem.length}}
+                          </div> -->
+                      <!-- <div *ngFor="let item of rowData[col.field]">
+                            {{item.WasteCode}} {{item.WasteName}}
+                      </div> -->
+                    </ng-container>
+                    <!-- <ng-template #nested_object_content>
+                      {{rowData[col.field][0][col.subfield]}}
+                    </ng-template> -->
+                    <!-- <ng-container *ngSwitchCase="'WasteCodeName'" [ngSwitch]="col.subfield">
+                              {{rowData[col.field][col.subfield]}}
+                    </ng-container> -->
+                            <!-- {{rowData[col.field][i].WasteCodeName}}<br> -->
+                            <!-- {{rowData[col.field][i].WasteCodeName}} -->
+                          <!-- <div *ngFor="let WasteDataName of rowData[col.field]">
+                              {{WasteDataName.WasteCodeName}}
+                          </div> -->
+                      <!-- <div *ngFor="let WasteData of rowData[col.field]">
+                            {{WasteData.WasteCode}} {{WasteData.WasteName}}
+                      </div> -->
+                    <ng-container *ngIf="col.field == 'ContractStatus'">
+                      <div class="td-center" [ngSwitch]="rowData.ContractStatus">
+                        <div *ngFor="let ContractStatus of ContractStatus">
+                          <button *ngSwitchCase="ContractStatus.value" [class]="'COstatus-'+ ContractStatus.value">
+                              <p>
+                                {{rowData.ContractStatusName}}
+                              </p>
+                              <p *ngSwitchDefault>
+                              </p>
+                          </button>
+                        </div>
+                      </div>
+                    </ng-container>
+                  <!-- <ng-container *ngIf="col.field == 'QuoteStatus'">
+                    <div class="td-center" [ngSwitch]="rowData.QuoteStatus">
+                      <div *ngFor="let QuoteStatus of QuoteStatus">
+                        <button *ngSwitchCase="QuoteStatus.value" [class]="'status-'+ QuoteStatus.value">
+                            <p>
+                              {{QuoteStatus.label}}
+                            </p>
+                            <p *ngSwitchDefault>
+                            </p>
+                        </button>
+                      </div>
+                    </div>
+                </ng-container> -->
+                    <!-- <ng-container *ngIf="col.field == 'ContractItems'">
+                        {{rowData[col.field][0]}}<br>{{rowData[col.field][1]}}<br>{{rowData[col.field][2]}}
+                    </ng-container>
+                    <ng-container *ngIf="col.field == 'ContractProgress'">
+                        <div class="btn-certer">
+                            <button [class]="'status-' + order.status">
+                                {{rowData[col.field]}}
+                            </button>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="col.field == 'ContractPrice'">
+                        {{rowData[col.field][0]}}<br>{{rowData[col.field][1]}}<br>{{rowData[col.field][2]}}
+                    </ng-container> -->
+                    <ng-container *ngIf="col.field == 'Edit'">
+                        <div class="td-center">
+                            <!-- <a routerLink="/company/contract/contract-info">
+                                <button pButton pRipple icon="pi pi-file-o"
+                                    class="p-button-rounded p-button-success p-mr-2" (click)="editProduct(product)">
+                                </button>
+                            </a> -->
+                            <button pButton pRipple icon="pi pi-trash" class=" p-button-rounded p-button-warning"
+                                (click)="deleteProduct()">
+                            </button>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="
+                    col.field !== 'no' &&
+                    col.field !== 'Code' &&
+                    col.field !== 'WasteData' &&
+                    col.field !== 'ContractStatus' &&
+                    col.field !== 'WasteDataName' &&
+                    col.field !== 'ApplyWasteType'
+                    ">
+                        {{rowData[col.field]}}
+                    </ng-container>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            沒有資料
+        </ng-template>
+    </p-table>
+</div>
+
+<div id="progressSpinner" class="background-black" *ngIf="progressSpinner">
+  <div class="progress-spinner">
+    <p-progressSpinner class="customProgress"></p-progressSpinner>
+  </div>
+</div>

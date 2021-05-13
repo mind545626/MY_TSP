@@ -1,0 +1,88 @@
+@import "./src/app/app.component.scss";
+
+.footer-style-h4 {
+    line-height: 2rem;
+    color: #fff;
+}
+
+.footer-style-h5 {
+    color: #fff;
+    margin-left: -30px;
+    line-height: 2rem;
+    list-style: none;
+    word-wrap: break-word;
+    word-break: normal;
+}
+
+.footer-bg {
+    background-color: #413e3e !important;
+    margin: 0 auto !important;
+    position: absolute;
+    width: 100%;
+}
+
+footer p,
+a {
+    font-weight: normal;
+    color: #fff;
+}
+
+.footer-left {
+    text-align: left;
+}
+
+@media screen and (max-width: 350px) {
+    .footer-style-h4 {
+        font-size: 1.2rem;
+    }
+
+    .footer-style-h5 {
+        font-size: 1rem;
+    }
+}
+@media screen and (min-width: 351px) and (max-width: 420px) {
+    .footer-style-h4 {
+        font-size: 1.2rem;
+    }
+
+    .footer-style-h5 {
+        font-size: 1rem;
+    }
+}
+@media screen and (min-width: 421px) and (max-width: 767px) {
+    .footer-style-h4 {
+        font-size: 1.3rem;
+    }
+
+    .footer-style-h5 {
+        font-size: 1.1rem;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .footer-style-h4 {
+        font-size: 1.5rem;
+    }
+
+    .footer-style-h5 {
+        font-size: 1.2rem;
+    }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .footer-style-h4 {
+        font-size: 1.55rem;
+    }
+
+    .footer-style-h5 {
+        font-size: 1.25rem;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .footer-style-h4 {
+        font-size: 1.55rem;
+    }
+
+    .footer-style-h5 {
+        font-size: 1.25rem;
+    }
+}

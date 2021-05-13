@@ -1,0 +1,102 @@
+<!-- <div class="modal-header">
+  <div class="mymodal-title">
+    聯絡我們
+  </div>
+</div> -->
+
+<div class="modal-body">
+  <form [formGroup]="newContactForm">
+    <div class="form-group row">
+      <label for="ContactPerson" class="col-sm-2 control-label">
+        聯絡名稱:
+      </label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" pInputText placeholder="請輸入聯絡人或公司名稱" value="" id="ContactPerson"
+          formControlName="ContactPerson" />
+        <small [hidden]="!newContactForm.controls.ContactPerson.hasError('required')">
+          必填欄位
+        </small>
+        <small [hidden]="!newContactForm.controls.ContactPerson.hasError('pattern')">
+          請輸入英文或者中文名稱
+        </small>
+        <small [hidden]="!newContactForm.controls.ContactPerson.hasError('minlength')">
+          請輸入至少2個字元
+        </small>
+      </div>
+      <label for="ContactMail" class="col-sm-2 control-label">
+        聯絡信箱:
+      </label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" pInputText placeholder="請輸入信箱" value="" id="ContactMail"
+          formControlName="ContactMail" />
+        <small [hidden]="!newContactForm.controls.ContactMail.hasError('required')">
+          必填欄位
+        </small>
+        <small [hidden]="!newContactForm.controls.ContactMail.hasError('email')">
+          請填寫有效的電子信箱，以收取聯絡訊息
+        </small>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="ContactPhoneNumber" class="col-sm-2 control-label">
+        聯絡電話:
+      </label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" pInputText maxlength="11" placeholder="請輸入號碼" value=""
+          id="ContactPhoneNumber" formControlName="ContactPhoneNumber" />
+        <small [hidden]="!newContactForm.controls.ContactPhoneNumber.hasError('pattern')">
+          請輸入手機或者市話號碼
+        </small>
+      </div>
+      <label for="ContactType" class="col-sm-2 control-label">
+        聯絡類型:
+      </label>
+      <div class="col-sm-4">
+        <!-- appendTo="body" 會導致載入出現問題因此拿掉 -->
+        <p-dropdown placeholder="請選擇訊息類型"
+          [options]="ContactType$ | async" [required]="true"
+          inputId="ContactType" formControlName="ContactType">
+        </p-dropdown>
+
+        <small [hidden]="!newContactForm.controls.ContactType.hasError('required')">
+          *必填
+        </small>
+      </div>
+      <!-- <label for="ContactDate" class="col-sm-2 control-label">
+        聯絡日期:
+      </label>
+      <div class="col-sm-4">
+        <input type="datetime" class="form-control" pInputText placeholder="聯絡日期" id="ContactDate" name="ContactDate"
+          formControlName="ContactDate" readonly />
+      </div> -->
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-12">
+        <label for="Message" class="control-label">
+          訊息內容:
+        </label>
+        <small [hidden]="!newContactForm.controls.Message.hasError('required')">
+          必填欄位
+        </small>
+        <small [hidden]="!newContactForm.controls.Message.hasError('minlength')">
+          請最少輸入20個字元
+        </small>
+        <textarea class="form-control" style="min-height: 10em;" pInputTextarea placeholder="請輸入訊息內容，最少20個字元"
+          id="Message" formControlName="Message">
+        </textarea>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-success btn-lg" (click)="onSubmit()"><i
+      class="fa fa-lg fa-fw fa-inbox"></i>送出訊息</button>
+  <button type="button" class="btn btn-outline-success btn-lg" (click)="ngOnDestroy()">關閉</button>
+</div>
+<p-toast position="bottom-right"></p-toast>
+
+<div id="progressSpinner" class="background-black" *ngIf="progressSpinner">
+  <div class="progress-spinner">
+    <p-progressSpinner class="customProgress"></p-progressSpinner>
+  </div>
+</div>

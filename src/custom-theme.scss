@@ -1,0 +1,705 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import "~@angular/material/theming";
+// Plus imports for other components in your app.
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+/*----- angular material客製共用樣式 -----*/
+$my-app-primary: mat-palette($mat-light-blue, 900);
+$my-app-accent: mat-palette($mat-green, 400);
+$my-app-warn: mat-palette($mat-red, 700);
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+@include angular-material-theme($my-app-theme);
+
+.mat-flat-button.mat-accent,
+.mat-raised-button.mat-accent,
+.mat-fab.mat-accent,
+.mat-mini-fab.mat-accent {
+  color: rgba(255, 255, 255, 1);
+}
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-accent {
+  color: rgba(255, 255, 255, 1);
+}
+/*-- angular material tab樣式設定 --*/
+.mat-tab-labels {
+  // background-color: #8DB6B2;
+  // display: inline-flex !important;
+  // border:1px solid #999;
+  // border-top:0;
+  // border-bottom:0;
+  // border-left:0;
+  // border-right:0;
+  // background-color: #DDDDDD;
+  .mat-tab-label {
+    // font-size: 1.15em;
+    background-color: #dddddd;
+    height: 3rem;
+    // height: 38px;
+    // color: #fff;
+    color: #383838;
+    opacity: 1;
+  }
+  .mat-tab-label-active {
+    // border: none;
+    // display: inline-flex !important;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    // color: #383838;
+    color: #136a50;
+  }
+}
+.mat-tab-group.mat-primary .mat-ink-bar {
+  top: 0;
+  // background-color: #000;
+  // background-color: #136A50;
+  // 選取顏色暫有異常，待修
+  background-color: transparent;
+  height: 4px;
+}
+.mat-tab-header {
+  border: none;
+}
+
+/*-- angular material table樣式設定 --*/
+.mat-table {
+  width: 100%;
+}
+
+.app-main-layout {
+  background-color: #fffae2;
+}
+
+/*-- fontawesome icon style START --*/
+.fa {
+  &-size-md {
+    font-size: 24px;
+  }
+  &-reorder {
+    margin-right: 0;
+  }
+  &-sign-out {
+    margin-right: 0;
+  }
+  margin-right: 10px;
+}
+
+/*----- 其他樣式 -----*/
+body:not(.menu-on-top).desktop-detected {
+  min-height: 0 !important;
+}
+textarea {
+  width: 100%;
+}
+.text {
+  &-right {
+    text-align: right;
+  }
+  &-left {
+    text-align: left;
+  }
+}
+.form-md {
+  width: 250px;
+}
+
+//必填欄位＊的樣式
+.must-icon {
+  color: rgb(192, 79, 79);
+  margin-right: 5px;
+}
+
+/*-- prime-ng客製 共用樣式 --*/
+// table樣式設定
+.ui-table-scrollable-header,
+.ui-table-resizable .ui-table-thead > tr > th {
+  overflow: unset;
+}
+.ui-dropdown {
+  min-width: unset;
+  width: 100%;
+}
+.pi-times:before {
+  margin-right: 10px;
+}
+.p-datatable-customers {
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+.pr-ng-select {
+  width: 100%;
+}
+.ui-dropdown-trigger,
+.ui-multiselect-trigger {
+  font-size: 1em;
+  border: none;
+}
+body {
+  background-color: #dddddd;
+  background-image: unset;
+  .ui-inputtext,
+  .ui-dropdown,
+  .ui-multiselect {
+    border: 1px solid #babfc7;
+  }
+  // 修改table底下控制按鈕顏色樣式
+  .ui-paginator {
+    .ui-paginator-pages {
+      .ui-paginator-page.ui-state-active {
+        background-color: #088357;
+        color: #ffffff;
+      }
+    }
+  }
+
+  .ui-paginator {
+    .ui-paginator-pages .ui-paginator-page:not(.ui-state-active):hover {
+      background-color: #e0e0e0;
+      color: #333333;
+    }
+  }
+  //table裡的樣式控制
+  .ui-paginator-bottom {
+    padding: 10px 0;
+    background-color: #fff;
+    .ui-dropdown {
+      width: 80px;
+      border: 1px solid #aaa;
+      background-color: #fff;
+      line-height: 2.2em;
+      .ui-inputtext {
+        padding: 0;
+        padding-left: 5px;
+        line-height: 1.8em;
+      }
+    }
+    .ui-paginator-current {
+      color: #888888;
+      font-weight: 500;
+    }
+    .ui-paginator-pages .ui-paginator-page {
+      margin-left: 5px;
+      border-radius: 4px;
+    }
+  }
+
+  .ui-table .ui-table-caption {
+    background-color: #fff;
+  }
+
+  .ui-tabview.ui-tabview-top .ui-tabview-nav {
+    background-color: #eee;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    li {
+      margin: 0;
+      border: none;
+      &:hover {
+        border: none;
+      }
+    }
+    li.ui-state-active {
+      background-color: #fff;
+      &:hover {
+        background-color: #fff;
+        border: none;
+        a {
+          color: black;
+        }
+      }
+      margin: 0;
+      border: none;
+      a {
+        padding: 8px 20px;
+      }
+    }
+    li.ui-tabview-selected {
+      a {
+        color: black;
+      }
+    }
+  }
+  .ui-inputtext {
+    width: 100%;
+  }
+  .ui-corner-top {
+    border-radius: 0;
+  }
+  .ui-calendar .ui-datepicker {
+    width: 350px;
+  }
+  .ui-steps .ui-steps-item {
+    border: none;
+  }
+  .step-container {
+    .ui-steps.ui-steps-readonly .ui-steps-item {
+      width: 16.6%;
+      opacity: 1;
+      background-color: unset;
+    }
+  }
+  .ui-calendar {
+    display: inline-flex;
+    width: 100%;
+  }
+
+  .ui-button {
+    font-size: 18px !important;
+  }
+
+  // 估價單狀態樣式
+  // 申請審核中
+  .status-1 {
+    padding: 6px;
+    background-color: #5179d1;
+    width: 7rem;
+    border: none;
+    border-radius: 5px;
+    // color: #FFFAE2;
+    color: #fff;
+  }
+  // 已回覆
+  .status-2 {
+    padding: 6px;
+    background-color: #f1b637;
+    width: 7rem;
+    border: none;
+    border-radius: 5px;
+    // color: #FFFAE2;
+    color: #fff;
+  }
+  // 等候報價中
+  .status-3 {
+    padding: 6px;
+    background-color: #6bb93e;
+    width: 7rem;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+  }
+  // 已報價
+  .status-4 {
+    padding: 6px;
+    background-color: #6e04ac;
+    // background-color: #ff4454;
+    width: 7rem;
+    border: none;
+    border-radius: 5px;
+    // color: #FFFAE2;
+    color: #fff;
+  }
+  // 報價確認
+  .status-5 {
+    padding: 6px;
+    background-color: #0b6b7c;
+    width: 7rem;
+    border: none;
+    border-radius: 5px;
+    color: #fffae2;
+  }
+  // 合約申請中
+  .status-6 {
+    padding: 6px;
+    background-color: #08b49d;
+    width: 7rem;
+    border: none;
+    border-radius: 5px;
+    color: #fffae2;
+  }
+  // 合約成立
+  .status-7 {
+    padding: 6px;
+    background-color: #086b0d;
+    // background-color: #6e04ac;
+    width: 7rem;
+    border: none;
+    border-radius: 5px;
+    color: #fffae2;
+  }
+  // 合約失效
+  .status-8 {
+    padding: 6px;
+    // background-color: #088b0e;
+    background-color: #ff4454;
+    width: 7rem;
+    border: none;
+    border-radius: 5px;
+    color: #fffae2;
+  }
+  .status-0 {
+    display: none;
+  }
+
+  // 合約狀態樣式
+  // 申請審核中
+  .COstatus-1 {
+    padding: 6px;
+    background-color: #6bb93e;
+    width: 7rem;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+  }
+  // 已回覆
+  .COstatus-2 {
+    padding: 6px;
+    background-color: #ff4454;
+    width: 7rem;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+  }
+  .COstatus-0 {
+    display: none;
+  }
+
+  // true or false樣式
+  // true
+  .OLstatus-true {
+    padding: 6px;
+    background-color: #6bb93e;
+    width: 7rem;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+  }
+  // false
+  .OLstatus-false {
+    padding: 6px;
+    background-color: #ff4454;
+    width: 7rem;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+  }
+  .OLstatus-0 {
+    display: none;
+  }
+
+  // 訂單狀態樣式
+  // 待處理
+  .OLstatus-1 {
+    padding: 6px;
+    background-color: #5179d1;
+    width: 7rem;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+  }
+  // 待派車
+  .OLstatus-2 {
+    padding: 6px;
+    background-color: #f1b637;
+    width: 7rem;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+  }
+  // 已處理
+  .OLstatus-3 {
+    padding: 6px;
+    background-color: #6bb93e;
+    width: 7rem;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+  }
+  // 異常
+  .OLstatus-4 {
+    padding: 6px;
+    background-color: #ff4454;
+    width: 7rem;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+  }
+  .OLstatus-0 {
+    display: none;
+  }
+}
+
+.ui-accordion .ui-accordion-header:not(.ui-state-disabled).ui-state-active a {
+  background-color: #46a299 !important;
+}
+
+// index設定
+nav ul {
+  width: unset !important;
+}
+
+body .ui-state-active {
+  background-color: #088357 !important;
+}
+
+.ui-table .ui-paginator-bottom {
+  padding: 15px;
+  font-size: 18px;
+}
+
+body .ui-calendar.ui-calendar-w-btn .ui-inputtext {
+  border: 1px solid #ced4da;
+  font-size: 1.2rem;
+  padding: 0.375rem 1rem;
+  color: #495057;
+}
+
+p-calendar .ui-button {
+  color: #ffffff !important;
+  background-color: #088357 !important;
+  border: 1px solid #088357 !important;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: #088357 !important;
+}
+
+@media screen and (max-width: 569px) {
+  // 頁籤內間距
+  .mat-tab-label {
+    padding: 5px !important;
+  }
+  // 表單下拉式字體大小
+  body .ui-inputtext {
+    font-size: 0.8rem !important;
+  }
+  // tab頁籤字體大小
+  .mat-tab-label .mat-tab-label-content {
+    font-size: 0.8rem;
+  }
+  // 表單文字大小
+  body .ui-widget {
+    font-size: 0.8rem !important;
+  }
+  // 表格內間距
+  body .ui-table .ui-table-tbody > tr > td {
+    padding: 0.1rem 0.5em !important;
+  }
+  // 麵包屑樣式
+  body .ui-breadcrumb {
+    background-color: transparent !important;
+    border: unset !important;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+  body .ui-sidebar {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 570px) and (max-width: 767px) {
+  // 頁籤內間距
+  .mat-tab-label {
+    padding: 5px !important;
+  }
+  // 表單下拉式字體大小
+  body .ui-inputtext {
+    font-size: 0.95rem !important;
+  }
+  // tab頁籤字體大小
+  .mat-tab-label .mat-tab-label-content {
+    font-size: 0.95rem;
+  }
+  // 表單文字大小
+  body .ui-widget {
+    font-size: 0.95rem !important;
+  }
+  // 表格內間距
+  body .ui-table .ui-table-tbody > tr > td {
+    padding: 0.15em 0.5em !important;
+  }
+  // 麵包屑樣式
+  body .ui-breadcrumb {
+    background-color: transparent !important;
+    border: unset !important;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+  body .ui-sidebar {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  // 頁籤內間距
+  .mat-tab-label {
+    padding: 10px !important;
+  }
+  // 表單下拉式字體大小
+  body .ui-inputtext {
+    font-size: 1rem !important;
+  }
+  // tab頁籤字體大小
+  .mat-tab-label .mat-tab-label-content {
+    font-size: 1rem;
+  }
+  // 表單文字大小
+  body .ui-widget {
+    font-size: 1rem !important;
+  }
+  // 表格內間距
+  body .ui-table .ui-table-tbody > tr > td {
+    padding: 0.35em 0.6em !important;
+  }
+  // 麵包屑樣式
+  body .ui-breadcrumb {
+    background-color: transparent !important;
+    border: unset !important;
+    margin-bottom: 1rem;
+  }
+  body .ui-sidebar {
+    width: 40%;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  // 頁籤內間距
+  .mat-tab-label {
+    padding: 15px !important;
+  }
+  // 表單下拉式字體大小
+  body .ui-inputtext {
+    font-size: 1.1rem !important;
+  }
+  // tab頁籤字體大小
+  .mat-tab-label .mat-tab-label-content {
+    font-size: 1.1rem;
+  }
+  // 表單文字大小
+  body .ui-widget {
+    font-size: 1.1rem !important;
+  }
+  // 表格內間距
+  body .ui-table .ui-table-tbody > tr > td {
+    padding: 0.35em 0.68em !important;
+  }
+  // 麵包屑樣式
+  body .ui-breadcrumb {
+    background-color: transparent !important;
+    border: unset !important;
+    margin-bottom: 1rem;
+  }
+  body .ui-sidebar {
+    width: 35%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  // 頁籤內間距
+  .mat-tab-label {
+    padding: 24px !important;
+  }
+  // 表單下拉式字體大小
+  body .ui-inputtext {
+    font-size: 1.2rem !important;
+  }
+  // tab頁籤字體大小
+  .mat-tab-label .mat-tab-label-content {
+    font-size: 1.2rem;
+  }
+  // 表單文字大小
+  body .ui-widget {
+    font-size: 1.2rem !important;
+  }
+  // 麵包屑樣式
+  body .ui-breadcrumb {
+    background-color: transparent !important;
+    border: unset !important;
+    margin-bottom: 1rem;
+  }
+  // 表格內間距
+  body .ui-table .ui-table-tbody > tr > td {
+    padding: 0.571em 0.857em;
+  }
+  body .ui-sidebar {
+    width: 30%;
+  }
+}
+
+body .ui-sidebar .ui-sidebar-close {
+  margin-top: 5%;
+  font-size: 1.5rem;
+}
+
+// 表單下拉選單與欄位同寬
+// 超出欄位隱藏字體
+#tr-td .ui-dropdown {
+  overflow: hidden;
+  min-width: 100% !important;
+}
+
+// 下拉選單的下拉項目無高度設定
+.ui-dropdown-panel .ui-dropdown-items-wrapper {
+  max-height: unset !important;
+}
+
+// 表單header置中
+body .ui-table .ui-table-thead > tr > th {
+  text-align: center;
+}
+
+// 表格內置中
+.td-center {
+  text-align: center;
+}
+
+// 表格內超連結字體顏色
+.td-a-color {
+  color: #088357;
+}
+
+// 麵包屑字體顏色
+#breadcrumb .ui-breadcrumb ul li .ui-menuitem-link {
+  color: #088357;
+}
+// 麵包屑圖片顏色
+#breadcrumb .ui-breadcrumb ul li .ui-menuitem-icon {
+  color: #088357;
+}
+
+.mat-tab-body-content {
+  overflow-x: hidden !important;
+}
+
+// body{
+//     .ui-dropdown{
+//         min-width: unset;
+//         width: 100%;
+//     }
+//     .ui-dropdown.ui-dropdown-clearable .ui-dropdown-label {
+//         padding-right: unset;
+//     }
+// }
+body .ui-dropdown-label {
+  padding-right: 0.429em !important;
+}
+
+body .ui-dropdown {
+  min-width: unset;
+  width: 100%;
+  line-height: 1.3;
+}
+
+#WaseDate .ui-inputtext {
+  border-style: none !important;
+}
+
+//超連結手型
+div a {
+  cursor: pointer;
+}
+
+// // Define the palettes for your theme using the Material Design palettes available in palette.scss
+// // (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// // hue. Available color palettes: https://material.io/design/color/
+// $smartadmin-angular-seed-primary: mat-palette($mat-indigo);
+// $smartadmin-angular-seed-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// // The warn palette is optional (defaults to red).
+// $smartadmin-angular-seed-warn: mat-palette($mat-red);
+
+// // Create the theme object (a Sass map containing all of the palettes).
+// $smartadmin-angular-seed-theme: mat-light-theme($smartadmin-angular-seed-primary, $smartadmin-angular-seed-accent, $smartadmin-angular-seed-warn);
+
+// // Include theme styles for core and each component used in your app.
+// // Alternatively, you can import and @include the theme mixins for each component
+// // that you are using.
+// @include angular-material-theme($smartadmin-angular-seed-theme);

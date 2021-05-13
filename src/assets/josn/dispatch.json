@@ -1,0 +1,100 @@
+{
+    "data": [
+        { 
+            "no": "1",
+            "DispatchID": "ASS9000516",
+            "CarNumber":"",
+            "DispatchDate": "2020-02-20",
+            "DispatchFulfillDate":[null],
+            "status": ["1","5"],
+            "DispatchProgress": "尚未執行",
+            "DispatchPrice": [null],
+            "Payment":[null],
+            "PreDispatchPrice":"3000"        
+        },
+        { 
+            "no": "2",
+            "DispatchID": "ASS9000336",
+            "CarNumber":"BTW-584",
+            "DispatchDate": "2020-02-25",
+            "DispatchFulfillDate":"2020-02-25 10:15",
+            "status": ["3","3"],
+            "DispatchProgress": "執行完畢",
+            "DispatchPrice": "3000",
+            "Payment":"已完成",
+            "PreDispatchPrice":"3000"        
+        },
+        { 
+            "no": "3",
+            "DispatchID": "ASS9000355",
+            "CarNumber":"BTW-564",
+            "DispatchDate": "2020-02-25",
+            "DispatchFulfillDate": "2020-02-25 14:20",
+            "status": ["3","4"],
+            "DispatchProgress": "執行完畢",
+            "DispatchPrice": "2000",
+            "Payment":"未完成",
+            "PreDispatchPrice":"2000"        
+        },
+        { 
+            "no": "4",
+            "DispatchID": "ASS9000425",
+            "CarNumber":"BTW-524",
+            "DispatchDate": "2020-02-25",
+            "DispatchFulfillDate":"2020-02-25 10:15",
+            "status": ["4","4"],
+            "DispatchProgress": "異常",
+            "DispatchPrice": "2500",
+            "Payment":"未完成",
+            "PreDispatchPrice":"3000"        
+        },
+        { 
+            "no": "5",
+            "DispatchID": "ASS9000516",
+            "CarNumber":"",
+            "DispatchDate": "2020-02-20",
+            "DispatchFulfillDate":[null],
+            "status": ["1","5"],
+            "DispatchProgress": "尚未執行",
+            "DispatchPrice": [null],
+            "Payment":[null],
+            "PreDispatchPrice":"3000"        
+        },
+        { 
+            "no": "6",
+            "DispatchID": "ASS9000336",
+            "CarNumber":"BTW-584",
+            "DispatchDate": "2020-02-25",
+            "DispatchFulfillDate":"2020-02-25 10:15",
+            "status": ["3","3"],
+            "DispatchProgress": "執行完畢",
+            "DispatchPrice": "3000",
+            "Payment":"已完成",
+            "PreDispatchPrice":"3000"        
+        },
+        { 
+            "no": "7",
+            "DispatchID": "ASS9000355",
+            "CarNumber":"BTW-564",
+            "DispatchDate": "2020-02-25",
+            "DispatchFulfillDate": "2020-02-25 14:20",
+            "status": ["3","4"],
+            "DispatchProgress": "執行完畢",
+            "DispatchPrice": "2000",
+            "Payment":"未完成",
+            "PreDispatchPrice":"2000"        
+        },
+        { 
+            "no": "8",
+            "DispatchID": "ASS9000425",
+            "CarNumber":"BTW-524",
+            "DispatchDate": "2020-02-25",
+            "DispatchFulfillDate":"2020-02-25 10:15",
+            "status": ["4","4"],
+            "DispatchProgress": "異常",
+            "DispatchPrice": "2500",
+            "Payment":"未完成",
+            "PreDispatchPrice":"3000"        
+        }
+    ]
+}

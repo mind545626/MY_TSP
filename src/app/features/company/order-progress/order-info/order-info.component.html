@@ -1,0 +1,335 @@
+<div class="my-form">
+    <div id="content" class="result-container">
+        <p-breadcrumb id="breadcrumb" [model]="items" [home]="home"></p-breadcrumb>
+    </div>
+    <div id="content" class="result-container result-color">
+        <form class="form-horizontal">
+            <div class="card">
+                <div class="title">
+                    <span>訂單資料</span>
+                    <!-- <div class="btn-right">
+                        <a routerLink="/company/order-progress/modify-order">
+                            <button id="left-btn" type="button" class="btn btn-org btn-lg"><i
+                                    class="fa fa-lg fa-fw fa-pencil-square-o"></i>編輯訂單</button>
+                        </a>
+                        <button type="button" class="btn btn-primary btn-lg" (click)="goBack()"><i
+                                class="fa fa-lg fa-fw fa-arrow-right"></i>返回</button>
+                    </div> -->
+                </div>
+                <div class="form-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">基本資料</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th class="col-2">訂單編號</th>
+                                <td class="col-10">{{ Code }}</td>
+                            </tr>
+                            <tr>
+                                <th>合約編號</th>
+                                <td>
+                                  <a  (click)="getContractId()"
+                                        style="color: #136a50">{{ ContractCode }}</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>申請日期</th>
+                                <td>{{ ApplyDateTime }}</td>
+                            </tr>
+                            <tr>
+                                <th>申請單位</th>
+                                <td>{{ CorporateName }}</td>
+                            </tr>
+                            <tr>
+                                <th>事業別</th>
+                                <td>{{ CareerType }}&#xA0;>&#xA0;{{ CareerSubType }}</td>
+                            </tr>
+                            <tr>
+                                <th>聯絡人</th>
+                                <td>{{ ContactPerson }}</td>
+                            </tr>
+                            <tr>
+                                <th>聯絡電話</th>
+                                <td>{{ ContactPhoneNumber }}</td>
+                            </tr>
+                            <tr>
+                                <th>聯絡人手機</th>
+                                <td>{{ ContactMobilePhone }}</td>
+                            </tr>
+                            <tr>
+                                <th>管制編號</th>
+                                <td>{{ ControlNumber }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">清運資料</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>清運車號</th>
+                                <td>{{ CarPlate }}</td>
+                            </tr>
+                            <tr>
+                                <th>收集頻率</th>
+                                <td>{{ CollectFrequency }}&#xA0; ; &#xA0;{{ CollectWeekDay }}</td>
+                            </tr>
+                            <tr [ngSwitch]="AcceptableAmount">
+                                <th>允收量</th>
+                                <td *ngSwitchCase="null"></td>
+                                <td *ngSwitchDefault>{{ AcceptableAmount }} /公斤</td>
+                            </tr>
+                            <tr>
+                                <th>申請廢棄物類型</th>
+                                <td>{{ ApplyWasteType }}類  {{ ApplyWasteTypeName }}</td>
+                            </tr>
+                            <tr>
+                                <th>清運地址</th>
+                                <td>{{ ClearAddress }}</td>
+                            </tr>
+                            <tr>
+                                <th>廢棄物貯存地點</th>
+                                <td>{{ WasteStoragePlace }}</td>
+                            </tr>
+                            <!-- 預估改在各資料表欄位 -->
+                            <!-- <tr>
+                                <th>廢棄物數量預估(重量)/月</th>
+                                <td>1,300 KG</td>
+                            </tr>
+                            <tr>
+                                <th>廢棄物數量預估(桶)/月</th>
+                                <td>3 桶</td>
+                            </tr> -->
+                            <tr>
+                                <th>處理狀態</th>
+                                <td>
+                                  <button [class]="'OLstatus-'+ProcessStatus">
+                                      {{ ProcessStatusName }}
+                                  </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>交易狀態</th>
+                                <td>
+                                  <button [class]="'OLstatus-'+TransactionStatus" [ngSwitch]="TransactionStatus">
+                                    <p *ngSwitchCase="true">
+                                      正常
+                                    </p>
+                                    <p *ngSwitchCase="false">
+                                      停止
+                                    </p>
+                                    <p *ngSwitchDefault>
+                                    </p>
+                                  </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>付款狀況</th>
+                                <td>
+                                  <button [class]="'OLstatus-'+PaymentStatus" [ngSwitch]="PaymentStatus">
+                                    <p *ngSwitchCase="true">
+                                      已完成
+                                    </p>
+                                    <p *ngSwitchCase="false">
+                                      未完成
+                                    </p>
+                                    <p *ngSwitchDefault>
+                                    </p>
+                                  </button>
+                                </td>
+                            </tr>
+                            <tr *ngIf="NotConfrom">
+                              <th>不符圖片</th>
+                              <td>
+                                  <button class="OLstatus-1" (click)="showNotConfromphoto()">
+                                      查看照片
+                                  </button>
+                                  <!-- <p-button label="查看照片" styleClass="p-button-success p-button-sm" (click)="showNotConfromphoto()">
+                                  </p-button> -->
+                              </td>
+                            </tr>
+                            <tr>
+                                <th>完成日期</th>
+                                <td>{{ CompleteDateTime }}</td>
+                            </tr>
+                            <tr *ngIf="Complete">
+                                <th>完成圖片</th>
+                                <td>
+                                    <button class="OLstatus-1" (click)="showCompletephoto()">
+                                      查看照片
+                                    </button>
+                                    <!-- <p-button label="查看照片" styleClass="p-button-success p-button-sm" (click)="showCompletephoto()">
+                                    </p-button> -->
+                                    <!-- <button type="button"
+                                        class="btn btn-primary justify-content-center align-items-center"
+                                        data-toggle="modal" data-target="#myModal2">查看圖片</button> -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>付款方式</th>
+                                <td>{{ PayMethod }}</td>
+                            </tr>
+                            <tr>
+                                <th>付款項目</th>
+                                <td>{{ PayItem }}</td>
+                            </tr>
+                            <tr>
+                                <th>是否同意免簽</th>
+                                <td [ngSwitch]="IsAgreeSignFree">
+                                    <p *ngSwitchCase="true">
+                                        是
+                                    </p>
+                                    <p *ngSwitchCase="false">
+                                        否
+                                    </p>
+                                    <p *ngSwitchDefault>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>退水費、妥善處理記錄、派送三聯單</th>
+                                <td [ngSwitch]="IsNeedRecord">
+                                    <p *ngSwitchCase="true">
+                                        是
+                                    </p>
+                                    <p *ngSwitchCase="false">
+                                        否
+                                    </p>
+                                    <p *ngSwitchDefault>
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table">
+                        <colgroup>
+                            <col style="width: 15%">
+                            <col style="width: 55%">
+                            <col style="width: 15%">
+                            <col style="width: 15%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th colspan="4">其他需求項目</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tbodyTh">
+                                <th>需求項目</th>
+                                <th>需求內容</th>
+                                <th>數量(個)</th>
+                                <th>單價(元)</th>
+                            </tr>
+                            <ng-template pTemplate="body" ngFor let-ProvideEquip [ngForOf]="ProvideEquip" let-i="index">
+                              <tr>
+                                  <td>{{ i+1 }}.</td>
+                                  <td>{{ ProvideEquip.QuoteProvideEquipName }}</td>
+                                  <td>{{ ProvideEquip.Qty }}</td>
+                                  <td>{{ ProvideEquip.Price }}</td>
+                              </tr>
+                            </ng-template>
+                        </tbody>
+                    </table>
+                    <table class="table">
+                        <colgroup>
+                            <!-- <col style="width: 10%"> -->
+                            <col style="width: 12%">
+                            <col style="width: 18%">
+                            <col style="width: 14%">
+                            <col style="width: 14%">
+                            <col style="width: 14%">
+                            <col style="width: 14%">
+                            <col style="width: 14%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th colspan="7">廢棄物列表</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tbodyTh">
+                                <!-- <th>項次</th> -->
+                                <th>廢棄物代碼</th>
+                                <th>廢棄物名稱</th>
+                                <th>廢棄物性質</th>
+                                <th>預估申請量(月)</th>
+                                <th>實際申請量(月)</th>
+                                <th>單位</th>
+                                <th>單價(元)</th>
+                            </tr>
+                            <!-- <ng-template pTemplate="body"  ngFor let-WasteData [ngForOf]="WasteData" let-i="index"> -->
+                              <!-- <ng-container *ngFor="let WasteData of QuoteinfoData.WasteData"> -->
+                            <tr>
+                                <!-- <td>{{ 1 }}.</td> -->
+                                <td>{{ WasteCode }}</td>
+                                <td>{{ WasteName }}</td>
+                                <td>{{ WasteStatus }}</td>
+                                <td>{{ ApplyQty }}</td>
+                                <td>{{ ActualQty }}</td>
+                                <td>{{ WasteUnit }}</td>
+                                <td>{{ Price }}</td>
+                            </tr>
+                            <!-- </ng-template> -->
+                        </tbody>
+                    </table>
+                    <!-- <table class="add-table" style="width:100%; min-width: 550px">
+                      <div class="form-group">
+                        <div class="btn-right order-right">
+                            <label class="control-label order-tall01" for="FullName">預估訂單總價：</label>
+                            <div class="ipnut-width">
+                                <input type="text" class="form-control input-text order-tall01" id="EstimatedPrice"
+                                    value={{EstimatedPrice}} readonly="readonly">
+                            </div>
+                            <label class="control-label order-tall02" for="FullName">實際訂單總價：</label>
+                            <div class="ipnut-width">
+                                <input type="text" class="form-control input-text order-tall02" id="ActualPrice"
+                                    value={{ActualPrice}} readonly="readonly">
+                            </div>
+                        </div>
+                    </div>
+                  </table> -->
+                    <div class="form-group row">
+                        <div class="btn-right order-right">
+                            <label class="control-label order-tall01" for="FullName">預估訂單總價：</label>
+                            <div class="ipnut-width">
+                                <input type="text" class="form-control input-text order-tall01" id="ApplyTotalPrice"
+                                    value={{ApplyTotalPrice}} readonly="readonly">
+                            </div>
+                            <label class="control-label order-tall02" for="FullName">實際訂單總價：</label>
+                            <div class="ipnut-width">
+                                <input type="text" class="form-control input-text order-tall02" id="ActualTotalPrice"
+                                    value={{ActualTotalPrice}} readonly="readonly">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="justify-content-center btn-center">
+
+                        <button type="button" class="btn btn-primary btn-lg" (click)="goBack()">
+                          <i class="fa fa-lg fa-fw fa-arrow-right"></i>返回</button>
+
+                        <button *ngIf="pencil_btn" id="left-btn" type="button" class="btn btn-org btn-lg" (click)="getOrderId()">
+                          <i class="fa fa-lg fa-fw fa-pencil-square-o"></i>編輯訂單</button>
+
+                      </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<p-toast position="bottom-right"></p-toast>
+
+<div id="progressSpinner" class="background-black" *ngIf="progressSpinner">
+  <div class="progress-spinner">
+    <p-progressSpinner class="customProgress"></p-progressSpinner>
+  </div>
+</div>

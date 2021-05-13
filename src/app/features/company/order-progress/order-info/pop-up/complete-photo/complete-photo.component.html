@@ -1,0 +1,14 @@
+<table class="table">
+  <colgroup>
+    <col style="width: 100%">
+  </colgroup>
+  <tbody>
+    <tr *ngFor="let items of Paths">
+      <td style="text-align: center;">
+        <img src="{{ downloadUrl }}{{ items }}"
+        width="100%"
+        alt="完成照片">
+      </td>
+    </tr>
+  </tbody>
+</table>

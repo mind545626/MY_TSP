@@ -1,0 +1,26 @@
+<div class="my-form">
+    <div id="content" class="result-container">
+        <p-breadcrumb id="breadcrumb" [model]="items" [home]="home"></p-breadcrumb>
+    </div>
+    <div id="content" class="result-container result-color">
+        <div class="card">
+            <div class="title">
+                <span>車輛管理列表</span>
+                <div class="btn-right">
+                    <a routerLink="/clean/clean-cars/modify-car">
+                        <button type="button" class="btn btn-success btn-lg"><i
+                                class="fa fa-lg fa-fw fa-file-text"></i>新增車輛</button>
+                    </a>
+                </div>
+            </div>
+            <mat-tab-group mat-align-tabs="start" class="tab-top">
+
+                <mat-tab label="我的車輛列表(24)">
+                    <app-all-cars></app-all-cars>
+                </mat-tab>
+
+            </mat-tab-group>
+            <p class="p-Browse">建議使用Google chrome瀏覽器，以達到最佳瀏覽效果。</p>
+        </div>
+    </div>
+</div>

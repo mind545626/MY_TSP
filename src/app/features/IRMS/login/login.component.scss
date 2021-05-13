@@ -1,0 +1,376 @@
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0px;
+  bottom: 0px;
+  font-family: Poppins-Regular, sans-serif;
+}
+
+header > img {
+  height: 110%;
+  width: auto;
+  padding: 1rem;
+}
+
+.wrapper {
+  padding: 0 25%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login {
+  &__logo {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 3vh;
+  }
+
+  &__title {
+    text-align: center;
+    color: #136a50;
+    font-weight: 600;
+    margin: 0 0 20px;
+    letter-spacing: 1px;
+  }
+  &__subtitle {
+    margin-left: 5px;
+    letter-spacing: 2px;
+  }
+
+  &__button {
+    margin: 0 auto;
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    border: 0;
+    outline: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    background: #136a50;
+    color: #fff;
+    transition: all 0.5s ease;
+    -webkit-appearance: none;
+
+    &:hover,
+    &:focus {
+      background: darken(#136a50, 8%);
+    }
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}
+
+.field-wrap {
+  width: 100%;
+}
+
+mat-label {
+  color: rgba(#136a50, 0.8);
+}
+
+input {
+  color: #000;
+  &:focus {
+    color: #a0b3b0;
+  }
+}
+
+::ng-deep.mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: rgba(#000, 0.5) !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: rgba(#000, 0.5) !important;
+}
+
+.lang-container {
+  display: inline-flex;
+  align-items: center;
+  .fa-flag {
+    color: #7e7e7e;
+    margin-right: 5px;
+  }
+}
+
+.getpassword {
+  color: rgba(#136a50, 0.5) !important;
+  padding-top: 4%;
+  padding-bottom: 2%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+#main-height {
+  height: 100%;
+}
+
+#container-height {
+  position: absolute;
+  width: 100%; //定位後脫離文件流   不自動繼承父元素的寬高
+  top: 0px;
+  right: 0px;
+  // login頁面高度調整
+  bottom: -5.4rem;
+}
+
+.btnGroup {
+  display: flex;
+  justify-content: center;
+  button {
+    margin: 10px;
+    &:last-child {
+      background: #88ca35;
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+      &:hover,
+      &:focus {
+        background: darken(#88ca35, 8%);
+      }
+    }
+  }
+}
+
+.loginBtn {
+  margin: 10px auto;
+}
+
+.card-img-style {
+  // display: center;
+  width: 35%;
+  margin: 1rem auto;
+}
+.card-footer-style {
+  padding: 1.75rem 1.25rem;
+}
+
+.card-footer-style:last-child {
+  border-radius: 0 0 calc(0.25rem - 1px) calc(0.25rem - 1px);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  border-radius: 1rem;
+  margin: 1rem auto;
+  padding: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.container-login {
+  background-image: url("/assets/img/IRMS/IRMSbackground.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#card-fff {
+  margin: 0px;
+  background: rgba(#fff, 1);
+  box-shadow: 0 0px 10px 4px rgba(#13232f, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 576px) {
+  mat-label {
+    font-size: 1rem;
+  }
+  .login {
+    &__button {
+      font-size: 0.9rem;
+    }
+  }
+  .field-wrap {
+    font-size: 0.9rem;
+  }
+
+  inout {
+    font-size: 0.75rem;
+  }
+}
+@media screen and (min-width: 577px) and (max-width: 768px) {
+  mat-label {
+    font-size: 1rem;
+  }
+  .login {
+    &__button {
+      font-size: 1rem;
+    }
+  }
+  .field-wrap {
+    font-size: 1rem;
+  }
+
+  inout {
+    font-size: 0.9rem;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  mat-label {
+    font-size: 1rem;
+  }
+  .login {
+    &__button {
+      font-size: 1rem;
+    }
+  }
+  .field-wrap {
+    font-size: 1rem;
+  }
+
+  inout {
+    font-size: 0.9rem;
+  }
+}
+@media screen and (min-width: 993px) and (max-width: 1120px) {
+  mat-label {
+    font-size: 1.1rem;
+  }
+  .login {
+    &__button {
+      font-size: 1.1rem;
+    }
+  }
+  .field-wrap {
+    font-size: 1.1rem;
+  }
+
+  inout {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  mat-label {
+    font-size: 1.2rem;
+  }
+  .login {
+    &__button {
+      font-size: 1.2rem;
+    }
+  }
+  .field-wrap {
+    font-size: 1.2rem;
+  }
+
+  inout {
+    font-size: 1.2rem;
+  }
+}
+
+.button-org {
+  margin: 0;
+  font-size: 14px;
+  color: #136a50;
+  margin-top: unset !important;
+  background-color: #ffffff !important;
+  border: #ffffff !important;
+}
+
+.button-org:hover {
+  margin: 0;
+  font-size: 14px;
+  color: #136a50;
+  margin-top: unset !important;
+  background-color: #ffffff !important;
+  border: #ffffff !important;
+}
+
+.button-org:active {
+  margin: 0;
+  font-size: 14px;
+  color: #136a50;
+  margin-top: unset !important;
+  background-color: #ffffff !important;
+  border: #ffffff !important;
+}
+
+body .ui-button.ui-button-icon-only {
+  width: 1.5em;
+}
+
+.center {
+  margin: 0 auto;
+  text-align: center;
+}
+
+span {
+  i {
+    transform: scale(1.2);
+    margin-left: 0.5em;
+  }
+}
+
+// .btn_t {
+//   flex-direction: row | row-reverse | column | column-reverse;
+// }
+
+.background-black {
+  z-index: 998;
+  background-color: rgba(10, 10, 10, 0.65);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 999;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  .progress-spinner {
+    position: fixed;
+    opacity: 1;
+    z-index: 999;
+    overflow: show;
+    margin: auto;
+    width: 2em;
+    height: 2em;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+@keyframes ui-progress-spinner-color {
+  100%,
+  0% {
+    stroke: #ffffff;
+  }
+  40% {
+    stroke: #ffffff;
+  }
+  66% {
+    stroke: #ffffff;
+  }
+  80%,
+  90% {
+    stroke: #ffffff;
+  }
+}

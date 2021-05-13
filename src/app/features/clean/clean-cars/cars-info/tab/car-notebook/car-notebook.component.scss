@@ -1,0 +1,35 @@
+.ptable-header {
+    text-align: left;
+    margin-left: -1em !important;
+    padding-left: 0.75rem;
+}
+
+.p-button-success {
+    margin-top: unset !important;
+    background-color: #5179d1 !important;
+    border: #5179d1 !important;
+}
+
+.p-button-warning {
+    margin-top: unset !important;
+    background-color: #ff4454 !important;
+    border: #ff4454 !important;
+}
+
+.p-button-layout {
+    margin-top: unset !important;
+    background-color: #3bac4e !important;
+    border: #3bac4e !important;
+}
+
+.p-button-org {
+    margin-top: unset !important;
+    background-color: #fd7e14 !important;
+    border: #fd7e14 !important;
+}
+
+.not-con {
+    white-space: nowrap; //禁止td換行
+    overflow: hidden; //隱藏X,Y滾動條
+    text-overflow: ellipsis; //將顯示不完的以...顯示
+}

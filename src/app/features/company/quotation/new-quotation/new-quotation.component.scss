@@ -1,0 +1,141 @@
+@import "src/app/features/company/order-progress/new-order/new-order.component.scss";
+
+.CareerSelsct {
+  p-dropdown {
+    &:nth-child(1) {
+      width: 50%;
+    }
+    &:nth-child(2) {
+      width: 50%;
+      margin-left: 10px;
+    }
+  }
+}
+.addressSelsct {
+  .d-flex {
+    input {
+      width: 30%;
+    }
+    p-dropdown {
+      width: 40%;
+      margin-left: 10px;
+    }
+  }
+}
+.addressInput {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.orderfrequency {
+  p-dropdown {
+    width: 50%;
+    &:nth-child(2) {
+      margin-left: 10px;
+    }
+  }
+}
+
+small {
+  color: #ff4454;
+  text-align: left;
+}
+.small-style {
+  text-align: left;
+}
+
+.boxshadow {
+  // border: 1px solid #aaa;
+  box-shadow: 0 0 5px #aaa;
+}
+
+.p-button-add {
+  margin-top: unset !important;
+  color: #ffffff;
+  background-color: #3bac4e !important;
+  border: #3bac4e !important;
+}
+
+// :host ::ng-deep .p-dialog .product-image {
+//   width: 150px;
+//   margin: 0 auto 2rem auto;
+//   display: block;
+// }
+
+.card .form-container {
+  table {
+    min-height: unset;
+  }
+}
+
+.btn-certer {
+  text-align: center;
+}
+.thisbtn-right {
+  float: right;
+  margin-right: 2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.add-table {
+  background-color: #fafafa !important;
+  width: 100%;
+}
+
+
+.btn-center {
+  margin: 0 auto;
+  text-align: center;
+  button:nth-child(2) {
+    margin-left: 10px;
+  }
+}
+
+
+.background-black {
+  z-index: 998;
+  background-color:rgba(10, 10, 10, 0.65);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 999;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  .progress-spinner {
+    position: fixed;
+    opacity: 1;
+    z-index: 999;
+    overflow: show;
+    margin: auto;
+    width: 2em;
+    height: 2em;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+@keyframes ui-progress-spinner-color {
+  100%,
+  0% {
+    stroke: #ffffff;
+  }
+  40% {
+    stroke: #ffffff;
+  }
+  66% {
+    stroke: #ffffff;
+  }
+  80%,
+  90% {
+    stroke: #ffffff;
+  }
+}
+
+
