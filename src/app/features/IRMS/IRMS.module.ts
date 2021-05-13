@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { routing } from './IRMS-routing';
+import { routing } from './TSP-routing';
 
 
 @NgModule({
@@ -8,4 +8,4 @@ import { routing } from './IRMS-routing';
     routing,
   ]
 })
-export class IrmsModule { }
+export class TSPModule { }

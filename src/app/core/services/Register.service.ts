@@ -28,31 +28,31 @@ export class RegisterService {
 
   //地址與事業別下拉選單
   getSysCodeDropDown(Type: SysCodeInput): Observable<any> {
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.IrmsFESysCodeUrl, Type);
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFESysCodeUrl, Type);
   }
   getSysCode2LevelDropDown(Type: SysCodeInput): Observable<any> {
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.IrmsFESysCode2LevelUrl, Type);
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFESysCode2LevelUrl, Type);
   }
   getAddressDropDown(): Observable<any> {
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.IrmsFEAddressPartUrl, '');
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEAddressPartUrl, '');
   }
 
 
   // 申請事業會員
   addCreateCorporate(RegisterData: Customer): Observable<any> {
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.IrmsFECreateCorporateUrl, RegisterData);
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFECreateCorporateUrl, RegisterData);
   }
   // 取得暫時會員資料(修改審核不通過)
   getTempCorporate(Id: Key): Observable<any> {
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.IrmsFETempCorporateUrl, Id);
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFETempCorporateUrl, Id);
   }
   // 修改暫時會員資料
   UpdateTempCorporate(ModifyRegisterData: Customer): Observable<any> {
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.IrmsFEUpdateTempCorporateUrl, ModifyRegisterData);
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEUpdateTempCorporateUrl, ModifyRegisterData);
   }
   // 修改事業單位
   getUpdateCorporate(Userdata: Customer): Observable<any> {
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.IrmsFEUpdateCorporateUrl, Userdata);
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEUpdateCorporateUrl, Userdata);
   }
 
 }

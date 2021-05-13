@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-// import { LoginModule } from './features/IRMS/login/login.module';
+// import { LoginModule } from './features/TSP/login/login.module';
 
-import { PageNotFoundComponent } from './features/IRMS/page-not-found/page-not-found.component';
-import { IndexComponent } from './features/IRMS/index/index.component';
-import { RegisterComponent } from './features/IRMS/register/register.component';
-import { LoginComponent } from './features/IRMS/login/login.component';
-import { MemberCheckComponent } from './features/IRMS/member-check/member-check.component';
+import { PageNotFoundComponent } from './features/TSP/page-not-found/page-not-found.component';
+import { IndexComponent } from './features/TSP/index/index.component';
+import { RegisterComponent } from './features/TSP/register/register.component';
+import { LoginComponent } from './features/TSP/login/login.component';
+import { MemberCheckComponent } from './features/TSP/member-check/member-check.component';
 import { MainLayoutComponent } from './features/main-layout/main-layout.component';
-import { CleanRegisterComponent } from './features/IRMS/clean-register/clean-register.component';
-import { ProcessingRegisterComponent } from './features/IRMS/processing-register/processing-register.component';
+import { CleanRegisterComponent } from './features/TSP/clean-register/clean-register.component';
+import { ProcessingRegisterComponent } from './features/TSP/processing-register/processing-register.component';
 
-import { ModifyRegisterComponent } from './features/IRMS/modify/modify-register/modify-register.component';
-import { ModifyProcessingRegisterComponent } from './features/IRMS/modify/modify-processing-register/modify-processing-register.component';
-import { ModifyCleanRegisterComponent } from './features/IRMS/modify/modify-clean-register/modify-clean-register.component';
-import { ModifyPasswordCheckComponent } from './features/IRMS/modify/modify-password-check/modify-password-check.component';
+import { ModifyRegisterComponent } from './features/TSP/modify/modify-register/modify-register.component';
+import { ModifyProcessingRegisterComponent } from './features/TSP/modify/modify-processing-register/modify-processing-register.component';
+import { ModifyCleanRegisterComponent } from './features/TSP/modify/modify-clean-register/modify-clean-register.component';
+import { ModifyPasswordCheckComponent } from './features/TSP/modify/modify-password-check/modify-password-check.component';
 import { AuthGuard } from './auth/auth.guard';
 import { CorporateGuard } from './auth/corporate.guard';
 import { WasteDealGuard } from './auth/waste-deal.guard';

@@ -22,26 +22,26 @@ $status_false: #dc3545;
     background-position: center;
 }
 .carousel-item:nth-of-type(1) {
-    background-image: url(/assets/img/portfolio/IRMS01.png);
+    background-image: url(/assets/img/portfolio/TSP01.png);
 }
 .carousel-item:nth-of-type(2) {
-    background-image: url(/assets/img/portfolio/IRMS02.png);
+    background-image: url(/assets/img/portfolio/TSP02.png);
 }
 .carousel-item:nth-of-type(3) {
-    background-image: url(/assets/img/portfolio/IRMS03.png);
+    background-image: url(/assets/img/portfolio/TSP03.png);
 }
 
 @media screen and (max-width: 450px) {
     .carousel-item:nth-of-type(1) {
-        background-image: url(/assets/img/portfolio/IRMS-SM-01.png);
+        background-image: url(/assets/img/portfolio/TSP-SM-01.png);
     }
     .carousel-item:nth-of-type(2) {
-        background-image: url(/assets/img/portfolio/IRMS-SM-02.png);
+        background-image: url(/assets/img/portfolio/TSP-SM-02.png);
     }
     .carousel-item:nth-of-type(3) {
-        background-image: url(/assets/img/portfolio/IRMS-SM-03.png);
+        background-image: url(/assets/img/portfolio/TSP-SM-03.png);
     }
-    .IRMS-style {
+    .TSP-style {
         // -webkit-box-sizing: border-box;
         // -moz-box-sizing: border-box;
         //      box-sizing: border-box;
@@ -175,7 +175,7 @@ $status_false: #dc3545;
     .carousel-caption {
         display: block;
     }
-    .IRMS-style {
+    .TSP-style {
         position: absolute;
         margin-top: 10rem;
         margin-left: 1.2rem;
@@ -189,7 +189,7 @@ $status_false: #dc3545;
     .carousel-caption {
         display: block;
     }
-    .IRMS-style {
+    .TSP-style {
         position: absolute;
         margin-top: 12rem;
         margin-left: 2rem;
@@ -202,7 +202,7 @@ $status_false: #dc3545;
     .carousel-caption {
         display: block;
     }
-    .IRMS-style {
+    .TSP-style {
         // -webkit-box-sizing: border-box;
         // -moz-box-sizing: border-box;
         //      box-sizing: border-box;
@@ -219,7 +219,7 @@ $status_false: #dc3545;
     .carousel-caption {
         display: block;
     }
-    .IRMS-style {
+    .TSP-style {
         position: absolute;
         margin-top: 15rem;
         margin-left: 2rem;
@@ -232,7 +232,7 @@ $status_false: #dc3545;
     .carousel-caption {
         display: block;
     }
-    .IRMS-style {
+    .TSP-style {
         position: absolute;
         margin-top: 15rem;
         margin-left: 2rem;
@@ -245,7 +245,7 @@ $status_false: #dc3545;
     .carousel-caption {
         display: block;
     }
-    .IRMS-style {
+    .TSP-style {
         position: absolute;
         margin-top: 15rem;
         margin-left: 8rem;

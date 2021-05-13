@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
   progressSpinner: boolean;
   ProgressSpinnerDlg
 
-  // http://192.168.89.17:8012/IRMSAPI/Captcha/GetCaptcha
+  // http://192.168.89.17:8012/TSPAPI/Captcha/GetCaptcha
 
   constructor(
     private fb: FormBuilder,
@@ -215,9 +215,9 @@ export class LoginComponent implements OnInit {
 
   getUrl() {
     if (window.location.href.indexOf("220.134.112.17") != -1) {   //外網
-      this.Url = "http://220.134.112.174:8011/IRMSAPI"
+      this.Url = "http://220.134.112.174:8011/TSPAPI"
     } else {   //內網
-      this.Url = "/IRMSAPI";
+      this.Url = "/TSPAPI";
     }
     //console.info(' url ' , this.Url+this.router.url);
     return this.Url;

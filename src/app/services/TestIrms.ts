@@ -1,4 +1,4 @@
-export interface TestIrms {
+export interface TestTSP {
   id: number;
   name: string;
 }

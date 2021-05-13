@@ -7,14 +7,14 @@ import { Table } from 'primeng/table';
 
 // -------------API伺服器頁面-------------
 import { FileList } from '@app/core/models/user';
-import { FEBillboard, FENews, BaseResult, FEBillboardDetail, FENewsDetail } from '@app/services/TestIrms';
-import { TestIrmsService } from '@app/core/services/TestIrms.service';
+import { FEBillboard, FENews, BaseResult, FEBillboardDetail, FENewsDetail } from '@app/services/TestTSP';
+import { TestTSPService } from '@app/core/services/TestTSP.service';
 // ---------------------------------
 
 // -------------載用彈窗-------------
 import { DialogService } from 'primeng/dynamicdialog';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
-import { FEBillboardComponent } from '@app/features/IRMS/index/pop-up/FEBillboard/FEBillboard.component';
+import { FEBillboardComponent } from '@app/features/TSP/index/pop-up/FEBillboard/FEBillboard.component';
 import { FENewsComponent } from './pop-up/FENews/FENews.component';
 import { CreateContactComponent } from '@app/shared/my-dialog/CreateContact/CreateContact.component';
 // import { DynamicDialogConfig } from 'primeng/dynamicdialog';
@@ -78,7 +78,7 @@ export class IndexComponent implements OnInit {
   @ViewChild('dt1', { static: false }) table1: Table;
 
   constructor(
-    private MyIrmsService: TestIrmsService,
+    private MyTSPService: TestTSPService,
     private fb: FormBuilder,
     // -------------載用彈窗-------------
     public dialogService: DialogService,
@@ -92,7 +92,7 @@ export class IndexComponent implements OnInit {
     $("html, body").animate({ scrollTop: 0 }, "slow");
 
    // 表一讀取時間動畫結束與欄位資料
-    this.MyIrmsService.getBaseResultToBillboard().subscribe(data =>
+    this.MyTSPService.getBaseResultToBillboard().subscribe(data =>
       {
         // console.log(data,'getBaseResultToBillboard');
         this.FEBillboard = data.body;
@@ -106,7 +106,7 @@ export class IndexComponent implements OnInit {
 
     // 原接法
     // this.getFEBillboard();
-    // this.MyIrmsService.getBaseResultToBillboard().then(data => {
+    // this.MyTSPService.getBaseResultToBillboard().then(data => {
     //   this.FEBillboard = data.body;
     //   if (data.body === null) {
     //     this.FEBillboard = []
@@ -124,7 +124,7 @@ export class IndexComponent implements OnInit {
     ];
 
     // 用虛擬伺服器的寫法
-    // this.MyIrmsService.getFEBillboard().then(data => {
+    // this.MyTSPService.getFEBillboard().then(data => {
     //   this.datasource = data;
     // });
 
@@ -141,7 +141,7 @@ export class IndexComponent implements OnInit {
 
     // 表二讀取時間動畫結束與欄位資料
 
-    this.MyIrmsService.getBaseResultToNews().subscribe(data =>
+    this.MyTSPService.getBaseResultToNews().subscribe(data =>
       {
         this.FENews = data.body;
         if (data.body === null) {

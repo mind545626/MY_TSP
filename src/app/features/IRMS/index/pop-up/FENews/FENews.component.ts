@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 
 // -------------API伺服器頁面-------------
-import { FENews } from '@app/services/TestIrms';
-// import { TestIrmsService } from '@app/core/services/TestIrms.service';
+import { FENews } from '@app/services/TestTSP';
+// import { TestTSPService } from '@app/core/services/TestTSP.service';
 // ---------------------------------
 
 import { Location } from '@angular/common';
@@ -25,7 +25,7 @@ export class FENewsComponent implements OnInit {
 
   constructor(
     // -------------API伺服器頁面-------------
-    // private MyIrmsService: TestIrmsService,
+    // private MyTSPService: TestTSPService,
     public refFENews: DynamicDialogRef,
     public configFENews: DynamicDialogConfig,
     // ---------------------------------

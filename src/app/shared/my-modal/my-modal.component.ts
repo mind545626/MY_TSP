@@ -6,8 +6,8 @@ import { Customer, Order } from '@app/services/customer';
 import { CustomerService } from '@app/services/customerservice';
 
 // -------------API伺服器頁面-------------
-import { FEBillboardDetail, FENewsDetail, BaseResult } from '@app/services/TestIrms';
-import { TestIrmsService } from '@app/core/services/TestIrms.service';
+import { FEBillboardDetail, FENewsDetail, BaseResult } from '@app/services/TestTSP';
+import { TestTSPService } from '@app/core/services/TestTSP.service';
 import { ActivatedRoute } from '@angular/router';
 // ---------------------------------
 
@@ -37,7 +37,7 @@ export class MyModalComponent implements OnInit {
 
   // -------------API伺服器頁面-------------
   FEBillboardDetail: FEBillboardDetail[];
-  // hero: TestIrms;
+  // hero: TestTSP;
   FENewsDetail: FENewsDetail[];
   // ---------------------------------
 
@@ -47,7 +47,7 @@ export class MyModalComponent implements OnInit {
 
   constructor(
     // -------------API伺服器頁面-------------
-    private MyIrmsService: TestIrmsService,
+    private MyTSPService: TestTSPService,
     private route: ActivatedRoute,
     // ---------------------------------
     private customerService: CustomerService,
@@ -64,11 +64,11 @@ export class MyModalComponent implements OnInit {
 
 
     // -------------API伺服器頁面-------------
-    // this.MyIrmsService.getBaseResultToBillboardDetail().then(data => {
+    // this.MyTSPService.getBaseResultToBillboardDetail().then(data => {
     //   this.FEBillboardDetail = data.body;
     // });
 
-    // this.MyIrmsService.getBaseResultToNewsDetail().then(data => {
+    // this.MyTSPService.getBaseResultToNewsDetail().then(data => {
     //   this.FENewsDetail = data.body;
     // });
     // ---------------------------------

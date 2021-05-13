@@ -96,7 +96,7 @@ export class RegisterComponent implements OnInit {
   // })
 
   // constructor(
-  //   private MyIrmsService: TestIrmsService,
+  //   private MyTSPService: TestTSPService,
   //   private fb: FormBuilder,
   //   // -------------載用彈窗-------------
   //   public dialogService: DialogService,

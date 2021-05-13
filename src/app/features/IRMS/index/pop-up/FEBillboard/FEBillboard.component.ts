@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 import { HttpClientService } from "@app/core/services/HttpClientService";
 
 // -------------API伺服器頁面-------------
-import { FEBillboard } from '@app/services/TestIrms';
+import { FEBillboard } from '@app/services/TestTSP';
 import { FileList } from '@app/core/models/user';
 import { UrlService } from "@app/core/services/Url.service";
-// import { TestIrmsService } from '@app/core/services/TestIrms.service';
+// import { TestTSPService } from '@app/core/services/TestTSP.service';
 // ---------------------------------
 
 import { Location } from '@angular/common';
@@ -39,7 +39,7 @@ export class FEBillboardComponent implements OnInit {
     protected router: Router,
     private httpService: HttpClientService,
     // -------------API伺服器頁面-------------
-    // private MyIrmsService: TestIrmsService,
+    // private MyTSPService: TestTSPService,
     // private route: ActivatedRoute,
     public refFEBillboard: DynamicDialogRef,
     public configFEBillboard: DynamicDialogConfig,

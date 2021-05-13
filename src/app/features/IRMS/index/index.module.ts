@@ -12,13 +12,13 @@ import { RouterModule } from '@angular/router';
 // import { FEBillboardDetailComponent } from './febillboard-detail/febillboard-detail.component';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { DialogModule } from 'primeng/dialog';
-import { FEBillboardComponent } from '@app/features/IRMS/index/pop-up/FEBillboard/FEBillboard.component';
+import { FEBillboardComponent } from '@app/features/TSP/index/pop-up/FEBillboard/FEBillboard.component';
 import { FENewsComponent } from './pop-up/FENews/FENews.component';
 // ------------------------------------
 
 // ------------------載入伺服器------------------
 import { CustomerService } from '@app/services/customerservice';
-import { TestIrmsService } from '@app/core/services/TestIrms.service';
+import { TestTSPService } from '@app/core/services/TestTSP.service';
 // ---------------------------------------------
 
 @NgModule({
@@ -47,7 +47,7 @@ import { TestIrmsService } from '@app/core/services/TestIrms.service';
     ],
     providers: [
         CustomerService,
-        TestIrmsService
+        TestTSPService
     ],
     entryComponents: [
     FEBillboardComponent,
