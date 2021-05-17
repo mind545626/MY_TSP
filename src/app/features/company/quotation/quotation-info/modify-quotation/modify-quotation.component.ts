@@ -102,7 +102,7 @@ export class ModifyQuotationComponent implements OnInit {
   PayItemType: FESysCode2Level[];
   CareerType: FESysCode2Level[];
 
-  // 估價單欄位
+  // TSP_Quotation欄位
   SelectIsTrue: FESysCodeBoolean[];
   SelectApplyWasteType: FESysCode2Level[];
 
@@ -133,7 +133,7 @@ export class ModifyQuotationComponent implements OnInit {
   updataQuote: Quote;
   WasteCodename: string
 
-  // 估價單參數
+  // TSP_Quotation參數
   CodeKey: CodeKey;
 
   WasteSysCode: FESysCode[];
@@ -234,7 +234,7 @@ export class ModifyQuotationComponent implements OnInit {
             this.WasteStoragePlace$ = of(<SelectItem[]>data.body);
           });
 
-          // 從參數獲取Code估價單號
+          // 從參數獲取CodeTSP_Quotation號
           this.activatedRoute.queryParams.subscribe(params => {
             this.CodeKey = {
               Code: params['id'],
@@ -242,7 +242,7 @@ export class ModifyQuotationComponent implements OnInit {
             }
           });
 
-          // 獲取估價單資料
+          // 獲取TSP_Quotation資料
           if (this.QuoteinfoData == null) {
             this.CorporateService.getQuoteDetai(this.CodeKey).subscribe((data: ResponseQuoteinfoData) => {
               this.QuoteinfoData = data.body
@@ -268,7 +268,7 @@ export class ModifyQuotationComponent implements OnInit {
 
     this.QuoteDataForm =
       this.fb.group({
-        //報價單編號
+        //TSP_Quotation編號
         Code: null,
         //顧客統編
         CustomerId: this.UserData.body.TaxIDNumber,
@@ -317,8 +317,8 @@ export class ModifyQuotationComponent implements OnInit {
     this.items = [
       { icon: 'pi pi-home', label: '我的會員首頁', routerLink: '/company/order-progress' },
       { label: '估價管理列表', routerLink: '/company/quotation' },
-      { label: '估價單資料' },
-      { label: '編輯估價單' },
+      { label: 'TSP_Quotation資料' },
+      { label: '編輯TSP_Quotation' },
     ];
 
     this.cols = [

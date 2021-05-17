@@ -23,24 +23,24 @@ export class CorporateService {
     private httpService: HttpClientService,) { }
 
 
-  // 取得估價單列表
+  // 取得TSP_Quotation列表
   getQuoteList(Keyword: SearchQuoteList): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEGetQuoteListUrl, Keyword);
   }
-  // 建立估價單
+  // 建立TSP_Quotation
   CreateQuote(Quote: Quote): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFECreateQuoteUrl, Quote);
   }
-  // 修改估價單
+  // 修改TSP_Quotation
   addUpdateQuote(Quote: Quote): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEUpdateQuoteUrl, Quote);
   }
-  // 取得估價單明細
+  // 取得TSP_Quotation明細
   getQuoteDetai(Code: CodeKey): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEGetQuoteDetailUrl, Code);
   }
 
-  // 估價單轉合約
+  // TSP_Quotation轉合約
   CreateContract(QuoteinfoData: QuoteinfoData): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFECreateContractUrl, QuoteinfoData);
   }
@@ -53,12 +53,12 @@ export class CorporateService {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEGetContractDetailUrl, Code);
   }
 
-  // 取得訂單列表
+  // 取得TSP_Order列表
   getOrderList(Keyword: SearchOrderList): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEGetOrderListUrl, Keyword);
   }
 
-  // 取得訂單明細
+  // 取得TSP_Order明細
   getOrderDetail(Code: CodeKey): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEGetOrderDetailUrl, Code);
   }
@@ -66,11 +66,11 @@ export class CorporateService {
   getContractCodeList(TaxIDNumber: CodeKey): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEGetContractCodeListUrl, TaxIDNumber);
   }
-  // 新增訂單
+  // 新增TSP_Order
   CreateOrderUrl(CreateOrder: CreateOrder): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFECreateOrderUrl, CreateOrder);
   }
-  // 刪除訂單
+  // 刪除TSP_Order
   DeleteOrderUrl(Code: CodeKey): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEDeleteOrderUrl, Code);
   }

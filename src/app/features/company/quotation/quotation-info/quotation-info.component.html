@@ -6,7 +6,7 @@
         <form class="form-horizontal">
             <div class="card">
                 <div class="title">
-                    <span>估價單資料</span>
+                    <span>TSP_Quotation資料</span>
                     <div class="btn-right">
                         <button *ngIf="check_btn" id="left-btn2" type="button" class="btn btn-success btn-lg"
                         (click)="CreateContract()">
@@ -14,7 +14,7 @@
                         <!-- <button id="left-btn2" type="button" class="btn btn-success btn-lg" data-toggle="modal"
                             data-target="#myModal4"><i class="fa fa-lg fa-fw fa-check-square-o"></i>立即申請合約！</button> -->
                         <!-- <button id="left-btn" type="button" class="btn btn-org btn-lg" (click)="getQuotId()"><i
-                                    class="fa fa-lg fa-fw fa-pencil-square-o"></i>編輯估價單</button>
+                                    class="fa fa-lg fa-fw fa-pencil-square-o"></i>編輯TSP_Quotation</button>
                         <button type="button" class="btn btn-primary btn-lg" (click)="goBack()"><i
                                 class="fa fa-lg fa-fw fa-arrow-right"></i>返回</button> -->
                     </div>
@@ -28,7 +28,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th>估價單編號</th>
+                                <th>TSP_Quotation編號</th>
                                 <td>{{ Code }}</td>
                             </tr>
                             <tr>
@@ -316,7 +316,7 @@
                           <i class="fa fa-lg fa-fw fa-arrow-right"></i>返回</button>
 
                         <button *ngIf="pencil_btn" id="left-btn" type="button" class="btn btn-org btn-lg" (click)="getQuotId()">
-                          <i class="fa fa-lg fa-fw fa-pencil-square-o"></i>編輯估價單</button>
+                          <i class="fa fa-lg fa-fw fa-pencil-square-o"></i>編輯TSP_Quotation</button>
                       </div>
                     </div>
                         <!-- <colgroup>

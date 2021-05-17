@@ -2,13 +2,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 export const routes: Routes = [
-  // 首頁與訂單
+  // 首頁與TSP_Order
   {
     path: 'order-progress',
     loadChildren: () => import('./order-progress/order-progress.module').then(m => m.OrderProgressModule),
     data: { pageTitle: 'order-progress' }
   },
-  // 估價單
+  // TSP_Quotation
   {
     path: 'quotation',
     loadChildren: () => import('./quotation/quotation.module').then(m => m.QuotationModule),

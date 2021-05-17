@@ -157,7 +157,7 @@ export class ContractInfoComponent implements OnInit {
           this.ContactMobilePhone = this.ContractinfoData.ContactMobilePhone;
 
           this.progressSpinner = false
-          this.messageService.add({ severity: 'success', summary: '成功', detail: '估價單資料載入完畢' });
+          this.messageService.add({ severity: 'success', summary: '成功', detail: 'TSP_Quotation資料載入完畢' });
         }
       })
 
@@ -181,7 +181,7 @@ export class ContractInfoComponent implements OnInit {
     this.location.back();
   }
 
-  // 取得估價單編號
+  // 取得TSP_Quotation編號
   getQuotId() {
     // this.UserDataService.QuoteID = this.quotation[i].Code
     // 帶參數導向網頁

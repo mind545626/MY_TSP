@@ -90,7 +90,7 @@ export class NewQuotationComponent implements OnInit {
   PayItemType: FESysCode2Level[];
   CareerType: FESysCode2Level[];
 
-  // 估價單欄位
+  // TSP_Quotation欄位
   SelectIsTrue: FESysCodeBoolean[];
   SelectApplyWasteType: FESysCode2Level[];
 
@@ -236,9 +236,9 @@ export class NewQuotationComponent implements OnInit {
 
     this.QuoteDataForm =
       this.fb.group({
-        //報價單編號
+        //TSP_Quotation編號
         Id: null,
-        //報價單准許碼
+        //TSP_Quotation准許碼
         Code: null,
         //申請日期時間
         ApplyDateTime: null,

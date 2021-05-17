@@ -5,7 +5,7 @@
   <div id="content" class="result-container result-color">
     <div class="card">
       <div class="title">
-        <span>編輯估價單</span>
+        <span>編輯TSP_Quotation</span>
       </div>
       <div class="form-container">
         <div class="form-horizontal">
@@ -18,7 +18,7 @@
             <tbody>
               <tr>
                 <th class="control-label">
-                  <label for="QuotationID">估價單編號</label>
+                  <label for="QuotationID">TSP_Quotation編號</label>
                 </th>
                 <td>
                   {{Code}}
@@ -119,10 +119,10 @@
                 <td>
                   <div class="orderfrequency">
                     <div class="d-flex">
-                      <p-dropdown placeholder="請選擇訂單頻率" [options]="CollectFrequency$ | async" [required]="true"
+                      <p-dropdown placeholder="請選擇TSP_Order頻率" [options]="CollectFrequency$ | async" [required]="true"
                         inputId="CollectFrequency" formControlName="CollectFrequency">
                       </p-dropdown>
-                      <p-dropdown placeholder="請選擇訂單日期" [options]="CollectWeekDay$ | async" [required]="true"
+                      <p-dropdown placeholder="請選擇TSP_Order日期" [options]="CollectWeekDay$ | async" [required]="true"
                         inputId="CollectWeekDay" formControlName="CollectWeekDay">
                       </p-dropdown>
                     </div>
@@ -130,7 +130,7 @@
                   <small [hidden]=" !QuoteDataForm.controls.CollectFrequency.hasError('required')&&
                                                       !QuoteDataForm.controls.CollectWeekDay.hasError('required')
                                     ">
-                    必填欄位，請選擇訂單頻率與訂單日期
+                    必填欄位，請選擇TSP_Order頻率與TSP_Order日期
                   </small>
                 </td>
               </tr>
