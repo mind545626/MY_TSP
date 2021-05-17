@@ -88,7 +88,7 @@ export class ModifyOrderComponent implements OnInit {
 
   TotalPlace: number;
 
-  //建立訂單
+  //建立TSP_Order
   //  CreateOrder: CreateOrder;
 
 
@@ -190,9 +190,9 @@ export class ModifyOrderComponent implements OnInit {
 
     this.items = [
       { icon: 'pi pi-home', label: '我的會員首頁', routerLink: '/company/order-progress' },
-      { label: '訂單管理列表', routerLink: '/company/order-progress' },
-      { label: '訂單資料' },
-      { label: '編輯訂單' },
+      { label: 'TSP_Order管理列表', routerLink: '/company/order-progress' },
+      { label: 'TSP_Order資料' },
+      { label: '編輯TSP_Order' },
     ];
 
     // 重新計算價格
@@ -423,14 +423,14 @@ export class ModifyOrderComponent implements OnInit {
       //   .subscribe((data: ResponseObj) => {
       //     console.log(data, 'this is ResponseObj data')
       //     if (data.code === "000") {
-      //       this.messageService.add({ severity: 'success', summary: '成功', detail: '訂單申請成功' });
+      //       this.messageService.add({ severity: 'success', summary: '成功', detail: 'TSP_Order申請成功' });
       //       setTimeout(() => {
       //         this.router.navigateByUrl('/company/order-progress');
       //       }, 2000);
       //       this.progressSpinner = false
       //     }
       //     else {
-      //       this.messageService.add({ severity: 'error', summary: '失敗', detail: '訂單申請失敗，請檢查連線是否正常' });
+      //       this.messageService.add({ severity: 'error', summary: '失敗', detail: 'TSP_Order申請失敗，請檢查連線是否正常' });
       //       $("html, body").animate({ scrollTop: 0 }, "slow");
       //       this.progressSpinner = false
       //     }

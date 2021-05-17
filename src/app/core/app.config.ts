@@ -53,13 +53,13 @@ export const config: any = {
   TSPForgetPasswordCheckUrl: "api/FEUserInfo/ForgetPasswordCheck",
 
 
-  // 取得估價單列表
+  // 取得TSP_Quotation列表
   TSPFEGetQuoteListUrl: "api/FECorporate/GetQuoteList",
-  // 建立估價單
+  // 建立TSP_Quotation
   TSPFECreateQuoteUrl: "api/FECorporate/CreateQuote",
-  // 修改估價單
+  // 修改TSP_Quotation
   TSPFEUpdateQuoteUrl: "api/FECorporate/UpdateQuote",
-  // 取得估價單明細
+  // 取得TSP_Quotation明細
   TSPFEGetQuoteDetailUrl: "api/FECorporate/GetQuoteDetail",
 
 
@@ -71,15 +71,15 @@ export const config: any = {
   TSPFEGetContractDetailUrl: "api/FECorporate/GetContractDetail",
 
 
-  // 取得訂單列表
+  // 取得TSP_Order列表
   TSPFEGetOrderListUrl: "api/FECorporate/GetOrderList",
-  // 取得訂單明細
+  // 取得TSP_Order明細
   TSPFEGetOrderDetailUrl: "api/FECorporate/GetOrderDetail",
   // 取得合約明細列表
   TSPFEGetContractCodeListUrl: "api/FECorporate/GetContractCodeList",
-  // 新增訂單
+  // 新增TSP_Order
   TSPFECreateOrderUrl: "api/FECorporate/CreateOrder",
-  // 刪除訂單
+  // 刪除TSP_Order
   TSPFEDeleteOrderUrl: "api/FECorporate/DeleteOrder",
 
 }

@@ -127,7 +127,7 @@ export class QuotationInfoComponent implements OnInit {
     this.UserData = JSON.parse(localStorage.getItem('UserData'))
 
     setTimeout(() => {
-      // 從參數獲取Code估價單號
+      // 從參數獲取CodeTSP_Quotation號
       this.activatedRoute.queryParams.subscribe(params => {
         this.CodeKey = {
           Code: params['id'],
@@ -220,11 +220,11 @@ export class QuotationInfoComponent implements OnInit {
               }
           }
 
-          // 確認估價單並改變狀態
+          // 確認TSP_Quotation並改變狀態
           this.change_status_form =
             this.fb.group({
               id: null,
-              //報價單編號
+              //TSP_Quotation編號
               Code: null,
               //顧客統編
               CustomerId: this.UserData.body.TaxIDNumber,
@@ -235,19 +235,19 @@ export class QuotationInfoComponent implements OnInit {
             });
 
 
-          this.messageService.add({ severity: 'success', summary: '成功', detail: '估價單資料載入完畢' });
+          this.messageService.add({ severity: 'success', summary: '成功', detail: 'TSP_Quotation資料載入完畢' });
 
           this.progressSpinner = false;
         }
         else if (data.code === '401') {
-          this.messageService.add({ severity: 'error', summary: '失敗', detail: '估價單號錯誤，3秒後將返回估價管理列表' });
+          this.messageService.add({ severity: 'error', summary: '失敗', detail: 'TSP_Quotation號錯誤，3秒後將返回估價管理列表' });
           // 3秒後跳轉
           setTimeout(() => {
             this.router.navigateByUrl('/company/quotation');
           }, 3000);
         }
         else {
-          this.messageService.add({ severity: 'error', summary: '失敗', detail: '估價單資料取得失敗，3秒後將返回估價管理列表' });
+          this.messageService.add({ severity: 'error', summary: '失敗', detail: 'TSP_Quotation資料取得失敗，3秒後將返回估價管理列表' });
           // 3秒後跳轉
           setTimeout(() => {
             this.router.navigateByUrl('/company/quotation');
@@ -264,7 +264,7 @@ export class QuotationInfoComponent implements OnInit {
     this.items = [
       { icon: 'pi pi-home', label: '我的會員首頁', routerLink: '/company/order-progress' },
       { label: '估價管理列表', routerLink: '/company/quotation' },
-      { label: '估價單資料' },
+      { label: 'TSP_Quotation資料' },
     ];
 
   }

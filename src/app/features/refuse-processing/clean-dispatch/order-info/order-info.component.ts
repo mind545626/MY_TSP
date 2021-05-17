@@ -11,7 +11,7 @@ export class OrderInfoComponent implements OnInit {
 
   items: MenuItem[];
 
-  constructor(private location: Location) { 
+  constructor(private location: Location) {
 
   }
   ngOnInit() {
@@ -21,7 +21,7 @@ export class OrderInfoComponent implements OnInit {
     this.items = [
       { icon: 'pi pi-home', label: '我的會員首頁', routerLink: '/refuse-processing/clean-dispatch' },
       { label: '派車單管理列表', routerLink: '/refuse-processing/clean-dispatch'},
-      { label: '訂單資料' },
+      { label: 'TSP_Order資料' },
     ];
   }
   goBack(): void {

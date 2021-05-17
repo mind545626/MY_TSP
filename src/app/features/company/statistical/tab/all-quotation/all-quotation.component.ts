@@ -56,7 +56,7 @@ export class AllQuotationComponent implements OnInit {
 
     this.cols = [
       { field: 'no', header: '項次', width: '75px' },
-      { field: 'QuotationID', header: '估價單號', width: '180px' },
+      { field: 'QuotationID', header: 'TSP_Quotation號', width: '180px' },
       { field: 'CleanAddress', header: '清運地址', width: '300px' },
       { field: 'QuotationDateApply', header: '申請估價日期', width: '180px' },
       { field: 'QuotationType', header: '申請估價類型', width: '180px' },

@@ -48,9 +48,9 @@ export class AbnormalComponent implements OnInit {
   constructor(private customerService: CustomerService, private fb: FormBuilder) {
 
     this.querydate = [
-      { name: '近半年內訂單', value: '近半年內訂單' },
-      { name: '近一年內訂單', value: '近一年內訂單' },
-      { name: '所有訂單', value: '所有訂單' },
+      { name: '近半年內TSP_Order', value: '近半年內TSP_Order' },
+      { name: '近一年內TSP_Order', value: '近一年內TSP_Order' },
+      { name: '所有TSP_Order', value: '所有TSP_Order' },
     ];
   }
   ngOnInit() {
