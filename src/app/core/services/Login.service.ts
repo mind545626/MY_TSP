@@ -27,33 +27,33 @@ export class LoginService {
 
   // 使用者信箱驗證開通(審核通過)
   // getUserActive(Id: Key): Observable<any> {
-  //   return this.httpService.httpPost(config.IrmsUserInfoUrl + '/UserActive', Id);
+  //   return this.httpService.httpPost(config.TSPUserInfoUrl + '/UserActive', Id);
   // }
   getUserActive(Id: Key): Observable<any> {
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.IrmsUserInfoUserActiveUrl, Id);
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPUserInfoUserActiveUrl, Id);
   }
 
   // 登入
   // getUserLogin(User: Login): Observable<any> {
-  //   return this.httpService.httpPost(config.IrmsUserInfoUrl + '/UserLogin', User);
+  //   return this.httpService.httpPost(config.TSPUserInfoUrl + '/UserLogin', User);
   // }
   getUserLogin(User: Login): Observable<any> {
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.IrmsUserInfoUserLoginUrl, User);
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPUserInfoUserLoginUrl, User);
   }
 
   // 忘記密碼
   submitForgetPassword(User: ForgetPassword): Observable<any> {
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.IrmsForgetPasswordUrl, User);
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPForgetPasswordUrl, User);
   }
 
   // 更新密碼
   updataForgetPassword(newPassword: newPassword): Observable<any> {
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.IrmsForgetPasswordUpdateUrl, newPassword);
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPForgetPasswordUpdateUrl, newPassword);
   }
 
   // 更新密碼驗證
   getForgetPasswordCheck(Id: Key): Observable<any> {
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.IrmsForgetPasswordCheckUrl, Id);
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPForgetPasswordCheckUrl, Id);
   }
 
 

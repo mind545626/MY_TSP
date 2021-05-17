@@ -1,13 +1,13 @@
 // const PROXY_CONFIG = [
 //   {
-//     "/IRMSapi": {
+//     "/TSPapi": {
 //       "target": "http://192.168.89.17:8011/",
 //       "secure": false,
 //       "changeOrigin": true
 //     }
 //   },
 //   {
-//     "/IRMSAPI": {
+//     "/TSPAPI": {
 //       "target": "http://192.168.89.17:8012/",
 //       "secure": false,
 //       "changeOrigin": true
@@ -16,7 +16,7 @@
 // ]
 
 const PROXY_CONFIG = {
-  "/IRMSAPI": {
+  "/TSPAPI": {
     "target": "http://192.168.89.17:8011",
     "secure": false,
     "changeOrigin": true

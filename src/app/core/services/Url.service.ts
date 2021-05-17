@@ -16,10 +16,10 @@ export class UrlService {
   getUrl() {
 
     if (window.location.href.indexOf("220.134.112.17") != -1) {   //外網
-      this.Url = "http://220.134.112.174:8011/IRMSAPI/";
+      this.Url = "http://220.134.112.174:8011/TSPAPI/";
     } else {   //內網
-      // this.Url = "http://192.168.89.17:8011/IRMSAPI/api/";
-      this.Url = "/IRMSAPI/";
+      // this.Url = "http://192.168.89.17:8011/TSPAPI/api/";
+      this.Url = "/TSPAPI/";
     }
     //console.info(' url ' , this.Url+this.router.url);
     return this.Url;

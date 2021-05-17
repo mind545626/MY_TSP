@@ -14,7 +14,7 @@ import { DynamicDialogRef } from 'primeng/dynamicdialog';
   // ---------------------------------
 })
 export class AppComponent {
-  title = 'IRMS';
+  title = 'TSP';
   refContact: DynamicDialogRef;
 
   constructor(

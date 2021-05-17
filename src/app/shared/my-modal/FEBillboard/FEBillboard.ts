@@ -6,8 +6,8 @@
 // import { CustomerService } from '@app/services/customerservice';
 
 // // -------------API伺服器頁面-------------
-// import { FEBillboardDetail, FENewsDetail, BaseResult } from '../../../services/TestIrms';
-// import { TestIrmsService } from '@app/core/services/TestIrms.service';
+// import { FEBillboardDetail, FENewsDetail, BaseResult } from '../../../services/TestTSP';
+// import { TestTSPService } from '@app/core/services/TestTSP.service';
 // import { ActivatedRoute } from '@angular/router';
 // // ---------------------------------
 
@@ -39,7 +39,7 @@
 
 //   // -------------API伺服器頁面-------------
 //   FEBillboardDetail: FEBillboardDetail[];
-//   // hero: TestIrms;
+//   // hero: TestTSP;
 //   FENewsDetail: FENewsDetail[];
 //   // ---------------------------------
 
@@ -49,7 +49,7 @@
 
 //   constructor(
 //     // -------------API伺服器頁面-------------
-//     private MyIrmsService: TestIrmsService,
+//     private MyTSPService: TestTSPService,
 //     private route: ActivatedRoute,
 //     // ---------------------------------
 //     private customerService: CustomerService,
@@ -66,11 +66,11 @@
 
 
 //     // -------------API伺服器頁面-------------
-//     // this.MyIrmsService.getBaseResultToBillboardDetail().then(data => {
+//     // this.MyTSPService.getBaseResultToBillboardDetail().then(data => {
 //     //   this.FEBillboardDetail = data.body;
 //     // });
 
-//     // this.MyIrmsService.getBaseResultToNewsDetail().then(data => {
+//     // this.MyTSPService.getBaseResultToNewsDetail().then(data => {
 //     //   this.FENewsDetail = data.body;
 //     // });
 //     // ---------------------------------

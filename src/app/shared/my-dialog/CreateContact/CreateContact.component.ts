@@ -10,7 +10,7 @@ import * as $ from 'jquery';
 
 // -------------API伺服器頁面-------------
 import { RegisterService } from '@app/core/services/Register.service';
-import { TestIrmsService } from '@app/core/services/TestIrms.service';
+import { TestTSPService } from '@app/core/services/TestTSP.service';
 // ---------------------------------
 
 import { Location } from '@angular/common';
@@ -47,7 +47,7 @@ export class CreateContactComponent implements OnInit {
     private messageService: MessageService,
     public refContact: DynamicDialogRef,
     public configContact: DynamicDialogConfig,
-    private TestIrmsService: TestIrmsService,
+    private TestTSPService: TestTSPService,
     private location: Location,
     private fb: FormBuilder,
   ) { }
@@ -107,7 +107,7 @@ export class CreateContactComponent implements OnInit {
     this.progressSpinner = true
     let ContactData = this.newContactForm.value
     if (this.newContactForm.valid) {
-      this.TestIrmsService.createContactUs(ContactData)
+      this.TestTSPService.createContactUs(ContactData)
         .subscribe((data: ResponseObj) => {
           if (data.code === "000") {
             this.messageService.add({ severity: 'success', summary: '成功', detail: '送出成功，平台將盡快回覆您' });

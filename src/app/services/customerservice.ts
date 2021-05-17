@@ -98,20 +98,20 @@ export class CustomerService {
 // import { Observable, of } from 'rxjs';
 // import { catchError, map, tap } from 'rxjs/operators';
 
-// import { TestIrms, BaseResult, FEBillboard, FENews, FEBillboardDetail, FENewsDetail } from '../../app/services/TestIrms';
+// import { TestTSP, BaseResult, FEBillboard, FENews, FEBillboardDetail, FENewsDetail } from '../../app/services/TestTSP';
 // import { MessageService } from '../message.service';
 
 
 // @Injectable({ providedIn: 'root' })
-// export class TestIrmsService {
+// export class TestTSPService {
 
-//   private IrmsFEBillboardUrl = 'http://192.168.89.17:8011/IRMSAPI/api/FEBillboard/GetBillboardList';
-//   private IrmsFEBillboardDetailUrl = 'http://192.168.89.17:8011/IRMSAPI/api/FEBillboard/GetBillboardDetail';
+//   private TSPFEBillboardUrl = 'http://192.168.89.17:8011/TSPAPI/api/FEBillboard/GetBillboardList';
+//   private TSPFEBillboardDetailUrl = 'http://192.168.89.17:8011/TSPAPI/api/FEBillboard/GetBillboardDetail';
 
-//   private IrmsFENewsUrl = 'http://192.168.89.17:8011/IRMSAPI/api/FENews/GetNewsList';
-//   private IrmsFENewsDetailUrl = 'http://192.168.89.17:8011/IRMSAPI/api/FENews/GetNewsDetail';
+//   private TSPFENewsUrl = 'http://192.168.89.17:8011/TSPAPI/api/FENews/GetNewsList';
+//   private TSPFENewsDetailUrl = 'http://192.168.89.17:8011/TSPAPI/api/FENews/GetNewsDetail';
 
-//   private MyIrmsUrl = 'api/TestApi'; 
+//   private MyTSPUrl = 'api/TestApi'; 
 
 //   httpOptions = {
 //     headers: new HttpHeaders({
@@ -137,7 +137,7 @@ export class CustomerService {
 //   getBaseResultToBillboard() {
 //     const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
 //     const body = { title: 'Angular POST Request Example' };
-//     return this.http.post<any>(this.IrmsFEBillboardUrl, body, { headers })
+//     return this.http.post<any>(this.TSPFEBillboardUrl, body, { headers })
 //       .toPromise()
 //       .then(data => { return <BaseResult<FEBillboard>>data; });
 //   }
@@ -146,7 +146,7 @@ export class CustomerService {
 //   getBaseResultToBillboardDetail() {
 //     const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
 //     const body = { title: 'Angular POST Request Example' };
-//     return this.http.post<any>(this.IrmsFEBillboardDetailUrl, body, { headers })
+//     return this.http.post<any>(this.TSPFEBillboardDetailUrl, body, { headers })
 //       .toPromise()
 //       .then(data => { return <BaseResult<FEBillboardDetail>>data; });
 //   }
@@ -155,7 +155,7 @@ export class CustomerService {
 //   getBaseResultToNews() {
 //     const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
 //     const body = { title: 'Angular POST Request Example' };
-//     return this.http.post<any>(this.IrmsFENewsUrl, body, { headers })
+//     return this.http.post<any>(this.TSPFENewsUrl, body, { headers })
 //       .toPromise()
 //       .then(data => { return <BaseResult<FENews>>data; });
 //   }
@@ -163,63 +163,63 @@ export class CustomerService {
 //   getBaseResultToNewsDetail() {
 //     const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
 //     const body = { title: 'Angular POST Request Example' };
-//     return this.http.post<any>(this.IrmsFENewsDetailUrl, body, { headers })
+//     return this.http.post<any>(this.TSPFENewsDetailUrl, body, { headers })
 //       .toPromise()
 //       .then(data => { return <BaseResult<FENewsDetail>>data; });
 //   }
 
 
-//   getHeroes(): Observable<TestIrms[]> {
-//     return this.http.get<TestIrms[]>(this.MyIrmsUrl)
+//   getHeroes(): Observable<TestTSP[]> {
+//     return this.http.get<TestTSP[]>(this.MyTSPUrl)
 //   }
 
-//   getHeroNo404<Data>(id: number): Observable<TestIrms> {
-//     const url = `${this.MyIrmsUrl}/?id=${id}`;
-//     return this.http.get<TestIrms[]>(url)
+//   getHeroNo404<Data>(id: number): Observable<TestTSP> {
+//     const url = `${this.MyTSPUrl}/?id=${id}`;
+//     return this.http.get<TestTSP[]>(url)
 //       .pipe(
 //         map(heroes => heroes[0]),
 //         tap(h => {
 //           const outcome = h ? `fetched` : `did not find`;
 //           this.log(`${outcome} hero id=${id}`);
 //         }),
-//         catchError(this.handleError<TestIrms>(`getHero id=${id}`))
+//         catchError(this.handleError<TestTSP>(`getHero id=${id}`))
 //       );
 //   }
 
-//   getHero(id: number): Observable<TestIrms> {
-//     const url = `${this.MyIrmsUrl}/${id}`;
-//     return this.http.get<TestIrms>(url).pipe(
+//   getHero(id: number): Observable<TestTSP> {
+//     const url = `${this.MyTSPUrl}/${id}`;
+//     return this.http.get<TestTSP>(url).pipe(
 //       tap(_ => this.log(`fetched hero id=${id}`)),
-//       catchError(this.handleError<TestIrms>(`getHero id=${id}`))
+//       catchError(this.handleError<TestTSP>(`getHero id=${id}`))
 //     );
 //   }
 
-//   searchHeroes(term: string): Observable<TestIrms[]> {
+//   searchHeroes(term: string): Observable<TestTSP[]> {
 //     if (!term.trim()) {
 //       return of([]);
 //     }
-//     return this.http.get<TestIrms[]>(`${this.MyIrmsUrl}/?name=${term}`).pipe(
+//     return this.http.get<TestTSP[]>(`${this.MyTSPUrl}/?name=${term}`).pipe(
 //       tap(x => x.length ?
 //         this.log(`found heroes matching "${term}"`) :
 //         this.log(`no heroes matching "${term}"`)),
-//       catchError(this.handleError<TestIrms[]>('searchHeroes', []))
+//       catchError(this.handleError<TestTSP[]>('searchHeroes', []))
 //     );
 //   }
 
-//   addHero(testpost: TestIrms): Observable<TestIrms> {
-//     return this.http.post<TestIrms>(this.MyIrmsUrl, testpost, this.httpOptions)
+//   addHero(testpost: TestTSP): Observable<TestTSP> {
+//     return this.http.post<TestTSP>(this.MyTSPUrl, testpost, this.httpOptions)
 //   }
 
-//   deleteHero(testpost: TestIrms | number): Observable<TestIrms> {
+//   deleteHero(testpost: TestTSP | number): Observable<TestTSP> {
 //     const id = typeof testpost === 'number' ? testpost : testpost.id;
-//     const url = `${this.MyIrmsUrl}/${id}`;
+//     const url = `${this.MyTSPUrl}/${id}`;
 
-//     return this.http.delete<TestIrms>(url, this.httpOptions)
+//     return this.http.delete<TestTSP>(url, this.httpOptions)
 //   }
 
 
-//   updateHero(testpost: TestIrms): Observable<any> {
-//     return this.http.put(this.MyIrmsUrl, testpost, this.httpOptions)
+//   updateHero(testpost: TestTSP): Observable<any> {
+//     return this.http.put(this.MyTSPUrl, testpost, this.httpOptions)
 //   }
 
 //   /**
@@ -240,6 +240,6 @@ export class CustomerService {
 //   }
 
 //   private log(message: string) {
-//     this.messageService.add(`IrmsService: ${message}`);
+//     this.messageService.add(`TSPService: ${message}`);
 //   }
 // }

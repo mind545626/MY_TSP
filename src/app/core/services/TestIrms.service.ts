@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 // import { catchError, map, tap } from 'rxjs/operators';
 
-import { TestIrms, BaseResult, FEBillboard, FENews, FEBillboardDetail, FENewsDetail } from '@app/services/TestIrms';
+import { TestTSP, BaseResult, FEBillboard, FENews, FEBillboardDetail, FENewsDetail } from '@app/services/TestTSP';
 
 import { HttpClientService } from "@app/core/services/HttpClientService";
 import { config } from "@app/core/app.config";
@@ -15,13 +15,13 @@ import { CreateContactUs } from '../models/case';
 // @Injectable({ providedIn: 'root' })
 @Injectable()
 
-export class TestIrmsService {
+export class TestTSPService {
 
-  // private IrmsFEBillboardUrl = 'http://192.168.89.17:8011/IRMSAPI/api/FEBillboard/GetBillboardList';
-  // private IrmsFEBillboardDetailUrl = 'http://192.168.89.17:8011/IRMSAPI/api/FEBillboard/GetBillboardDetail';
-  // private IrmsFENewsUrl = 'http://192.168.89.17:8011/IRMSAPI/api/FENews/GetNewsList';
-  // private IrmsFENewsDetailUrl = 'http://192.168.89.17:8011/IRMSAPI/api/FENews/GetNewsDetail';
-  // private MyIrmsUrl = 'api/TestApi';
+  // private TSPFEBillboardUrl = 'http://192.168.89.17:8011/TSPAPI/api/FEBillboard/GetBillboardList';
+  // private TSPFEBillboardDetailUrl = 'http://192.168.89.17:8011/TSPAPI/api/FEBillboard/GetBillboardDetail';
+  // private TSPFENewsUrl = 'http://192.168.89.17:8011/TSPAPI/api/FENews/GetNewsList';
+  // private TSPFENewsDetailUrl = 'http://192.168.89.17:8011/TSPAPI/api/FENews/GetNewsDetail';
+  // private MyTSPUrl = 'api/TestApi';
 
   // httpOptions = {
   //   headers: new HttpHeaders({
@@ -49,13 +49,13 @@ export class TestIrmsService {
   getBaseResultToBillboard(): Observable<any> {
     // const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
     // const body = { title: 'Angular POST Request Example' };
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.IrmsFEBillboardListUrl, "");      // 公告列表
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEBillboardListUrl, "");      // 公告列表
   }
 
   // getBaseResultToBillboard() {
   // const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
   // const body = { title: 'Angular POST Request Example' };
-  // return this.http.post<any>(this.IrmsFEBillboardUrl, body, { headers })
+  // return this.http.post<any>(this.TSPFEBillboardUrl, body, { headers })
   //   .toPromise()
   //   .then(data => { return <BaseResult<FEBillboard>>data; });
   // }
@@ -66,27 +66,27 @@ export class TestIrmsService {
 
   // 公告內容
   getBaseResultToBillboardDetail(): Observable<any> {
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.IrmsFEBillboardDetailUrl, "");
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEBillboardDetailUrl, "");
   }
   // getBaseResultToBillboardDetail() {
   //   const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
   //   const body = { title: 'Angular POST Request Example' };
-  //   return this.http.post<any>(this.IrmsFEBillboardDetailUrl, body, { headers })
+  //   return this.http.post<any>(this.TSPFEBillboardDetailUrl, body, { headers })
   //     .toPromise()
   //     .then(data => { return <BaseResult<FEBillboardDetail>>data; });
   // }
 
   // 消息列表
   getBaseResultToNews(): Observable<any> {
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.IrmsFENewsListUrl, "");
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFENewsListUrl, "");
   }
   // 消息內容
   getBaseResultToNewsDetail(): Observable<any> {
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.IrmsFENewsDetailUrl, "");
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFENewsDetailUrl, "");
   }
   // 新增聯絡我們
   createContactUs(ContactData: CreateContactUs): Observable<any> {
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.IrmsContactUrl, ContactData);
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPContactUrl, ContactData);
   }
 }
 

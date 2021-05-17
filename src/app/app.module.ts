@@ -11,13 +11,13 @@ import { FooterComponent } from './shared/footer/footer.component';
 // import { MatFormFieldModule } from "@angular/material/form-field";
 import { MyModalComponent } from './shared/my-modal/my-modal.component';
 
-import { IndexModule } from './features/IRMS/index/index.module';
-import { LoginModule } from './features/IRMS/login/login.module';
-import { RegisterModule } from './features/IRMS/register/register.module';
-import { CleanRegisterModule } from './features/IRMS/clean-register/clean-register.module';
-import { ProcessingRegisterModule } from './features/IRMS/processing-register/processing-register.module';
-import { PageNotFoundModule } from './features/IRMS/page-not-found/page-not-found.module';
-import { MemberCheckModule } from './features/IRMS/member-check/member-check.module';
+import { IndexModule } from './features/TSP/index/index.module';
+import { LoginModule } from './features/TSP/login/login.module';
+import { RegisterModule } from './features/TSP/register/register.module';
+import { CleanRegisterModule } from './features/TSP/clean-register/clean-register.module';
+import { ProcessingRegisterModule } from './features/TSP/processing-register/processing-register.module';
+import { PageNotFoundModule } from './features/TSP/page-not-found/page-not-found.module';
+import { MemberCheckModule } from './features/TSP/member-check/member-check.module';
 
 import { RouterModule } from '@angular/router';
 import { SidebarModule } from 'primeng/sidebar';
@@ -26,9 +26,9 @@ import { MainLayoutModule } from './features/main-layout/main-layout.module';
 // 20201125新增
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { ModifyRegisterModule } from './features/IRMS/modify/modify-register/modify-register.module';
-import { ModifyCleanRegisterModule } from './features/IRMS/modify/modify-clean-register/modify-clean-register.module';
-import { ModifyProcessingRegisterModule } from './features/IRMS/modify/modify-processing-register/modify-processing-register.module';
+import { ModifyRegisterModule } from './features/TSP/modify/modify-register/modify-register.module';
+import { ModifyCleanRegisterModule } from './features/TSP/modify/modify-clean-register/modify-clean-register.module';
+import { ModifyProcessingRegisterModule } from './features/TSP/modify/modify-processing-register/modify-processing-register.module';
 
 // -------------API伺服器頁面-------------
 
@@ -48,7 +48,7 @@ import { DialogModule } from 'primeng/dialog';
 import { UserDataService } from '@app/core/services/UserData.service';
 import { UtilsService } from './core/services/utils.service';
 import { JwtModule } from '@auth0/angular-jwt';
-import { ModifyPasswordCheckModule } from './features/IRMS/modify/modify-password-check/modify-password-check.module';
+import { ModifyPasswordCheckModule } from './features/TSP/modify/modify-password-check/modify-password-check.module';
 //-----------------------------------------
 
 @NgModule({
