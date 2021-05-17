@@ -5,7 +5,7 @@
     <div id="content" class="result-container result-color">
       <div class="card">
         <div class="title">
-            <span>新增訂單</span>
+            <span>新增TSP_Order</span>
             <!-- <div class="btn-right">
                 <button id="left-btn" type="button" class="btn btn-success btn-lg" data-toggle="modal"
                     data-target="#myModal8"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i>編輯完成</button>
@@ -25,11 +25,11 @@
                     <tbody>
                       <!-- <tr>
                             <th class="control-label">
-                                <label for="QuotationID">估價單編號</label>
+                                <label for="QuotationID">TSP_Quotation編號</label>
                             </th>
                             <td>
                                 <input type="text" class="form-control" id="QuotationID" value="QU9000845"
-                                    placeholder="估價單編號" readonly />
+                                    placeholder="TSP_Quotation編號" readonly />
                             </td>
                         </tr>
                         <tr>
@@ -93,11 +93,11 @@
                     <!-- <tbody>
                         <tr>
                             <th class="control-label">
-                                <label for="OrderID">訂單編號</label>
+                                <label for="OrderID">TSP_Order編號</label>
                             </th>
                             <td>
                                 <input type="text" class="form-control" id="OrderID" value="WW9000532"
-                                    placeholder="訂單編號" readonly />
+                                    placeholder="TSP_Order編號" readonly />
                             </td>
                         </tr>
                         <tr>
@@ -106,7 +106,7 @@
                             </th>
                             <td>
                                 <select class="form-control" id="ContractID">
-                                    <option value="">請選擇訂單合約</option>
+                                    <option value="">請選擇TSP_Order合約</option>
                                     <option>CO9055122</option>
                                     <option>CO9006150</option>
                                     <option>CO9000110</option>
@@ -507,7 +507,7 @@
                   <tr>
                       <td>
                           <div>
-                              <label for="TotalPlace">預估訂單總價</label>
+                              <label for="TotalPlace">預估TSP_Order總價</label>
                               <input type="text" class="form-control" pInputText placeholder="合計"
                                 value={{TotalPlace}} readonly />
                           </div>
@@ -521,7 +521,7 @@
                   <i class="fa fa-lg fa-fw fa-arrow-right"></i>返回
                 </button>
                 <button id="left-btn" type="submit" class="btn btn-success btn-lg" (click)="onSubmit()">
-                  <i class="fa fa-lg fa-fw fa-pencil-square-o"></i>新增訂單
+                  <i class="fa fa-lg fa-fw fa-pencil-square-o"></i>新增TSP_Order
                 </button>
               </div>
             </div>

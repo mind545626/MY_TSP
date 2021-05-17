@@ -4,8 +4,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 // import { catchError, map, tap } from 'rxjs/operators';
 
-import { TestTSP, BaseResult, FEBillboard, FENews, FEBillboardDetail, FENewsDetail } from '@app/services/TestTSP';
-
 import { HttpClientService } from "@app/core/services/HttpClientService";
 import { config } from "@app/core/app.config";
 import { MessageService } from './message.service';
@@ -16,27 +14,6 @@ import { CreateContactUs } from '../models/case';
 @Injectable()
 
 export class TestTSPService {
-
-  // private TSPFEBillboardUrl = 'http://192.168.89.17:8011/TSPAPI/api/FEBillboard/GetBillboardList';
-  // private TSPFEBillboardDetailUrl = 'http://192.168.89.17:8011/TSPAPI/api/FEBillboard/GetBillboardDetail';
-  // private TSPFENewsUrl = 'http://192.168.89.17:8011/TSPAPI/api/FENews/GetNewsList';
-  // private TSPFENewsDetailUrl = 'http://192.168.89.17:8011/TSPAPI/api/FENews/GetNewsDetail';
-  // private MyTSPUrl = 'api/TestApi';
-
-  // httpOptions = {
-  //   headers: new HttpHeaders({
-  //     'Access-Control-Allow-Origin': '*',
-  //     'cache-control': 'no-cache',
-  //     'content-length': '168',
-  //     'content-type': 'application/json; charset=utf-8',
-  //     'date': 'Mon, 30 Nov 2020 06:20:34 GMT',
-  //     'expires': '-1',
-  //     'pragma': 'no-cache',
-  //     'server': 'Microsoft-IIS/10.0',
-  //     'x-aspnet-version': '4.0.30319',
-  //     'x-powered-by': 'ASP.NET'
-  //   })
-  // };
 
   constructor(
     private UrlService: UrlService,
@@ -52,29 +29,11 @@ export class TestTSPService {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEBillboardListUrl, "");      // 公告列表
   }
 
-  // getBaseResultToBillboard() {
-  // const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
-  // const body = { title: 'Angular POST Request Example' };
-  // return this.http.post<any>(this.TSPFEBillboardUrl, body, { headers })
-  //   .toPromise()
-  //   .then(data => { return <BaseResult<FEBillboard>>data; });
-  // }
-
-  // getVisitHistory(customerid): Observable<any> {
-  //   return this.httpService.httpGet(this.UrlService.getUrl() + config.custInfoUrl + '/revisit');
-  // }
 
   // 公告內容
   getBaseResultToBillboardDetail(): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEBillboardDetailUrl, "");
   }
-  // getBaseResultToBillboardDetail() {
-  //   const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
-  //   const body = { title: 'Angular POST Request Example' };
-  //   return this.http.post<any>(this.TSPFEBillboardDetailUrl, body, { headers })
-  //     .toPromise()
-  //     .then(data => { return <BaseResult<FEBillboardDetail>>data; });
-  // }
 
   // 消息列表
   getBaseResultToNews(): Observable<any> {

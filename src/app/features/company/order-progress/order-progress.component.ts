@@ -48,7 +48,7 @@ export class OrderProgressComponent implements OnInit {
 
     this.items = [
       { icon: 'pi pi-home', label: '我的會員首頁', routerLink: '/company/order-progress' },
-      { label: '訂單管理列表' },
+      { label: 'TSP_Order管理列表' },
     ];
 
     setTimeout(() => {

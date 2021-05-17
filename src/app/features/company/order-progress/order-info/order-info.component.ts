@@ -56,7 +56,7 @@ export class OrderInfoComponent implements OnInit {
   CompleteDateTime: string;
   EstimatedPrice: any;
   ActualPrice: any;
-  //申請總價(預估價格)
+  //申請總價(EstimatePrice)
   ApplyTotalPrice: number;
   //實際總價(實際價格)
   ActualTotalPrice: number;
@@ -207,7 +207,7 @@ export class OrderInfoComponent implements OnInit {
           this.Price = this.OrderinfoData.Price;
           this.ApplyQty = this.OrderinfoData.ApplyQty;
           this.ActualQty = this.OrderinfoData.ActualQty;
-          //預估總價(預估價格)
+          //預估總價(EstimatePrice)
           this.ApplyTotalPrice = this.OrderinfoData.ApplyTotalPrice;
           //實際總價(實際價格)
           this.ActualTotalPrice = this.OrderinfoData.ActualTotalPrice;
@@ -218,7 +218,7 @@ export class OrderInfoComponent implements OnInit {
 
           this.ProvideEquip = this.OrderinfoData.ProvideEquip
 
-          // 關閉編輯訂單
+          // 關閉編輯TSP_Order
           // if (this.OrderinfoData.ProcessStatus !== '1') {
           //   this.pencil_btn = false;
           // }
@@ -239,7 +239,7 @@ export class OrderInfoComponent implements OnInit {
           }
 
           //顯示訊息
-          this.messageService.add({ severity: 'success', summary: '成功', detail: '估價單資料載入完畢' });
+          this.messageService.add({ severity: 'success', summary: '成功', detail: 'TSP_Quotation資料載入完畢' });
 
           this.progressSpinner = false
         }
@@ -251,8 +251,8 @@ export class OrderInfoComponent implements OnInit {
 
     this.items = [
       { icon: 'pi pi-home', label: '我的會員首頁', routerLink: '/company/order-progress' },
-      { label: '訂單管理列表', routerLink: '/company/order-progress' },
-      { label: '訂單資料' },
+      { label: 'TSP_Order管理列表', routerLink: '/company/order-progress' },
+      { label: 'TSP_Order資料' },
     ];
 
   }

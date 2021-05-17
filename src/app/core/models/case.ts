@@ -80,7 +80,7 @@ export interface CreateContactUs {
 
 
 
-// 提交估價單資料
+// 提交TSP_Quotation資料
 export interface ResponseQuoteData {
   body: Quote,
   isSuccess: boolean,
@@ -131,7 +131,7 @@ export interface WasteData {
 }
 //-----------
 
-// 估價單列表
+// TSP_Quotation列表
 export interface QuoteListData {
   body: QuoteList[],
   isSuccess: boolean,
@@ -169,7 +169,7 @@ export interface WasteItem {
 }
 //-----------
 
-// 取得估價單明細
+// 取得TSP_Quotation明細
 export interface ResponseQuoteinfoData {
   body: QuoteinfoData,
   isSuccess: boolean,
@@ -328,7 +328,7 @@ export interface ResponseContractinfoData {
 }
 
 
-//搜尋訂單
+//搜尋TSP_Order
 export interface SearchOrderList {
   QueryDateTimeStart: string,
   QueryDateTimeEnd: string,
@@ -336,7 +336,7 @@ export interface SearchOrderList {
   KeyWord: string,
   ProcessStatus: string
 }
-//取得訂單列表
+//取得TSP_Order列表
 export interface OrderList {
   Code: string,
   ApplyDateTime: string,
@@ -353,7 +353,7 @@ export interface OrderList {
   EstimatedPrice: number,
   ActualPrice: number
 }
-// 訂單列表
+// TSP_Order列表
 export interface OrderListData {
   body: OrderList[],
   isSuccess: boolean,
@@ -362,7 +362,7 @@ export interface OrderListData {
   response: string,
   exception: string
 }
-// 取得訂單詳細
+// 取得TSP_Order詳細
 export interface ResponseOrderinfoData {
   body: OrderinfoData,
   isSuccess: boolean,
@@ -371,7 +371,7 @@ export interface ResponseOrderinfoData {
   response: string,
   exception: string
 }
-// 訂單詳細資料
+// TSP_Order詳細資料
 export interface OrderinfoData {
   Code: string,
   ContractCode: string,
@@ -388,7 +388,7 @@ export interface OrderinfoData {
   CollectWeekDay: string,
   ApplyWasteType: string,
   ApplyWasteTypeName: string,
-  //申請總價(預估價格)
+  //申請總價(EstimatePrice)
   ApplyTotalPrice: number,
   //實際總價(實際價格)
   ActualTotalPrice: number,
@@ -399,7 +399,7 @@ export interface OrderinfoData {
   TransactionStatus: boolean,
   PaymentStatus: boolean,
   CompleteDateTime: string,
-  //預估價格
+  //EstimatePrice
   EstimatedPrice: number,
   //實際價格
   ActualPrice: number,
@@ -437,7 +437,7 @@ export interface ContractCodeListData {
 export interface ContractCodeList {
   ContractCode: string,
 }
-// 建立訂單
+// 建立TSP_Order
 export interface CreateOrder {
   ContractCode: string,
   WasteCode: string,

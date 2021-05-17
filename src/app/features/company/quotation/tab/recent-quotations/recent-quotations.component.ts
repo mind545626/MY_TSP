@@ -165,7 +165,7 @@ export class RecentQuotationsComponent implements OnInit {
 
     this.cols = [
       { field: 'no', header: '項次', width: '75px' },
-      { field: 'Code', header: '估價單號', width: '180px' },
+      { field: 'Code', header: 'TSP_Quotation號', width: '180px' },
       { field: 'ApplyWasteType', header: '申請廢棄物類型', width: '250px' },
       { field: 'ClearAddress', header: '清運地址', width: '200px' },
       { field: 'QuoteStatus', header: '估價狀態', width: '180px' },
@@ -264,7 +264,7 @@ export class RecentQuotationsComponent implements OnInit {
     return date.getFullYear() + '-' + month + '-' + day;
   }
 
-  // 取得估價單編號
+  // 取得TSP_Quotation編號
   getQuotId(Code) {
     // this.UserDataService.QuoteID = this.quotation[i].Code
     // 帶參數導向網頁

@@ -140,7 +140,7 @@ export class RecentOrdersComponent implements OnInit {
         this.ProcessStatus = data.body
       });
 
-      // 獲取訂單列表
+      // 獲取TSP_Order列表
       this.CorporateService.getOrderList(this.keyword).subscribe((data: OrderListData) => {
         this.order = data.body;
         console.log(this.order, 'this is getorderList Data')
@@ -161,12 +161,12 @@ export class RecentOrdersComponent implements OnInit {
 
     this.cols = [
       { field: 'no', header: '項次', width: '75px' },
-      { field: 'Code', header: '訂單編號', width: '180px' },
+      { field: 'Code', header: 'TSP_Order編號', width: '180px' },
       { field: 'WasteCode', header: '廢棄物項目', width: '200px' },
       { field: 'CarPlate', header: '車號', width: '150px' },
       { field: 'ClearAddress', header: '清運地址', width: '300px' },
-      { field: 'EstimatedPrice', header: '預估訂單總價', width: '150px' },
-      { field: 'ActualPrice', header: '實際訂單總價', width: '150px' },
+      { field: 'EstimatedPrice', header: '預估TSP_Order總價', width: '150px' },
+      { field: 'ActualPrice', header: '實際TSP_Order總價', width: '150px' },
 
       { field: 'ProcessStatus', header: '處理狀態', width: '180px' },
       { field: 'TransactionStatus', header: '交易狀態', width: '180px' },
@@ -263,12 +263,12 @@ export class RecentOrdersComponent implements OnInit {
       if (data.code === "000") {
         location.reload();
         setTimeout(() => {
-          this.messageService.add({ severity: 'success', summary: '成功', detail: '刪除訂單成功' });
+          this.messageService.add({ severity: 'success', summary: '成功', detail: '刪除TSP_Order成功' });
           this.progressSpinner = false
         }, 500)
       }
       else {
-        this.messageService.add({ severity: 'error', summary: '載入失敗', detail: '刪除訂單失敗' });
+        this.messageService.add({ severity: 'error', summary: '載入失敗', detail: '刪除TSP_Order失敗' });
         this.progressSpinner = false
       }
     })

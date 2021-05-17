@@ -50,9 +50,9 @@ export class AllOrdersComponent implements OnInit {
   constructor(private customerService: CustomerService, private fb: FormBuilder) {
 
     this.querydate = [
-      { name: '近半年內訂單', value: '近半年內訂單' },
-      { name: '近一年內訂單', value: '近一年內訂單' },
-      { name: '所有訂單', value: '所有訂單' },
+      { name: '近半年內TSP_Order', value: '近半年內TSP_Order' },
+      { name: '近一年內TSP_Order', value: '近一年內TSP_Order' },
+      { name: '所有TSP_Order', value: '所有TSP_Order' },
     ];
   }
   ngOnInit() {
@@ -61,13 +61,13 @@ export class AllOrdersComponent implements OnInit {
 
     this.cols = [
       { field: 'no', header: '項次', width: '75px' },
-      { field: 'OrderID', header: '訂單編號', width: '180px' },
+      { field: 'OrderID', header: 'TSP_Order編號', width: '180px' },
       { field: 'OrderDate', header: '申請日期', width: '180px' },
       { field: 'CarNumber', header: '車號', width: '150px' },
       { field: 'CleanAddress', header: '清運地址', width: '300px' },
       { field: 'OrderItems', header: '申報項目', width: '200px' },
-      { field: 'PreOrderPrice', header: '預估訂單總價', width: '150px' },
-      { field: 'OrderPrice', header: '實際訂單總價', width: '150px' },
+      { field: 'PreOrderPrice', header: '預估TSP_Order總價', width: '150px' },
+      { field: 'OrderPrice', header: '實際TSP_Order總價', width: '150px' },
       { field: 'OrderProgress', header: '處理狀態', width: '180px' },
       { field: 'Progress', header: '交易狀態', width: '180px' },
       { field: 'Payment', header: '付款狀況', width: '180px' },
