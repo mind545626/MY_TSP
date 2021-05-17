@@ -111,7 +111,7 @@ export class CustomerService {
 //   private TSPFENewsUrl = 'http://192.168.89.17:8011/TSPAPI/api/FENews/GetNewsList';
 //   private TSPFENewsDetailUrl = 'http://192.168.89.17:8011/TSPAPI/api/FENews/GetNewsDetail';
 
-//   private MyTSPUrl = 'api/TestApi'; 
+//   private MyTSPUrl = 'api/TestApi';
 
 //   httpOptions = {
 //     headers: new HttpHeaders({
