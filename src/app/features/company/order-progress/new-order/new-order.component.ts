@@ -11,7 +11,7 @@ import { Table } from 'primeng/table';
 import { Observable, of, pipe } from 'rxjs';
 
 import { RegisterService } from '@app/core/services/Register.service';
-import { CorporateService } from '@app/core/services/Corporate.service';
+import { SellerService } from '@app/core/services/Seller.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 // 載用外掛驗證器(相同輸入的代碼)
@@ -24,7 +24,7 @@ import { CodeKey, ContractCodeListData, ContractinfoData, ProvideEquip, Response
   templateUrl: './new-order.component.html',
   styleUrls: ['./new-order.component.scss'],
   providers: [MessageService],
-  // 利用它來修改theme的mat-tab-label樣式
+  // 利用它來Modify theme的mat-tab-label樣式
   encapsulation: ViewEncapsulation.None
 })
 export class NewOrderComponent implements OnInit {
@@ -32,7 +32,7 @@ export class NewOrderComponent implements OnInit {
   // 登入資料
   UserData: ResponseLoginData
 
-  CorporateName: string;
+  SellerName: string;
   CareerTypeDesc: string;
   CareerSubTypeDesc: string;
   ContactPerson: string;
@@ -57,17 +57,17 @@ export class NewOrderComponent implements OnInit {
   CodeKey: CodeKey;
   ContractCodeKey: CodeKey;
 
-  // 載入合約列表
+  // 載入TPS_Deal_List
   ContractCodeList$: Observable<SelectItem[]>
   WasteCode$: Observable<SelectItem[]>
 
-  // 合約資料
+  // TPS_Deal資料
   ContractinfoData: ContractinfoData;
   ResponseContractinfoData: ResponseContractinfoData;
   WasteData: WasteDatainfo[];
   ProvideEquip: ProvideEquip[];
 
-  // 合約欄位
+  // TPS_Deal欄位
   Code: string;
   QuoteCode: string;
   AcceptableAmount: string;
@@ -92,7 +92,7 @@ export class NewOrderComponent implements OnInit {
 
   TotalPlace: number;
 
-  //建立TSP_Order
+  //Create TSP_Order
   CreateOrder: CreateOrder;
 
 
@@ -106,7 +106,7 @@ export class NewOrderComponent implements OnInit {
     private location: Location,
     private messageService: MessageService,
     private RegisterService: RegisterService,
-    private CorporateService: CorporateService,
+    private SellerService: SellerService,
     private fb: FormBuilder,
   ) {
 
@@ -118,7 +118,7 @@ export class NewOrderComponent implements OnInit {
     // 獲取登入資料
     this.UserData = JSON.parse(localStorage.getItem('UserData'))
     // 將登入資料顯示
-    this.CorporateName = this.UserData.body.CorporateName
+    this.SellerName = this.UserData.body.SellerName
     this.CareerTypeDesc = this.UserData.body.CareerTypeDesc
     this.CareerSubTypeDesc = this.UserData.body.CareerSubTypeDesc
     this.ContactPerson = this.UserData.body.ContactPerson
@@ -138,8 +138,8 @@ export class NewOrderComponent implements OnInit {
       TaxIDNumber: this.UserData.body.TaxIDNumber,
       Code: null
     }
-    // 取得單位的合約列表
-    this.CorporateService.getContractCodeList(this.CodeKey).subscribe((data: ContractCodeListData) => {
+    // Get 單位的TPS_Deal_List
+    this.SellerService.getContractCodeList(this.CodeKey).subscribe((data: ContractCodeListData) => {
       if (data.code === "000") {
         if (data.body !== null) {
           // 轉換ContractCode型別
@@ -154,7 +154,7 @@ export class NewOrderComponent implements OnInit {
           this.progressSpinner = false
         }
         else {
-          this.messageService.add({ severity: 'error', summary: '載入失敗', detail: '請先與平台完成估價程序，並確認建立合約' });
+          this.messageService.add({ severity: 'error', summary: '載入失敗', detail: '請先與平台完成TSP_Quotation程序，並確認Create TPS_Deal' });
           this.progressSpinner = false
         }
       }
@@ -167,7 +167,7 @@ export class NewOrderComponent implements OnInit {
 
     this.OrderDataForm =
       this.fb.group({
-        // 合約編號
+        // TPS_Deal
         ContractCode: null,
         // 廢棄物代碼
         WasteCode: null,
@@ -175,26 +175,25 @@ export class NewOrderComponent implements OnInit {
         ApplyQty: null,
         // 廢棄物數量
         MonthlyQty: [null, Validators.required],
-        // 使用者ID
+        // 會員ID
         UP_UserId: this.TaxIDNumber,
         // 提供設備
         ProvideEquip: this.fb.array([this.newProvideEquip()]),
-        // 廢棄物列表內容
+        // 廢棄物_List內容
         WasteName: null,
         WasteStatus: this.WasteStatus,
         WasteStatusName: null,
         WasteUnitName: null,
         Price: null,
       });
-    // console.log(this.OrderDataForm, 'this.OrderDataForm55555555')
-    // 載入刪除設備(暫寫)
+    // 載入Delet 設備(暫寫)
     this.removeAll()
 
     $("html, body").animate({ scrollTop: 0 }, "slow");
 
     this.items = [
       { icon: 'pi pi-home', label: '我的會員首頁', routerLink: '/company/order-progress' },
-      { label: 'TSP_Order管理列表', routerLink: '/company/order-progress' },
+      { label: 'TSP_Order管理_List', routerLink: '/company/order-progress' },
       { label: '編輯TSP_Order' },
     ];
     // 重新計算價格
@@ -209,26 +208,24 @@ export class NewOrderComponent implements OnInit {
 
   deleteProduct() { }
 
-  // 載入合約資料
+  // 載入TPS_Deal資料
   loadcontract() {
     this.progressSpinner = true
 
     this.ChangeIsNull()
-    // 載入刪除設備(暫寫)
+    // 載入Delet 設備(暫寫)
     this.removeAll()
 
-    // 請求合約資料的需求欄位
+    // 請求TPS_Deal資料的需求欄位
     setTimeout(() => {
       this.ContractCodeKey = {
         TaxIDNumber: this.UserData.body.TaxIDNumber,
         Code: this.OrderDataForm.controls.ContractCode.value,
       }
-      // console.log(this.ContractCodeKey ,'this.ContractCodeKey')
       if (this.ContractCodeKey.Code !== null) {
         setTimeout(() => {
-          this.CorporateService.getContractDetail(this.ContractCodeKey).subscribe((data: ResponseContractinfoData) => {
+          this.SellerService.getContractDetail(this.ContractCodeKey).subscribe((data: ResponseContractinfoData) => {
             this.ContractinfoData = data.body;
-            // console.info(' this.QuoteinfoData :  ' , this.QuoteinfoData );
             this.ResponseContractinfoData = data;
             this.WasteData = data.body.WasteData;
             this.ProvideEquip = data.body.ProvideEquip;
@@ -237,7 +234,7 @@ export class NewOrderComponent implements OnInit {
 
             if (data.code === '000') {
               this.TaxIDNumber = this.ContractinfoData.TaxIDNumber;
-              this.CorporateName = this.ContractinfoData.CorporateName;
+              this.SellerName = this.ContractinfoData.SellerName;
               this.ContactPerson = this.ContractinfoData.ContactPerson;
               this.ContactPhoneNumber = this.ContractinfoData.ContactPhoneNumber;
               this.ControlNumber = this.ContractinfoData.ControlNumber;
@@ -249,8 +246,6 @@ export class NewOrderComponent implements OnInit {
               // 依序載入資料
               this.WasteData = this.ContractinfoData.WasteData;
               this.ProvideEquip = this.ContractinfoData.ProvideEquip;
-              // this.Code = this.ContractinfoData.Code;
-              // this.QuoteCode = this.ContractinfoData.QuoteCode;
               this.AcceptableAmount = this.ContractinfoData.AcceptableAmount;
               this.ApplyDateTime = this.ContractinfoData.ApplyDateTime;
               this.CareerType = this.ContractinfoData.CareerType;
@@ -270,14 +265,11 @@ export class NewOrderComponent implements OnInit {
               this.IsNeedRecord = this.ContractinfoData.IsNeedRecord;
               this.IsAgreeSignFree = this.ContractinfoData.IsAgreeSignFree;
 
-              // 依照array載入欄位
+              // 依照array自動載入欄位
               const dataFormGroup = this.ProvideEquip.map(data => this.fb.group(data))
               const dataFormArray = this.fb.array(dataFormGroup)
               this.OrderDataForm.setControl('ProvideEquip', dataFormArray);
 
-              // console.log(dataFormGroup)
-              // console.log(dataFormArray)
-              // console.log(this.WasteData, 'this.WasteData')
 
               // 轉換WasteData型別
               let newArray = this.WasteData.map((dataList) => {
@@ -293,7 +285,7 @@ export class NewOrderComponent implements OnInit {
               this.totalPrice()
 
               this.progressSpinner = false
-              this.messageService.add({ severity: 'success', summary: '成功', detail: '合約資料載入完畢' });
+              this.messageService.add({ severity: 'success', summary: '成功', detail: 'TPS_Deal資料載入完畢' });
             }
             else {
               this.messageService.add({ severity: 'error', summary: '載入失敗', detail: '請確認連線是否正常' });
@@ -303,7 +295,7 @@ export class NewOrderComponent implements OnInit {
         }, 500)
       }
       else {
-        this.messageService.add({ severity: 'error', summary: '載入失敗', detail: '請選擇合約' });
+        this.messageService.add({ severity: 'error', summary: '載入失敗', detail: '請選擇TPS_Deal' });
         this.progressSpinner = false
       }
 
@@ -313,7 +305,7 @@ export class NewOrderComponent implements OnInit {
 
   ChangeIsNull() {
     // this.TaxIDNumber = null;
-    this.CorporateName = null;
+    this.SellerName = null;
     this.ContactPerson = null;
     this.ContactPhoneNumber = null;
     this.ControlNumber = null;
@@ -370,7 +362,7 @@ export class NewOrderComponent implements OnInit {
     // 重新計算價格
     this.totalPrice()
   }
-  // 全部刪除
+  // 全部Delet
   removeAll(): void {
     const formArray = (this.OrderDataForm.get('ProvideEquip') as FormArray);
     while (formArray.length !== 0) {
@@ -424,7 +416,7 @@ export class NewOrderComponent implements OnInit {
       // console.log(this.CreateOrder, 'this.CreateOrder')
       // console.log(this.OrderDataForm,'this.OrderDataForm5566666')
       console.log(this.CreateOrder, 'this.OrderDataForm.value')
-      this.CorporateService.CreateOrderUrl(this.CreateOrder)
+      this.SellerService.CreateOrderUrl(this.CreateOrder)
         .subscribe((data: ResponseObj) => {
           console.log(data, 'this is ResponseObj data')
           if (data.code === "000") {
@@ -440,21 +432,6 @@ export class NewOrderComponent implements OnInit {
             this.progressSpinner = false
           }
         })
-      // this.CorporateService.CreateQuote(this.updataQuote)
-      //   .subscribe((data: ResponseObj) => {
-      //     if ( data.code === "000"){
-      //       this.messageService.add({ severity: 'success', summary: '成功', detail: '估價申請成功，平台審核中' });
-      //       setTimeout(() => {
-      //         this.router.navigateByUrl('/company/quotation');
-      //       }, 2000);
-      //       this.progressSpinner = false
-      //     }
-      //     else {
-      //       this.messageService.add({ severity: 'error', summary: '失敗', detail: '估價申請失敗，請檢查連線是否正常' });
-      //       $("html, body").animate({ scrollTop: 0 }, "slow");
-      //       this.progressSpinner = false
-      //     }
-      //   })
     }
     else {
       this.messageService.add({ severity: 'error', summary: '失敗', detail: '尚有必填欄位未填' });

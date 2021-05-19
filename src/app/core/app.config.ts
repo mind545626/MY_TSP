@@ -10,38 +10,38 @@ export const config: any = {
 
 
   // 申請事業會員
-  TSPFECreateCorporateUrl: "api/FECorporate/CreateCorporate",
-  // 取得暫時會員資料(修改審核不通過)
-  TSPFETempCorporateUrl: "api/FECorporate/GetTempCorporate",
-  // 修改暫時會員資料
-  TSPFEUpdateTempCorporateUrl: "api/FECorporate/UpdateTempCorporate",
-  // 修改事業單位
-  TSPFEUpdateCorporateUrl: "api/FECorporate/UpdateCorporate",
+  TSPFECreateSellerUrl: "api/FESeller/CreateSeller",
+  // Get 暫時會員資料(Modify 審核不通過)
+  TSPFETempSellerUrl: "api/FESeller/GetTempSeller",
+  // Modify 暫時會員資料
+  TSPFEUpdateTempSellerUrl: "api/FESeller/UpdateTempSeller",
+  // Modify 賣家會員
+  TSPFEUpdateSellerUrl: "api/FESeller/UpdateSeller",
 
 
-  // 公告列表
+  // 公告_List
   TSPFEBillboardListUrl: "api/FEBillboard/GetBillboardList",
   // 公告內容
   TSPFEBillboardDetailUrl: "api/FEBillboard/GetBillboardDetail",
 
 
-  // 消息列表
+  // 消息_List
   TSPFENewsListUrl: "api/FENews/GetNewsList",
   // 消息內容
   TSPFENewsDetailUrl: "api/FENews/GetNewsDetail",
 
 
-  // 新增聯絡我們
+  // Add 聯絡我們
   TSPContactUrl: "api/FEContact/CreateContactUs",
 
 
-  //地址與事業別下拉選單
+  //地址與行業類別下拉選單
   TSPFESysCodeUrl: "api/FESysCode/GetSysCode",
   TSPFESysCode2LevelUrl: "api/FESysCode/GetSysCode2Level",
   TSPFEAddressPartUrl: "api/FESysCode/GetAddressPart",
 
 
-  // 使用者信箱驗證開通(審核通過)
+  // 會員信箱驗證開通(審核通過)
   TSPUserInfoUserActiveUrl: "api/FEUserInfo/UserActive",
   // 登入資料
   TSPUserInfoUserLoginUrl: "api/FEUserInfo/UserLogin",
@@ -53,33 +53,33 @@ export const config: any = {
   TSPForgetPasswordCheckUrl: "api/FEUserInfo/ForgetPasswordCheck",
 
 
-  // 取得TSP_Quotation列表
-  TSPFEGetQuoteListUrl: "api/FECorporate/GetQuoteList",
-  // 建立TSP_Quotation
-  TSPFECreateQuoteUrl: "api/FECorporate/CreateQuote",
-  // 修改TSP_Quotation
-  TSPFEUpdateQuoteUrl: "api/FECorporate/UpdateQuote",
-  // 取得TSP_Quotation明細
-  TSPFEGetQuoteDetailUrl: "api/FECorporate/GetQuoteDetail",
+  // Get TSP_Quotation_List
+  TSPFEGetQuoteListUrl: "api/FESeller/GetQuoteList",
+  // Create TSP_Quotation
+  TSPFECreateQuoteUrl: "api/FESeller/CreateQuote",
+  // Modify TSP_Quotation
+  TSPFEUpdateQuoteUrl: "api/FESeller/UpdateQuote",
+  // Get TSP_Quotation_Detail
+  TSPFEGetQuoteDetailUrl: "api/FESeller/GetQuoteDetail",
 
 
-  // 估價轉合約
-  TSPFECreateContractUrl: "api/FECorporate/CreateContract",
-  // 取得合約列表
-  TSPFEGetContractListUrl: "api/FECorporate/GetContractList",
-  // 取得合約明細
-  TSPFEGetContractDetailUrl: "api/FECorporate/GetContractDetail",
+  // TSP_Quotation轉TPS_Deal
+  TSPFECreateContractUrl: "api/FESeller/CreateContract",
+  // Get TPS_Deal_List
+  TSPFEGetContractListUrl: "api/FESeller/GetContractList",
+  // Get TPS_Deal_Detail
+  TSPFEGetContractDetailUrl: "api/FESeller/GetContractDetail",
 
 
-  // 取得TSP_Order列表
-  TSPFEGetOrderListUrl: "api/FECorporate/GetOrderList",
-  // 取得TSP_Order明細
-  TSPFEGetOrderDetailUrl: "api/FECorporate/GetOrderDetail",
-  // 取得合約明細列表
-  TSPFEGetContractCodeListUrl: "api/FECorporate/GetContractCodeList",
-  // 新增TSP_Order
-  TSPFECreateOrderUrl: "api/FECorporate/CreateOrder",
-  // 刪除TSP_Order
-  TSPFEDeleteOrderUrl: "api/FECorporate/DeleteOrder",
+  // Get TSP_Order_List
+  TSPFEGetOrderListUrl: "api/FESeller/GetOrderList",
+  // Get TSP_Order_Detail
+  TSPFEGetOrderDetailUrl: "api/FESeller/GetOrderDetail",
+  // Get TPS_Deal_Detail_List
+  TSPFEGetContractCodeListUrl: "api/FESeller/GetContractCodeList",
+  // Add TSP_Order
+  TSPFECreateOrderUrl: "api/FESeller/CreateOrder",
+  // Delet TSP_Order
+  TSPFEDeleteOrderUrl: "api/FESeller/DeleteOrder",
 
 }

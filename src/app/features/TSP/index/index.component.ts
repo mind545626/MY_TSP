@@ -17,7 +17,6 @@ import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { FEBillboardComponent } from '@app/features/TSP/index/pop-up/FEBillboard/FEBillboard.component';
 import { FENewsComponent } from './pop-up/FENews/FENews.component';
 import { CreateContactComponent } from '@app/shared/my-dialog/CreateContact/CreateContact.component';
-// import { DynamicDialogConfig } from 'primeng/dynamicdialog';
 // ---------------------------------
 
 
@@ -62,17 +61,6 @@ export class IndexComponent implements OnInit {
 
   refContact:DynamicDialogRef;
 
-  // datasource: FEBillboard[];
-
-  // --原本假資料--
-  // datasource: Notice[];
-  // notice: Notice[];
-  // datasource2: News[];
-  // news: News[];
-
-  // --預設--
-  // datasource: Customer[];
-  // customers: Customer[];
 
   @ViewChild('dt', { static: false }) table: Table;
   @ViewChild('dt1', { static: false }) table1: Table;
@@ -104,15 +92,7 @@ export class IndexComponent implements OnInit {
       this.totalRecords = this.FEBillboard.length;
     });
 
-    // 原接法
-    // this.getFEBillboard();
-    // this.MyTSPService.getBaseResultToBillboard().then(data => {
-    //   this.FEBillboard = data.body;
-    //   if (data.body === null) {
-    //     this.FEBillboard = []
-    //   }
-    //   this.totalRecords = this.FEBillboard.length;
-    // });
+
 
     this.loading = true;
 
@@ -123,21 +103,6 @@ export class IndexComponent implements OnInit {
       { field: 'Function', header: '功能', width: '80px' },
     ];
 
-    // 用虛擬伺服器的寫法
-    // this.MyTSPService.getFEBillboard().then(data => {
-    //   this.datasource = data;
-    // });
-
-    // 用假資料寫法
-    // this.customerService.getNotice().then(data => {
-    //   this.datasource = data;
-    //   this.totalRecords = data.length;
-    // });
-
-    // this.customerService.getNews().then(data => {
-    //   this.datasource2 = data;
-    //   this.totalRecords2 = data.length;
-    // });
 
     // 表二讀取時間動畫結束與欄位資料
 
@@ -225,12 +190,6 @@ export class IndexComponent implements OnInit {
     });
     console.log('CreateContact')
   }
-
-  // ngOnDestroy() {
-  //   if (this.refFEBillboard) {
-  //     this.refFEBillboard.close();
-  //   }
-  // }
 
   downloadProduct(i){
 

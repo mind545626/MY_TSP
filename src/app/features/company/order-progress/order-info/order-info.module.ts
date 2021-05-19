@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '@app/shared/shared.module';
-import { CorporateService } from '@app/core/services/Corporate.service';
+import { SellerService } from '@app/core/services/Seller.service';
 import { RegisterService } from '@app/core/services/Register.service';
 
 import { OrderInfoRoutingModule } from './order-info-routing.module';
@@ -25,7 +25,7 @@ import { CompletePhotoComponent } from './pop-up/complete-photo/complete-photo.c
     }])
   ],
   providers: [
-    CorporateService,
+    SellerService,
     RegisterService,
   ],
   entryComponents: [

@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/cor
 
 import { Customer } from '@app/services/customer';
 
-import { CorporateService } from '@app/core/services/Corporate.service';
+import { SellerService } from '@app/core/services/Seller.service';
 import { UserDataService } from '@app/core/services/UserData.service';
 import { RegisterService } from '@app/core/services/Register.service';
 // import { CustomerService } from '@app/services/customerservice';
@@ -61,7 +61,6 @@ export class RecentContractComponent implements OnInit {
 
   WasteName: string[]
 
-  //datepicker
   date1: Date;
   date2: Date;
   dates: Date[];
@@ -74,7 +73,6 @@ export class RecentContractComponent implements OnInit {
   //table用變數
   customers: Customer[];
   selecteContracts: ContractList
-  // contract: Contract[]
   cols: any[];
 
   //驗證用變數
@@ -87,8 +85,7 @@ export class RecentContractComponent implements OnInit {
     protected router: Router,
     private UserDataService: UserDataService,
     private RegisterService: RegisterService,
-    private CorporateService: CorporateService,
-    // private customerService: CustomerService,
+    private SellerService: SellerService,
     private fb: FormBuilder) {
   }
 
@@ -108,7 +105,6 @@ export class RecentContractComponent implements OnInit {
     // 三年
     var forDefault = new Date();
     forDefault.setFullYear(forDefault.getFullYear() - 3);
-    // forDefault.setMonth(forDefault.getMonth() - 3);
     this.startDay = forDefault.toLocaleString('zh-TW',
       {
         year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true
@@ -119,52 +115,34 @@ export class RecentContractComponent implements OnInit {
     this.keyword = {
       QueryDateTimeStart: this.startDay,
       QueryDateTimeEnd: "",
-      // QueryDateTimeEnd: this.newToday,
       TaxIDNumber: this.UserData.body.TaxIDNumber,
       KeyWord: "",
       ContractStatus: ""
     }
     console.log( this.keyword, ' this.keyword')
-    // this.customerService.getContract().then(customers => this.contract = customers)
-    // 測試
 
     this.cols = [
       { field: 'no', header: '項次', width: '75px' },
-      { field: 'Code', header: '合約編號', width: '180px' },
+      { field: 'Code', header: 'TPS_Deal', width: '180px' },
       { field: 'ApplyWasteType', header: '申請廢棄物類型', width: '250px' },
-      // { field: 'WasteDataName', header: '廢棄物項目', width: '250px' },
-      // { field: 'WasteDataName', subfield: 'WasteCodeName', header: '廢棄物項目', width: '250px' },
-      { field: 'ClearAddress', header: '清運地址', width: '200px' },
-      // { field: 'CorporateName', header: '公司名稱', width: '180px' },
-      { field: 'ContractStatus', header: '合約狀態', width: '180px' },
-      { field: 'ApplyDateTime', header: '申請合約日期', width: '180px' },
-      { field: 'StartDateTime', header: '合約生效日期', width: '180px' },
-      { field: 'EndDateTime', header: '合約結束日期', width: '180px' },
-      // { field: 'Edit', header: '功能', width: '180px' }，
+      { field: 'ClearAddress', header: '宅配地址', width: '200px' },
+      { field: 'ContractStatus', header: 'TPS_Deal狀態', width: '180px' },
+      { field: 'ApplyDateTime', header: '申請TPS_Deal日期', width: '180px' },
+      { field: 'StartDateTime', header: 'TPS_Deal生效日期', width: '180px' },
+      { field: 'EndDateTime', header: 'TPS_Deal結束日期', width: '180px' },
     ];
 
     setTimeout(() => {
-      //合約狀態
+      //TPS_Deal狀態
       this.RegisterService.getSysCodeDropDown({ Type: "ContractStatus" }).subscribe((data: ResponseObj) => {
         this.ContractStatus$ = of(<SelectItem[]>data.body);
         this.ContractStatus = data.body
       });
-      // //估價狀態
-      // this.RegisterService.getSysCodeDropDown({ Type: "QuoteStatus" }).subscribe((data: ResponseObj) => {
-      //   this.QuoteStatus$ = of(<SelectItem[]>data.body);
-      //   this.QuoteStatus = data.body
-      // });
 
-      // 獲取估價列表
-      this.CorporateService.getContractList(this.keyword).subscribe((data: ContractListData) => {
+      // 獲取TSP_Quotation_List
+      this.SellerService.getContractList(this.keyword).subscribe((data: ContractListData) => {
         this.contract = data.body;
-        // let i: number
-        // for (i = 0; i < data.body.length; i++) {
-        //   this.WasteDataName = data.body[data.body.length-1].WasteDataName
-        //   console.log(this.WasteDataName)
-        // }
         console.log(this.contract, 'this is getContractList Data')
-        // this.UserDataService.QuoteLength = this.contract.length
         // 獲取子層資料數量並回傳給父層
         if (this.contract === null) {
           this.ContractListEvt.emit(0)
@@ -173,7 +151,6 @@ export class RecentContractComponent implements OnInit {
         else {
           this.ContractListEvt.emit(this.contract.length);
           this.progressSpinner = false
-          // console.log(this.contract.length, 'this is getQuoteList Data')
         }
         this.progressSpinner = false
       });
@@ -205,7 +182,7 @@ export class RecentContractComponent implements OnInit {
       /** 每月月份短样式 */
       monthNamesShort: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
       today: '今日',
-      clear: '刪除'
+      clear: 'Delet '
     }
 
     let today = new Date();

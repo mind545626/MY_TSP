@@ -16,20 +16,20 @@
                               <div class="inputGroup">
                                   <div class="form-group row">
                                       <!-- <span>*</span> -->
-                                      <label for="CorporateName" class="col-sm-4 control-label">公司名稱</label>
+                                      <label for="SellerName" class="col-sm-4 control-label">公司名稱</label>
                                       <div class="col-sm-8">
                                           <!-- <input type="text" oninput="value=value.replace(/[\d]/g,'')" -->
                                           <input type="text" oninput="value=value.replace(/[/d]/g,'')"
                                            class="form-control" pInputText placeholder="請輸入公司名稱"
-                                              id="CorporateName" formControlName="CorporateName" />
+                                              id="SellerName" formControlName="SellerName" />
                                           <div class="small-style">
-                                            <small [hidden]="!modifyRegisterForm.controls.CorporateName.hasError('required')">
+                                            <small [hidden]="!modifyRegisterForm.controls.SellerName.hasError('required')">
                                               必填欄位
                                             </small>
-                                            <small [hidden]="!modifyRegisterForm.controls.CorporateName.hasError('minlength')">
+                                            <small [hidden]="!modifyRegisterForm.controls.SellerName.hasError('minlength')">
                                               名稱字數請大於2
                                             </small>
-                                            <small [hidden]="!modifyRegisterForm.controls.CorporateName.hasError('pattern')">
+                                            <small [hidden]="!modifyRegisterForm.controls.SellerName.hasError('pattern')">
                                               請輸入英文或者中文
                                             </small>
                                           </div>
@@ -137,7 +137,7 @@
                                       </div>
                                   </div>
                                   <div class="form-group row">
-                                      <label for="CareerType" class="col-sm-4 control-label">事業別</label>
+                                      <label for="CareerType" class="col-sm-4 control-label">行業類別</label>
                                       <div class="col-sm-8 CareerSelsct">
                                           <div class="d-flex">
                                               <p-dropdown #CareerTypeDropDown placeholder="選擇大類別" [showClear]="true"
@@ -161,10 +161,10 @@
                                       </div>
                                   </div>
                                   <div class="form-group row">
-                                      <label for="ControlNumber" class="col-sm-4 control-label">管制編號</label>
+                                      <label for="ControlNumber" class="col-sm-4 control-label">TPS_VIP_ID</label>
                                       <div class="col-sm-8">
                                           <input maxlength="8" type="text"
-                                              class="form-control" placeholder="請輸入管制編號" pInputText id="ControlNumber"
+                                              class="form-control" placeholder="請輸入TPS_VIP_ID" pInputText id="ControlNumber"
                                               formControlName="ControlNumber" />
                                               <div class="small-style">
                                                 <small [hidden]="!modifyRegisterForm.controls.ControlNumber.hasError('required')">
@@ -262,7 +262,7 @@
                                   </div>
 
                                   <div class="form-group row">
-                                      <label for="BillingZipCode" class="col-sm-4 control-label">帳寄地址</label>
+                                      <label for="BillingZipCode" class="col-sm-4 control-label">登記地址</label>
                                       <div class="col-sm-8 addressSelsct">
                                           <div class="d-flex">
                                               <input oninput="value=value.replace(/[^\d]/g,'')" type="text" maxlength="3"
@@ -294,7 +294,7 @@
                                   </div>
 
                                   <div class="form-group row">
-                                      <label for="MailingZipCode" class="col-sm-4 control-label">通訊地址</label>
+                                      <label for="MailingZipCode" class="col-sm-4 control-label">聯絡地址</label>
                                       <div class="col-sm-8 addressSelsct">
                                           <div class="d-flex">
                                               <input oninput="value=value.replace(/[^\d]/g,'')" type="text" maxlength="3"
@@ -326,7 +326,7 @@
                                               <p-checkbox
                                                   (onChange)="pasteCurAddress($event , modifyRegisterForm)"
                                                   binary="true"></p-checkbox>
-                                              <label for="binary" style="margin-right: 1rem;">&#xA0;同帳寄地址</label>
+                                              <label for="binary" style="margin-right: 1rem;">&#xA0;同登記地址</label>
                                           </div>
                                       </div>
                                   </div>
@@ -339,9 +339,9 @@
                               </div>
                               <div class="inputGroup">
                                   <div class="form-group row">
-                                      <label for="BackupMail" class="col-sm-4 control-label">備援電子郵件</label>
+                                      <label for="BackupMail" class="col-sm-4 control-label">備用信箱</label>
                                       <div class="col-sm-8">
-                                          <input type="email" class="form-control" placeholder="請輸入備援電子郵件" pInputText
+                                          <input type="email" class="form-control" placeholder="請輸入備用信箱" pInputText
                                               id="BackupMail" formControlName="BackupMail"/>
                                           <div class="small-style">
                                             <small [hidden]="!modifyRegisterForm.controls.BackupMail.hasError('required')">
@@ -359,12 +359,12 @@
                       <div class="form-group row d-flex j-content-center" style=" font-size: 1.3em">
                           <div [formGroup]="Box">
                               <div class="tips d-flex j-content-center">
-                                  <a href="">使用者條款</a>
+                                  <a href="">會員條款</a>
                                   <a href="">隱私保護政策</a>
                               </div>
                               <div class="checkbox">
                                 <p-checkbox [formControl]="Box.controls['ItisOK']" binary="true"></p-checkbox>
-                                <label for="ItisOK" style="margin-right: 1rem;">&#xA0;我已閱讀並同意使用者條款與個人資料和隱私保護政策</label>
+                                <label for="ItisOK" style="margin-right: 1rem;">&#xA0;我已閱讀並同意會員條款與個人資料和隱私保護政策</label>
                             </div>
                           </div>
                       </div>
@@ -385,12 +385,12 @@
                               <thead class="line">
                                   <h3>基本資料</h3>
                                   <button type="button" id="edit-btn" (click)="BackTab()"
-                                      class="register-btn btn btn-lg btn-primary">修改</button>
+                                      class="register-btn btn btn-lg btn-primary">Modify </button>
                               </thead>
                               <tbody>
                                   <tr>
                                       <th>公司名稱</th>
-                                      <td>{{ modifyRegisterForm.controls.CorporateName.value }}</td>
+                                      <td>{{ modifyRegisterForm.controls.SellerName.value }}</td>
                                   </tr>
                                   <tr>
                                       <th>負責人</th>
@@ -413,11 +413,11 @@
                                       <td>{{ modifyRegisterForm.controls.Fax.value }}</td>
                                   </tr>
                                   <tr>
-                                      <th>事業別</th>
+                                      <th>行業類別</th>
                                       <td>{{ CareerTypeDropDown.label }}&#xA0;>&#xA0;{{ CareerSubType.label }}</td>
                                   </tr>
                                   <tr>
-                                      <th>管制編號</th>
+                                      <th>TPS_VIP_ID</th>
                                       <td>{{ modifyRegisterForm.controls.ControlNumber.value }}</td>
                                   </tr>
                               </tbody>
@@ -443,7 +443,7 @@
                                       <td>{{ modifyRegisterForm.controls.BillingZipCode.value }}&#xA0;{{ modifyRegisterForm.controls.BillingCity.value }}{{ modifyRegisterForm.controls.BillingDistrict.value }}{{ modifyRegisterForm.controls.BillingRoad.value }}</td>
                                   </tr>
                                   <tr>
-                                      <th>通訊地址</th>
+                                      <th>聯絡地址</th>
                                       <td>{{ modifyRegisterForm.controls.MailingZipCode.value }}&#xA0;{{ modifyRegisterForm.controls.MailingCity.value }}{{ modifyRegisterForm.controls.MailingDistrict.value }}{{ modifyRegisterForm.controls.MailingRoad.value }}</td>
                                   </tr>
                               </tbody>

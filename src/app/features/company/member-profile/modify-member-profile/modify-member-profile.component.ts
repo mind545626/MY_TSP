@@ -5,14 +5,14 @@ import { Component, Injectable, Input, OnChanges, OnInit, ViewEncapsulation } fr
 import { Location } from '@angular/common';
 import { MenuItem } from 'primeng/api';
 
-import { LoginService } from '@app/core/services/Login.service.ts';
-import { UserDataService } from '@app/core/services/UserData.service.ts';
+import { LoginService } from '@app/core/services/Login.service';
+import { UserDataService } from '@app/core/services/UserData.service';
 import { Message, MessageService } from 'primeng/api';
 import { Checkbox, Dropdown, InputText, SaveEditableRow, SelectItem } from "primeng";
 import { Observable, of } from "rxjs";
 import { RegisterService } from '@app/core/services/Register.service';
 import { ResponseObj, FESysCode, FESysCode2Level, FESysCodeAddress, Key, ResponseLoginData } from '@app/core/models/user';
-import { SysCode } from '@app/core/models/syscode';
+
 import { map, shareReplay, switchMap, tap } from "rxjs/internal/operators";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Customer, CustomerDataImp, MemberRegisterData, RegisterData } from '@app/core/models/case';
@@ -121,8 +121,6 @@ export class ModifyMemberProfileComponent implements OnInit {
     this.progressSpinner = true
 
     this.UserData = JSON.parse(localStorage.getItem('UserData'))
-    // this.UserData = this.UserDataService.UserData
-    // console.log(this.UserDataService.UserData, 'Get UserData')
 
     this.items = [
       { icon: 'pi pi-home', label: '我的會員首頁', routerLink: '/company/order-progress' },
@@ -133,25 +131,25 @@ export class ModifyMemberProfileComponent implements OnInit {
     this.modifyUserDataForm =
       this.fb.group({
         Id: this.TaxIDNumber,
-        //事業單位字串
-        CorporateType: "Corporate",
+        //賣家會員字串
+        SellerType: "Seller",
         //統一編號
         TaxIDNumber: [null, [Validators.required, Validators.minLength(8)]],
         //密碼
         Password: [null, [Validators.required, Validators.pattern(/^[a-zA-Z0-9]{8,12}\w*$/)]],
         //公司名稱
-        CorporateName: [null, [Validators.required, Validators.minLength(2), Validators.pattern("([^\x00-\x40\x5B-\x60\x7B-\x7F])+")]],
+        SellerName: [null, [Validators.required, Validators.minLength(2), Validators.pattern("([^\x00-\x40\x5B-\x60\x7B-\x7F])+")]],
         //負責人
         Representative: [null, [Validators.required, Validators.minLength(2), Validators.pattern("([^\x00-\x40\x5B-\x60\x7B-\x7F])+")]],
         //公司電話
         PhoneNumber: [null, [Validators.required, Validators.pattern(/^[0-9]{2}-[0-9]{7,8}/)]],
         //公司傳真
         Fax: [null, Validators.pattern(/^[0-9]{2}-[0-9]{7}/)],
-        //事業別-大項
+        //行業類別-大項
         CareerType: [null],
-        //事業別-中項
+        //行業類別-中項
         CareerSubType: [null],
-        //管制編號
+        //TPS_VIP_ID
         ControlNumber: [null, [Validators.required, Validators.minLength(1)]],
         //聯絡人
         ContactPerson: [null, [Validators.required, Validators.minLength(2), Validators.pattern("([^\x00-\x40\x5B-\x60\x7B-\x7F])+")]],
@@ -163,21 +161,21 @@ export class ModifyMemberProfileComponent implements OnInit {
         ContactMobilePhone: [null, [Validators.required, Validators.pattern(/^[0-9]{4}-[0-9]{6}/)]],
         //聯絡信箱
         ContactMail: [null, [Validators.email, Validators.required]],
-        //帳寄地址-郵遞區號
+        //登記地址-郵遞區號
         BillingZipCode: [null],
-        //帳寄地址-城市
+        //登記地址-城市
         BillingCity: [null],
-        //帳寄地址-鄉鎮區
+        //登記地址-鄉鎮區
         BillingDistrict: [null],
-        //帳寄地址-路
+        //登記地址-路
         BillingRoad: [null],
-        //通訊地址-郵遞區號
+        //聯絡地址-郵遞區號
         MailingZipCode: [null],
-        //通訊地址-城市
+        //聯絡地址-城市
         MailingCity: [null],
-        //通訊地址-鄉鎮區
+        //聯絡地址-鄉鎮區
         MailingDistrict: [null],
-        //通訊地址-路
+        //聯絡地址-路
         MailingRoad: [null, Validators.required],
         //備用信箱
         BackupMail: [null, [Validators.email, Validators.required]],
@@ -221,10 +219,10 @@ export class ModifyMemberProfileComponent implements OnInit {
         }, 400)
 
         this.modifyUserDataForm.controls.Id.patchValue(this.UserData.body.UserId)
-        this.modifyUserDataForm.controls.CorporateType.patchValue(this.UserData.body.CorporateType)
+        this.modifyUserDataForm.controls.SellerType.patchValue(this.UserData.body.SellerType)
         this.modifyUserDataForm.controls.TaxIDNumber.patchValue(this.UserData.body.TaxIDNumber)
         this.modifyUserDataForm.controls.Password.patchValue(this.UserData.body.Password)
-        this.modifyUserDataForm.controls.CorporateName.patchValue(this.UserData.body.CorporateName)
+        this.modifyUserDataForm.controls.SellerName.patchValue(this.UserData.body.SellerName)
         this.modifyUserDataForm.controls.Representative.patchValue(this.UserData.body.Representative)
         this.modifyUserDataForm.controls.PhoneNumber.patchValue(this.UserData.body.PhoneNumber)
         this.modifyUserDataForm.controls.Fax.patchValue(this.UserData.body.Fax)
@@ -232,12 +230,11 @@ export class ModifyMemberProfileComponent implements OnInit {
         this.modifyUserDataForm.controls.ContactPerson.patchValue(this.UserData.body.ContactPerson)
         this.modifyUserDataForm.controls.ContactPhoneNumber.patchValue(this.UserData.body.ContactPhoneNumber)
 
-        // 呼叫修改驗證
+        // 呼叫Modify 驗證
         this.VaildPhoneNumber()
         this.modifyUserDataForm.controls.ContactPhoneExtension.patchValue(this.UserData.body.ContactPhoneExtension)
         this.modifyUserDataForm.controls.ContactMobilePhone.patchValue(this.UserData.body.ContactMobilePhone)
-        // 呼叫修改驗證
-        // this.VaildPhone()
+        // 呼叫Modify 驗證
         this.VaildMobilePhone()
         setTimeout(() => {
           this.modifyUserDataForm.controls.ContactMail.patchValue(this.UserData.body.ContactMail)
@@ -257,11 +254,7 @@ export class ModifyMemberProfileComponent implements OnInit {
         }, 400)
       }, 1000)
     }
-    // if ( this.modifyUserDataForm.controls.CareerSubType.hasError  true  &&
-    //      this.modifyUserDataForm.controls.BillingDistrict.hasError &&
-    //      this.modifyUserDataForm.controls.MailingDistrict.hasError ) {
-    //   this.progressSpinner = false
-    // }
+
     console.log(this.progressSpinner, 'this.progressSpinner')
 
     $("html, body").animate({ scrollTop: 0 }, "slow");
@@ -280,7 +273,7 @@ export class ModifyMemberProfileComponent implements OnInit {
       /** 每月月份短样式 */
       monthNamesShort: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
       today: '今日',
-      clear: '刪除'
+      clear: 'Delet '
     }
 
     let today = new Date();
@@ -440,19 +433,17 @@ export class ModifyMemberProfileComponent implements OnInit {
     updateCusInfo.CustomerData = this.modifyUserDataForm.value;
     updateCusInfo.Attach = this.Attach.value;
     console.log(updateCusInfo, 'this is new UpUserData')
-    // console.log(JSON.stringify(updateCusInfo), 'this is new UpUserData')
     if (this.modifyUserDataForm.valid) {
-      this.RegisterService.getUpdateCorporate(updateCusInfo)
+      this.RegisterService.getUpdateSeller(updateCusInfo)
         .subscribe((data: ResponseLoginData) => {
           console.log(data, 'this is new UpUserData')
-          // console.log(JSON.stringify(data), 'this is new UpUserData')
           if (data.code === '000') {
-            // // 更新本地資料
+            // 更新本地資料
             localStorage.setItem('UserData', JSON.stringify(data))
-            // // 更新本地伺服器資料
+            // 更新本地伺服器資料
             this.UserDataService.UserData = data;
 
-            this.messageService.add({ severity: 'success', summary: '成功', detail: '會員資料修改成功' });
+            this.messageService.add({ severity: 'success', summary: '成功', detail: '會員資料Modify 成功' });
             // 延遲一秒回到上一頁
             setTimeout(() => {
               this.router.navigate(['/company/member-profile']);

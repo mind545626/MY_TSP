@@ -5,16 +5,16 @@
     <div id="content" class="result-container result-color">
         <div class="card">
             <div class="title">
-                <span>估價管理列表</span>
+                <span>TSP_Quotation管理_List</span>
                     <div class="btn-right">
                         <a routerLink="/company/quotation/new-quotation">
                             <button type="button" class="btn btn-success btn-lg"><i
-                                    class="fa fa-lg fa-fw fa-file-text"></i>初次估價申請</button>
+                                    class="fa fa-lg fa-fw fa-file-text"></i>初次TSP_Quotation申請</button>
                         </a>
                     </div>
             </div>
             <mat-tab-group mat-align-tabs="start" class="tab-top">
-                <mat-tab label="近三個月估價清單({{QuoteLength}})">
+                <mat-tab label="近三個月TSP_Quotation清單({{QuoteLength}})">
                     <app-recent-quotations (counterEvt)="counterCal($event)"></app-recent-quotations>
                 </mat-tab>
             </mat-tab-group>

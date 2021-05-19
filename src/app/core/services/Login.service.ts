@@ -25,18 +25,12 @@ export class LoginService {
     private messageService: MessageService,) { }
 
 
-  // 使用者信箱驗證開通(審核通過)
-  // getUserActive(Id: Key): Observable<any> {
-  //   return this.httpService.httpPost(config.TSPUserInfoUrl + '/UserActive', Id);
-  // }
+  // 會員信箱驗證開通(審核通過)
   getUserActive(Id: Key): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPUserInfoUserActiveUrl, Id);
   }
 
   // 登入
-  // getUserLogin(User: Login): Observable<any> {
-  //   return this.httpService.httpPost(config.TSPUserInfoUrl + '/UserLogin', User);
-  // }
   getUserLogin(User: Login): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPUserInfoUserLoginUrl, User);
   }

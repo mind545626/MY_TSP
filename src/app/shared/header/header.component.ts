@@ -30,9 +30,9 @@ export class HeaderComponent implements OnInit {
 
   visibleSidebar
   UserData: ResponseLoginData
-  Corporate: boolean;
-  WasteMove: boolean;
-  WasteDeal: boolean;
+  Seller: boolean;
+  Courier: boolean;
+  Buyer: boolean;
 
   isActive: boolean;
   isLogin: boolean;
@@ -53,10 +53,9 @@ export class HeaderComponent implements OnInit {
   }
 
   checkUserData() {
-    this.Corporate = false
-    this.WasteMove = false
-    this.WasteDeal = false
-    // this.UserData = this.UserDataService.UserData
+    this.Seller = false
+    this.Courier = false
+    this.Buyer = false
     // 獲取本地資料
     this.UserData = JSON.parse(localStorage.getItem('UserData'))
     console.log(this.UserData, 'This check UserData have get')
@@ -64,24 +63,24 @@ export class HeaderComponent implements OnInit {
     if (this.UserData !== null) {
       this.isActive = false
       this.isLogin = true
-      var CorporateType = this.UserData.body.CorporateType
-      switch (CorporateType) {
-        case 'Corporate': {
-          this.Corporate = true
+      var SellerType = this.UserData.body.SellerType
+      switch (SellerType) {
+        case 'Seller': {
+          this.Seller = true
           break;
         }
-        case 'WasteMove': {
-          this.WasteMove = true
+        case 'Courier': {
+          this.Courier = true
           break;
         }
-        case 'WasteDeal': {
-          this.WasteDeal = true
+        case 'Buyer': {
+          this.Buyer = true
           break;
         }
         default: {
-          this.Corporate = false
-          this.WasteMove = false
-          this.WasteDeal = false
+          this.Seller = false
+          this.Courier = false
+          this.Buyer = false
           break;
         }
       }
@@ -115,9 +114,8 @@ export class HeaderComponent implements OnInit {
   }
 
   LoginOut() {
-    // 刪除本地資料
+    // Delet 本地資料
     localStorage.removeItem('UserData');
-    // this.UserDataService.UserData = null
     console.log(this.UserDataService.UserData, 'This is LoginOut Data')
     this.checkUserData()
     this.router.navigateByUrl('/index');

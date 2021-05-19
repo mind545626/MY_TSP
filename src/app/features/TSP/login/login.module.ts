@@ -16,9 +16,7 @@ import { MessageService } from '@app/core/services/message.service';
 import { ForgetPasswordComponent } from './pop-up/forget-password/ForgetPassword.component';
 
 // hCaptcha 添加
-// import { NgHcaptchaModule } from 'ng-hcaptcha';
 
-// import { REACTIVE_FORM_DIRECTIVES } from '@angular/forms'
 
 
 @NgModule({
@@ -34,13 +32,6 @@ import { ForgetPasswordComponent } from './pop-up/forget-password/ForgetPassword
     ReactiveFormsModule,
     MessagesModule,
     MessageModule,
-
-    // hCaptcha 添加
-    // NgHcaptchaModule.forRoot({
-    //   siteKey: '2e07302e-19e0-46d1-9dda-10d67df662d3',
-    //   languageCode: 'zh-TW' // optional, will default to browser language
-    // }),
-    // NgHcaptchaModule.forRoot()
   ],
   providers: [
     LoginService,

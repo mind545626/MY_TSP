@@ -2,10 +2,10 @@ import { Quote } from './../../../../../core/models/case';
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 
 import { Customer, Quotation } from '@app/services/customer';
-import { CorporateService } from '@app/core/services/Corporate.service';
+import { SellerService } from '@app/core/services/Seller.service';
 import { UserDataService } from '@app/core/services/UserData.service';
 import { RegisterService } from '@app/core/services/Register.service';
-// import { CustomerService } from '@app/services/customerservice';
+
 
 import { FormBuilder } from '@angular/forms';
 import { SelectItem } from 'primeng/api';
@@ -43,7 +43,6 @@ export class RecentQuotationsComponent implements OnInit {
   newToday: string;
   startDay: string;
 
-  //datepicker
   date1: Date;
   date2: Date;
   dates: Date[];
@@ -54,7 +53,6 @@ export class RecentQuotationsComponent implements OnInit {
   invalidDates: Array<Date>
   public calendar_en: any;
   //table用變數
-  // quotation: Quotation[]
   quotation: QuoteList[];
 
   customers: Customer[];
@@ -82,7 +80,7 @@ export class RecentQuotationsComponent implements OnInit {
     protected router: Router,
     private UserDataService: UserDataService,
     private RegisterService: RegisterService,
-    private CorporateService: CorporateService,
+    private SellerService: SellerService,
     // private customerService: CustomerService,
     private fb: FormBuilder) {
   }
@@ -107,13 +105,6 @@ export class RecentQuotationsComponent implements OnInit {
       {
         year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true
       });
-    console.log(this.newToday)
-    console.log(this.startDay)
-    // this.today = new Date().toLocaleString('zh-TW',
-    // {
-    //   year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric',
-    //   hour12: false
-    // });
 
     // 載入查詢
     this.keyword = {
@@ -123,28 +114,25 @@ export class RecentQuotationsComponent implements OnInit {
       KeyWord: "",
       QuoteStatus: ""
     }
-    // this.keyword.TaxIDNumber = this.UserData.body.TaxIDNumber
     console.log(this.keyword, '查詢表')
 
     setTimeout(() => {
-      //估價類型
+      //TSP_Quotation類型
       this.RegisterService.getSysCodeDropDown({ Type: "QuoteType" }).subscribe((data: ResponseObj) => {
         this.QuoteType$ = of(<SelectItem[]>data.body);
         this.QuoteType = data.body
       });
-      // console.log(this.keyword,'this is getQuoteList Data')
 
-      //估價狀態
+      //TSP_Quotation狀態
       this.RegisterService.getSysCodeDropDown({ Type: "QuoteStatus" }).subscribe((data: ResponseObj) => {
         this.QuoteStatus$ = of(<SelectItem[]>data.body);
         this.QuoteStatus = data.body
       });
 
-      // 獲取估價列表
-      this.CorporateService.getQuoteList(this.keyword).subscribe((data: QuoteListData) => {
+      // 獲取TSP_Quotation_List
+      this.SellerService.getQuoteList(this.keyword).subscribe((data: QuoteListData) => {
         this.quotation = data.body;
         console.log(this.quotation, 'this is getQuoteList Data')
-        // this.UserDataService.QuoteLength = this.quotation.length
         // 獲取子層資料數量並回傳給父層
         if (this.quotation === null) {
           this.counterEvt.emit(0)
@@ -167,21 +155,15 @@ export class RecentQuotationsComponent implements OnInit {
       { field: 'no', header: '項次', width: '75px' },
       { field: 'Code', header: 'TSP_Quotation號', width: '180px' },
       { field: 'ApplyWasteType', header: '申請廢棄物類型', width: '250px' },
-      { field: 'ClearAddress', header: '清運地址', width: '200px' },
-      { field: 'QuoteStatus', header: '估價狀態', width: '180px' },
-      { field: 'ApplyDateTime', header: '申請估價日期', width: '180px' },
-      { field: 'QuoteType', header: '申請估價類型', width: '180px' },
-      { field: 'QuoteDateTime', header: '現場估價日期', width: '180px' },
+      { field: 'ClearAddress', header: '宅配地址', width: '200px' },
+      { field: 'QuoteStatus', header: 'TSP_Quotation狀態', width: '180px' },
+      { field: 'ApplyDateTime', header: '申請TSP_Quotation日期', width: '180px' },
+      { field: 'QuoteType', header: '申請TSP_Quotation類型', width: '180px' },
+      { field: 'QuoteDateTime', header: '現場TSP_Quotation日期', width: '180px' },
       { field: 'QuoteReplyDateTime', header: '報價日期', width: '180px' },
       { field: 'QuoteCompleteDateTime', header: '報價完成日期', width: '180px' },
       { field: 'Edit', header: '功能', width: '180px' }
     ];
-
-    // this.QuoteType = [
-    //   { label: '全部', value: null },
-    //   { label: '現場估價', value: '1' },
-    //   { label: '線上報價', value: '2' },
-    // ];
 
 
     FilterUtils['custom'] = (value, filter): boolean => {
@@ -193,16 +175,6 @@ export class RecentQuotationsComponent implements OnInit {
       }
       return parseInt(filter) > value;
     }
-
-    // FilterUtils['custom-equals'] = (value, filter): boolean => {
-    //   if (filter === undefined || filter === null || filter.trim() === '') {
-    //     return true;
-    //   }
-    //   if (value === undefined || value === null) {
-    //     return false;
-    //   }
-    //   return value.toString() === filter.toString();
-    // }
 
 
     $("html, body").animate({ scrollTop: 0 }, "slow");
@@ -222,7 +194,7 @@ export class RecentQuotationsComponent implements OnInit {
       /** 每月月份短样式 */
       monthNamesShort: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
       today: '今日',
-      clear: '刪除'
+      clear: 'Delet '
     }
 
     let today = new Date();
@@ -264,7 +236,7 @@ export class RecentQuotationsComponent implements OnInit {
     return date.getFullYear() + '-' + month + '-' + day;
   }
 
-  // 取得TSP_Quotation編號
+  // Get TSP_Quotation編號
   getQuotId(Code) {
     // this.UserDataService.QuoteID = this.quotation[i].Code
     // 帶參數導向網頁

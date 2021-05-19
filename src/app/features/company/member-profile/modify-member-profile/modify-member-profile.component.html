@@ -6,16 +6,9 @@
     <div class="card">
       <div id="title" class="title">
         <span>編輯會員資料</span>
-        <!-- <div class="btn-right">
-          <button id="left-btn" type="submit" class="btn btn-success btn-lg" (click)="onSubmit()"><i
-              class="fa fa-lg fa-fw fa-pencil-square-o"></i>編輯完成</button>
-          <button type="button" class="btn btn-primary btn-lg" (click)="goBack()"><i
-              class="fa fa-lg fa-fw fa-arrow-right"></i>返回</button>
-        </div> -->
       </div>
       <div class="join-card">
         <form class="form-horizontal" [formGroup]="modifyUserDataForm">
-          <!-- container -->
           <div class="noticeinfo-container">
             <div class="d-flex formcol">
               <div class="title">
@@ -23,20 +16,19 @@
               </div>
               <div class="inputGroup">
                 <div class="form-group row">
-                  <!-- <span>*</span> -->
-                  <label for="CorporateName" class="col-sm-4 control-label">公司名稱</label>
+                  <label for="SellerName" class="col-sm-4 control-label">公司名稱</label>
                   <div class="col-sm-8">
                     <!-- <input type="text" oninput="value=value.replace(/[\d]/g,'')" -->
                     <input type="text" oninput="value=value.replace(/[/d]/g,'')" class="form-control" pInputText
-                      placeholder="請輸入公司名稱" id="CorporateName" formControlName="CorporateName" />
+                      placeholder="請輸入公司名稱" id="SellerName" formControlName="SellerName" />
                     <div class="small-style">
-                      <small [hidden]="!modifyUserDataForm.controls.CorporateName.hasError('required')">
+                      <small [hidden]="!modifyUserDataForm.controls.SellerName.hasError('required')">
                         必填欄位
                       </small>
-                      <small [hidden]="!modifyUserDataForm.controls.CorporateName.hasError('minlength')">
+                      <small [hidden]="!modifyUserDataForm.controls.SellerName.hasError('minlength')">
                         名稱字數請大於2
                       </small>
-                      <small [hidden]="!modifyUserDataForm.controls.CorporateName.hasError('pattern')">
+                      <small [hidden]="!modifyUserDataForm.controls.SellerName.hasError('pattern')">
                         請輸入英文或者中文
                       </small>
                     </div>
@@ -93,24 +85,6 @@
                     </div>
                   </div>
                 </div>
-                <!-- <div class="form-group row">
-                  <label for="confirmPassword" class="col-sm-4 control-label">確認密碼</label>
-                  <div class="col-sm-8">
-                    <input type="Password" equalsTo="Password" class="form-control" placeholder="請再次確認密碼" pInputText
-                      formControlName="confirmPassword" id="confirmPassword" />
-                    <div class="small-style">
-                      <small [hidden]="!modifyUserDataForm.controls.confirmPassword.hasError('required')">
-                        再次確認密碼
-                      </small>
-                      <small [hidden]="!modifyUserDataForm.controls.confirmPassword.hasError('pattern')">
-                        請輸入8位以上英數字
-                      </small>
-                      <small [hidden]="!modifyUserDataForm.controls.confirmPassword.hasError('equalsTo')">
-                        請確認與密碼相同
-                      </small>
-                    </div>
-                  </div>
-                </div> -->
                 <div class="form-group row">
                   <label for="PhoneNumber" class="col-sm-4 control-label">公司電話</label>
                   <div class="col-sm-8">
@@ -139,7 +113,7 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="CareerType" class="col-sm-4 control-label">事業別</label>
+                  <label for="CareerType" class="col-sm-4 control-label">行業類別</label>
                   <div class="col-sm-8 CareerSelsct">
                     <div class="d-flex">
                       <p-dropdown #CareerTypeDropDown placeholder="選擇大類別" [showClear]="true"
@@ -163,9 +137,9 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="ControlNumber" class="col-sm-4 control-label">管制編號</label>
+                  <label for="ControlNumber" class="col-sm-4 control-label">TPS_VIP_ID</label>
                   <div class="col-sm-8">
-                    <input maxlength="8" type="text" class="form-control" placeholder="請輸入管制編號" pInputText
+                    <input maxlength="8" type="text" class="form-control" placeholder="請輸入TPS_VIP_ID" pInputText
                       id="ControlNumber" formControlName="ControlNumber" />
                     <div class="small-style">
                       <small [hidden]="!modifyUserDataForm.controls.ControlNumber.hasError('required')">
@@ -259,7 +233,7 @@
                 </div>
 
                 <div class="form-group row">
-                  <label for="BillingZipCode" class="col-sm-4 control-label">帳寄地址</label>
+                  <label for="BillingZipCode" class="col-sm-4 control-label">登記地址</label>
                   <div class="col-sm-8 addressSelsct">
                     <div class="d-flex">
                       <input oninput="value=value.replace(/[^\d]/g,'')" type="text" maxlength="3" class="form-control"
@@ -289,7 +263,7 @@
                 </div>
 
                 <div class="form-group row">
-                  <label for="MailingZipCode" class="col-sm-4 control-label">通訊地址</label>
+                  <label for="MailingZipCode" class="col-sm-4 control-label">聯絡地址</label>
                   <div class="col-sm-8 addressSelsct">
                     <div class="d-flex">
                       <input oninput="value=value.replace(/[^\d]/g,'')" type="text" maxlength="3" class="form-control"
@@ -318,7 +292,7 @@
                     </div>
                     <div class="checkbox">
                       <p-checkbox (onChange)="pasteCurAddress($event , modifyUserDataForm)" binary="true"></p-checkbox>
-                      <label for="binary" style="margin-right: 1rem;">&#xA0;同帳寄地址</label>
+                      <label for="binary" style="margin-right: 1rem;">&#xA0;同登記地址</label>
                     </div>
                   </div>
                 </div>
@@ -331,9 +305,9 @@
               </div>
               <div class="inputGroup">
                 <div class="form-group row">
-                  <label for="BackupMail" class="col-sm-4 control-label">備援電子郵件</label>
+                  <label for="BackupMail" class="col-sm-4 control-label">備用信箱</label>
                   <div class="col-sm-8">
-                    <input type="email" class="form-control" placeholder="請輸入備援電子郵件" pInputText id="BackupMail"
+                    <input type="email" class="form-control" placeholder="請輸入備用信箱" pInputText id="BackupMail"
                       formControlName="BackupMail" />
                     <div class="small-style">
                       <small [hidden]="!modifyUserDataForm.controls.BackupMail.hasError('required')">

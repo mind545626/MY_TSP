@@ -6,7 +6,7 @@ import { CodeKey, OrderinfoData, ProvideEquip, ResponseOrderinfoData, WasteDatai
 import { ResponseLoginData } from '@app/core/models/user';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { CorporateService } from '@app/core/services/Corporate.service';
+import { SellerService } from '@app/core/services/Seller.service';
 import { UserDataService } from '@app/core/services/UserData.service';
 import { MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
@@ -35,7 +35,7 @@ export class OrderInfoComponent implements OnInit {
   Code: string;
   ContractCode: string;
   ApplyDateTime: string;
-  CorporateName: string;
+  SellerName: string;
   CareerType: string;
   CareerSubType: string;
   ContactPerson: string;
@@ -111,7 +111,7 @@ export class OrderInfoComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private messageService: MessageService,
     private fb: FormBuilder,
-    private CorporateService: CorporateService,
+    private SellerService: SellerService,
     private UserDataService: UserDataService,
   ) {
     //   this.defaultColDef = {
@@ -146,7 +146,7 @@ export class OrderInfoComponent implements OnInit {
 
 
     setTimeout(() => {
-      // 從參數獲取Code合約單號
+      // 從參數獲取CodeTPS_Deal單號
       this.activatedRoute.queryParams.subscribe(params => {
         this.CodeKey = {
           Code: params['id'],
@@ -155,7 +155,7 @@ export class OrderInfoComponent implements OnInit {
       });
       console.log(this.CodeKey, 'this.CodeKey ')
 
-      this.CorporateService.getOrderDetail(this.CodeKey).subscribe((data: ResponseOrderinfoData) => {
+      this.SellerService.getOrderDetail(this.CodeKey).subscribe((data: ResponseOrderinfoData) => {
         this.OrderinfoData = data.body
         this.ResponseOrderinfoData = data;
         this.ProvideEquip = data.body.ProvideEquip
@@ -166,7 +166,7 @@ export class OrderInfoComponent implements OnInit {
           this.ContractCode = this.OrderinfoData.ContractCode;
           this.ApplyDateTime = this.OrderinfoData.ApplyDateTime;
           // this.TaxIDNumber = this.OrderinfoData.TaxIDNumber;
-          this.CorporateName = this.OrderinfoData.CorporateName;
+          this.SellerName = this.OrderinfoData.SellerName;
           this.CareerType = this.OrderinfoData.CareerType;
           this.CareerSubType = this.OrderinfoData.CareerSubType;
           this.ContactPerson = this.OrderinfoData.ContactPerson;
@@ -251,7 +251,7 @@ export class OrderInfoComponent implements OnInit {
 
     this.items = [
       { icon: 'pi pi-home', label: '我的會員首頁', routerLink: '/company/order-progress' },
-      { label: 'TSP_Order管理列表', routerLink: '/company/order-progress' },
+      { label: 'TSP_Order管理_List', routerLink: '/company/order-progress' },
       { label: 'TSP_Order資料' },
     ];
 
@@ -260,7 +260,7 @@ export class OrderInfoComponent implements OnInit {
     this.location.back();
   }
 
-  // 取得合約編號
+  // Get TPS_Deal
   getContractId() {
     // 帶參數導向
     this.router.navigate(['/company/contract/contract-info'], { queryParams: { id: this.ContractCode } });

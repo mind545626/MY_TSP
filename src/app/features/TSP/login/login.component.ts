@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ResponseObj, Login, ResponseLoginData } from '@app/core/models/user';
-import { LoginService } from '@app/core/services/Login.service.ts';
+import { LoginService } from '@app/core/services/Login.service';
 import { UserDataService } from '@app/core/services/UserData.service';
 import { MessageService } from 'primeng/api';
 import { data } from 'jquery';
@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit {
   progressSpinner: boolean;
   ProgressSpinnerDlg
 
-  // http://192.168.89.17:8012/TSPAPI/Captcha/GetCaptcha
 
   constructor(
     private fb: FormBuilder,
@@ -61,7 +60,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
     this.isShowPw = false;
-    // this.UserId = this.router.snapshot.paramMap.get("UserId");
+
     $("html, body").animate({ scrollTop: 0 }, "slow");
 
     this.loginForm =
@@ -69,12 +68,7 @@ export class LoginComponent implements OnInit {
         UserId: ['12345679', [Validators.required, Validators.minLength(8)]],
         Password: ['12345678', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]{8,}\w*$/)]],
         Captcha: this.Captcha,
-        // h-captcha 添加
-        // captcha: ['b92ce5ec-b778-4404-8ebd-a985186e48e8', Validators.required],
       });
-    // setTimeout(() => {
-    //   console.log(this.Url, this.imgUrl)
-    // }, 1000)
 
     this.getUrl()
     this.reloadimg();
@@ -82,7 +76,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     this.progressSpinner = true
-    // this.loginForm.value.controls.Captcha = this.Captcha
     let updatelogin = this.loginForm.value;
     if (this.loginForm.valid) {
       this.LoginService.getUserLogin(updatelogin)
@@ -92,42 +85,26 @@ export class LoginComponent implements OnInit {
               this.UserDataService.UserData = data;
               // 記錄本地資料
               localStorage.setItem('UserData', JSON.stringify(data))
-              var CorporateType = data.body.CorporateType
-              // 企業客戶：登入成功
-              switch (CorporateType) {
-                case 'Corporate': {
+              var SellerType = data.body.SellerType
+              // 賣家會員：登入成功
+              switch (SellerType) {
+                case 'Seller': {
                   this.UserId = data.body.UserId
                   this.LoginStatus = data.isSuccess
-                  this.messageService.add({ severity: 'success', summary: '成功', detail: '企業客戶：登入成功' });
+                  this.messageService.add({ severity: 'success', summary: '成功', detail: '賣家會員：登入成功' });
                   setTimeout(() => {
                     this.router.navigateByUrl('/company/order-progress')
                     setTimeout(() => {
                       location.reload();
                     }, 500)
                   }, 1500)
-
-                  // setTimeout(() => {
-                  //   let currentUrl = this.router.url;
-                  //   this.router.navigateByUrl('/company/order-progress', {skipLocationChange: true}).then(() =>
-                  //         this.router.navigate([currentUrl]));
-                  //   }, 500)
-                  // this.router.navigateByUrl('/company/order-progress')
-                  // setTimeout(() => {
-                  //   this.router.navigateByUrl('/company/order-progress')
-                  // }, 1000)
                   console.log(this.LoginStatus, 'Get message')
-                  // this.router.navigate([''], {
-                  //   queryParams: {
-                  //     name: data.isSuccess
-                  //   }
-                  // });
                   break;
                 }
-                case 'WasteMove': {
+                case 'Courier': {
                   this.UserId = data.body.UserId
                   this.LoginStatus = data.isSuccess
-                  this.messageService.add({ severity: 'success', summary: '成功', detail: '清除夥伴：登入成功' });
-                  // this.router.navigateByUrl('/clean/clean-dispatch' + '?' + data.body.CorporateType + '=' + this.UserId);
+                  this.messageService.add({ severity: 'success', summary: '成功', detail: '快遞會員：登入成功' });
                   setTimeout(() => {
                     this.router.navigateByUrl('/clean/clean-dispatch')
                     setTimeout(() => {
@@ -137,11 +114,10 @@ export class LoginComponent implements OnInit {
                   console.log(this.LoginStatus, 'Get message')
                   break;
                 }
-                case 'WasteDeal': {
+                case 'Buyer': {
                   this.UserId = data.body.UserId
                   this.LoginStatus = data.isSuccess
-                  this.messageService.add({ severity: 'success', summary: '成功', detail: '處理夥伴：登入成功' });
-                  // this.router.navigateByUrl('/refuse-processing/clean-dispatch' + '?' + data.body.CorporateType + '=' + this.UserId);
+                  this.messageService.add({ severity: 'success', summary: '成功', detail: '買家會員：登入成功' });
                   setTimeout(() => {
                     this.router.navigateByUrl('/refuse-processing/clean-dispatch')
                     setTimeout(() => {
@@ -160,29 +136,7 @@ export class LoginComponent implements OnInit {
                   break;
                 }
               }
-              // if (data.body.CorporateType === 'Corporate') {
-              //   this.UserId = data.body.UserId
-              //   this.LoginStatus = data.isSuccess
-              //   this.messageService.add({ severity: 'success', summary: '成功', detail: '企業客戶：登入成功' });
-              //   this.router.navigateByUrl('/company/order-progress' + '?' + data.body.CorporateType + '=' + this.UserId);
-              //   console.log(this.LoginStatus, 'Get message')
-              // }
-              // // 清除夥伴：登入成功
-              // if (data.body.CorporateType === 'WasteMove') {
-              //   this.UserId = data.body.UserId
-              //   this.LoginStatus = data.isSuccess
-              //   this.messageService.add({ severity: 'success', summary: '成功', detail: '清除夥伴：登入成功' });
-              //   this.router.navigateByUrl('/clean/clean-dispatch' + '?' + data.body.CorporateType + '=' + this.UserId);
-              //   console.log(this.LoginStatus, 'Get message')
-              // }
-              // // 處理夥伴：登入成功
-              // if (data.body.CorporateType === 'WasteDeal') {
-              //   this.UserId = data.body.UserId
-              //   this.LoginStatus = data.isSuccess
-              //   this.messageService.add({ severity: 'success', summary: '成功', detail: '處理夥伴：登入成功' });
-              //   this.router.navigateByUrl('/refuse-processing/clean-dispatch' + '?' + data.body.CorporateType + '=' + this.UserId);
-              //   console.log(this.LoginStatus, 'Get message')
-              // }
+
             }
             else {
               this.LoginStatus = data.isSuccess
@@ -190,7 +144,6 @@ export class LoginComponent implements OnInit {
               $("html, body").animate({ scrollTop: 0 }, "slow");
               this.progressSpinner = false
             }
-          // console.log(data, 'Get data')
         })
       console.log(updatelogin);
       console.log(JSON.stringify(updatelogin));
@@ -219,24 +172,9 @@ export class LoginComponent implements OnInit {
     } else {   //內網
       this.Url = "/TSPAPI";
     }
-    //console.info(' url ' , this.Url+this.router.url);
     return this.Url;
   }
-  // showResponse(response) {
-  //   console.log(response)
-  // }
 
-  // onVerify(token: string) {
-  //   //驗證過程成功。
-  // }
-
-  // onExpired(response: any) {
-  //   //驗證已過期。
-  // }
-
-  // onError(error: any) {
-  //   //驗證過程中發生錯誤。
-  // }
 
   reloadimg() {
     this.GetimgUrl = this.Url + this.imgUrl;

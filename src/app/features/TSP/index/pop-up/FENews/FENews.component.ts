@@ -3,7 +3,6 @@ import * as $ from 'jquery';
 
 // -------------API伺服器頁面-------------
 import { FENews } from '@app/services/TestTSP';
-// import { TestTSPService } from '@app/core/services/TestTSP.service';
 // ---------------------------------
 
 import { Location } from '@angular/common';
@@ -25,7 +24,6 @@ export class FENewsComponent implements OnInit {
 
   constructor(
     // -------------API伺服器頁面-------------
-    // private MyTSPService: TestTSPService,
     public refFENews: DynamicDialogRef,
     public configFENews: DynamicDialogConfig,
     // ---------------------------------

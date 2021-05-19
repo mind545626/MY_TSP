@@ -26,7 +26,7 @@ export class TestTSPService {
   getBaseResultToBillboard(): Observable<any> {
     // const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
     // const body = { title: 'Angular POST Request Example' };
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEBillboardListUrl, "");      // 公告列表
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEBillboardListUrl, "");      // 公告_List
   }
 
 
@@ -35,7 +35,7 @@ export class TestTSPService {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEBillboardDetailUrl, "");
   }
 
-  // 消息列表
+  // 消息_List
   getBaseResultToNews(): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFENewsListUrl, "");
   }
@@ -43,7 +43,7 @@ export class TestTSPService {
   getBaseResultToNewsDetail(): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFENewsDetailUrl, "");
   }
-  // 新增聯絡我們
+  // Add 聯絡我們
   createContactUs(ContactData: CreateContactUs): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPContactUrl, ContactData);
   }

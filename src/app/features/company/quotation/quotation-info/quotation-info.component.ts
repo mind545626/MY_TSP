@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { MenuItem } from 'primeng/api';
-import { CorporateService } from '@app/core/services/Corporate.service';
+import { SellerService } from '@app/core/services/Seller.service';
 import { UserDataService } from '@app/core/services/UserData.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CodeKey, ProvideEquip, Quote, QuoteinfoData, QuoteReplyLog, ResponseQuoteData, ResponseQuoteinfoData, WasteData, WasteDatainfo } from '@app/core/models/case';
@@ -20,7 +20,7 @@ export class QuotationInfoComponent implements OnInit {
   but_status: string;
   Logbut_status: string;
 
-  // 立即申請合約按鈕開關
+  // 立即申請TPS_Deal按鈕開關
   check_btn: boolean = false;
   // 回覆確認按鈕開關
   clickbtn: boolean = false;
@@ -36,7 +36,7 @@ export class QuotationInfoComponent implements OnInit {
 
   Code: string;
   ApplyDateTime: string;
-  CorporateName: string;
+  SellerName: string;
   CareerType: string;
   CareerTypeName: string;
   CareerSubTypeName: string;
@@ -101,9 +101,6 @@ export class QuotationInfoComponent implements OnInit {
 
   change_status_form: FormGroup;
 
-  // NeedRecord : any
-  // AgreeSignFree : any
-
   // @Input() QuoteId: string;
 
   constructor(
@@ -113,7 +110,7 @@ export class QuotationInfoComponent implements OnInit {
     private fb: FormBuilder,
     // private route: ActivatedRoute,
     private location: Location,
-    private CorporateService: CorporateService,
+    private SellerService: SellerService,
     private UserDataService: UserDataService,
   ) {
   }
@@ -135,7 +132,7 @@ export class QuotationInfoComponent implements OnInit {
         }
       });
 
-      this.CorporateService.getQuoteDetai(this.CodeKey).subscribe((data: ResponseQuoteinfoData) => {
+      this.SellerService.getQuoteDetai(this.CodeKey).subscribe((data: ResponseQuoteinfoData) => {
         this.QuoteinfoData = data.body
         this.UserDataService.QuoteinfoData = data.body
         // console.info(' this.QuoteinfoData :  ' , this.QuoteinfoData );
@@ -145,15 +142,13 @@ export class QuotationInfoComponent implements OnInit {
         this.QuoteReplyLog = data.body.QuoteReplyLog
 
         console.log((this.ResponseQuoteinfoData))
-        // console.log((this.QuoteinfoData))
-        // console.log(JSON.stringify(this.QuoteinfoData), 'this is' + this.CodeKey.Code + 'QuoteData')
 
         if (data.code === '000') {
           // 依序載入資料
           this.status = this.QuoteinfoData.QuoteStatus
           this.Code = this.QuoteinfoData.Code;
           this.ApplyDateTime = this.QuoteinfoData.ApplyDateTime;
-          this.CorporateName = this.QuoteinfoData.CorporateName;
+          this.SellerName = this.QuoteinfoData.SellerName;
           this.CareerType = this.QuoteinfoData.CareerType;
           this.CareerTypeName = this.QuoteinfoData.CareerTypeName;
           this.CareerSubTypeName = this.QuoteinfoData.CareerSubTypeName;
@@ -230,7 +225,7 @@ export class QuotationInfoComponent implements OnInit {
               CustomerId: this.UserData.body.TaxIDNumber,
               //顧客ID
               UP_UserId: this.UserData.body.UserId,
-              //估價狀態
+              //TSP_Quotation狀態
               QuoteStatus: null,
             });
 
@@ -240,14 +235,14 @@ export class QuotationInfoComponent implements OnInit {
           this.progressSpinner = false;
         }
         else if (data.code === '401') {
-          this.messageService.add({ severity: 'error', summary: '失敗', detail: 'TSP_Quotation號錯誤，3秒後將返回估價管理列表' });
+          this.messageService.add({ severity: 'error', summary: '失敗', detail: 'TSP_Quotation號錯誤，3秒後將返回TSP_Quotation管理_List' });
           // 3秒後跳轉
           setTimeout(() => {
             this.router.navigateByUrl('/company/quotation');
           }, 3000);
         }
         else {
-          this.messageService.add({ severity: 'error', summary: '失敗', detail: 'TSP_Quotation資料取得失敗，3秒後將返回估價管理列表' });
+          this.messageService.add({ severity: 'error', summary: '失敗', detail: 'TSP_Quotation資料Get 失敗，3秒後將返回TSP_Quotation管理_List' });
           // 3秒後跳轉
           setTimeout(() => {
             this.router.navigateByUrl('/company/quotation');
@@ -263,7 +258,7 @@ export class QuotationInfoComponent implements OnInit {
 
     this.items = [
       { icon: 'pi pi-home', label: '我的會員首頁', routerLink: '/company/order-progress' },
-      { label: '估價管理列表', routerLink: '/company/quotation' },
+      { label: 'TSP_Quotation管理_List', routerLink: '/company/quotation' },
       { label: 'TSP_Quotation資料' },
     ];
 
@@ -289,16 +284,16 @@ export class QuotationInfoComponent implements OnInit {
       case '2': {
         this.change_status_form.value.QuoteStatus = '3'
         let updata: Quote = this.change_status_form.value
-        this.CorporateService.addUpdateQuote(updata)
+        this.SellerService.addUpdateQuote(updata)
           .subscribe((data: ResponseObj) => {
             if (data.code == '000') {
-              this.messageService.add({ severity: 'success', summary: '成功', detail: '估價地點時間，回覆確認成功' });
+              this.messageService.add({ severity: 'success', summary: '成功', detail: 'TSP_Quotation地點時間，回覆確認成功' });
               setTimeout(() => {
                 window.location.reload();
               }, 800);
             }
             else {
-              this.messageService.add({ severity: 'error', summary: '失敗', detail: '估價回覆確認失敗' });
+              this.messageService.add({ severity: 'error', summary: '失敗', detail: 'TSP_Quotation回覆確認失敗' });
               setTimeout(() => {
                 window.location.reload();
               }, 800);
@@ -311,16 +306,16 @@ export class QuotationInfoComponent implements OnInit {
       case '4': {
         this.change_status_form.value.QuoteStatus = '5'
         let updata: Quote = this.change_status_form.value
-        this.CorporateService.addUpdateQuote(updata)
+        this.SellerService.addUpdateQuote(updata)
           .subscribe((data: ResponseObj) => {
             if (data.code == '000') {
-              this.messageService.add({ severity: 'success', summary: '成功', detail: '估價地點時間，回覆確認成功' });
+              this.messageService.add({ severity: 'success', summary: '成功', detail: 'TSP_Quotation地點時間，回覆確認成功' });
               setTimeout(() => {
                 window.location.reload();
               }, 800);
             }
             else {
-              this.messageService.add({ severity: 'error', summary: '失敗', detail: '估價回覆確認失敗' });
+              this.messageService.add({ severity: 'error', summary: '失敗', detail: 'TSP_Quotation回覆確認失敗' });
               setTimeout(() => {
                 window.location.reload();
               }, 800);
@@ -339,22 +334,22 @@ export class QuotationInfoComponent implements OnInit {
     }
   }
 
-  // 申請合約
+  // 申請TPS_Deal
   CreateContract() {
     this.progressSpinner = true
 
     let updata: QuoteinfoData = this.QuoteinfoData
-    this.CorporateService.CreateContract(updata)
+    this.SellerService.CreateContract(updata)
       .subscribe((data: ResponseObj) => {
         if (data.code == '000') {
-          this.messageService.add({ severity: 'success', summary: '成功', detail: '申請送出成功，等待平台建立合約，3秒後將回到估價列表' });
+          this.messageService.add({ severity: 'success', summary: '成功', detail: '申請送出成功，等待平台Create TPS_Deal，3秒後將回到TSP_Quotation_List' });
           setTimeout(() => {
             this.router.navigateByUrl('/company/quotation');
             this.progressSpinner = false
           }, 2000);
         }
         else {
-          this.messageService.add({ severity: 'error', summary: '失敗', detail: '申請送出失敗，請確認估價資料或者網路連線是否正常' });
+          this.messageService.add({ severity: 'error', summary: '失敗', detail: '申請送出失敗，請確認TSP_Quotation資料或者網路連線是否正常' });
           setTimeout(() => {
             window.location.reload();
             this.progressSpinner = false

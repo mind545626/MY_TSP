@@ -9,7 +9,7 @@ import { ContractComponent } from './contract.component';
 import { MatTabsModule } from '@angular/material';
 import { RecentContractComponent } from './tab/recent-contract/recent-contract.component';
 import { ExpiredContractComponent } from './tab/expired-contract/expired-contract.component';
-import { CorporateService } from '@app/core/services/Corporate.service';
+import { SellerService } from '@app/core/services/Seller.service';
 import { RegisterService } from '@app/core/services/Register.service';
 
 // import { REACTIVE_FORM_DIRECTIVES } from '@angular/forms'
@@ -29,7 +29,7 @@ import { RegisterService } from '@app/core/services/Register.service';
     ExpiredContractComponent,
   ],
   providers: [
-    CorporateService,
+    SellerService,
     RegisterService,
   ],
   bootstrap: [

@@ -4,10 +4,6 @@ import { ModifyQuotationComponent } from './modify-quotation.component';
 
 
 const routes: Routes = [
-//  {
-//     path: '',
-//     component: ModifyQuotationComponent
-//   }
 ];
 @NgModule({
   imports: [

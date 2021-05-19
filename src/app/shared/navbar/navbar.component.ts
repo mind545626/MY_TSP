@@ -10,40 +10,40 @@ import { UserDataService } from '@app/core/services/UserData.service';
 export class NavbarComponent implements OnInit {
 
   UserData: ResponseLoginData
-  Corporate: boolean;
-  WasteMove: boolean;
-  WasteDeal: boolean;
+  Seller: boolean;
+  Courier: boolean;
+  Buyer: boolean;
 
   constructor(
     private UserDataService: UserDataService,
   ) { }
 
   ngOnInit() {
-    this.Corporate = false
-    this.WasteMove = false
-    this.WasteDeal = false
+    this.Seller = false
+    this.Courier = false
+    this.Buyer = false
 
     this.UserData = JSON.parse(localStorage.getItem('UserData'))
     // this.UserData = this.UserDataService.UserData
 
-    var CorporateType = this.UserData.body.CorporateType
-    switch (CorporateType) {
-      case 'Corporate': {
-        this.Corporate = true
+    var SellerType = this.UserData.body.SellerType
+    switch (SellerType) {
+      case 'Seller': {
+        this.Seller = true
         break;
       }
-      case 'WasteMove': {
-        this.WasteMove = true
+      case 'Courier': {
+        this.Courier = true
         break;
       }
-      case 'WasteDeal': {
-        this.WasteDeal = true
+      case 'Buyer': {
+        this.Buyer = true
         break;
       }
       default: {
-        this.Corporate = false
-        this.WasteMove = false
-        this.WasteDeal = false
+        this.Seller = false
+        this.Courier = false
+        this.Buyer = false
         break;
       }
     }

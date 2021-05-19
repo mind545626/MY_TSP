@@ -14,13 +14,8 @@ export const routes: Routes = [
     loadChildren: () => import('./quotation/quotation.module').then(m => m.QuotationModule),
     data: { pageTitle: 'quotation' }
   },
-  // 統計頁面
-  {
-    path: 'statistical',
-    loadChildren: () => import('./statistical/statistical.module').then(m => m.StatisticalModule),
-    data: { pageTitle: 'statistical' }
-  },
-  // 合約管理
+
+  // TPS_Deal管理
   {
     path: 'contract',
     loadChildren: () => import('./contract/contract.module').then(m => m.ContractModule),

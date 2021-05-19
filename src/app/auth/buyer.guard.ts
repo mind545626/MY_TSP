@@ -7,10 +7,10 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class WasteMoveGuard implements CanActivate {
+export class BuyerGuard implements CanActivate {
 
   Active: boolean;
-  WasteMove: string;
+  Buyer: string;
   UserData: ResponseLoginData;
 
   constructor(
@@ -23,10 +23,10 @@ export class WasteMoveGuard implements CanActivate {
 
     this.UserData = JSON.parse(localStorage.getItem('UserData'))
     this.Active = this.UserData.body.Active
-    this.WasteMove = this.UserData.body.CorporateType
+    this.Buyer = this.UserData.body.SellerType
 
-    if (this.Active === true && this.WasteMove === 'WasteMove') {
-      console.log(this.WasteMove + this.Active, '清除夥伴登入成功');
+    if (this.Active === true && this.Buyer === 'Buyer') {
+      console.log(this.Buyer + this.Active, '買家會員登入成功');
       return true
     }
 

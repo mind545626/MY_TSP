@@ -5,15 +5,12 @@
     <div id="content" class="result-container result-color">
         <div class="card">
             <div class="title">
-                <span>TSP_Order管理列表</span>
+                <span>TSP_Order管理_List</span>
                 <div class="btn-right">
                     <a routerLink="/company/order-progress/new-order">
                         <button type="button" class="btn btn-success btn-lg"><i
-                                class="fa fa-lg fa-fw fa-file-text"></i>新增TSP_Order</button>
+                                class="fa fa-lg fa-fw fa-file-text"></i>Add TSP_Order</button>
                     </a>
-                    <!-- <p-button label="新增TSP_Order" styleClass="ui-button-success"  (click)="goBack()">
-                        <i class="fa fa-lg fa-fw fa-file-text"></i>
-                    </p-button> -->
                 </div>
             </div>
             <mat-tab-group mat-align-tabs="start" class="tab-top">
@@ -21,22 +18,6 @@
                 <mat-tab label="近三個月TSP_Order({{OrderLength}})">
                     <app-recent-orders  (counterEvt)="counterCal($event)"></app-recent-orders>
                 </mat-tab>
-
-                <!-- <mat-tab label="待處理(6)">
-                    <app-pending></app-pending>
-                </mat-tab>
-
-                <mat-tab label="待派車(6)">
-                    <app-tobo-match></app-tobo-match>
-                </mat-tab>
-
-                <mat-tab label="已處理(6)">
-                    <app-processed></app-processed>
-                </mat-tab>
-
-                <mat-tab label="異常TSP_Order(6)">
-                    <app-abnormal></app-abnormal>
-                </mat-tab> -->
 
             </mat-tab-group>
             <p class="p-Browse">建議使用Google chrome瀏覽器，以達到最佳瀏覽效果。</p>

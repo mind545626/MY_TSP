@@ -7,15 +7,12 @@ import { SharedModule } from './shared/shared.module';
 
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
-// import { MatInputModule } from '@angular/material/input';
-// import { MatFormFieldModule } from "@angular/material/form-field";
-import { MyModalComponent } from './shared/my-modal/my-modal.component';
+
 
 import { IndexModule } from './features/TSP/index/index.module';
 import { LoginModule } from './features/TSP/login/login.module';
 import { RegisterModule } from './features/TSP/register/register.module';
-import { CleanRegisterModule } from './features/TSP/clean-register/clean-register.module';
-import { ProcessingRegisterModule } from './features/TSP/processing-register/processing-register.module';
+
 import { PageNotFoundModule } from './features/TSP/page-not-found/page-not-found.module';
 import { MemberCheckModule } from './features/TSP/member-check/member-check.module';
 
@@ -23,18 +20,15 @@ import { RouterModule } from '@angular/router';
 import { SidebarModule } from 'primeng/sidebar';
 import { MainLayoutModule } from './features/main-layout/main-layout.module';
 
-// 20201125新增
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ModifyRegisterModule } from './features/TSP/modify/modify-register/modify-register.module';
-import { ModifyCleanRegisterModule } from './features/TSP/modify/modify-clean-register/modify-clean-register.module';
-import { ModifyProcessingRegisterModule } from './features/TSP/modify/modify-processing-register/modify-processing-register.module';
 
 // -------------API伺服器頁面-------------
 
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
 
 // ---------------------------------
 
@@ -65,10 +59,7 @@ import { ModifyPasswordCheckModule } from './features/TSP/modify/modify-password
     RegisterModule,
     ModifyPasswordCheckModule,
     ModifyRegisterModule,
-    CleanRegisterModule,
-    ModifyCleanRegisterModule,
-    ProcessingRegisterModule,
-    ModifyProcessingRegisterModule,
+
     PageNotFoundModule,
     MemberCheckModule,
 
@@ -102,7 +93,6 @@ import { ModifyPasswordCheckModule } from './features/TSP/modify/modify-password
     // 首頁載入
     HeaderComponent,
     FooterComponent,
-    MyModalComponent,
     CreateContactComponent,
   ],
   providers: [

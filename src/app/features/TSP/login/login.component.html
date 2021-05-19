@@ -7,7 +7,7 @@
         <div id="login">
           <img class="login__logo" src="assets/img/TSP/TSP-Logo.png" alt="TSP-LOGO" />
           <h2 class="login__title">
-            智慧回收媒合平台<br /><span class="login__subtitle">{{"登入頁面"}}</span>
+            交易統計平台<br /><span class="login__subtitle">{{"登入頁面"}}</span>
           </h2>
           <form [formGroup]="loginForm">
             <!-- <form> -->
@@ -15,43 +15,18 @@
             <mat-form-field class="field-wrap">
               <mat-label class="label"><i class="icon-append fa fa-user"></i>{{ "帳號" }}</mat-label>
               <input type="text" class="input" matInput oninput="value=value.replace(/[^\d]/g,'')" maxlength="8"
-                placeholder="請輸入使用者帳號" formControlName="UserId" id="UserId" />
+                placeholder="請輸入會員帳號" formControlName="UserId" id="UserId" />
             </mat-form-field>
             <mat-form-field class="field-wrap">
               <mat-label class="label"><i class="icon-append fa fa-lock"></i>{{ "密碼" }}</mat-label>
               <span class="p-input-icon-right d-flex">
-                <input type="password" class="input" matInput placeholder="請輸入使用者密碼" formControlName="Password"
+                <input type="password" class="input" matInput placeholder="請輸入會員密碼" formControlName="Password"
                   id="Password" />
                 <i *ngIf="isShowPw==false" class="pi  pi-eye" (click)="showPw('N')"></i>
                 <i *ngIf="isShowPw==true" class="pi  pi-eye-slash" (click)="showPw('Y')"></i>
               </span>
             </mat-form-field>
 
-            <!-- <mat-form-field class="field-wrap">
-                            <mat-label class="label"><i class="icon-append fa fa-user"></i> {{ "帳號" }}</mat-label>
-                            <input type="" class="input" matInput data-smart-validate-input=""
-                                data-message-required="請輸入使用者帳號" formControlName="UserId" required />
-                        </mat-form-field>
-
-                        <mat-form-field class="field-wrap">
-                            <mat-label class="label"><i class="icon-append fa fa-lock"></i> {{ "密碼" }}</mat-label>
-                            <input type="password" class="input" matInput data-smart-validate-input=""
-                                data-message-required="請輸入使用者密碼" formControlName="UserPW" required />
-                        </mat-form-field> -->
-
-            <!-- h-captcha 添加 -->
-            <!-- <ng-hcaptcha class="h-captcha"
-                            (verify)="onVerify($event)"
-                            (expired)="onExpired($event)"
-                            (error)="onError($event)">
-                        </ng-hcaptcha> -->
-
-            <!-- siteverify = 0xAe0d15175Ce59Bd5c5DE41F4A46C9e475f46DCe9 -->
-            <!-- user = 3bc5fb9f-abe6-4d85-b46e-77e6330f95b0 -->
-            <!-- sitekey = b92ce5ec-b778-4404-8ebd-a985186e48e8 -->
-
-            <!-- <div class="h-captcha" data-sitekey="b92ce5ec-b778-4404-8ebd-a985186e48e8"></div>
-                        <input type="submit" /> -->
             <div class="form-group row center" style="margin-top:10px ;margin-bottom: 20px;">
               <div class="col-lg-6 col-md-6 mb-12 d-flex">
                 <input type="text" width="100%" class="form-control" id="Captcha" formControlName="Captcha"
@@ -59,9 +34,7 @@
               </div>
               <div class="col-lg-6 col-md-6 mb-12 d-flex" style="margin-left:-25px !important">
                 <img src="{{CapchaUrl}}" width="100%" height="auto" class="">
-                <!-- <button pButton pRipple icon="pi pi-refresh" class="p-button-rounded button-org"
-                (click)="reloadimg()">
-              </button> -->
+
                 <button type="button" class="btn btn-light" (click)="reloadimg()">
                   <i class="fa fa-refresh center" style="font-size:1.2em ;color:#136a50"></i>
                 </button>
@@ -71,19 +44,19 @@
             <div class="btnGroup">
               <button type="button" class="login__button button-block loginBtn" (click)="onSubmit(loginForm)">
                 登入
-                <!-- <a routerLink="/company/order-progress" type="button">{{ "登入" }}</a> -->
+
               </button>
               <button type="button" class="login__button button-block loginBtn" data-toggle="modal"
                 data-target="#myModal">
                 註冊
-                <!-- <a href="#" type="button" data-toggle="modal" data-target="#myModal">{{ "註冊" }}</a> -->
+
               </button>
             </div>
             <div class="getpassword">
               <a style="color: #136a50" (click)="showForgetPassword()">忘記密碼?</a>
-              <!-- <a href="#" data-toggle="modal" data-target="#myModal12" style="color: #136a50">忘記密碼?</a> -->
+
             </div>
-            <!-- </div> -->
+
           </form>
         </div>
       </div>

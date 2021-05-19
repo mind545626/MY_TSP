@@ -1,1083 +1,477 @@
 <div class="page-top">
-    <div id="content" class="register register-card">
-        <div class="join-card">
-            <span class="h1-style">
-                <p>TSP會員申請</p>
-            </span>
-            <mat-tab-group [(selectedIndex)]="tabIndex" disableRipple>
-                <mat-tab disabled="true" label="1. 基本資料填寫">
-                    <form class="form-horizontal" [formGroup]="newRegisterForm">
-                        <!-- container -->
-                        <div class="noticeinfo-container">
-                            <div class="d-flex formcol">
-                                <div class="title">
-                                    <p>公司<br />資訊</p>
-                                </div>
-                                <div class="inputGroup">
-                                    <div class="form-group row">
-                                        <!-- <span>*</span> -->
-                                        <label for="CorporateName" class="col-sm-4 control-label">公司名稱</label>
-                                        <div class="col-sm-8">
-                                            <!-- <input type="text" oninput="value=value.replace(/[\d]/g,'')" -->
-                                            <input type="text" oninput="value=value.replace(/[/d]/g,'')"
-                                             class="form-control" pInputText placeholder="請輸入公司名稱"
-                                                id="CorporateName" formControlName="CorporateName" />
-                                            <div class="small-style">
-                                              <small [hidden]="!newRegisterForm.controls.CorporateName.hasError('required')">
-                                                必填欄位
-                                              </small>
-                                              <small [hidden]="!newRegisterForm.controls.CorporateName.hasError('minlength')">
-                                                名稱字數請大於2
-                                              </small>
-                                              <small [hidden]="!newRegisterForm.controls.CorporateName.hasError('pattern')">
-                                                請輸入英文或者中文
-                                              </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="Representative" class="col-sm-4 control-label">負責人</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" oninput="value=value.replace(/[/d]/g,'')"
-                                                class="form-control" pInputText placeholder="請輸入負責人"
-                                                id="Representative" formControlName="Representative"  />
-                                            <div class="small-style">
-                                              <small [hidden]="!newRegisterForm.controls.Representative.hasError('required')">
-                                                必填欄位
-                                              </small>
-                                              <small [hidden]="!newRegisterForm.controls.Representative.hasError('minlength')">
-                                                名稱字數請大於2
-                                              </small>
-                                              <small [hidden]="!newRegisterForm.controls.Representative.hasError('pattern')">
-                                                請輸入英文或者中文
-                                              </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="TaxIDNumber" class="col-sm-4 control-label">公司統編(會員帳號)</label>
-                                        <div class="col-sm-8">
-                                            <!-- 只能輸入數字 -->
-                                            <input oninput="value=value.replace(/[^\d]/g,'')" maxlength="8" type="text"
-                                                class="form-control" pInputText placeholder="請輸入公司統編，此為您的會員帳號"
-                                                id="TaxIDNumber" formControlName="TaxIDNumber" />
-                                            <div class="small-style">
-                                              <small [hidden]="!newRegisterForm.controls.TaxIDNumber.hasError('required')">
-                                                必填欄位
-                                              </small>
-                                              <small [hidden]="!newRegisterForm.controls.TaxIDNumber.hasError('minlength')">
-                                                請輸入至少8個數字
-                                              </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="Password" class="col-sm-4 control-label">登入密碼</label>
-                                        <div class="col-sm-8">
-                                            <!-- 只能輸入英數 -->
-                                            <input type="Password"
-                                                class="form-control" placeholder="8位以上英數字" pInputText id="Password"
-                                                formControlName="Password" />
-                                            <div class="small-style">
-                                                <small [hidden]="!newRegisterForm.controls.Password.hasError('required')">
-                                                  必填欄位
-                                                </small>
-                                                <small [hidden]="!newRegisterForm.controls.Password.hasError('pattern')">
-                                                  請輸入8位以上英數字
-                                                </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="confirmPassword" class="col-sm-4 control-label">確認密碼</label>
-                                        <div class="col-sm-8">
-                                            <!-- <input oninput="value=value.replace(/[\W]/g,'')" type="Password" -->
-                                            <input type="Password" equalsTo="Password"
-                                                class="form-control" placeholder="請再次確認密碼" pInputText
-                                                formControlName="confirmPassword" id="confirmPassword" />
-                                            <div class="small-style">
-                                                <small [hidden]="!newRegisterForm.controls.confirmPassword.hasError('required')">
-                                                  再次確認密碼
-                                                </small>
-                                                <small [hidden]="!newRegisterForm.controls.confirmPassword.hasError('pattern')">
-                                                  請輸入8位以上英數字
-                                                </small>
-                                                <small [hidden]="!newRegisterForm.controls.confirmPassword.hasError('equalsTo')">
-                                                  請確認與密碼相同
-                                                </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="PhoneNumber" class="col-sm-4 control-label">公司電話</label>
-                                        <div class="col-sm-8">
-                                            <input type="tel" class="form-control" maxlength="11"
-                                                 placeholder="請輸入電話號碼 ex. 01-1234567" pInputText
-                                                 formControlName="PhoneNumber" id="PhoneNumber" />
-                                            <div class="small-style">
-                                                <small [hidden]="!newRegisterForm.controls.PhoneNumber.hasError('required')">
-                                                  必填欄位
-                                                </small>
-                                                <small [hidden]="!newRegisterForm.controls.PhoneNumber.hasError('pattern')">
-                                                  填入格式 ex. 12-1234567
-                                                </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="Fax" class="col-sm-4 control-label">公司傳真</label>
-                                        <div class="col-sm-8">
-                                            <input type="tel" class="form-control" maxlength="11"
-                                                placeholder="請輸入傳真號碼 ex. 01-1234567" pInputText
-                                                formControlName="Fax" id="Fax" />
-                                            <div class="small-style">
-                                                <small [hidden]="!newRegisterForm.controls.Fax.hasError('pattern')">
-                                                    填入格式 ex. 12-1234567
-                                                </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="CareerType" class="col-sm-4 control-label">事業別</label>
-                                        <div class="col-sm-8 CareerSelsct">
-                                            <div class="d-flex">
-                                                <p-dropdown #CareerTypeDropDown placeholder="選擇大類別" [showClear]="true"
-                                                    [options]="CareerType$ | async" [filter]="true" [required]="true"
-                                                    (onChange)="CareerSubType$ = onIndustryChange($event, CareerType, CareerTypeDropDown)"
-                                                    inputId="CareerType" formControlName="CareerType">
-                                                </p-dropdown>
-                                                <p-dropdown #CareerSubType placeholder="選擇中類別" [showClear]="true"
-                                                    [options]="CareerSubType$ | async" [filter]="true" [required]="true"
-                                                    (onChange)="CareerSubTypeChange($event , CareerSubType)"
-                                                    inputId="CareerSubType" formControlName="CareerSubType">
-                                                </p-dropdown>
-                                            </div>
-                                            <div class="small-style">
-                                              <small [hidden]=" !newRegisterForm.controls.CareerType.hasError('required') &&
+  <div id="content" class="register register-card">
+    <div class="join-card">
+      <span class="h1-style">
+        <p>TSP會員申請</p>
+      </span>
+      <mat-tab-group [(selectedIndex)]="tabIndex" disableRipple>
+        <mat-tab disabled="true" label="1. 基本資料填寫">
+          <form class="form-horizontal" [formGroup]="newRegisterForm">
+            <div class="noticeinfo-container">
+              <div class="d-flex formcol">
+                <div class="title">
+                  <p>公司<br />資訊</p>
+                </div>
+                <div class="inputGroup">
+                  <div class="form-group row">
+                    <label for="SellerName" class="col-sm-4 control-label">公司名稱</label>
+                    <div class="col-sm-8">
+                      <!-- <input type="text" oninput="value=value.replace(/[\d]/g,'')" -->
+                      <input type="text" oninput="value=value.replace(/[/d]/g,'')" class="form-control" pInputText
+                        placeholder="請輸入公司名稱" id="SellerName" formControlName="SellerName" />
+                      <div class="small-style">
+                        <small [hidden]="!newRegisterForm.controls.SellerName.hasError('required')">
+                          必填欄位
+                        </small>
+                        <small [hidden]="!newRegisterForm.controls.SellerName.hasError('minlength')">
+                          名稱字數請大於2
+                        </small>
+                        <small [hidden]="!newRegisterForm.controls.SellerName.hasError('pattern')">
+                          請輸入英文或者中文
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="Representative" class="col-sm-4 control-label">負責人</label>
+                    <div class="col-sm-8">
+                      <input type="text" oninput="value=value.replace(/[/d]/g,'')" class="form-control" pInputText
+                        placeholder="請輸入負責人" id="Representative" formControlName="Representative" />
+                      <div class="small-style">
+                        <small [hidden]="!newRegisterForm.controls.Representative.hasError('required')">
+                          必填欄位
+                        </small>
+                        <small [hidden]="!newRegisterForm.controls.Representative.hasError('minlength')">
+                          名稱字數請大於2
+                        </small>
+                        <small [hidden]="!newRegisterForm.controls.Representative.hasError('pattern')">
+                          請輸入英文或者中文
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="TaxIDNumber" class="col-sm-4 control-label">公司統編(會員帳號)</label>
+                    <div class="col-sm-8">
+                      <!-- 只能輸入數字 -->
+                      <input oninput="value=value.replace(/[^\d]/g,'')" maxlength="8" type="text" class="form-control"
+                        pInputText placeholder="請輸入公司統編，此為您的會員帳號" id="TaxIDNumber" formControlName="TaxIDNumber" />
+                      <div class="small-style">
+                        <small [hidden]="!newRegisterForm.controls.TaxIDNumber.hasError('required')">
+                          必填欄位
+                        </small>
+                        <small [hidden]="!newRegisterForm.controls.TaxIDNumber.hasError('minlength')">
+                          請輸入至少8個數字
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="Password" class="col-sm-4 control-label">登入密碼</label>
+                    <div class="col-sm-8">
+                      <!-- 只能輸入英數 -->
+                      <input type="Password" class="form-control" placeholder="8位以上英數字" pInputText id="Password"
+                        formControlName="Password" />
+                      <div class="small-style">
+                        <small [hidden]="!newRegisterForm.controls.Password.hasError('required')">
+                          必填欄位
+                        </small>
+                        <small [hidden]="!newRegisterForm.controls.Password.hasError('pattern')">
+                          請輸入8位以上英數字
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="confirmPassword" class="col-sm-4 control-label">確認密碼</label>
+                    <div class="col-sm-8">
+                      <!-- <input oninput="value=value.replace(/[\W]/g,'')" type="Password" -->
+                      <input type="Password" equalsTo="Password" class="form-control" placeholder="請再次確認密碼" pInputText
+                        formControlName="confirmPassword" id="confirmPassword" />
+                      <div class="small-style">
+                        <small [hidden]="!newRegisterForm.controls.confirmPassword.hasError('required')">
+                          再次確認密碼
+                        </small>
+                        <small [hidden]="!newRegisterForm.controls.confirmPassword.hasError('pattern')">
+                          請輸入8位以上英數字
+                        </small>
+                        <small [hidden]="!newRegisterForm.controls.confirmPassword.hasError('equalsTo')">
+                          請確認與密碼相同
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="PhoneNumber" class="col-sm-4 control-label">公司電話</label>
+                    <div class="col-sm-8">
+                      <input type="tel" class="form-control" maxlength="11" placeholder="請輸入電話號碼 ex. 01-1234567"
+                        pInputText formControlName="PhoneNumber" id="PhoneNumber" />
+                      <div class="small-style">
+                        <small [hidden]="!newRegisterForm.controls.PhoneNumber.hasError('required')">
+                          必填欄位
+                        </small>
+                        <small [hidden]="!newRegisterForm.controls.PhoneNumber.hasError('pattern')">
+                          填入格式 ex. 12-1234567
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="Fax" class="col-sm-4 control-label">公司傳真</label>
+                    <div class="col-sm-8">
+                      <input type="tel" class="form-control" maxlength="11" placeholder="請輸入傳真號碼 ex. 01-1234567"
+                        pInputText formControlName="Fax" id="Fax" />
+                      <div class="small-style">
+                        <small [hidden]="!newRegisterForm.controls.Fax.hasError('pattern')">
+                          填入格式 ex. 12-1234567
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="CareerType" class="col-sm-4 control-label">行業類別</label>
+                    <div class="col-sm-8 CareerSelsct">
+                      <div class="d-flex">
+                        <p-dropdown #CareerTypeDropDown placeholder="選擇大類別" [showClear]="true"
+                          [options]="CareerType$ | async" [filter]="true" [required]="true"
+                          (onChange)="CareerSubType$ = onIndustryChange($event, CareerType, CareerTypeDropDown)"
+                          inputId="CareerType" formControlName="CareerType">
+                        </p-dropdown>
+                        <p-dropdown #CareerSubType placeholder="選擇中類別" [showClear]="true"
+                          [options]="CareerSubType$ | async" [filter]="true" [required]="true"
+                          (onChange)="CareerSubTypeChange($event , CareerSubType)" inputId="CareerSubType"
+                          formControlName="CareerSubType">
+                        </p-dropdown>
+                      </div>
+                      <div class="small-style">
+                        <small [hidden]=" !newRegisterForm.controls.CareerType.hasError('required') &&
                                                                 !newRegisterForm.controls.CareerSubType.hasError('required')
                                                                 ">
-                                                  必填欄位，請填寫行業類別
-                                              </small>
-                                            </div>
-                                        </div>
-                                        <!-- <div class="col-sm-8 industry">
-                                            <div class="d-flex">
-                                                <select class="form-control">
-                                                    <option value="">選擇大類別</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                                <select class="form-control">
-                                                    <option value="">選擇中類別</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                            </div>
-                                        </div> -->
-                                        <!-- <label class="control-label col-sm-1" for="companyAddress">{{'Company Address'}}</label>
-                                        <div class="col-sm-3">
-                                            <p-dropdown inputId="companyAddress"
-                                                        formControlName="companyAddress"
-                                                        placeholder="{{'Please Choose'}}"
-                                                        [options]="123"
-                                                        [showClear]="true"></p-dropdown>
-                                        </div> -->
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="ControlNumber" class="col-sm-4 control-label">管制編號</label>
-                                        <div class="col-sm-8">
-                                            <input maxlength="8" type="text"
-                                                class="form-control" placeholder="請輸入管制編號" pInputText id="ControlNumber"
-                                                formControlName="ControlNumber" />
-                                                <div class="small-style">
-                                                  <small [hidden]="!newRegisterForm.controls.ControlNumber.hasError('required')">
-                                                    必填欄位，ex.A1234567 若沒有請填寫 "無"
-                                                  </small>
-                                                  <small [hidden]="!newRegisterForm.controls.ControlNumber.hasError('minlength')">
-                                                    字數請大於1
-                                                  </small>
-                                              </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="d-flex formcol">
-                                <div class="title">
-                                    <p>聯絡<br />方式</p>
-                                </div>
-                                <div class="inputGroup">
-                                    <div class="form-group row">
-                                        <label for="ControlNumber" class="col-sm-4 control-label">聯絡人</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" oninput="value=value.replace(/[/d]/g,'')"
-                                                class="form-control" pInputText placeholder="請輸入聯絡人名稱"
-                                                id="ContactPerson" formControlName="ContactPerson" />
-                                            <div class="small-style">
-                                                <small [hidden]="!newRegisterForm.controls.ContactPerson.hasError('required')">
-                                                  必填欄位
-                                                </small>
-                                                <small [hidden]="!newRegisterForm.controls.ContactPerson.hasError('minlength')">
-                                                  名稱字數請大於2
-                                                </small>
-                                                <small [hidden]="!newRegisterForm.controls.ContactPerson.hasError('pattern')">
-                                                  請輸入英文或者中文
-                                                </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="ContactPhoneNumber" class="col-sm-4 control-label">聯絡人電話</label>
-                                        <div class="col-sm-8 ContactPhone">
-                                            <div class="d-flex">
-                                                <input #input1 type="tel" class="form-control"
-                                                    placeholder="請輸入聯絡號碼 ex. 12-1234567" (keyup)="VaildPhoneNumber($event)" maxlength="11"
-                                                    pInputText id="ContactPhoneNumber" oninput="value=value.replace(/[^\d-]/g,'')"
-                                                    formControlName="ContactPhoneNumber" />-
-                                                <input type="tel" class="form-control" placeholder="分機" maxlength="4"
-                                                    pInputText id="ContactPhoneExtension"
-                                                    formControlName="ContactPhoneExtension" />
-                                            </div>
-                                            <div class="small-style">
-                                              <small [hidden]="!newRegisterForm.controls.ContactPhoneNumber.hasError('required')">
-                                                  必填欄位，與手機擇一填寫
-                                              </small>
-                                              <small [hidden]="!newRegisterForm.controls.ContactPhoneNumber.hasError('pattern')">
-                                                  填入格式 ex. 12-1234567
-                                              </small>
-                                              <small [hidden]="!newRegisterForm.controls.ContactPhoneExtension.hasError('pattern')">
-                                                  分機數字請大於2
-                                              </small>
-                                            </div>
-                                        </div>
-                                        <!-- <div class="col-sm-8 d-flex">
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" pInputText
-                                                    placeholder="請輸入電話號碼"
-                                                    id="userPhone" formControlName="userPhone" required />
-                                            </div>
-                                            <input type="text" class="form-control" id="userPhone"
-                                                placeholder="請輸入電話號碼" />
-                                            <input type="text" class="form-control" placeholder="分機號碼" />
-                                        </div> -->
-                                    </div>
-                                    <div class="form-group row">
-                                      <label for="ContactMobilePhone" class="col-sm-4 control-label">聯絡人手機</label>
-                                      <div class="col-sm-8">
-                                          <input #input2 type="tel" class="form-control"
-                                               placeholder="請輸入手機號碼 ex. 1234-123456" (keyup)="VaildMobilePhone()" maxlength="11"
-                                               pInputText id="ContactMobilePhone" oninput="value=value.replace(/[^\d-]/g,'')"
-                                               formControlName="ContactMobilePhone" />
-                                          <div class="small-style">
-                                              <small [hidden]="!newRegisterForm.controls.ContactMobilePhone.hasError('required')">
-                                                必填欄位，與電話擇一填寫
-                                              </small>
-                                              <small [hidden]="!newRegisterForm.controls.ContactMobilePhone.hasError('pattern')">
-                                                填入格式 ex. 1234-123456
-                                              </small>
-                                          </div>
-                                      </div>
-                                  </div>
-                                    <div class="form-group row">
-                                        <label for="ContactMail" class="col-sm-4 control-label">聯絡信箱</label>
-                                        <div class="col-sm-8">
-                                            <input type="email" class="form-control" placeholder="請輸入聯絡信箱" pInputText
-                                                id="ContactMail" formControlName="ContactMail" />
-                                            <div class="small-style">
-                                                <small [hidden]="!newRegisterForm.controls.ContactMail.hasError('required')">
-                                                  必填欄位
-                                                </small>
-                                                <small [hidden]=" !newRegisterForm.controls.ContactMail.hasError('email')">
-                                                  請填寫有效的電子信箱，以收取審核通知
-                                                </small>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="BillingZipCode" class="col-sm-4 control-label">帳寄地址</label>
-                                        <div class="col-sm-8 addressSelsct">
-                                            <div class="d-flex">
-                                                <input oninput="value=value.replace(/[^\d]/g,'')" type="text" maxlength="3"
-                                                    class="form-control" placeholder="郵遞區號" pInputText id="BillingZipCode"
-                                                    formControlName="BillingZipCode"/>
-                                                <!-- <p-dropdown
-                                                        placeholder="選擇縣市" [showClear]="true"
-                                                        [options]="City$ | async"
-                                                        (onChange)="District$ = onDepartmentChange($event, District)"
-                                                        inputId="City1" formControlName="City1">
-                                                </p-dropdown> -->
-                                                <p-dropdown placeholder="選擇縣市" [showClear]="true"
-                                                    [options]="BillingCity$ | async" [required]="true"
-                                                    (onChange)="BillingDistrict$ = onCityChange($event, BillingDistrict)"
-                                                    inputId="BillingCity" formControlName="BillingCity">
-                                                </p-dropdown>
-                                                <p-dropdown #BillingDistrict placeholder="選擇區鄉鎮" [showClear]="true"
-                                                    [options]="BillingDistrict$ | async" [required]="true"
-                                                    inputId="BillingDistrict" formControlName="BillingDistrict">
-                                                </p-dropdown>
-                                            </div>
-                                            <div class="addressInput">
-                                              <input type="text" class="form-control" pInputText placeholder="請輸入詳細地址"
-                                              id="BillingRoad" formControlName="BillingRoad" />
-                                            </div>
-                                            <div class="small-style">
-                                              <small [hidden]=" !newRegisterForm.controls.BillingCity.hasError('required') &&
-                                                                !newRegisterForm.controls.BillingDistrict.hasError('required') &&
-                                                                !newRegisterForm.controls.BillingRoad.hasError('required')
-                                                                ">
-                                                  必填欄位，請填寫正確完整的地址
-                                              </small>
-                                            </div>
-                                        </div>
-                                        <!-- <p-dropdown class="addressSelsct" inputId="state" [options]="states" [(ngModel)]="selectedState" placeholder="Select" optionLabel="name"></p-dropdown> -->
-                                        <!-- <div class="col-sm-8 address">
-                                            <div class="d-flex">
-                                                <input type="text" class="form-control" id="address1"
-                                                    placeholder="郵遞區號" />
-                                                <select class="form-control">
-                                                    <option value="">選擇縣市</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                                <select class="form-control">
-                                                    <option value="">選擇區域</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                                <select class="form-control">
-                                                    <option value="">選擇路段</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                            </div>
-                                            <div class="d-flex a-items-center">
-                                                <input type="text" class="form-control" placeholder="" />
-                                                <span>巷</span>
-                                                <input type="text" class="form-control" placeholder="" />
-                                                <span>弄</span>
-                                                <input type="text" class="form-control" placeholder="" />
-                                                <span>號之</span>
-                                                <input type="text" class="form-control" placeholder="" />
-                                                <input type="text" class="form-control" placeholder="" />
-                                                <span>樓之</span>
-                                                <input type="text" class="form-control" placeholder="" />
-                                            </div>
-                                        </div> -->
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="MailingZipCode" class="col-sm-4 control-label">通訊地址</label>
-                                        <div class="col-sm-8 addressSelsct">
-                                            <div class="d-flex">
-                                                <input oninput="value=value.replace(/[^\d]/g,'')" type="text" maxlength="3"
-                                                    class="form-control" placeholder="郵遞區號" pInputText id="MailingZipCode"
-                                                    formControlName="MailingZipCode" />
-                                                <p-dropdown placeholder="選擇縣市" [showClear]="true"
-                                                    [options]="MailingCity$ | async"  [required]="true"
-                                                    (onChange)="MailingDistrict$ = onCityChange($event, MailingDistrict)"
-                                                    inputId="MailingCity" formControlName="MailingCity">
-                                                </p-dropdown>
-                                                <p-dropdown #MailingDistrict placeholder="選擇區鄉鎮" [showClear]="true"
-                                                    [options]="MailingDistrict$ | async"  [required]="true"
-                                                    inputId="MailingDistrict" formControlName="MailingDistrict">
-                                                </p-dropdown>
-                                            </div>
-                                            <div class="addressInput">
-                                                <input type="text" class="form-control" pInputText placeholder="請輸入詳細地址"
-                                                    id="MailingRoad" formControlName="MailingRoad" />
-                                            </div>
-                                            <div class="small-style">
-                                              <small [hidden]=" !newRegisterForm.controls.MailingCity.hasError('required') &&
-                                                                !newRegisterForm.controls.MailingDistrict.hasError('required') &&
-                                                                !newRegisterForm.controls.MailingRoad.hasError('required')
-                                                                ">
-                                                  必填欄位，請填寫正確完整的地址
-                                              </small>
-                                            </div>
-                                            <div class="checkbox">
-                                                <p-checkbox
-                                                    (onChange)="pasteCurAddress($event , newRegisterForm)"
-                                                    binary="true"></p-checkbox>
-                                                <label for="binary" style="margin-right: 1rem;">&#xA0;同帳寄地址</label>
-                                                <!-- <label class=" check-label"><input type="checkbox" id="check"/>
-                                                    同帳寄地址
-                                                </label> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- <div class="form-group row">
-                                        <label for="address2" class="col-sm-4 control-label">通訊地址</label>
-                                        <div class="col-sm-8 address">
-                                            <div class="d-flex">
-                                                <input type="text" class="form-control" id="address2"
-                                                    placeholder="郵遞區號" />
-                                                <select class="form-control">
-                                                    <option value="">選擇縣市</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                                <select class="form-control">
-                                                    <option value="">選擇區域</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                                <select class="form-control">
-                                                    <option value="">選擇路段</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                            </div>
-                                            <div class="d-flex a-items-center">
-                                                <input type="text" class="form-control" placeholder="" />
-                                                <span>巷</span>
-                                                <input type="text" class="form-control" placeholder="" />
-                                                <span>弄</span>
-                                                <input type="text" class="form-control" placeholder="" />
-                                                <span>號之</span>
-                                                <input type="text" class="form-control" placeholder="" />
-                                                <input type="text" class="form-control" placeholder="" />
-                                                <span>樓之</span>
-                                                <input type="text" class="form-control" placeholder="" />
-                                            </div>
-                                            <div class="checkbox">
-                                                <label class=" check-label"><input type="checkbox" />
-                                                    同帳寄地址
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                </div>
-                            </div>
-                            <!-- <div class="d-flex formcol">
-                                <div class="title">
-                                    <p>清除許<br />可資訊</p>
-                                </div>
-                                <div class="inputGroup">
-                                    <div class="form-group row">
-                                        <label for="CleanInstitutionLevel" class="col-sm-4 control-label">清除機構級別</label>
-                                        <div class="col-sm-8">
-                                            <select class="form-control" id="CleanInstitutionLevel">
-                                                <option value="">選擇級別</option>
-                                                <option>甲級</option>
-                                                <option>乙級</option>
-                                                <option>丙級</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="CleanLicensePeriod" class="col-sm-4 control-label">清除許可證期限</label>
-                                        <div class="col-sm-8">
-                                            <select class="form-control" id="CleanLicensePeriod">
-                                                <option value="">選擇期限</option>
-                                                <option>半年</option>
-                                                <option>一年</option>
-                                                <option>三年</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="CleanLicenseNewDate"
-                                            class="col-sm-4 control-label">清除許可證更新日期</label>
-                                        <div class="col-sm-8">
-                                            <p-calendar [(ngModel)]="date1" name="CleanLicenseNewDate" [showIcon]="true"
-                                                [locale]="tw" appendTo="body" showButtonBar="true"
-                                                id="CleanLicenseNewDate" dateFormat="yy-mm-dd" placeholder="請選擇日期">
-                                            </p-calendar>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="CleanLicenseID" class="col-sm-4 control-label">清除許可證號</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="CleanLicenseID"
-                                                placeholder="請輸入清除許可證號" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="CleanTechnicianPeriod1" class="col-sm-4 control-label">
-                                            清除許可項目
-                                        </label>
-                                        <div class="col-sm-8">
-                                            <div class="d-flex">
-                                                <select class="form-control select-width" id="WasteCode1">
-                                                    <option value="">請選擇代碼</option>
-                                                    <option>D-0299</option>
-                                                    <option>D-0298</option>
-                                                    <option>D-0297</option>
-                                                </select>
-                                                <input type="text" class="form-control input-margin" id="OrderItems1"
-                                                    value="" placeholder="廢棄物項目" readonly />
-                                                <button pButton pRipple icon="pi pi-plus"
-                                                    class="p-button-rounded p-button-layout"
-                                                    (click)="editProduct(product)">
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="CleanTechnicianPeriod2" class="col-sm-4 control-label">
-                                        </label>
-                                        <div class="col-sm-8">
-                                            <div class="d-flex">
-                                                <select class="form-control select-width" id="WasteCode2">
-                                                    <option value="">請選擇代碼</option>
-                                                    <option>D-0299</option>
-                                                    <option>D-0298</option>
-                                                    <option>D-0297</option>
-                                                </select>
-                                                <input type="text" class="form-control input-margin" id="OrderItems2"
-                                                    value="" placeholder="廢棄物項目" readonly />
-                                                <button pButton pRipple icon="pi pi-trash"
-                                                    class="p-button-rounded p-button-warning"
-                                                    (click)="deleteProduct(product)">
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="CleanTechnicianLevel"
-                                            class="col-sm-4 control-label">清除技術人員證級別</label>
-                                        <div class="col-sm-8">
-                                            <select class="form-control" id="CleanTechnicianLevel">
-                                                <option value="">選擇級別</option>
-                                                <option>甲級</option>
-                                                <option>乙級</option>
-                                                <option>丙級</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="CleanTechnicianPeriod"
-                                            class="col-sm-4 control-label">清除技術人員證期限</label>
-                                        <div class="col-sm-8">
-                                            <select class="form-control" id="CleanTechnicianPeriod">
-                                                <option value="">選擇期限</option>
-                                                <option>半年</option>
-                                                <option>一年</option>
-                                                <option>三年</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="CleanTechnicianNewDate"
-                                            class="col-sm-4 control-label">清除技術人員證更新日期</label>
-                                        <div class="col-sm-8">
-                                            <p-calendar [(ngModel)]="date2" name="CleanTechnicianNewDate"
-                                                [showIcon]="true" [locale]="tw" appendTo="body" showButtonBar="true"
-                                                id="CleanTechnicianNewDate" dateFormat="yy-mm-dd" placeholder="請選擇日期">
-                                            </p-calendar>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="CleanTechnicianID" class="col-sm-4 control-label">清除技術人員證號</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="CleanTechnicianID"
-                                                placeholder="請輸入清除技術人員證號" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="d-flex formcol">
-                                <div class="title">
-                                    <p>處理許<br />可資訊</p>
-                                </div>
-                                <div class="inputGroup">
-                                    <div class="form-group row">
-                                        <label for="ProcessInstitutionLevel"
-                                            class="col-sm-4 control-label">處理機構級別</label>
-                                        <div class="col-sm-8">
-                                            <select class="form-control" id="ProcessInstitutionLevel">
-                                                <option value="">選擇級別</option>
-                                                <option>甲級</option>
-                                                <option>乙級</option>
-                                                <option>丙級</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="ProcessMethod" class="col-sm-4 control-label">處理方法</label>
-                                        <div class="col-sm-8">
-                                            <select class="form-control" id="ProcessMethod">
-                                                <option value="">選擇方法</option>
-                                                <option>焚化</option>
-                                                <option>掩埋</option>
-                                                <option>其他</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="ProcessLicensePeriod" class="col-sm-4 control-label">處理許可證期限</label>
-                                        <div class="col-sm-8">
-                                            <select class="form-control" id="ProcessLicensePeriod">
-                                                <option value="">選擇期限</option>
-                                                <option>半年</option>
-                                                <option>一年</option>
-                                                <option>三年</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="ProcessLicenseNewDate"
-                                            class="col-sm-4 control-label">處理許可證更新日期</label>
-                                        <div class="col-sm-8">
-                                            <p-calendar [(ngModel)]="date3" name="ProcessLicenseNewDate"
-                                                [showIcon]="true" [locale]="tw" appendTo="body" showButtonBar="true"
-                                                id="ProcessLicenseNewDate" dateFormat="yy-mm-dd" placeholder="請選擇日期">
-                                            </p-calendar>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="ProcessLicenseID" class="col-sm-4 control-label">處理許可證號</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="ProcessLicenseID"
-                                                placeholder="請輸入處理許可證號" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="ProcessingTechnicianPeriod1" class="col-sm-4 control-label">
-                                            處理許可項目
-                                        </label>
-                                        <div class="col-sm-8">
-                                            <div class="d-flex">
-                                                <select class="form-control select-width" id="WasteCode3">
-                                                    <option value="">請選擇代碼</option>
-                                                    <option>D-0299</option>
-                                                    <option>D-0298</option>
-                                                    <option>D-0297</option>
-                                                </select>
-                                                <input type="text" class="form-control input-margin" id="OrderItems3"
-                                                    value="" placeholder="廢棄物項目" readonly />
-                                                <button pButton pRipple icon="pi pi-plus"
-                                                    class="p-button-rounded p-button-layout"
-                                                    (click)="editProduct(product)">
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="ProcessingTechnicianPeriod2" class="col-sm-4 control-label">
-                                        </label>
-                                        <div class="col-sm-8">
-                                            <div class="d-flex">
-                                                <select class="form-control select-width" id="WasteCode4">
-                                                    <option value="">請選擇代碼</option>
-                                                    <option>D-0299</option>
-                                                    <option>D-0298</option>
-                                                    <option>D-0297</option>
-                                                </select>
-                                                <input type="text" class="form-control input-margin" id="OrderItems4"
-                                                    value="" placeholder="廢棄物項目" readonly />
-                                                <button pButton pRipple icon="pi pi-trash"
-                                                    class="p-button-rounded p-button-warning"
-                                                    (click)="deleteProduct(product)">
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="ProcessTechnicianLevel"
-                                            class="col-sm-4 control-label">處理技術人員證級別</label>
-                                        <div class="col-sm-8">
-                                            <select class="form-control" id="ProcessTechnicianLevel">
-                                                <option value="">選擇級別</option>
-                                                <option>甲級</option>
-                                                <option>乙級</option>
-                                                <option>丙級</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="ProcessTechnicianPeriod"
-                                            class="col-sm-4 control-label">處理技術人員證期限</label>
-                                        <div class="col-sm-8">
-                                            <select class="form-control" id="ProcessTechnicianPeriod">
-                                                <option value="">選擇期限</option>
-                                                <option>半年</option>
-                                                <option>一年</option>
-                                                <option>三年</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="ProcessTechnicianNewDate"
-                                            class="col-sm-4 control-label">處理技術人員證更新日期</label>
-                                        <div class="col-sm-8">
-                                            <p-calendar [(ngModel)]="date4" name="ProcessTechnicianNewDate"
-                                                [showIcon]="true" [locale]="tw" appendTo="body" showButtonBar="true"
-                                                id="ProcessTechnicianNewDate" dateFormat="yy-mm-dd" placeholder="請選擇日期">
-                                            </p-calendar>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="ProcessTechnicianID" class="col-sm-4 control-label">處理技術人員證號</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="ProcessTechnicianID"
-                                                placeholder="請輸入處理技術人員證號" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-                            <div class="d-flex formcol">
-                                <div class="title">
-                                    <p>忘記<br />密碼</p>
-                                </div>
-                                <div class="inputGroup">
-                                    <div class="form-group row">
-                                        <label for="BackupMail" class="col-sm-4 control-label">備援電子郵件</label>
-                                        <div class="col-sm-8">
-                                            <input type="email" class="form-control" placeholder="請輸入備援電子郵件" pInputText
-                                                id="BackupMail" formControlName="BackupMail"/>
-                                            <div class="small-style">
-                                              <small [hidden]="!newRegisterForm.controls.BackupMail.hasError('required')">
-                                                    必填欄位
-                                              </small>
-                                              <small [hidden]=" !newRegisterForm.controls.BackupMail.hasError('email')">
-                                                    請填寫有效的電子信箱
-                                              </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- <div class="form-group row">
-                                        <label for="answer" class="col-sm-4 control-label">提問答案</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control"
-                                                placeholder="答案為您忘記密碼時使用" pInputText
-                                                id="answer" formControlName="answer" required />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="answer" class="col-sm-4 control-label">提問答案</label>
-                                        <div class="col-sm-8">
-                                            <input class="form-control" id="answer" placeholder="" />
-                                        </div>
-                                    </div> -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- tips -->
-                        <div class="form-group row d-flex j-content-center" style=" font-size: 1.3em">
-                            <div [formGroup]="Box">
-                                <div class="tips d-flex j-content-center">
-                                    <a href="">使用者條款</a>
-                                    <a href="">隱私保護政策</a>
-                                </div>
-                                <div class="checkbox">
-                                  <p-checkbox [formControl]="Box.controls['ItisOK']" binary="true"></p-checkbox>
-                                  <label for="ItisOK" style="margin-right: 1rem;">&#xA0;我已閱讀並同意使用者條款與個人資料和隱私保護政策</label>
-                              </div>
-                                <!-- <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"
-                                            style=" width:18px; height:18px;" />我已閱讀並同意使用者條款與個人資料和隱私保護政策</label>
-                                </div> -->
-                            </div>
-                        </div>
-                        <!-- {{CareerType ? CareerType : 'none'}}
-                        {{newRegisterForm.controls.CareerType.value}} -->
-
-                        <!-- button -->
-                        <!-- <div class="form-group row">
-            <div class="col-sm-offset-5 col-sm-10">
-              <button type="submit" mat-stroked-button color="basic">
-                下一步
-              </button>
-            </div>
-          </div> -->
-                        <div class="form-group row">
-                            <div class="justify-content-center btn-center">
-                                <button type="button" class="btn btn-primary btn-lg register-btn"
-                                    (click)="return()">返回</button>
-                                <button type="button" (click)="NextTab()" class="btn btn-success btn-lg register-btn">
-                                  下一步</button>
-                            </div>
-                        </div>
-                    </form>
-                </mat-tab>
-                <!-- <mat-tab label="2. 契約設定">
-      <form class="form-horizontal d-flex a-items-center f-d-column">
-        <div class="setArea">
-          <div>
-            <h3>
-              <i class="fa fa-chevron-circle-right"></i>請選擇契約簽立模式
-            </h3>
-            <mat-radio-group class="radio-group" [(ngModel)]="favoriteSeason">
-              <mat-radio-button class="radio-button" *ngFor="let season of seasons" [value]="season">
-                {{ season }}
-              </mat-radio-button>
-            </mat-radio-group>
-          </div>
-          <div>
-            <h3>
-              <i class="fa fa-chevron-circle-right"></i>請選擇付款方式(三擇一)
-            </h3>
-            <mat-radio-group class="radio-group f-d-column" [(ngModel)]="favoriteSeason">
-              <mat-radio-button class="radio-button" *ngFor="let season of seasons2" [value]="season">
-                {{ season }}
-              </mat-radio-button>
-            </mat-radio-group>
-          </div>
-        </div>
-        <div class="buttonGroup">
-          <button type="" mat-stroked-button>上一步</button>
-          <button type="submit" mat-stroked-button color="basic">下一步</button>
-        </div>
-      </form>
-    </mat-tab> -->
-                <mat-tab  label="2. 資料確認" disabled="true">
-                    <form class="form-horizontal">
-                        <div class="notice-container">
-                            <table class="confirmTable">
-                                <thead class="line">
-                                    <h3>基本資料</h3>
-                                    <button type="button" id="edit-btn" (click)="BackTab()"
-                                        class="register-btn btn btn-lg btn-primary">修改</button>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th>公司名稱</th>
-                                        <td>{{ newRegisterForm.controls.CorporateName.value }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>負責人</th>
-                                        <td>{{ newRegisterForm.controls.Representative.value }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>公司統編(會員帳號)</th>
-                                        <td>{{ newRegisterForm.controls.TaxIDNumber.value }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>登入密碼</th>
-                                        <td>{{ newRegisterForm.controls.Password.value }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>公司電話</th>
-                                        <td>{{ newRegisterForm.controls.PhoneNumber.value }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>公司傳真</th>
-                                        <td>{{ newRegisterForm.controls.Fax.value }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>事業別</th>
-                                        <!-- <td>1402 合板及組合木材製造業 </td> -->
-                                        <td>{{ toCareerType }}&#xA0;>&#xA0;{{ toCareerSubType }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>管制編號</th>
-                                        <td>{{ newRegisterForm.controls.ControlNumber.value }}</td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th>聯絡人</th>
-                                        <td>{{ newRegisterForm.controls.ContactPerson.value }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>聯絡人電話</th>
-                                        <td>{{ newRegisterForm.controls.ContactPhoneNumber.value }}<span>分機{{ newRegisterForm.controls.ContactPhoneExtension.value }}</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th>聯絡人手機</th>
-                                        <td>{{ newRegisterForm.controls.ContactMobilePhone.value }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>聯絡信箱</th>
-                                        <td>{{ newRegisterForm.controls.ContactMail.value }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>帳收地址</th>
-                                        <td>{{ newRegisterForm.controls.BillingZipCode.value }}&#xA0;{{ newRegisterForm.controls.BillingCity.value }}{{ newRegisterForm.controls.BillingDistrict.value }}{{ newRegisterForm.controls.BillingRoad.value }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>通訊地址</th>
-                                        <td>{{ newRegisterForm.controls.MailingZipCode.value }}&#xA0;{{ newRegisterForm.controls.MailingCity.value }}{{ newRegisterForm.controls.MailingDistrict.value }}{{ newRegisterForm.controls.MailingRoad.value }}</td>
-                                    </tr>
-                                </tbody>
-                                <!-- <tbody>
-                                    <tr>
-                                        <th>清除機構級別</th>
-                                        <td>乙級</td>
-                                    </tr>
-                                    <tr>
-                                        <th>清除許可證期限</th>
-                                        <td>三年</td>
-                                    </tr>
-                                    <tr>
-                                        <th>清除許可證更新日期</th>
-                                        <td>2019-10-18</td>
-                                    </tr>
-                                    <tr>
-                                        <th>清除許可證號</th>
-                                        <td>C985775540</td>
-                                    </tr>
-                                    <tr>
-                                        <th>清除技術人員證級別</th>
-                                        <td>甲級</td>
-                                    </tr>
-                                    <tr>
-                                        <th>清除技術人員證期限</th>
-                                        <td>五年</td>
-                                    </tr>
-                                    <tr>
-                                        <th>清除技術人員證更新日期</th>
-                                        <td>2020-10-18</td>
-                                    </tr>
-                                    <tr>
-                                        <th>清除技術人員證號</th>
-                                        <td>D654778</td>
-                                    </tr>
-                                </tbody>
-
-                                <tbody>
-                                    <tr>
-                                        <th>處理機構級別</th>
-                                        <td>甲級</td>
-                                    </tr>
-                                    <tr>
-                                        <th>處理方法</th>
-                                        <td>掩埋</td>
-                                    </tr>
-                                    <tr>
-                                        <th>處理許可證期限</th>
-                                        <td>三年</td>
-                                    </tr>
-                                    <tr>
-                                        <th>處理許可證更新日期</th>
-                                        <td>2019-10-18</td>
-                                    </tr>
-                                    <tr>
-                                        <th>處理許可證號</th>
-                                        <td>C985775540</td>
-                                    </tr>
-                                    <tr>
-                                        <th>處理技術人員證級別</th>
-                                        <td>甲級</td>
-                                    </tr>
-                                    <tr>
-                                        <th>處理技術人員證期限</th>
-                                        <td>五年</td>
-                                    </tr>
-                                    <tr>
-                                        <th>處理技術人員證更新日期</th>
-                                        <td>2020-10-18</td>
-                                    </tr>
-                                    <tr>
-                                        <th>處理技術人員證號</th>
-                                        <td>B88577462</td>
-                                    </tr>
-                                </tbody> -->
-                                <tbody class="border-none">
-                                    <tr>
-                                        <th>備援信箱</th>
-                                        <td>{{ newRegisterForm.controls.BackupMail.value }}</td>
-                                    </tr>
-                                    <!-- <tr>
-                                        <th>安全提問</th>
-                                        <td>公司成立日期</td>
-                                    </tr>
-                                    <tr>
-                                        <th>提問回答</th>
-                                        <td>19990101</td>
-                                    </tr> -->
-                                </tbody>
-                                <tbody class="line"></tbody>
-                                <!-- <tbody class="line">
-              <thead>
-                <h3>契約設定</h3>
-                <button type="reset" mat-stroked-button>修改</button>
-              </thead>
-            </tbody>
-            <tbody class="border-none">
-              <tr>
-                <td>契約簽立模式:</td>
-                <td>實體簽約</td>
-              </tr>
-              <tr>
-                <td>付款方式:</td>
-                <td>現金-月結</td>
-              </tr>
-              <tr>
-                <td>月結時間:</td>
-                <td>每月8號</td>
-              </tr>
-            </tbody> -->
-                                <!-- <div class="buttonGroup d-flex j-content-center">
-                <button type="submit" mat-stroked-button color="basic">
-                  確認資料無誤
-                </button>
-              </div> -->
-                                <!-- <div class="form-group row">
-                <div class="container">
-                  <div class="row mx-0 justify-content-center align-items-center">
-                    <div class="text-center">
-                      <div>
-                        <button type="submit" mat-stroked-button color="basic" class="btn btn-lg btn-success"
-                          style="width: 15%;font-size: 1em;">確認資料無誤</button>
+                          必填欄位，請填寫行業類別
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="ControlNumber" class="col-sm-4 control-label">TPS_VIP_ID</label>
+                    <div class="col-sm-8">
+                      <input maxlength="8" type="text" class="form-control" placeholder="請輸入TPS_VIP_ID" pInputText
+                        id="ControlNumber" formControlName="ControlNumber" />
+                      <div class="small-style">
+                        <small [hidden]="!newRegisterForm.controls.ControlNumber.hasError('required')">
+                          必填欄位，ex.A1234567 若沒有請填寫 "無"
+                        </small>
+                        <small [hidden]="!newRegisterForm.controls.ControlNumber.hasError('minlength')">
+                          字數請大於1
+                        </small>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div> -->
-                            </table>
-                        </div>
-                        <div class="form-group">
-                            <div class="justify-content-center">
-                                <button type="submit" class="btn btn-success btn-lg register-btn btn-top"
-                                    (click)="onSubmit(newRegisterForm)">
-                                    確認資料無誤
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </mat-tab>
-                <mat-tab disabled="true" label="3. 完成會員申請">
-                    <div class="finish finish-top">
-                        <div class="d-flex f-d-column a-items-center">
-                            <div class="d-flex j-content-center a-items-center">
-                                <i class="fa fa-check-circle-o"></i>
-                                <h1>已將您的申請資料<br />傳送給平台審核人員</h1>
-                            </div>
-                            <div>
-                                <p>
-                                    ※ 審核工作天約為<span class="redColor"> 2-3 </span>天(不含例假日)， 會員申請通過後會寄信件通知，請您留意。
-                                </p>
-                                <p>
-                                    ※ 有其他問題歡迎來電<span class="blueColor"> 02-2233-4455</span>，
-                                    將有客服人員為您服務。
-                                </p>
-                            </div>
-                            <a href="#">前往官網</a>
-                        </div>
+              </div>
+
+              <div class="d-flex formcol">
+                <div class="title">
+                  <p>聯絡<br />方式</p>
+                </div>
+                <div class="inputGroup">
+                  <div class="form-group row">
+                    <label for="ControlNumber" class="col-sm-4 control-label">聯絡人</label>
+                    <div class="col-sm-8">
+                      <input type="text" oninput="value=value.replace(/[/d]/g,'')" class="form-control" pInputText
+                        placeholder="請輸入聯絡人名稱" id="ContactPerson" formControlName="ContactPerson" />
+                      <div class="small-style">
+                        <small [hidden]="!newRegisterForm.controls.ContactPerson.hasError('required')">
+                          必填欄位
+                        </small>
+                        <small [hidden]="!newRegisterForm.controls.ContactPerson.hasError('minlength')">
+                          名稱字數請大於2
+                        </small>
+                        <small [hidden]="!newRegisterForm.controls.ContactPerson.hasError('pattern')">
+                          請輸入英文或者中文
+                        </small>
+                      </div>
                     </div>
-                </mat-tab>
-            </mat-tab-group>
-        </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="ContactPhoneNumber" class="col-sm-4 control-label">聯絡人電話</label>
+                    <div class="col-sm-8 ContactPhone">
+                      <div class="d-flex">
+                        <input #input1 type="tel" class="form-control" placeholder="請輸入聯絡號碼 ex. 12-1234567"
+                          (keyup)="VaildPhoneNumber($event)" maxlength="11" pInputText id="ContactPhoneNumber"
+                          oninput="value=value.replace(/[^\d-]/g,'')" formControlName="ContactPhoneNumber" />-
+                        <input type="tel" class="form-control" placeholder="分機" maxlength="4" pInputText
+                          id="ContactPhoneExtension" formControlName="ContactPhoneExtension" />
+                      </div>
+                      <div class="small-style">
+                        <small [hidden]="!newRegisterForm.controls.ContactPhoneNumber.hasError('required')">
+                          必填欄位，與手機擇一填寫
+                        </small>
+                        <small [hidden]="!newRegisterForm.controls.ContactPhoneNumber.hasError('pattern')">
+                          填入格式 ex. 12-1234567
+                        </small>
+                        <small [hidden]="!newRegisterForm.controls.ContactPhoneExtension.hasError('pattern')">
+                          分機數字請大於2
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="ContactMobilePhone" class="col-sm-4 control-label">聯絡人手機</label>
+                    <div class="col-sm-8">
+                      <input #input2 type="tel" class="form-control" placeholder="請輸入手機號碼 ex. 1234-123456"
+                        (keyup)="VaildMobilePhone()" maxlength="11" pInputText id="ContactMobilePhone"
+                        oninput="value=value.replace(/[^\d-]/g,'')" formControlName="ContactMobilePhone" />
+                      <div class="small-style">
+                        <small [hidden]="!newRegisterForm.controls.ContactMobilePhone.hasError('required')">
+                          必填欄位，與電話擇一填寫
+                        </small>
+                        <small [hidden]="!newRegisterForm.controls.ContactMobilePhone.hasError('pattern')">
+                          填入格式 ex. 1234-123456
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="ContactMail" class="col-sm-4 control-label">聯絡信箱</label>
+                    <div class="col-sm-8">
+                      <input type="email" class="form-control" placeholder="請輸入聯絡信箱" pInputText id="ContactMail"
+                        formControlName="ContactMail" />
+                      <div class="small-style">
+                        <small [hidden]="!newRegisterForm.controls.ContactMail.hasError('required')">
+                          必填欄位
+                        </small>
+                        <small [hidden]=" !newRegisterForm.controls.ContactMail.hasError('email')">
+                          請填寫有效的電子信箱，以收取審核通知
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="BillingZipCode" class="col-sm-4 control-label">登記地址</label>
+                    <div class="col-sm-8 addressSelsct">
+                      <div class="d-flex">
+                        <input oninput="value=value.replace(/[^\d]/g,'')" type="text" maxlength="3" class="form-control"
+                          placeholder="郵遞區號" pInputText id="BillingZipCode" formControlName="BillingZipCode" />
+                        <p-dropdown placeholder="選擇縣市" [showClear]="true" [options]="BillingCity$ | async"
+                          [required]="true" (onChange)="BillingDistrict$ = onCityChange($event, BillingDistrict)"
+                          inputId="BillingCity" formControlName="BillingCity">
+                        </p-dropdown>
+                        <p-dropdown #BillingDistrict placeholder="選擇區鄉鎮" [showClear]="true"
+                          [options]="BillingDistrict$ | async" [required]="true" inputId="BillingDistrict"
+                          formControlName="BillingDistrict">
+                        </p-dropdown>
+                      </div>
+                      <div class="addressInput">
+                        <input type="text" class="form-control" pInputText placeholder="請輸入詳細地址" id="BillingRoad"
+                          formControlName="BillingRoad" />
+                      </div>
+                      <div class="small-style">
+                        <small [hidden]=" !newRegisterForm.controls.BillingCity.hasError('required') &&
+                                                                !newRegisterForm.controls.BillingDistrict.hasError('required') &&
+                                                                !newRegisterForm.controls.BillingRoad.hasError('required')
+                                                                ">
+                          必填欄位，請填寫正確完整的地址
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="MailingZipCode" class="col-sm-4 control-label">聯絡地址</label>
+                    <div class="col-sm-8 addressSelsct">
+                      <div class="d-flex">
+                        <input oninput="value=value.replace(/[^\d]/g,'')" type="text" maxlength="3" class="form-control"
+                          placeholder="郵遞區號" pInputText id="MailingZipCode" formControlName="MailingZipCode" />
+                        <p-dropdown placeholder="選擇縣市" [showClear]="true" [options]="MailingCity$ | async"
+                          [required]="true" (onChange)="MailingDistrict$ = onCityChange($event, MailingDistrict)"
+                          inputId="MailingCity" formControlName="MailingCity">
+                        </p-dropdown>
+                        <p-dropdown #MailingDistrict placeholder="選擇區鄉鎮" [showClear]="true"
+                          [options]="MailingDistrict$ | async" [required]="true" inputId="MailingDistrict"
+                          formControlName="MailingDistrict">
+                        </p-dropdown>
+                      </div>
+                      <div class="addressInput">
+                        <input type="text" class="form-control" pInputText placeholder="請輸入詳細地址" id="MailingRoad"
+                          formControlName="MailingRoad" />
+                      </div>
+                      <div class="small-style">
+                        <small [hidden]=" !newRegisterForm.controls.MailingCity.hasError('required') &&
+                                                                !newRegisterForm.controls.MailingDistrict.hasError('required') &&
+                                                                !newRegisterForm.controls.MailingRoad.hasError('required')
+                                                                ">
+                          必填欄位，請填寫正確完整的地址
+                        </small>
+                      </div>
+                      <div class="checkbox">
+                        <p-checkbox (onChange)="pasteCurAddress($event , newRegisterForm)" binary="true"></p-checkbox>
+                        <label for="binary" style="margin-right: 1rem;">&#xA0;同登記地址</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex formcol">
+                <div class="title">
+                  <p>忘記<br />密碼</p>
+                </div>
+                <div class="inputGroup">
+                  <div class="form-group row">
+                    <label for="BackupMail" class="col-sm-4 control-label">備用信箱</label>
+                    <div class="col-sm-8">
+                      <input type="email" class="form-control" placeholder="請輸入備用信箱" pInputText id="BackupMail"
+                        formControlName="BackupMail" />
+                      <div class="small-style">
+                        <small [hidden]="!newRegisterForm.controls.BackupMail.hasError('required')">
+                          必填欄位
+                        </small>
+                        <small [hidden]=" !newRegisterForm.controls.BackupMail.hasError('email')">
+                          請填寫有效的電子信箱
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row d-flex j-content-center" style=" font-size: 1.3em">
+              <div [formGroup]="Box">
+                <div class="tips d-flex j-content-center">
+                  <a href="">會員條款</a>
+                  <a href="">隱私保護政策</a>
+                </div>
+                <div class="checkbox">
+                  <p-checkbox [formControl]="Box.controls['ItisOK']" binary="true"></p-checkbox>
+                  <label for="ItisOK" style="margin-right: 1rem;">&#xA0;我已閱讀並同意會員條款與個人資料和隱私保護政策</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="justify-content-center btn-center">
+                <button type="button" class="btn btn-primary btn-lg register-btn" (click)="return()">返回</button>
+                <button type="button" (click)="NextTab()" class="btn btn-success btn-lg register-btn">
+                  下一步</button>
+              </div>
+            </div>
+          </form>
+        </mat-tab>
+        <mat-tab label="2. 資料確認" disabled="true">
+          <form class="form-horizontal">
+            <div class="notice-container">
+              <table class="confirmTable">
+                <thead class="line">
+                  <h3>基本資料</h3>
+                  <button type="button" id="edit-btn" (click)="BackTab()"
+                    class="register-btn btn btn-lg btn-primary">Modify </button>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>公司名稱</th>
+                    <td>{{ newRegisterForm.controls.SellerName.value }}</td>
+                  </tr>
+                  <tr>
+                    <th>負責人</th>
+                    <td>{{ newRegisterForm.controls.Representative.value }}</td>
+                  </tr>
+                  <tr>
+                    <th>公司統編(會員帳號)</th>
+                    <td>{{ newRegisterForm.controls.TaxIDNumber.value }}</td>
+                  </tr>
+                  <tr>
+                    <th>登入密碼</th>
+                    <td>{{ newRegisterForm.controls.Password.value }}</td>
+                  </tr>
+                  <tr>
+                    <th>公司電話</th>
+                    <td>{{ newRegisterForm.controls.PhoneNumber.value }}</td>
+                  </tr>
+                  <tr>
+                    <th>公司傳真</th>
+                    <td>{{ newRegisterForm.controls.Fax.value }}</td>
+                  </tr>
+                  <tr>
+                    <th>行業類別</th>
+                    <td>{{ toCareerType }}&#xA0;>&#xA0;{{ toCareerSubType }}</td>
+                  </tr>
+                  <tr>
+                    <th>TPS_VIP_ID</th>
+                    <td>{{ newRegisterForm.controls.ControlNumber.value }}</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <th>聯絡人</th>
+                    <td>{{ newRegisterForm.controls.ContactPerson.value }}</td>
+                  </tr>
+                  <tr>
+                    <th>聯絡人電話</th>
+                    <td>{{ newRegisterForm.controls.ContactPhoneNumber.value }}<span>分機{{
+                        newRegisterForm.controls.ContactPhoneExtension.value }}</span></td>
+                  </tr>
+                  <tr>
+                    <th>聯絡人手機</th>
+                    <td>{{ newRegisterForm.controls.ContactMobilePhone.value }}</td>
+                  </tr>
+                  <tr>
+                    <th>聯絡信箱</th>
+                    <td>{{ newRegisterForm.controls.ContactMail.value }}</td>
+                  </tr>
+                  <tr>
+                    <th>帳收地址</th>
+                    <td>{{ newRegisterForm.controls.BillingZipCode.value }}&#xA0;{{
+                      newRegisterForm.controls.BillingCity.value }}{{ newRegisterForm.controls.BillingDistrict.value
+                      }}{{ newRegisterForm.controls.BillingRoad.value }}</td>
+                  </tr>
+                  <tr>
+                    <th>聯絡地址</th>
+                    <td>{{ newRegisterForm.controls.MailingZipCode.value }}&#xA0;{{
+                      newRegisterForm.controls.MailingCity.value }}{{ newRegisterForm.controls.MailingDistrict.value
+                      }}{{ newRegisterForm.controls.MailingRoad.value }}</td>
+                  </tr>
+                </tbody>
+                <tbody class="border-none">
+                  <tr>
+                    <th>備援信箱</th>
+                    <td>{{ newRegisterForm.controls.BackupMail.value }}</td>
+                  </tr>
+                </tbody>
+                <tbody class="line"></tbody>
+              </table>
+            </div>
+            <div class="form-group">
+              <div class="justify-content-center">
+                <button type="submit" class="btn btn-success btn-lg register-btn btn-top"
+                  (click)="onSubmit(newRegisterForm)">
+                  確認資料無誤
+                </button>
+              </div>
+            </div>
+          </form>
+        </mat-tab>
+        <mat-tab disabled="true" label="3. 完成會員申請">
+          <div class="finish finish-top">
+            <div class="d-flex f-d-column a-items-center">
+              <div class="d-flex j-content-center a-items-center">
+                <i class="fa fa-check-circle-o"></i>
+                <h1>已將您的申請資料<br />傳送給平台審核人員</h1>
+              </div>
+              <div>
+                <p>
+                  ※ 審核工作天約為<span class="redColor"> 2-3 </span>天(不含例假日)， 會員申請通過後會寄信件通知，請您留意。
+                </p>
+                <p>
+                  ※ 有其他問題歡迎來電<span class="blueColor"> 02-2233-4455</span>，
+                  將有客服人員為您服務。
+                </p>
+              </div>
+              <a href="#">前往官網</a>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
     </div>
+  </div>
 </div>
 <p-toast position="bottom-right"></p-toast>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router, Route, CanLoad } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { ResponseLoginData } from '@app/core/models/user';
 import { UserDataService } from '@app/core/services/UserData.service';
 import { Observable } from 'rxjs';
@@ -7,16 +7,15 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CorporateGuard implements CanActivate {
+export class CourierGuard implements CanActivate {
 
   Active: boolean;
-  Corporate: string;
+  Courier: string;
   UserData: ResponseLoginData;
 
   constructor(
     private UserDataService: UserDataService,
     private router: Router) { }
-
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -24,15 +23,15 @@ export class CorporateGuard implements CanActivate {
 
     this.UserData = JSON.parse(localStorage.getItem('UserData'))
     this.Active = this.UserData.body.Active
-    this.Corporate = this.UserData.body.CorporateType
+    this.Courier = this.UserData.body.SellerType
 
-    if (this.Active === true && this.Corporate === 'Corporate') {
-      console.log(this.Corporate + this.Active, '事業單位登入成功');
+    if (this.Active === true && this.Courier === 'Courier') {
+      console.log(this.Courier + this.Active, '快遞會員登入成功');
       return true
     }
 
     this.router.navigate(['/**']);
     return false;
-
   }
+
 }

@@ -4,27 +4,6 @@ import { FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 // import { SmartadminLayoutModule } from "./layout";
 import { HttpClientModule } from '@angular/common/http';
-
-// import { I18nModule } from "./i18n/i18n.module";
-// import { UserModule } from "./user/user.module";
-// import { BootstrapModule } from "@app/shared/bootstrap.module";
-// import { VoiceControlModule } from "./voice-control/voice-control.module";
-// import { SmartadminWidgetsModule } from "./widgets/smartadmin-widgets.module";
-// import { UtilsModule } from "./utils/utils.module";
-// import { PipesModule } from "./pipes/pipes.module";
-// import { ChatModule } from "./chat/chat.module";
-// import { StatsModule } from "./stats/stats.module";
-// import { InlineGraphsModule } from "./graphs/inline/inline-graphs.module";
-// import { SmartadminFormsLiteModule } from "./forms/smartadmin-forms-lite.module";
-// import { SmartProgressbarModule } from "./ui/smart-progressbar/smart-progressbar.module";
-// import { CalendarComponentsModule } from "@app/shared/calendar/calendar-components.module";
-
-// custom shared component
-// import { DatepickerModule } from '@app/shared/datepicker/datepicker.module';
-// import { MattableModule } from '@app/shared/mat-table/mattable.module';
-// import { SelectFormModule } from '@app/shared/select-form/select-form.module';
-
-// import { StatsModule} from './stats/stats.module'
 //primeng
 import { TableModule } from 'primeng/table';
 import { CalendarModule } from 'primeng/calendar';
@@ -76,9 +55,7 @@ import { ProgressSpinnerModule } from "primeng/progressspinner";
     SliderModule,
     CheckboxModule,
     InputTextareaModule,
-    // DialogModule,
-    // SmartadminLayoutModule,
-    // BootstrapModule,
+
     ReactiveFormsModule,
     HttpClientModule,
     DynamicDialogModule,
@@ -114,12 +91,7 @@ import { ProgressSpinnerModule } from "primeng/progressspinner";
     SliderModule,
     CheckboxModule,
     InputTextareaModule,
-    // BrowserAnimationsModule,
-    // DropdownModule,
-    // ProgressBarModule,
-    // InputTextModule,
-    // SmartadminLayoutModule,
-    // BootstrapModule,
+
 
     // ReactiveFormsModule包含FormBuilder
     ReactiveFormsModule,

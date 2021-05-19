@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router, Route, CanLoad } from '@angular/router';
 import { ResponseLoginData } from '@app/core/models/user';
 import { UserDataService } from '@app/core/services/UserData.service';
 import { Observable } from 'rxjs';
@@ -7,15 +7,16 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class WasteDealGuard implements CanActivate {
+export class SellerGuard implements CanActivate {
 
   Active: boolean;
-  WasteDeal: string;
+  Seller: string;
   UserData: ResponseLoginData;
 
   constructor(
     private UserDataService: UserDataService,
     private router: Router) { }
+
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -23,15 +24,15 @@ export class WasteDealGuard implements CanActivate {
 
     this.UserData = JSON.parse(localStorage.getItem('UserData'))
     this.Active = this.UserData.body.Active
-    this.WasteDeal = this.UserData.body.CorporateType
+    this.Seller = this.UserData.body.SellerType
 
-    if (this.Active === true && this.WasteDeal === 'WasteDeal') {
-      console.log(this.WasteDeal + this.Active, '處理夥伴登入成功');
+    if (this.Active === true && this.Seller === 'Seller') {
+      console.log(this.Seller + this.Active, '賣家會員登入成功');
       return true
     }
 
     this.router.navigate(['/**']);
     return false;
-  }
 
+  }
 }
