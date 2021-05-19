@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ResponseLoginData } from '@app/core/models/user';
-import { UserDataService } from '@app/core/services/UserData.service.ts';
+import { UserDataService } from '@app/core/services/UserData.service';
 // import { MessageService } from 'primeng/api';
 
 @Component({
@@ -19,7 +19,6 @@ export class MainLayoutComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.UserData = this.UserDataService.UserData
     this.UserData = JSON.parse(localStorage.getItem('UserData'))
   }
 

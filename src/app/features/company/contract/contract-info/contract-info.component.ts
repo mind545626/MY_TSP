@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { MenuItem } from 'primeng/api';
 import { CodeKey, ContractinfoData, ProvideEquip, ResponseContractinfoData, WasteDatainfo } from '@app/core/models/case';
-import { CorporateService } from '@app/core/services/Corporate.service';
+import { SellerService } from '@app/core/services/Seller.service';
 import { UserDataService } from '@app/core/services/UserData.service';
 import { MessageService } from 'primeng/api';
 import { ResponseLoginData } from '@app/core/models/user';
@@ -25,7 +25,7 @@ export class ContractInfoComponent implements OnInit {
   Code: string;
   QuoteCode: string;
   ApplyDateTime: string;
-  CorporateName: string;
+  SellerName: string;
   TaxIDNumber: string;
   CareerType: string;
   CareerSubType: string;
@@ -92,7 +92,7 @@ export class ContractInfoComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private messageService: MessageService,
     private fb: FormBuilder,
-    private CorporateService: CorporateService,
+    private SellerService: SellerService,
     private UserDataService: UserDataService,
   ) {
   }
@@ -104,7 +104,7 @@ export class ContractInfoComponent implements OnInit {
     this.UserData = JSON.parse(localStorage.getItem('UserData'))
 
     setTimeout(() => {
-      // 從參數獲取Code合約單號
+      // 從參數獲取CodeTPS_Deal單號
       this.activatedRoute.queryParams.subscribe(params => {
         this.CodeKey = {
           Code: params['id'],
@@ -113,7 +113,7 @@ export class ContractInfoComponent implements OnInit {
       });
 
 
-      this.CorporateService.getContractDetail(this.CodeKey).subscribe((data: ResponseContractinfoData) => {
+      this.SellerService.getContractDetail(this.CodeKey).subscribe((data: ResponseContractinfoData) => {
         this.ContractinfoData = data.body
         // console.info(' this.QuoteinfoData :  ' , this.QuoteinfoData );
         this.ResponseContractinfoData = data;
@@ -131,7 +131,7 @@ export class ContractInfoComponent implements OnInit {
           this.AcceptableAmount = this.ContractinfoData.AcceptableAmount;
           this.ApplyDateTime = this.ContractinfoData.ApplyDateTime;
           this.TaxIDNumber = this.ContractinfoData.TaxIDNumber;
-          this.CorporateName = this.ContractinfoData.CorporateName;
+          this.SellerName = this.ContractinfoData.SellerName;
           this.CareerType = this.ContractinfoData.CareerType;
           this.CareerSubType = this.ContractinfoData.CareerSubType;
           this.ContactPerson = this.ContractinfoData.ContactPerson;
@@ -169,8 +169,8 @@ export class ContractInfoComponent implements OnInit {
 
     this.items = [
       { icon: 'pi pi-home', label: '我的會員首頁', routerLink: '/company/order-progress' },
-      { label: '合約管理列表', routerLink: '/company/contract' },
-      { label: '合約資料' },
+      { label: 'TPS_Deal管理_List', routerLink: '/company/contract' },
+      { label: 'TPS_Deal資料' },
     ];
 
 
@@ -181,7 +181,7 @@ export class ContractInfoComponent implements OnInit {
     this.location.back();
   }
 
-  // 取得TSP_Quotation編號
+  // Get TSP_Quotation編號
   getQuotId() {
     // this.UserDataService.QuoteID = this.quotation[i].Code
     // 帶參數導向網頁

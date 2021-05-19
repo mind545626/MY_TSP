@@ -30,7 +30,7 @@ export class ContractComponent implements OnInit {
 
     this.items = [
       { icon: 'pi pi-home', label: '我的會員首頁', routerLink: '/company/contract' },
-      { label: '合約管理列表' },
+      { label: 'TPS_Deal管理_List' },
     ];
   }
 

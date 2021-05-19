@@ -75,7 +75,7 @@ export class HttpClientService {
      * @param operation - 失敗的操作，這邊是getHeroes
      * @param result - 可不傳入，最後要回傳出去的Observable物件內容，可在裡面塞一些失敗時要回傳的資料
      * 在上面的T是泛型參數。
-     * 這可以讓程式在打api失敗時可取得符合應用程式期望類型的回傳值。
+     * 這可以讓程式在打api失敗時可Get 符合應用程式期望類型的回傳值。
      */
     private handleError<T>(operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {

@@ -29,12 +29,12 @@
                   <label for="companyName">公司名稱</label>
                 </th>
                 <td>
-                  {{CorporateName}}
+                  {{SellerName}}
                 </td>
               </tr>
               <tr>
                 <th class="control-label">
-                  <label for="CareerType" class="control-label">事業別</label>
+                  <label for="CareerType" class="control-label">行業類別</label>
                 </th>
                 <td>
                   {{CareerTypeDesc}} > {{CareerSubTypeDesc}}
@@ -66,7 +66,7 @@
               </tr>
               <tr>
                 <th class="control-label">
-                  <label for="ControlNumber">管制編號</label>
+                  <label for="ControlNumber">TPS_VIP_ID</label>
                 </th>
                 <td>
                   {{ControlNumber}}
@@ -79,7 +79,7 @@
           <table class="table">
             <thead>
               <tr>
-                <th colspan="2">平台估價資料</th>
+                <th colspan="2">平台TSP_Quotation資料</th>
               </tr>
             </thead>
             <tbody>
@@ -99,15 +99,15 @@
               </tr>
               <tr>
                 <th class="control-label">
-                  <label for="QuotationType">估價處理方式</label>
+                  <label for="QuotationType">TSP_Quotation處理方式</label>
                 </th>
                 <td>
-                  <p-dropdown placeholder="請選擇估價方式" [options]="QuoteType$ | async" [required]="true" inputId="QuoteType"
+                  <p-dropdown placeholder="請選擇TSP_Quotation方式" [options]="QuoteType$ | async" [required]="true" inputId="QuoteType"
                     formControlName="QuoteType">
                   </p-dropdown>
                   <div class="small-style">
                     <small [hidden]=" !QuoteDataForm.controls.QuoteType.hasError('required')">
-                      必填欄位，請選擇估價方式
+                      必填欄位，請選擇TSP_Quotation方式
                     </small>
                   </div>
                 </td>
@@ -136,7 +136,7 @@
               </tr>
               <tr>
                 <th class="control-label">
-                  <label for="WasteAddress">清運地址</label>
+                  <label for="WasteAddress">宅配地址</label>
                 </th>
                 <td class="address">
                   <div class="addressSelsct">
@@ -168,14 +168,14 @@
               </tr>
               <tr>
                 <th class="control-label">
-                  <label for="StoragePlace">廢棄物貯存地點</label>
+                  <label for="StoragePlace">倉儲地點</label>
                 </th>
                 <td>
                   <p-dropdown placeholder="請選擇貯存地點" [options]="WasteStoragePlace$ | async" [required]="true"
                     inputId="WasteStoragePlace" formControlName="WasteStoragePlace">
                   </p-dropdown>
                   <small [hidden]=" !QuoteDataForm.controls.WasteStoragePlace.hasError('required')">
-                    必填欄位，請選擇廢棄物貯存地點
+                    必填欄位，請選擇倉儲地點
                   </small>
                 </td>
               </tr>
@@ -208,20 +208,20 @@
               </tr>
               <tr>
                 <th class="control-label">
-                  <label for="Nosignature">是否同意免簽</label>
+                  <label for="Nosignature">是否簽收</label>
                 </th>
                 <td>
                   <p-dropdown placeholder="請選擇" [options]="SelectIsTrue" [required]="true" inputId="IsAgreeSignFree"
                     formControlName="IsAgreeSignFree">
                   </p-dropdown>
                   <small [hidden]=" !QuoteDataForm.controls.IsAgreeSignFree.hasError('required')">
-                    必填欄位，請選擇是否同意免簽
+                    必填欄位，請選擇是否簽收
                   </small>
                 </td>
               </tr>
               <tr>
                 <th class="control-label">
-                  <label for="PaymentItem">退水費、妥善處理記錄、派送三聯單</label>
+                  <label for="PaymentItem">紙本收據</label>
                 </th>
                 <td>
                   <p-dropdown placeholder="請選擇是否需要處理記錄服務" [options]="SelectIsTrue" [required]="true"
@@ -282,19 +282,19 @@
           </table>
           <table class="add-table">
             <div class="thisbtn-right">
-              <button pButton pRipple *ngIf="add_btn" label="新增設備" icon="pi pi-plus" class="p-button-rounded p-button-add"
+              <button pButton pRipple *ngIf="add_btn" label="Add 設備" icon="pi pi-plus" class="p-button-rounded p-button-add"
                 style="margin-right: 1rem;" (click)="addContactForm();addbtn()">
               </button>
-              <button pButton pRipple label="全部刪除" icon="pi pi-minus" class="p-button-rounded p-button-warning"
+              <button pButton pRipple label="全部Delet " icon="pi pi-minus" class="p-button-rounded p-button-warning"
                 (click)="removeAll()">
               </button>
             </div>
           </table>
-          <!-- 廢棄物列表 -->
+          <!-- 廢棄物_List -->
           <table class="table" style="margin-bottom:unset;min-width: 550px">
             <thead>
               <tr>
-                <th colspan="7">廢棄物列表
+                <th colspan="7">廢棄物_List
                 </th>
               </tr>
             </thead>
@@ -363,10 +363,10 @@
           </table>
           <table class="add-table" style="min-width: 550px">
             <div class="thisbtn-right">
-              <button pButton pRipple label="新增代碼" icon="pi pi-plus" class="p-button-rounded p-button-add"
+              <button pButton pRipple label="Add 代碼" icon="pi pi-plus" class="p-button-rounded p-button-add"
                 style="margin-right: 1rem;" (click)="addWasteDataForm()">
               </button>
-              <button pButton pRipple label="全部刪除" icon="pi pi-minus" class="p-button-rounded p-button-warning"
+              <button pButton pRipple label="全部Delet " icon="pi pi-minus" class="p-button-rounded p-button-warning"
                 (click)="removeWasteDataAll()">
               </button>
             </div>

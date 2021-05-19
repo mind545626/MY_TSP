@@ -15,12 +15,9 @@ import { ModifyQuotationComponent } from './modify-quotation/modify-quotation.co
 @NgModule({
   declarations: [
     QuotationInfoComponent,
-    // ModifyQuotationComponent,
   ],
   imports: [
     QuotationInfoRoutingModule,
-    // MessagesModule,
-    // MessageModule,
     SharedModule,
     ProgressSpinnerModule,
     RouterModule.forChild([{
@@ -32,7 +29,6 @@ import { ModifyQuotationComponent } from './modify-quotation/modify-quotation.co
     MessageService,
   ],
   exports: [
-    // ModifyQuotationComponent
   ]
 })
 export class QuotationInfoModule { }

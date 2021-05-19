@@ -4,10 +4,6 @@ import { ModifyOrderComponent } from './modify-order.component';
 
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   component: ModifyOrderComponent
-  // }
 ];
 
 @NgModule({

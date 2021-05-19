@@ -9,7 +9,7 @@ import { Table } from 'primeng/table';
 import { Observable, of, pipe } from 'rxjs';
 
 import { RegisterService } from '@app/core/services/Register.service';
-import { CorporateService } from '@app/core/services/Corporate.service';
+import { SellerService } from '@app/core/services/Seller.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 
@@ -29,7 +29,7 @@ export class ModifyOrderComponent implements OnInit {
   // 登入資料
   UserData: ResponseLoginData
 
-  CorporateName: string;
+  SellerName: string;
   CareerTypeDesc: string;
   CareerSubTypeDesc: string;
   ContactPerson: string;
@@ -53,17 +53,17 @@ export class ModifyOrderComponent implements OnInit {
   CodeKey: CodeKey;
   ContractCodeKey: CodeKey;
 
-  // 載入合約列表
+  // 載入TPS_Deal_List
   ContractCodeList$: Observable<SelectItem[]>
   WasteCode$: Observable<SelectItem[]>
 
-  // 合約資料
+  // TPS_Deal資料
   ContractinfoData: ContractinfoData;
   ResponseContractinfoData: ResponseContractinfoData;
   WasteData: WasteDatainfo[];
   ProvideEquip: ProvideEquip[];
 
-  // 合約欄位
+  // TPS_Deal欄位
   Code: string;
   QuoteCode: string;
   AcceptableAmount: string;
@@ -88,7 +88,7 @@ export class ModifyOrderComponent implements OnInit {
 
   TotalPlace: number;
 
-  //建立TSP_Order
+  //Create TSP_Order
   //  CreateOrder: CreateOrder;
 
 
@@ -99,7 +99,7 @@ export class ModifyOrderComponent implements OnInit {
     private location: Location,
     private messageService: MessageService,
     private RegisterService: RegisterService,
-    private CorporateService: CorporateService,
+    private SellerService: SellerService,
     private fb: FormBuilder,
   ) {
 
@@ -112,7 +112,7 @@ export class ModifyOrderComponent implements OnInit {
     // 獲取登入資料
     this.UserData = JSON.parse(localStorage.getItem('UserData'))
     // 將登入資料顯示
-    this.CorporateName = this.UserData.body.CorporateName
+    this.SellerName = this.UserData.body.SellerName
     this.CareerTypeDesc = this.UserData.body.CareerTypeDesc
     this.CareerSubTypeDesc = this.UserData.body.CareerSubTypeDesc
     this.ContactPerson = this.UserData.body.ContactPerson
@@ -135,8 +135,8 @@ export class ModifyOrderComponent implements OnInit {
     }
 
 
-    // 取得單位的合約列表
-    this.CorporateService.getContractCodeList(this.CodeKey).subscribe((data: ContractCodeListData) => {
+    // Get 單位的TPS_Deal_List
+    this.SellerService.getContractCodeList(this.CodeKey).subscribe((data: ContractCodeListData) => {
       if (data.code === "000") {
         if (data.body !== null) {
           // 轉換ContractCode型別
@@ -151,7 +151,7 @@ export class ModifyOrderComponent implements OnInit {
           this.progressSpinner = false
         }
         else {
-          this.messageService.add({ severity: 'error', summary: '載入失敗', detail: '請先與平台完成估價程序，並確認建立合約' });
+          this.messageService.add({ severity: 'error', summary: '載入失敗', detail: '請先與平台完成TSP_Quotation程序，並確認Create TPS_Deal' });
           this.progressSpinner = false
         }
       }
@@ -163,9 +163,9 @@ export class ModifyOrderComponent implements OnInit {
 
     this.ModifyOrderDataForm =
       this.fb.group({
-        // 合約編號
+        // TPS_Deal
         ContractCode: null,
-        // 使用者ID
+        // 會員ID
         UP_UserId: this.TaxIDNumber,
         // 提供設備
         ProvideEquip: this.fb.array([this.newProvideEquip()]),
@@ -173,7 +173,7 @@ export class ModifyOrderComponent implements OnInit {
         WasteCode: null,
         // 廢棄物數量
         MonthlyQty: [null, Validators.required],
-        // 廢棄物列表內容
+        // 廢棄物_List內容
         WasteName: null,
         WasteStatus: this.WasteStatus,
         WasteStatusName: null,
@@ -182,7 +182,7 @@ export class ModifyOrderComponent implements OnInit {
 
       });
 
-    // 載入刪除設備(暫寫)
+    // 載入Delet 設備(暫寫)
     this.removeAll()
 
 
@@ -190,7 +190,7 @@ export class ModifyOrderComponent implements OnInit {
 
     this.items = [
       { icon: 'pi pi-home', label: '我的會員首頁', routerLink: '/company/order-progress' },
-      { label: 'TSP_Order管理列表', routerLink: '/company/order-progress' },
+      { label: 'TSP_Order管理_List', routerLink: '/company/order-progress' },
       { label: 'TSP_Order資料' },
       { label: '編輯TSP_Order' },
     ];
@@ -205,15 +205,15 @@ export class ModifyOrderComponent implements OnInit {
     this.location.back();
   }
 
-  // 載入合約資料
+  // 載入TPS_Deal資料
   loadcontract() {
     this.progressSpinner = true
 
     this.ChangeIsNull()
-    // 載入刪除設備(暫寫)
+    // 載入Delet 設備(暫寫)
     this.removeAll()
 
-    // 請求合約資料的需求欄位
+    // 請求TPS_Deal資料的需求欄位
     setTimeout(() => {
       this.ContractCodeKey = {
         TaxIDNumber: this.UserData.body.TaxIDNumber,
@@ -222,7 +222,7 @@ export class ModifyOrderComponent implements OnInit {
       // console.log(this.ContractCodeKey ,'this.ContractCodeKey')
       if (this.ContractCodeKey.Code !== null) {
         setTimeout(() => {
-          this.CorporateService.getContractDetail(this.ContractCodeKey).subscribe((data: ResponseContractinfoData) => {
+          this.SellerService.getContractDetail(this.ContractCodeKey).subscribe((data: ResponseContractinfoData) => {
             this.ContractinfoData = data.body;
             // console.info(' this.QuoteinfoData :  ' , this.QuoteinfoData );
             this.ResponseContractinfoData = data;
@@ -233,7 +233,7 @@ export class ModifyOrderComponent implements OnInit {
 
             if (data.code === '000') {
               this.TaxIDNumber = this.ContractinfoData.TaxIDNumber;
-              this.CorporateName = this.ContractinfoData.CorporateName;
+              this.SellerName = this.ContractinfoData.SellerName;
               this.ContactPerson = this.ContractinfoData.ContactPerson;
               this.ContactPhoneNumber = this.ContractinfoData.ContactPhoneNumber;
               this.ControlNumber = this.ContractinfoData.ControlNumber;
@@ -266,14 +266,10 @@ export class ModifyOrderComponent implements OnInit {
               this.IsNeedRecord = this.ContractinfoData.IsNeedRecord;
               this.IsAgreeSignFree = this.ContractinfoData.IsAgreeSignFree;
 
-              // 依照array載入欄位
+              // 依照array自動載入欄位
               const dataFormGroup = this.ProvideEquip.map(data => this.fb.group(data))
               const dataFormArray = this.fb.array(dataFormGroup)
               this.ModifyOrderDataForm.setControl('ProvideEquip', dataFormArray);
-
-              // console.log(dataFormGroup)
-              // console.log(dataFormArray)
-              // console.log(this.WasteData, 'this.WasteData')
 
               // 轉換WasteData型別
               let newArray = this.WasteData.map((dataList) => {
@@ -289,7 +285,7 @@ export class ModifyOrderComponent implements OnInit {
               this.totalPrice()
 
               this.progressSpinner = false
-              this.messageService.add({ severity: 'success', summary: '成功', detail: '合約資料載入完畢' });
+              this.messageService.add({ severity: 'success', summary: '成功', detail: 'TPS_Deal資料載入完畢' });
             }
             else {
               this.messageService.add({ severity: 'error', summary: '載入失敗', detail: '請確認連線是否正常' });
@@ -299,7 +295,7 @@ export class ModifyOrderComponent implements OnInit {
         }, 500)
       }
       else {
-        this.messageService.add({ severity: 'error', summary: '載入失敗', detail: '請選擇合約' });
+        this.messageService.add({ severity: 'error', summary: '載入失敗', detail: '請選擇TPS_Deal' });
         this.progressSpinner = false
       }
 
@@ -309,7 +305,7 @@ export class ModifyOrderComponent implements OnInit {
 
   ChangeIsNull() {
     // this.TaxIDNumber = null;
-    this.CorporateName = null;
+    this.SellerName = null;
     this.ContactPerson = null;
     this.ContactPhoneNumber = null;
     this.ControlNumber = null;
@@ -367,7 +363,7 @@ export class ModifyOrderComponent implements OnInit {
     // 重新計算價格
     this.totalPrice()
   }
-  // 全部刪除
+  // 全部Delet
   removeAll(): void {
     const formArray = (this.ModifyOrderDataForm.get('ProvideEquip') as FormArray);
     while (formArray.length !== 0) {
@@ -419,7 +415,7 @@ export class ModifyOrderComponent implements OnInit {
     if (this.ModifyOrderDataForm.valid == true) {
       // this.CreateOrder = this.ModifyOrderDataForm.value;
       // console.log(this.CreateOrder, 'this.CreateOrder')
-      // this.CorporateService.CreateOrderUrl(this.CreateOrder)
+      // this.SellerService.CreateOrderUrl(this.CreateOrder)
       //   .subscribe((data: ResponseObj) => {
       //     console.log(data, 'this is ResponseObj data')
       //     if (data.code === "000") {

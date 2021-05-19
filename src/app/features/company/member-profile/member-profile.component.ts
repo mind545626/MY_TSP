@@ -34,7 +34,7 @@ export class MemberProfileComponent implements OnInit {
   Active: boolean;
   TaxIDNumber: string;
   Password: string;
-  CorporateName: string;
+  SellerName: string;
   Representative: string;
   PhoneNumber: string;
   Fax: string;
@@ -59,14 +59,14 @@ export class MemberProfileComponent implements OnInit {
   MailingRoad: string;
   MailingAddress: string;
   BackupMail: string;
-  CorporateType: string;
+  SellerType: string;
   MemberReviewStatus: string;
   MemberReviewStatusDesc: string;
 
 
   ngOnInit() : void {
 
-    // 取得登入資料
+    // Get 登入資料
     // this.UserData = this.UserDataService.UserDataGet UserData
     this.UserData = JSON.parse(localStorage.getItem('UserData'))
     console.log(this.UserDataService.UserData, 'Get this.UserDataService.UserData')
@@ -81,10 +81,10 @@ export class MemberProfileComponent implements OnInit {
 
 
     this.UserId = this.UserData.body.TaxIDNumber
-    this.CorporateType = this.UserData.body.CorporateType
+    this.SellerType = this.UserData.body.SellerType
     this.TaxIDNumber = this.UserData.body.TaxIDNumber
     this.Password = this.UserData.body.Password
-    this.CorporateName = this.UserData.body.CorporateName
+    this.SellerName = this.UserData.body.SellerName
     this.Representative = this.UserData.body.Representative
     this.PhoneNumber = this.UserData.body.PhoneNumber
     this.Fax = this.UserData.body.Fax

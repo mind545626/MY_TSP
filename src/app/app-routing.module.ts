@@ -8,17 +8,13 @@ import { RegisterComponent } from './features/TSP/register/register.component';
 import { LoginComponent } from './features/TSP/login/login.component';
 import { MemberCheckComponent } from './features/TSP/member-check/member-check.component';
 import { MainLayoutComponent } from './features/main-layout/main-layout.component';
-import { CleanRegisterComponent } from './features/TSP/clean-register/clean-register.component';
-import { ProcessingRegisterComponent } from './features/TSP/processing-register/processing-register.component';
 
 import { ModifyRegisterComponent } from './features/TSP/modify/modify-register/modify-register.component';
-import { ModifyProcessingRegisterComponent } from './features/TSP/modify/modify-processing-register/modify-processing-register.component';
-import { ModifyCleanRegisterComponent } from './features/TSP/modify/modify-clean-register/modify-clean-register.component';
 import { ModifyPasswordCheckComponent } from './features/TSP/modify/modify-password-check/modify-password-check.component';
 import { AuthGuard } from './auth/auth.guard';
-import { CorporateGuard } from './auth/corporate.guard';
-import { WasteDealGuard } from './auth/waste-deal.guard';
-import { WasteMoveGuard } from './auth/waste-move.guard';
+import { SellerGuard } from './auth/Seller.guard';
+import { BuyerGuard } from './auth/waste-deal.guard';
+import { CourierGuard } from './auth/waste-move.guard';
 
 
 // -------------API伺服器頁面-------------
@@ -46,16 +42,6 @@ const routes: Routes = [
     data: { title: 'register' }
   },
   {
-    path: 'clean-register',
-    component: CleanRegisterComponent,
-    data: { title: 'clean-register' }
-  },
-  {
-    path: 'processing-register',
-    component: ProcessingRegisterComponent,
-    data: { title: 'processing-register' }
-  },
-  {
     path: 'login',
     component: LoginComponent,
     data: { title: 'login' }
@@ -66,16 +52,6 @@ const routes: Routes = [
     data: { title: 'member-check' }
   },
 
-  {
-    path: 'modify-clean-register',
-    component: ModifyCleanRegisterComponent,
-    data: { title: 'modify-clean-register' }
-  },
-  {
-    path: 'modify-processing-register',
-    component: ModifyProcessingRegisterComponent,
-    data: { title: 'modify-processing-register' }
-  },
   // 編輯暫時事業會員
   {
     path: 'modify-register',
@@ -101,28 +77,28 @@ const routes: Routes = [
     data: { pageTitle: "Home" },
     children: [
       {
-        // 企業客戶
+        // 賣家會員
         // path: 'company/',
-        // 取得ID
+        // Get ID
         // path: 'company/:UserId',
         path: 'company',
-        canActivate: [CorporateGuard],
+        canActivate: [SellerGuard],
         loadChildren: () => import('./features/company/company.module').then(m => m.CompanyModule),
-        data: { title: 'Corporate' },
+        data: { title: 'Seller' },
       },
       {
-        // 清除業者
-        path: 'clean',
-        canActivate: [WasteMoveGuard],
-        loadChildren: () => import('./features/clean/clean.module').then(m => m.CleanModule),
-        data: { title: 'WasteMove' },
+        // 快遞會員
+        // path: 'clean',
+        // canActivate: [CourierGuard],
+        // loadChildren: () => import('./features/clean/clean.module').then(m => m.CleanModule),
+        // data: { title: 'Courier' },
       },
       {
-        // 處理業者
-        path: 'refuse-processing',
-        canActivate: [WasteDealGuard],
-        loadChildren: () => import('./features/refuse-processing/refuse-processing.module').then(m => m.RefuseProcessingModule),
-        data: { title: 'WasteDeal' },
+        // 買家會員
+        // path: 'refuse-processing',
+        // canActivate: [BuyerGuard],
+        // loadChildren: () => import('./features/refuse-processing/refuse-processing.module').then(m => m.RefuseProcessingModule),
+        // data: { title: 'Buyer' },
       },
     ]
   },
@@ -134,9 +110,6 @@ const routes: Routes = [
 
 
 @NgModule({
-  // imports: [
-  //   RouterModule.forRoot(routes, { enableTracing: true })
-  // ],
   imports: [
     RouterModule.forRoot(
       routes,

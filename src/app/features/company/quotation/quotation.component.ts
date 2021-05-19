@@ -36,7 +36,7 @@ export class QuotationComponent implements OnInit {
 
     this.items = [
       { icon: 'pi pi-home', label: '我的會員首頁', routerLink: '/company/order-progress' },
-      { label: '估價管理列表' },
+      { label: 'TSP_Quotation管理_List' },
     ];
 
     this.progressSpinner = false

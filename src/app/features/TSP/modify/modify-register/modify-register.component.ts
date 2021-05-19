@@ -5,7 +5,7 @@ import { Checkbox, Dropdown, InputText, SaveEditableRow, SelectItem } from "prim
 import { Observable, of } from "rxjs";
 import { RegisterService } from '@app/core/services/Register.service';
 import { ResponseObj, FESysCode, FESysCode2Level, FESysCodeAddress, Key } from '@app/core/models/user';
-import { SysCode } from '@app/core/models/syscode';
+
 import { map, shareReplay, switchMap, tap } from "rxjs/internal/operators";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Customer, CustomerDataImp, MemberRegisterData, RegisterData } from '@app/core/models/case';
@@ -18,7 +18,7 @@ import * as $ from 'jquery';
   templateUrl: './modify-register.component.html',
   styleUrls: ['./modify-register.component.scss'],
   providers: [MessageService],
-  // 利用它來修改theme的mat-tab-label樣式
+  // 利用它來Modify theme的mat-tab-label樣式
   encapsulation: ViewEncapsulation.None
 })
 
@@ -114,25 +114,25 @@ export class ModifyRegisterComponent implements OnInit, OnChanges {
     this.modifyRegisterForm =
       this.fb.group({
         Id: "",
-        //事業單位字串
-        CorporateType: "Corporate",
+        //賣家會員字串
+        SellerType: "Seller",
         //統一編號
         TaxIDNumber: [null, [Validators.required, Validators.minLength(8)]],
         //密碼
         Password: [null, [Validators.required, Validators.pattern(/^[a-zA-Z0-9]{8,12}\w*$/)]],
         //公司名稱
-        CorporateName: [null, [Validators.required, Validators.minLength(2), Validators.pattern("([^\x00-\x40\x5B-\x60\x7B-\x7F])+")]],
+        SellerName: [null, [Validators.required, Validators.minLength(2), Validators.pattern("([^\x00-\x40\x5B-\x60\x7B-\x7F])+")]],
         //負責人
         Representative: [null, [Validators.required, Validators.minLength(2), Validators.pattern("([^\x00-\x40\x5B-\x60\x7B-\x7F])+")]],
         //公司電話
         PhoneNumber: [null, [Validators.required, Validators.pattern(/^[0-9]{2}-[0-9]{7,8}/)]],
         //公司傳真
         Fax: [null, Validators.pattern(/^[0-9]{2}-[0-9]{7}/)],
-        //事業別-大項
+        //行業類別-大項
         CareerType: [null],
-        //事業別-中項
+        //行業類別-中項
         CareerSubType: [null],
-        //管制編號
+        //TPS_VIP_ID
         ControlNumber: [null, [Validators.required, Validators.minLength(1)]],
         //聯絡人
         ContactPerson: [null, [Validators.required, Validators.minLength(2), Validators.pattern("([^\x00-\x40\x5B-\x60\x7B-\x7F])+")]],
@@ -144,21 +144,21 @@ export class ModifyRegisterComponent implements OnInit, OnChanges {
         ContactMobilePhone: [null, [Validators.required, Validators.pattern(/^[0-9]{4}-[0-9]{6}/)]],
         //聯絡信箱
         ContactMail: [null, [Validators.email, Validators.required]],
-        //帳寄地址-郵遞區號
+        //登記地址-郵遞區號
         BillingZipCode: [null],
-        //帳寄地址-城市
+        //登記地址-城市
         BillingCity: [null],
-        //帳寄地址-鄉鎮區
+        //登記地址-鄉鎮區
         BillingDistrict: [null],
-        //帳寄地址-路
+        //登記地址-路
         BillingRoad: [null, Validators.required],
-        //通訊地址-郵遞區號
+        //聯絡地址-郵遞區號
         MailingZipCode: [null],
-        //通訊地址-城市
+        //聯絡地址-城市
         MailingCity: [null],
-        //通訊地址-鄉鎮區
+        //聯絡地址-鄉鎮區
         MailingDistrict: [null],
-        //通訊地址-路
+        //聯絡地址-路
         MailingRoad: [null, Validators.required],
         //備用信箱
         BackupMail: [null, [Validators.email, Validators.required]],
@@ -198,7 +198,7 @@ export class ModifyRegisterComponent implements OnInit, OnChanges {
       /** 每月月份短样式 */
       monthNamesShort: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
       today: '今日',
-      clear: '刪除'
+      clear: 'Delet '
     }
 
     let today = new Date();
@@ -221,12 +221,11 @@ export class ModifyRegisterComponent implements OnInit, OnChanges {
 
 
     // 開始與伺服器請求載入資料
-    this.RegisterService.getTempCorporate(this.Key)
+    this.RegisterService.getTempSeller(this.Key)
       .subscribe((data: MemberRegisterData) => {
         // 延遲一秒再載入資料
         if (data.code === "000") {
           setTimeout(() => {
-            // this.RegisterData = data.body;
             // 先變更連動項目的值
             this.modifyRegisterForm.controls.CareerType.patchValue(data.body.CustomerData.CareerType)
             this.modifyRegisterForm.controls.BillingCity.patchValue(data.body.CustomerData.BillingCity)
@@ -238,18 +237,17 @@ export class ModifyRegisterComponent implements OnInit, OnChanges {
             this.BillingDistrict$ = of(<SelectItem[]>this.FESysCodeAddress
               .find(data3 => data3.value === this.modifyRegisterForm.controls.BillingCity.value).Items)
             this.modifyRegisterForm.controls.Id.patchValue(data.body.CustomerData.Id)
-            this.modifyRegisterForm.controls.CorporateType.patchValue(data.body.CustomerData.CorporateType)
+            this.modifyRegisterForm.controls.SellerType.patchValue(data.body.CustomerData.SellerType)
             this.modifyRegisterForm.controls.TaxIDNumber.patchValue(data.body.CustomerData.TaxIDNumber)
             // 避免密碼驗證失效 須重填
-            // this.modifyRegisterForm.controls.Password.patchValue(data.body.CustomerData.Password)
-            this.modifyRegisterForm.controls.CorporateName.patchValue(data.body.CustomerData.CorporateName)
+            this.modifyRegisterForm.controls.SellerName.patchValue(data.body.CustomerData.SellerName)
             this.modifyRegisterForm.controls.Representative.patchValue(data.body.CustomerData.Representative)
             this.modifyRegisterForm.controls.PhoneNumber.patchValue(data.body.CustomerData.PhoneNumber)
             this.modifyRegisterForm.controls.Fax.patchValue(data.body.CustomerData.Fax)
             this.modifyRegisterForm.controls.ControlNumber.patchValue(data.body.CustomerData.ControlNumber)
             this.modifyRegisterForm.controls.ContactPerson.patchValue(data.body.CustomerData.ContactPerson)
             this.modifyRegisterForm.controls.ContactPhoneNumber.patchValue(data.body.CustomerData.ContactPhoneNumber)
-            // 呼叫修改驗證
+            // 呼叫Modify 驗證
             // this.VaildPhone()
             this.VaildPhoneNumber()
             this.modifyRegisterForm.controls.ContactPhoneExtension.patchValue(data.body.CustomerData.ContactPhoneExtension)
@@ -266,7 +264,7 @@ export class ModifyRegisterComponent implements OnInit, OnChanges {
             this.modifyRegisterForm.controls.BillingDistrict.patchValue(data.body.CustomerData.BillingDistrict)
             this.modifyRegisterForm.controls.MailingDistrict.patchValue(data.body.CustomerData.MailingDistrict)
             console.log(this.modifyRegisterForm.value, 'this is RegisterData')
-            this.messageService.add({ severity: 'success', summary: '載入成功', detail: '請詳細確認您的資料填寫是否正確' });
+            this.messageService.add({ severity: 'success', summary: '載入成功', detail: '請_Detail確認您的資料填寫是否正確' });
             this.progressSpinner = false
           }, 1000)
         }
@@ -381,35 +379,6 @@ export class ModifyRegisterComponent implements OnInit, OnChanges {
     this.modifyRegisterForm.get('ContactPhoneNumber').updateValueAndValidity()
   }
 
-  // ------------------------原始寫法--------------------------//
-  // //二擇一驗證
-  // VaildPhone() {
-  //   //檢查聯絡人電話是否為空
-  //   if (this.modifyRegisterForm.controls.ContactPhoneNumber.value !== null) {
-  //     if (this.modifyRegisterForm.controls.ContactPhoneNumber.valid === true) {
-  //       this.modifyRegisterForm.controls.ContactPhoneNumber.setValidators([Validators.required, Validators.pattern(/^[0-9]{2}-[0-9]{7,8}/)]);
-  //       this.modifyRegisterForm.controls.ContactMobilePhone.setValidators([Validators.pattern(/^[0-9]{4}-[0-9]{6}/)]);
-  //     }
-  //     else {
-  //       this.modifyRegisterForm.controls.ContactMobilePhone.setValidators([Validators.required, Validators.pattern(/^[0-9]{4}-[0-9]{6}/)]);
-  //     }
-  //   }
-  //   //檢查聯絡人手機是否為空
-  //   if (this.modifyRegisterForm.controls.ContactMobilePhone.value !== null) {
-  //     if (this.modifyRegisterForm.controls.ContactMobilePhone.valid === true) {
-  //       this.modifyRegisterForm.controls.ContactMobilePhone.setValidators([Validators.required, Validators.pattern(/^[0-9]{4}-[0-9]{6}/)]);
-  //       this.modifyRegisterForm.controls.ContactPhoneNumber.setValidators([Validators.pattern(/^[0-9]{2}-[0-9]{7}/)]);
-  //     }
-  //     else {
-  //       this.modifyRegisterForm.controls.ContactPhoneNumber.setValidators([Validators.required, Validators.pattern(/^[0-9]{2}-[0-9]{7,8}/)]);
-  //     }
-  //   }
-  //   //更新驗證
-  //   this.modifyRegisterForm.get('ContactMobilePhone').updateValueAndValidity()
-  //   this.modifyRegisterForm.get('ContactPhoneNumber').updateValueAndValidity()
-  // }
-
-
   onCityChange = (event: any, dropdown: Dropdown): Observable<SelectItem[]> | void => event.value != null ?
     of(<SelectItem[]>this.FESysCodeAddress
       .find(data => data.value === event.value).Items
@@ -456,7 +425,7 @@ export class ModifyRegisterComponent implements OnInit, OnChanges {
     }
   }
 
-  // 修改按鈕
+  // Modify 按鈕
   BackTab() {
     this.tabIndex = this.tabIndex - 1
   }
@@ -473,7 +442,7 @@ export class ModifyRegisterComponent implements OnInit, OnChanges {
     updateCusInfo.CustomerData = this.modifyRegisterForm.value;
     updateCusInfo.Attach = this.Attach.value;
     if (this.modifyRegisterForm.valid) {
-      this.RegisterService.UpdateTempCorporate(updateCusInfo)
+      this.RegisterService.UpdateTempSeller(updateCusInfo)
         .subscribe((data: ResponseObj) => {
           this.tabIndex = this.tabIndex + 1
           this.messageService.add({ severity: 'success', summary: '成功', detail: '會員申請成功，平台審核中' });

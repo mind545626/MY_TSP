@@ -1,12 +1,54 @@
+智慧媒合回收平台
+智慧回收媒合平台
 交易統計平台
 Trading Statistics Platform
 
 估價單 / 報價單
 TSP_Quotation
 
-預估價格
+預估 價格
 EstimatePrice
 
 訂單
 TSP_Order
 
+派車單
+TPS_Task
+
+
+企業客戶 / 事業單位
+賣家會員
+
+清除夥伴 / 清除業者
+快遞會員
+
+處理夥伴 / 處理業者
+買家會員
+
+廢棄物貯存地點
+倉儲地點
+
+清運
+宅配
+
+允收量
+配送額度
+
+事業別
+行業類別
+
+管制編號
+TPS_VIP_ID
+
+合約
+TPS_Deal
+
+
+Corporate
+Seller
+
+WasteMove
+Courier
+
+WasteDeal
+Buyer

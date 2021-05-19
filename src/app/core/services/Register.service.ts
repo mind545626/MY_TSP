@@ -9,7 +9,6 @@ import { HttpClientService } from "@app/core/services/HttpClientService";
 import { config } from "@app/core/app.config";
 import { MessageService } from './message.service';
 import { UrlService } from "@app/core/services/Url.service";
-import { SysCode } from "../models/syscode";
 import { FESysCode2Level, ResponseObj, SysCodeInput } from "../models/user";
 
 // import { catchError, map, tap } from 'rxjs/operators';
@@ -26,7 +25,7 @@ export class RegisterService {
     private messageService: MessageService,) { }
 
 
-  //地址與事業別下拉選單
+  //地址與行業類別下拉選單
   getSysCodeDropDown(Type: SysCodeInput): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFESysCodeUrl, Type);
   }
@@ -39,20 +38,20 @@ export class RegisterService {
 
 
   // 申請事業會員
-  addCreateCorporate(RegisterData: Customer): Observable<any> {
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFECreateCorporateUrl, RegisterData);
+  addCreateSeller(RegisterData: Customer): Observable<any> {
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFECreateSellerUrl, RegisterData);
   }
-  // 取得暫時會員資料(修改審核不通過)
-  getTempCorporate(Id: Key): Observable<any> {
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFETempCorporateUrl, Id);
+  // Get 暫時會員資料(Modify 審核不通過)
+  getTempSeller(Id: Key): Observable<any> {
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFETempSellerUrl, Id);
   }
-  // 修改暫時會員資料
-  UpdateTempCorporate(ModifyRegisterData: Customer): Observable<any> {
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEUpdateTempCorporateUrl, ModifyRegisterData);
+  // Modify 暫時會員資料
+  UpdateTempSeller(ModifyRegisterData: Customer): Observable<any> {
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEUpdateTempSellerUrl, ModifyRegisterData);
   }
-  // 修改事業單位
-  getUpdateCorporate(Userdata: Customer): Observable<any> {
-    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEUpdateCorporateUrl, Userdata);
+  // Modify 賣家會員
+  getUpdateSeller(Userdata: Customer): Observable<any> {
+    return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEUpdateSellerUrl, Userdata);
   }
 
 }

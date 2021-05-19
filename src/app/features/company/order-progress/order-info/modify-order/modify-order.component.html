@@ -6,12 +6,6 @@
     <div class="card">
       <div class="title">
         <span>編輯TSP_Order</span>
-        <!-- <div class="btn-right">
-                        <button id="left-btn" type="button" class="btn btn-success btn-lg" data-toggle="modal"
-                            data-target="#myModal8"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i>編輯完成</button>
-                        <button type="button" class="btn btn-primary btn-lg" (click)="goBack()"><i
-                                class="fa fa-lg fa-fw fa-arrow-right"></i>返回</button>
-                    </div> -->
       </div>
       <div class="form-container" id="readonly_border">
         <div class="form-horizontal">
@@ -27,12 +21,12 @@
                   <label for="companyName">公司名稱</label>
                 </th>
                 <td>
-                  {{CorporateName}}
+                  {{SellerName}}
                 </td>
               </tr>
               <tr>
                 <th class="control-label">
-                  <label for="CareerType" class="control-label">事業別</label>
+                  <label for="CareerType" class="control-label">行業類別</label>
                 </th>
                 <td>
                   {{CareerTypeDesc}} > {{CareerSubTypeDesc}}
@@ -64,7 +58,7 @@
               </tr>
               <tr>
                 <th class="control-label">
-                  <label for="ControlNumber">管制編號</label>
+                  <label for="ControlNumber">TPS_VIP_ID</label>
                 </th>
                 <td>
                   {{ControlNumber}}
@@ -77,34 +71,34 @@
           <table class="table">
             <thead>
               <tr>
-                <th colspan="2">清運資料</th>
+                <th colspan="2">宅配資料</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th class="control-label">
-                  <label for="ContractCode">合約編號</label>
+                  <label for="ContractCode">TPS_Deal</label>
                 </th>
                 <td>
                   <div class="contractList">
                     <div class="d-flex">
-                      <p-dropdown placeholder="請選擇要載入的合約" [showClear]="true" (onChange)="ChangeIsNull()"
+                      <p-dropdown placeholder="請選擇要載入的TPS_Deal" [showClear]="true" (onChange)="ChangeIsNull()"
                         [options]="ContractCodeList$ | async" [required]="true" inputId="ContractCode"
                         formControlName="ContractCode">
                       </p-dropdown>
                       <button type="button" class="btn btn-success btn-lg" (click)="loadcontract()">
-                        <i class="fa fa-lg fa-fw fa-file-text-o"></i>載入合約
+                        <i class="fa fa-lg fa-fw fa-file-text-o"></i>載入TPS_Deal
                       </button>
                     </div>
                     <small [hidden]=" !ModifyOrderDataForm.controls.ContractCode.hasError('required')">
-                      必填欄位，請選擇載入合約
+                      必填欄位，請選擇載入TPS_Deal
                     </small>
                   </div>
                 </td>
               </tr>
               <tr>
                 <th class="control-label">
-                  <label for="StartDateTime">合約生效日期</label>
+                  <label for="StartDateTime">TPS_Deal生效日期</label>
                 </th>
                 <td>
                   {{ StartDateTime }}
@@ -112,7 +106,7 @@
               </tr>
               <tr>
                 <th class="control-label">
-                  <label for="EndDateTime">合約結束日期</label>
+                  <label for="EndDateTime">TPS_Deal結束日期</label>
                 </th>
                 <td>
                   {{ EndDateTime }}
@@ -129,7 +123,7 @@
               </tr>
               <tr [ngSwitch]="AcceptableAmount">
                 <th class="control-label">
-                  <label for="AcceptableAmount">允收量</label>
+                  <label for="AcceptableAmount">配送額度</label>
                 </th>
                 <td *ngSwitchCase="null"></td>
                 <td *ngSwitchDefault>{{ AcceptableAmount }} /公斤</td>
@@ -144,7 +138,7 @@
               </tr>
               <tr>
                 <th class="control-label">
-                  <label for="ClearAddress">清運地址</label>
+                  <label for="ClearAddress">宅配地址</label>
                 </th>
                 <td>
                   {{ ClearAddress }}
@@ -152,7 +146,7 @@
               </tr>
               <tr>
                 <th class="control-label">
-                  <label for="WasteStoragePlace">廢棄物貯存地點</label>
+                  <label for="WasteStoragePlace">倉儲地點</label>
                 </th>
                 <td>
                   {{ WasteStoragePlace }}
@@ -160,7 +154,7 @@
               </tr>
               <tr [ngSwitch]="ContractStatus">
                 <th class="control-label">
-                  <label for="ContractStatus">合約狀態</label>
+                  <label for="ContractStatus">TPS_Deal狀態</label>
                 </th>
                 <td *ngSwitchCase="null"></td>
                 <td *ngSwitchDefault>
@@ -187,7 +181,7 @@
               </tr>
               <tr>
                 <th class="control-label">
-                  <label for="IsAgreeSignFree">是否同意免簽</label>
+                  <label for="IsAgreeSignFree">是否簽收</label>
                 </th>
                 <td [ngSwitch]="IsAgreeSignFree">
                   <p *ngSwitchCase="true">
@@ -201,7 +195,7 @@
                 </td>
               </tr>
               <tr>
-                <th>退水費、妥善處理記錄、派送三聯單</th>
+                <th>紙本收據</th>
                 <td [ngSwitch]="IsNeedRecord">
                   <p *ngSwitchCase="true">
                     是
@@ -266,7 +260,7 @@
           <table class="table">
             <thead>
               <tr>
-                <th colspan="6">廢棄物列表</th>
+                <th colspan="6">廢棄物_List</th>
               </tr>
             </thead>
             <tbody>
@@ -332,7 +326,7 @@
               <i class="fa fa-lg fa-fw fa-arrow-right"></i>返回
             </button>
             <button id="left-btn" type="submit" class="btn btn-success btn-lg" (click)="onSubmit()">
-              <i class="fa fa-lg fa-fw fa-pencil-square-o"></i>新增TSP_Order
+              <i class="fa fa-lg fa-fw fa-pencil-square-o"></i>Add TSP_Order
             </button>
           </div>
         </div>

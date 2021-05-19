@@ -7,15 +7,11 @@ import { HttpClientService } from "@app/core/services/HttpClientService";
 import { FEBillboard } from '@app/services/TestTSP';
 import { FileList } from '@app/core/models/user';
 import { UrlService } from "@app/core/services/Url.service";
-// import { TestTSPService } from '@app/core/services/TestTSP.service';
 // ---------------------------------
 
 import { Location } from '@angular/common';
 
 import { saveAs } from 'file-saver';
-// import { saveAs as importedSaveAs } from "file-saver";
-// import { FileSaver }  from 'angular-file-saver';
-// import { saveAs } from "file-saver";
 
 // -------------載用彈窗-------------
 import { DynamicDialogRef } from 'primeng/dynamicdialog';

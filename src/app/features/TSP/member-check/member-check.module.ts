@@ -8,9 +8,6 @@ import { MemberCheckRoutingModule } from './member-check-routing.module';
 
 
 
-// import { REACTIVE_FORM_DIRECTIVES } from '@angular/forms'
-
-
 @NgModule({
   imports: [
     MemberCheckRoutingModule,

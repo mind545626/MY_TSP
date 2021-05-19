@@ -1,30 +1,12 @@
 <div class="header-fix">
   <nav class="navbar navbar-expand-lg navbar-dark top-navber" id="mainNav">
     <div class="container nav-font-style">
-      <!-- <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="assets/img/navbar-logo.svg" alt="" /></a> -->
       <a class="navbar-brand js-scroll-trigger logo-font-style" routerLink="/index" routerLinkActive="active"><img
-          class="d-inline img-fluid logo-style" src="assets/img/TSP/TSP-Logo-sm.png" alt="" />智慧媒合回收平台</a>
+          class="d-inline img-fluid logo-style" src="assets/img/TSP/TSP-Logo-sm.png" alt="" />交易統計平台</a>
 
-      <!-- 原本的boostrap樣式 -->
-      <!-- <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-      aria-label="Toggle navigation">
-      Menu
-      <i class="fa fa-bars ml-1"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav text-uppercase ml-auto">
-        <li class="nav-item"><a class="nav-link js-scroll-trigger nav-link-style" routerLink="/register"
-            routerLinkActive="active">公司介紹</a></li>
-        <li class="nav-item"><a class="nav-link js-scroll-trigger nav-link-style" href="#">聯絡我們</a></li>
-        <li class="nav-item"><a class="nav-link js-scroll-trigger" routerLink="/login"><button type="button"
-              class="btn btn-radius btn-success">會員登入/註冊</button></a></li>
-      </ul>
-    </div> -->
       <!-- 新的primeng右側滑入樣式 -->
       <div class="row">
         <p-sidebar [(visible)]="visibleSidebar" position="right" [style]="{overflow:'auto'}">
-          <!-- <p-sidebar position="right" [style]="{overflow:'auto'}"> -->
           <div class="modal-header">
             <div class="my-menu">
               我的快速選單
@@ -32,7 +14,7 @@
           </div>
           <div class="modal-body">
 
-            <ul class="menu" id="Corporate" *ngIf="Corporate">
+            <ul class="menu" id="Seller" *ngIf="Seller">
               <li routerLinkActive="active">
                 <a routerLink="/company/order-progress" (click)="visibleSidebar = false"><i
                     class="fa fa-lg fa-fw fa-home"></i>
@@ -41,11 +23,11 @@
               <li routerLinkActive="active">
                 <a routerLink="/company/quotation" (click)="visibleSidebar = false"><i
                     class="fa fa-lg fa-fw fa-file-text"></i>
-                  <span class="menu-item-parent">{{'估價申請管理'}}</span></a>
+                  <span class="menu-item-parent">{{'TSP_Quotation申請管理'}}</span></a>
               </li>
               <li routerLinkActive="active">
                 <a routerLink="/company/contract" (click)="visibleSidebar = false"><i
-                    class="fa fa-lg fa-fw fa-book"></i> <span class="menu-item-parent">{{'合約管理'}}</span></a>
+                    class="fa fa-lg fa-fw fa-book"></i> <span class="menu-item-parent">{{'TPS_Deal管理'}}</span></a>
               </li>
               <li routerLinkActive="active">
                 <a routerLink="/company/statistical" (click)="visibleSidebar = false"><i
@@ -57,18 +39,18 @@
               </li>
             </ul>
 
-            <ul class="menu" id="WasteMove" *ngIf="WasteMove">
+            <ul class="menu" id="Courier" *ngIf="Courier">
               <li routerLinkActive="active">
                 <a routerLink="/clean/clean-dispatch" (click)="visibleSidebar = false"><i
-                    class="fa fa-lg fa-fw  fa-home"></i> <span class="menu-item-parent">{{'我的會員首頁(清除)'}}</span></a>
+                    class="fa fa-lg fa-fw  fa-home"></i> <span class="menu-item-parent">{{'我的會員首頁'}}</span></a>
               </li>
               <li routerLinkActive="active">
                 <a routerLink="/clean/clean-cars" (click)="visibleSidebar = false"><i
-                    class="fa fa-lg fa-fw  fa-truck"></i> <span class="menu-item-parent">{{'車輛管理'}}</span></a>
+                    class="fa fa-lg fa-fw  fa-truck"></i> <span class="menu-item-parent">{{'宅配載具管理'}}</span></a>
               </li>
               <li routerLinkActive="active">
                 <a routerLink="/clean/contract" (click)="visibleSidebar = false"><i class="fa fa-lg fa-fw fa-book"></i>
-                  <span class="menu-item-parent">{{'合約管理'}}</span></a>
+                  <span class="menu-item-parent">{{'TPS_Deal管理'}}</span></a>
               </li>
               <li routerLinkActive="active">
                 <a routerLink="/clean/statistical" (click)="visibleSidebar = false"><i
@@ -80,14 +62,14 @@
               </li>
             </ul>
 
-            <ul class="menu" id="WasteDeal" *ngIf="WasteDeal">
+            <ul class="menu" id="Buyer" *ngIf="Buyer">
               <li routerLinkActive="active">
                 <a routerLink="/refuse-processing/clean-dispatch" (click)="visibleSidebar = false"><i
-                    class="fa fa-lg fa-fw  fa-home"></i> <span class="menu-item-parent">{{'我的會員首頁(處理)'}}</span></a>
+                    class="fa fa-lg fa-fw  fa-home"></i> <span class="menu-item-parent">{{'我的會員首頁'}}</span></a>
               </li>
               <li routerLinkActive="active">
                 <a routerLink="/refuse-processing/contract" (click)="visibleSidebar = false"><i
-                    class="fa fa-lg fa-fw fa-book"></i> <span class="menu-item-parent">{{'合約管理'}}</span></a>
+                    class="fa fa-lg fa-fw fa-book"></i> <span class="menu-item-parent">{{'TPS_Deal管理'}}</span></a>
               </li>
               <li routerLinkActive="active">
                 <a routerLink="/refuse-processing/statistical" (click)="visibleSidebar = false"><i
@@ -99,119 +81,16 @@
               </li>
             </ul>
 
-            <!-- 伸縮選單(已隱藏) -->
-            <!-- 隱藏用 -->
-            <!-- <li class="menu-control"> -->
-            <!-- 沒隱藏 -->
-            <!-- <ul class="menu">
-              <li>
-                <a><span class="menu-item-parent">{{'企業客戶'}}</span></a>
-                <ul class="inmenu">
-                  <li routerLinkActive="active">
-                    <a routerLink="/company/order-progress" (click)="visibleSidebar = false"><i
-                        class="fa fa-lg fa-fw fa-home"></i>
-                      <span class="menu-item-parent">{{'我的會員首頁'}}</span></a>
-                  </li>
-                  <li routerLinkActive="active">
-                    <a routerLink="/company/quotation" (click)="visibleSidebar = false"><i
-                        class="fa fa-lg fa-fw fa-file-text"></i>
-                      <span class="menu-item-parent">{{'估價申請管理'}}</span></a>
-                  </li>
-                  <li routerLinkActive="active">
-                    <a routerLink="/company/contract" (click)="visibleSidebar = false"><i
-                        class="fa fa-lg fa-fw fa-book"></i> <span class="menu-item-parent">{{'合約管理'}}</span></a>
-                  </li>
-                  <li routerLinkActive="active">
-                    <a routerLink="/company/statistical" (click)="visibleSidebar = false"><i
-                        class="fa fa-lg fa-fw fa-binoculars"></i> <span class="menu-item-parent">{{'統計資料查詢'}}</span></a>
-                  </li>
-                  <li routerLinkActive="active">
-                    <a routerLink="/company/member-profile" (click)="visibleSidebar = false"><i
-                        class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">{{'會員資料設定'}}</span></a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a><span class="menu-item-parent">{{'清除業者'}}</span></a>
-                <ul class="inmenu">
-                  <li routerLinkActive="active">
-                    <a routerLink="/clean/clean-dispatch" (click)="visibleSidebar = false"><i
-                        class="fa fa-lg fa-fw  fa-home"></i> <span class="menu-item-parent">{{'我的會員首頁(清除)'}}</span></a>
-                  </li>
-                  <li routerLinkActive="active">
-                    <a routerLink="/clean/clean-cars" (click)="visibleSidebar = false"><i
-                        class="fa fa-lg fa-fw  fa-truck"></i> <span class="menu-item-parent">{{'車輛管理'}}</span></a>
-                  </li>
-                  <li routerLinkActive="active">
-                    <a routerLink="/clean/contract" (click)="visibleSidebar = false"><i
-                        class="fa fa-lg fa-fw fa-book"></i> <span class="menu-item-parent">{{'合約管理'}}</span></a>
-                  </li>
-                  <li routerLinkActive="active">
-                    <a routerLink="/clean/statistical" (click)="visibleSidebar = false"><i
-                        class="fa fa-lg fa-fw fa-binoculars"></i> <span class="menu-item-parent">{{'統計資料查詢'}}</span></a>
-                  </li>
-                  <li routerLinkActive="active">
-                    <a routerLink="/clean/member-profile" (click)="visibleSidebar = false"><i
-                        class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">{{'會員資料設定'}}</span></a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a><span class="menu-item-parent">{{'處理業者'}}</span></a>
-                <ul class="inmenu">
-                  <li routerLinkActive="active">
-                    <a routerLink="/refuse-processing/clean-dispatch" (click)="visibleSidebar = false"><i
-                        class="fa fa-lg fa-fw  fa-home"></i> <span class="menu-item-parent">{{'我的會員首頁(處理)'}}</span></a>
-                  </li>
-                  <li routerLinkActive="active">
-                    <a routerLink="/refuse-processing/contract" (click)="visibleSidebar = false"><i
-                        class="fa fa-lg fa-fw fa-book"></i> <span class="menu-item-parent">{{'合約管理'}}</span></a>
-                  </li>
-                  <li routerLinkActive="active">
-                    <a routerLink="/refuse-processing/statistical" (click)="visibleSidebar = false"><i
-                        class="fa fa-lg fa-fw fa-binoculars"></i> <span class="menu-item-parent">{{'統計資料查詢'}}</span></a>
-                  </li>
-                  <li routerLinkActive="active">
-                    <a routerLink="/refuse-processing/member-profile" (click)="visibleSidebar = false"><i
-                        class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">{{'會員資料設定'}}</span></a>
-                  </li>
-                </ul>
-              </li>
-            </ul> -->
             <ul class="menu">
-              <!-- 事業單位選單 -->
-              <!-- <li routerLinkActive="active">
-                <a routerLink="/company/order-progress" (click)="visibleSidebar = false"><span
-                    class="menu-item-parent">{{'我的首頁(企業單位)'}}</span></a>
-              </li>
-              <li routerLinkActive="active">
-                <a routerLink="/company/quotation" (click)="visibleSidebar = false"><span
-                    class="menu-item-parent">{{'初次估價申請'}}</span></a>
-              </li> -->
-              <!-- 清除業者選單 -->
-              <!-- <li routerLinkActive="active">
-                <a routerLink="/clean/clean-dispatch" (click)="visibleSidebar = false"><span
-                    class="menu-item-parent">{{'我的首頁(清除業者)'}}</span></a>
-              </li>
-              <li routerLinkActive="active">
-                <a routerLink="/clean/clean-cars" (click)="visibleSidebar = false"><span
-                    class="menu-item-parent">{{'車輛資料'}}</span></a>
-              </li> -->
-              <!-- 處理業者選單 -->
-              <!-- <li routerLinkActive="active">
-                <a routerLink="/refuse-processing/clean-dispatch" (click)="visibleSidebar = false"><span
-                    class="menu-item-parent">{{'我的首頁(處理業者)'}}</span></a>
-              </li> -->
-
               <!-- 共用選單 -->
               <li>
                 <a (click)="goOpen1()" (click)="visibleSidebar = false">
-                  <span class="menu-item-parent">{{'妥善處理紀錄'}}</span>
+                  <span class="menu-item-parent">{{'商品收據'}}</span>
                 </a>
               </li>
               <li>
                 <a (click)="goOpen2()" (click)="visibleSidebar = false">
-                  <span class="menu-item-parent">{{'廢棄物代碼表'}}</span>
+                  <span class="menu-item-parent">{{'商品代碼'}}</span>
                 </a>
               </li>
               <li>
@@ -219,48 +98,14 @@
                     class="menu-item-parent">{{'公司介紹'}}</span></a>
               </li>
               <li>
-                <!-- <a routerLink="index" (click)="visibleSidebar = false ; showCreateContact()" class="li-last"
-                  data-target="#myModal11"> -->
+
                 <a routerLink="index" (click)="visibleSidebar = false ; showCreateContact()" class="li-last">
                   <span class="menu-item-parent">{{'聯絡我們'}}</span>
                 </a>
               </li>
-              <!-- 測試沒有註冊的頁面 -->
-              <!-- <li routerLinkActive="active">
-                <a routerLink="/member-check" (click)="visibleSidebar = false"><span
-                    class="menu-item-parent">{{'沒有註冊'}}</span></a>
-              </li> -->
-              <!-- 測試沒有審核過的頁面 -->
-              <!-- <li>
-                <a><span class="menu-item-parent">{{'沒有審核通過'}}</span></a>
-                <ul class="inmenu">
-                  <li routerLinkActive="active">
-                    <a routerLink="/modify-register" (click)="visibleSidebar = false"><i
-                        class="fa fa-lg fa-fw  fa-home"></i> <span class="menu-item-parent">{{'修改事業會員'}}</span></a>
-                  </li>
-                  <li routerLinkActive="active">
-                    <a routerLink="/modify-clean-register" (click)="visibleSidebar = false"><i
-                        class="fa fa-lg fa-fw fa-book"></i> <span class="menu-item-parent">{{'修改清除會員'}}</span></a>
-                  </li>
-                  <li routerLinkActive="active">
-                    <a routerLink="/modify-processing-register" (click)="visibleSidebar = false"><i
-                        class="fa fa-lg fa-fw fa-binoculars"></i> <span class="menu-item-parent">{{'修改處理會員'}}</span></a>
-                  </li>
-                </ul>
-              </li> -->
-
-              <!-- -------------API伺服器頁面------------- -->
-              <!-- <li routerLinkActive="active">
-                <a routerLink="/heroes" (click)="visibleSidebar = false"><span
-                    class="menu-item-parent">{{'測試'}}</span></a>
-              </li> -->
-              <!-- --------------------------------- -->
             </ul>
           </div>
-          <!-- <div class="modal-footer">
-            <button class="btn btn-lg btn-success" *ngIf="isActive" (click)="visibleSidebar = false; LoginIn()">會員登入/註冊</button>
-            <button class="btn btn-lg btn-light" *ngIf="isLogin" (click)="visibleSidebar = false; LoginOut()">登出</button>
-          </div> -->
+
         </p-sidebar>
         <button class="btn btn-radius btn-success" type="button" (click)="visibleSidebar = true ; checkUserData()">
           <div class="menu-btn"><i class="fa fa-bars ml-1"></i>功能選單</div>
@@ -268,9 +113,9 @@
         <div style="margin-left: 10px;">
           <button class="btn btn-lg btn-radius btn-success" *ngIf="isActive"
             (click)="visibleSidebar = false; LoginIn()">會員登入/註冊</button>
-          <button class="btn btn-lg btn-radius btn-light" *ngIf="isLogin" (click)="visibleSidebar = false; LoginOut()">登出</button>
+          <button class="btn btn-lg btn-radius btn-light" *ngIf="isLogin"
+            (click)="visibleSidebar = false; LoginOut()">登出</button>
         </div>
-        <!-- <button pButton type="button" (click)="visibleSidebar = true" icon="pi pi-arrow-left"></button> -->
       </div>
     </div>
   </nav>

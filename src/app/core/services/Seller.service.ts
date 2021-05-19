@@ -16,67 +16,65 @@ import { UrlService } from "@app/core/services/Url.service";
 
 @Injectable()
 
-export class CorporateService {
+export class SellerService {
   constructor(
     private UrlService: UrlService,
     private http: HttpClient,
     private httpService: HttpClientService,) { }
 
 
-  // 取得TSP_Quotation列表
+  // Get TSP_Quotation_List
   getQuoteList(Keyword: SearchQuoteList): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEGetQuoteListUrl, Keyword);
   }
-  // 建立TSP_Quotation
+  // Create TSP_Quotation
   CreateQuote(Quote: Quote): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFECreateQuoteUrl, Quote);
   }
-  // 修改TSP_Quotation
+  // Modify TSP_Quotation
   addUpdateQuote(Quote: Quote): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEUpdateQuoteUrl, Quote);
   }
-  // 取得TSP_Quotation明細
+  // Get TSP_Quotation_Detail
   getQuoteDetai(Code: CodeKey): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEGetQuoteDetailUrl, Code);
   }
 
-  // TSP_Quotation轉合約
+  // TSP_Quotation轉TPS_Deal
   CreateContract(QuoteinfoData: QuoteinfoData): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFECreateContractUrl, QuoteinfoData);
   }
-  // 取得合約列表
+  // Get TPS_Deal_List
   getContractList(Keyword: SearchContractList): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEGetContractListUrl, Keyword);
   }
-  // 取得合約明細
+  // Get TPS_Deal_Detail
   getContractDetail(Code: CodeKey): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEGetContractDetailUrl, Code);
   }
 
-  // 取得TSP_Order列表
+  // Get TSP_Order_List
   getOrderList(Keyword: SearchOrderList): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEGetOrderListUrl, Keyword);
   }
 
-  // 取得TSP_Order明細
+  // Get TSP_Order_Detail
   getOrderDetail(Code: CodeKey): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEGetOrderDetailUrl, Code);
   }
-  // 取得合約明細列表
+  // Get TPS_Deal_Detail_List
   getContractCodeList(TaxIDNumber: CodeKey): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEGetContractCodeListUrl, TaxIDNumber);
   }
-  // 新增TSP_Order
+  // Add TSP_Order
   CreateOrderUrl(CreateOrder: CreateOrder): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFECreateOrderUrl, CreateOrder);
   }
-  // 刪除TSP_Order
+  // Delet TSP_Order
   DeleteOrderUrl(Code: CodeKey): Observable<any> {
     return this.httpService.httpPost(this.UrlService.getUrl() + config.TSPFEDeleteOrderUrl, Code);
   }
 
 }
 
-// Corporate
-// WasteDeal
-// WasteMove
+

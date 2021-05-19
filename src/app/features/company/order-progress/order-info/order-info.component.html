@@ -7,14 +7,6 @@
             <div class="card">
                 <div class="title">
                     <span>TSP_Order資料</span>
-                    <!-- <div class="btn-right">
-                        <a routerLink="/company/order-progress/modify-order">
-                            <button id="left-btn" type="button" class="btn btn-org btn-lg"><i
-                                    class="fa fa-lg fa-fw fa-pencil-square-o"></i>編輯TSP_Order</button>
-                        </a>
-                        <button type="button" class="btn btn-primary btn-lg" (click)="goBack()"><i
-                                class="fa fa-lg fa-fw fa-arrow-right"></i>返回</button>
-                    </div> -->
                 </div>
                 <div class="form-container">
                     <table class="table">
@@ -29,7 +21,7 @@
                                 <td class="col-10">{{ Code }}</td>
                             </tr>
                             <tr>
-                                <th>合約編號</th>
+                                <th>TPS_Deal</th>
                                 <td>
                                   <a  (click)="getContractId()"
                                         style="color: #136a50">{{ ContractCode }}</a>
@@ -41,10 +33,10 @@
                             </tr>
                             <tr>
                                 <th>申請單位</th>
-                                <td>{{ CorporateName }}</td>
+                                <td>{{ SellerName }}</td>
                             </tr>
                             <tr>
-                                <th>事業別</th>
+                                <th>行業類別</th>
                                 <td>{{ CareerType }}&#xA0;>&#xA0;{{ CareerSubType }}</td>
                             </tr>
                             <tr>
@@ -60,7 +52,7 @@
                                 <td>{{ ContactMobilePhone }}</td>
                             </tr>
                             <tr>
-                                <th>管制編號</th>
+                                <th>TPS_VIP_ID</th>
                                 <td>{{ ControlNumber }}</td>
                             </tr>
                         </tbody>
@@ -68,12 +60,12 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th colspan="2">清運資料</th>
+                                <th colspan="2">宅配資料</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th>清運車號</th>
+                                <th>宅配車號</th>
                                 <td>{{ CarPlate }}</td>
                             </tr>
                             <tr>
@@ -81,7 +73,7 @@
                                 <td>{{ CollectFrequency }}&#xA0; ; &#xA0;{{ CollectWeekDay }}</td>
                             </tr>
                             <tr [ngSwitch]="AcceptableAmount">
-                                <th>允收量</th>
+                                <th>配送額度</th>
                                 <td *ngSwitchCase="null"></td>
                                 <td *ngSwitchDefault>{{ AcceptableAmount }} /公斤</td>
                             </tr>
@@ -90,22 +82,13 @@
                                 <td>{{ ApplyWasteType }}類  {{ ApplyWasteTypeName }}</td>
                             </tr>
                             <tr>
-                                <th>清運地址</th>
+                                <th>宅配地址</th>
                                 <td>{{ ClearAddress }}</td>
                             </tr>
                             <tr>
-                                <th>廢棄物貯存地點</th>
+                                <th>倉儲地點</th>
                                 <td>{{ WasteStoragePlace }}</td>
                             </tr>
-                            <!-- 預估改在各資料表欄位 -->
-                            <!-- <tr>
-                                <th>廢棄物數量預估(重量)/月</th>
-                                <td>1,300 KG</td>
-                            </tr>
-                            <tr>
-                                <th>廢棄物數量預估(桶)/月</th>
-                                <td>3 桶</td>
-                            </tr> -->
                             <tr>
                                 <th>處理狀態</th>
                                 <td>
@@ -150,8 +133,6 @@
                                   <button class="OLstatus-1" (click)="showNotConfromphoto()">
                                       查看照片
                                   </button>
-                                  <!-- <p-button label="查看照片" styleClass="p-button-success p-button-sm" (click)="showNotConfromphoto()">
-                                  </p-button> -->
                               </td>
                             </tr>
                             <tr>
@@ -164,11 +145,6 @@
                                     <button class="OLstatus-1" (click)="showCompletephoto()">
                                       查看照片
                                     </button>
-                                    <!-- <p-button label="查看照片" styleClass="p-button-success p-button-sm" (click)="showCompletephoto()">
-                                    </p-button> -->
-                                    <!-- <button type="button"
-                                        class="btn btn-primary justify-content-center align-items-center"
-                                        data-toggle="modal" data-target="#myModal2">查看圖片</button> -->
                                 </td>
                             </tr>
                             <tr>
@@ -180,7 +156,7 @@
                                 <td>{{ PayItem }}</td>
                             </tr>
                             <tr>
-                                <th>是否同意免簽</th>
+                                <th>是否簽收</th>
                                 <td [ngSwitch]="IsAgreeSignFree">
                                     <p *ngSwitchCase="true">
                                         是
@@ -193,7 +169,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>退水費、妥善處理記錄、派送三聯單</th>
+                                <th>紙本收據</th>
                                 <td [ngSwitch]="IsNeedRecord">
                                     <p *ngSwitchCase="true">
                                         是
@@ -238,7 +214,6 @@
                     </table>
                     <table class="table">
                         <colgroup>
-                            <!-- <col style="width: 10%"> -->
                             <col style="width: 12%">
                             <col style="width: 18%">
                             <col style="width: 14%">
@@ -249,12 +224,11 @@
                         </colgroup>
                         <thead>
                             <tr>
-                                <th colspan="7">廢棄物列表</th>
+                                <th colspan="7">廢棄物_List</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="tbodyTh">
-                                <!-- <th>項次</th> -->
                                 <th>廢棄物代碼</th>
                                 <th>廢棄物名稱</th>
                                 <th>廢棄物性質</th>
@@ -263,10 +237,7 @@
                                 <th>單位</th>
                                 <th>單價(元)</th>
                             </tr>
-                            <!-- <ng-template pTemplate="body"  ngFor let-WasteData [ngForOf]="WasteData" let-i="index"> -->
-                              <!-- <ng-container *ngFor="let WasteData of QuoteinfoData.WasteData"> -->
                             <tr>
-                                <!-- <td>{{ 1 }}.</td> -->
                                 <td>{{ WasteCode }}</td>
                                 <td>{{ WasteName }}</td>
                                 <td>{{ WasteStatus }}</td>
@@ -278,22 +249,6 @@
                             <!-- </ng-template> -->
                         </tbody>
                     </table>
-                    <!-- <table class="add-table" style="width:100%; min-width: 550px">
-                      <div class="form-group">
-                        <div class="btn-right order-right">
-                            <label class="control-label order-tall01" for="FullName">預估TSP_Order總價：</label>
-                            <div class="ipnut-width">
-                                <input type="text" class="form-control input-text order-tall01" id="EstimatedPrice"
-                                    value={{EstimatedPrice}} readonly="readonly">
-                            </div>
-                            <label class="control-label order-tall02" for="FullName">實際TSP_Order總價：</label>
-                            <div class="ipnut-width">
-                                <input type="text" class="form-control input-text order-tall02" id="ActualPrice"
-                                    value={{ActualPrice}} readonly="readonly">
-                            </div>
-                        </div>
-                    </div>
-                  </table> -->
                     <div class="form-group row">
                         <div class="btn-right order-right">
                             <label class="control-label order-tall01" for="FullName">預估TSP_Order總價：</label>

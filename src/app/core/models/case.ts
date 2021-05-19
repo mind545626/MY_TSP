@@ -13,7 +13,7 @@ export interface RegisterData {
   Id: string,
   TaxIDNumber: string,
   Password: string,
-  CorporateName: string,
+  SellerName: string,
   Representative: string,
   PhoneNumber: string,
   Fax: string,
@@ -34,7 +34,7 @@ export interface RegisterData {
   MailingDistrict: string,
   MailingRoad: string,
   BackupMail: string,
-  CorporateType: string
+  SellerType: string
 }
 
 export interface AttachData {
@@ -131,7 +131,7 @@ export interface WasteData {
 }
 //-----------
 
-// TSP_Quotation列表
+// TSP_Quotation_List
 export interface QuoteListData {
   body: QuoteList[],
   isSuccess: boolean,
@@ -144,7 +144,7 @@ export interface QuoteList {
   Code: string,
   WasteItem: WasteItem[],
   TaxIDNumber: string,
-  CorporateName: string,
+  SellerName: string,
   ClearAddress: string,
   QuoteStatus: string,
   QuoteStatusName: string,
@@ -169,7 +169,7 @@ export interface WasteItem {
 }
 //-----------
 
-// 取得TSP_Quotation明細
+// Get TSP_Quotation_Detail
 export interface ResponseQuoteinfoData {
   body: QuoteinfoData,
   isSuccess: boolean,
@@ -181,7 +181,7 @@ export interface ResponseQuoteinfoData {
 export interface QuoteinfoData {
   Code: string,
   ApplyDateTime: string,
-  CorporateName: string,
+  SellerName: string,
   CareerType: string,
   CareerTypeName: string,
   CareerSubType: string,
@@ -253,7 +253,7 @@ export interface CodeKey {
   Code: string;
 }
 
-// 搜尋合約
+// 搜尋TPS_Deal
 export interface SearchContractList {
   QueryDateTimeStart?: string,
   QueryDateTimeEnd?: string,
@@ -261,7 +261,7 @@ export interface SearchContractList {
   KeyWord?: string,
   ContractStatus?: string
 }
-// 合約列表
+// TPS_Deal_List
 export interface ContractListData {
   body: ContractList[],
   isSuccess: boolean,
@@ -272,7 +272,7 @@ export interface ContractListData {
 }
 export interface ContractList {
   Code: string,
-  CorporateName: string,
+  SellerName: string,
   ClearAddress: string,
   ApplyDateTime: string,
   StartDateTime: string,
@@ -291,7 +291,7 @@ export interface ContractinfoData {
   AcceptableAmount: string,
   ApplyDateTime: string,
   TaxIDNumber: string,
-  CorporateName: string,
+  SellerName: string,
   CareerType: string,
   CareerSubType: string,
   ContactPerson: string,
@@ -317,7 +317,7 @@ export interface ContractinfoData {
   WasteData: WasteDatainfo[],
   // QuoteReplyLog: QuoteReplyLog[],
 }
-// 取得合約明細
+// Get TPS_Deal_Detail
 export interface ResponseContractinfoData {
   body: ContractinfoData,
   isSuccess: boolean,
@@ -336,12 +336,12 @@ export interface SearchOrderList {
   KeyWord: string,
   ProcessStatus: string
 }
-//取得TSP_Order列表
+//Get TSP_Order_List
 export interface OrderList {
   Code: string,
   ApplyDateTime: string,
   CarPlate: string,
-  CorporateName: string,
+  SellerName: string,
   ClearAddress: string,
   WasteCode: string,
   WasteCodeName: string,
@@ -353,7 +353,7 @@ export interface OrderList {
   EstimatedPrice: number,
   ActualPrice: number
 }
-// TSP_Order列表
+// TSP_Order_List
 export interface OrderListData {
   body: OrderList[],
   isSuccess: boolean,
@@ -362,7 +362,7 @@ export interface OrderListData {
   response: string,
   exception: string
 }
-// 取得TSP_Order詳細
+// Get TSP_Order_Detail
 export interface ResponseOrderinfoData {
   body: OrderinfoData,
   isSuccess: boolean,
@@ -371,12 +371,12 @@ export interface ResponseOrderinfoData {
   response: string,
   exception: string
 }
-// TSP_Order詳細資料
+// TSP_Order_Detail資料
 export interface OrderinfoData {
   Code: string,
   ContractCode: string,
   ApplyDateTime: string,
-  CorporateName: string,
+  SellerName: string,
   CareerType: string,
   CareerSubType: string,
   ContactPerson: string,
@@ -424,7 +424,7 @@ export interface OrderinfoData {
   AcceptableAmount: number
 }
 
-// 合約ContractCode列表
+// TPS_DealContractCode_List
 export interface ContractCodeListData {
   body: ContractCodeList[],
   isSuccess: boolean,
@@ -433,11 +433,11 @@ export interface ContractCodeListData {
   response: string,
   exception: string
 }
-// 取得合約ContractCode列表
+// Get TPS_DealContractCode_List
 export interface ContractCodeList {
   ContractCode: string,
 }
-// 建立TSP_Order
+// Create TSP_Order
 export interface CreateOrder {
   ContractCode: string,
   WasteCode: string,

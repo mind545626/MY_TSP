@@ -8,7 +8,7 @@ import { QuotationComponent } from './quotation.component';
 
 import { MatTabsModule } from '@angular/material';
 import { RecentQuotationsComponent } from './tab/recent-quotations/recent-quotations.component';
-import { CorporateService } from '@app/core/services/Corporate.service';
+import { SellerService } from '@app/core/services/Seller.service';
 
 import { RegisterService } from '@app/core/services/Register.service';
 
@@ -26,7 +26,7 @@ import { RegisterService } from '@app/core/services/Register.service';
     RecentQuotationsComponent,
   ],
   providers: [
-    CorporateService,
+    SellerService,
     RegisterService,
   ],
   bootstrap: [

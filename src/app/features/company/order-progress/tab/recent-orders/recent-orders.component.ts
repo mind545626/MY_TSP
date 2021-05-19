@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/cor
 
 import { Customer, Order } from '@app/services/customer';
 import { CustomerService } from '@app/services/customerservice';
-import { CorporateService } from '@app/core/services/Corporate.service';
+import { SellerService } from '@app/core/services/Seller.service';
 import { UserDataService } from '@app/core/services/UserData.service';
 import { RegisterService } from '@app/core/services/Register.service';
 
@@ -68,7 +68,6 @@ export class RecentOrdersComponent implements OnInit {
 
   // delete_btn: boolean = true;
 
-  //SysCode
   ProcessStatus$: Observable<SelectItem[]>;
   ProcessStatus: FESysCode;
 
@@ -84,9 +83,8 @@ export class RecentOrdersComponent implements OnInit {
     protected router: Router,
     private UserDataService: UserDataService,
     private RegisterService: RegisterService,
-    private CorporateService: CorporateService,
+    private SellerService: SellerService,
     private messageService: MessageService,
-    // private customerService: CustomerService,
     private fb: FormBuilder
   ) {
 
@@ -104,7 +102,6 @@ export class RecentOrdersComponent implements OnInit {
 
     this.progressSpinner = true
     this.UserData = JSON.parse(localStorage.getItem('UserData'))
-    // this.customerService.getOrder().then(customers => this.order = customers)
 
     // 今日
     this.newToday = new Date().toLocaleString('zh-TW',
@@ -140,8 +137,8 @@ export class RecentOrdersComponent implements OnInit {
         this.ProcessStatus = data.body
       });
 
-      // 獲取TSP_Order列表
-      this.CorporateService.getOrderList(this.keyword).subscribe((data: OrderListData) => {
+      // 獲取TSP_Order_List
+      this.SellerService.getOrderList(this.keyword).subscribe((data: OrderListData) => {
         this.order = data.body;
         console.log(this.order, 'this is getorderList Data')
         // this.UserDataService.QuoteLength = this.order.length
@@ -164,7 +161,7 @@ export class RecentOrdersComponent implements OnInit {
       { field: 'Code', header: 'TSP_Order編號', width: '180px' },
       { field: 'WasteCode', header: '廢棄物項目', width: '200px' },
       { field: 'CarPlate', header: '車號', width: '150px' },
-      { field: 'ClearAddress', header: '清運地址', width: '300px' },
+      { field: 'ClearAddress', header: '宅配地址', width: '300px' },
       { field: 'EstimatedPrice', header: '預估TSP_Order總價', width: '150px' },
       { field: 'ActualPrice', header: '實際TSP_Order總價', width: '150px' },
 
@@ -174,7 +171,6 @@ export class RecentOrdersComponent implements OnInit {
 
       { field: 'ApplyDateTime', header: '申請日期', width: '180px' },
       { field: 'CompleteDateTime', header: '完成日期', width: '180px' },
-      // { field: 'OrderImage', header: '圖片' },
       { field: 'Edit', header: '功能', width: '180px' }
     ];
 
@@ -206,7 +202,7 @@ export class RecentOrdersComponent implements OnInit {
       /** 每月月份短样式 */
       monthNamesShort: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
       today: '今日',
-      clear: '刪除'
+      clear: 'Delet '
     }
 
 
@@ -259,16 +255,16 @@ export class RecentOrdersComponent implements OnInit {
     this.progressSpinner = true
     this.CodeKey.Code = Code
     console.log(this.CodeKey.Code,'this.CodeKey.Code')
-    this.CorporateService.DeleteOrderUrl(this.CodeKey).subscribe((data: ResponseObj) => {
+    this.SellerService.DeleteOrderUrl(this.CodeKey).subscribe((data: ResponseObj) => {
       if (data.code === "000") {
         location.reload();
         setTimeout(() => {
-          this.messageService.add({ severity: 'success', summary: '成功', detail: '刪除TSP_Order成功' });
+          this.messageService.add({ severity: 'success', summary: '成功', detail: 'Delet TSP_Order成功' });
           this.progressSpinner = false
         }, 500)
       }
       else {
-        this.messageService.add({ severity: 'error', summary: '載入失敗', detail: '刪除TSP_Order失敗' });
+        this.messageService.add({ severity: 'error', summary: '載入失敗', detail: 'Delet TSP_Order失敗' });
         this.progressSpinner = false
       }
     })

@@ -2,16 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 // 回上一頁用
 import { Location } from '@angular/common';
 import { MenuItem } from 'primeng/api';
-import { UserDataService } from '@app/core/services/UserData.service.ts';
+import { UserDataService } from '@app/core/services/UserData.service';
 import { ResponseLoginData } from '@app/core/models/user';
 
 // 原頁面載入
-// import { FormBuilder } from '@angular/forms';
-// import { SelectItem } from 'primeng/api';
-// import { Table } from 'primeng/table';
-// import { FilterUtils } from 'primeng/utils';
-// import { Customer } from '@app/services/customer';
-// import { CustomerService } from '@app/services/customerservice';
 
 @Component({
   selector: 'app-order-progress',
@@ -48,7 +42,7 @@ export class OrderProgressComponent implements OnInit {
 
     this.items = [
       { icon: 'pi pi-home', label: '我的會員首頁', routerLink: '/company/order-progress' },
-      { label: 'TSP_Order管理列表' },
+      { label: 'TSP_Order管理_List' },
     ];
 
     setTimeout(() => {

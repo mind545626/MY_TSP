@@ -144,7 +144,7 @@ body {
   .ui-multiselect {
     border: 1px solid #babfc7;
   }
-  // 修改table底下控制按鈕顏色樣式
+  // Modify table底下控制按鈕顏色樣式
   .ui-paginator {
     .ui-paginator-pages {
       .ui-paginator-page.ui-state-active {
@@ -299,7 +299,7 @@ body {
     border-radius: 5px;
     color: #fffae2;
   }
-  // 合約申請中
+  // TPS_Deal申請中
   .status-6 {
     padding: 6px;
     background-color: #08b49d;
@@ -308,7 +308,7 @@ body {
     border-radius: 5px;
     color: #fffae2;
   }
-  // 合約成立
+  // TPS_Deal成立
   .status-7 {
     padding: 6px;
     background-color: #086b0d;
@@ -318,7 +318,7 @@ body {
     border-radius: 5px;
     color: #fffae2;
   }
-  // 合約失效
+  // TPS_Deal失效
   .status-8 {
     padding: 6px;
     // background-color: #088b0e;
@@ -332,7 +332,7 @@ body {
     display: none;
   }
 
-  // 合約狀態樣式
+  // TPS_Deal狀態樣式
   // 申請審核中
   .COstatus-1 {
     padding: 6px;

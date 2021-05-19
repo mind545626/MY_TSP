@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Key, ResponseObj } from '@app/core/models/user';
 import { MessageService } from 'primeng/api';
-import { LoginService } from '@app/core/services/Login.service.ts';
+import { LoginService } from '@app/core/services/Login.service';
 import { newPassword } from '@app/core/models/case';
 
 @Component({

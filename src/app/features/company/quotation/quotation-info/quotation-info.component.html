@@ -10,13 +10,7 @@
                     <div class="btn-right">
                         <button *ngIf="check_btn" id="left-btn2" type="button" class="btn btn-success btn-lg"
                         (click)="CreateContract()">
-                           <i class="fa fa-lg fa-fw fa-check-square-o"></i>立即申請合約！</button>
-                        <!-- <button id="left-btn2" type="button" class="btn btn-success btn-lg" data-toggle="modal"
-                            data-target="#myModal4"><i class="fa fa-lg fa-fw fa-check-square-o"></i>立即申請合約！</button> -->
-                        <!-- <button id="left-btn" type="button" class="btn btn-org btn-lg" (click)="getQuotId()"><i
-                                    class="fa fa-lg fa-fw fa-pencil-square-o"></i>編輯TSP_Quotation</button>
-                        <button type="button" class="btn btn-primary btn-lg" (click)="goBack()"><i
-                                class="fa fa-lg fa-fw fa-arrow-right"></i>返回</button> -->
+                           <i class="fa fa-lg fa-fw fa-check-square-o"></i>立即申請TPS_Deal！</button>
                     </div>
                 </div>
                 <div class="form-container">
@@ -32,15 +26,15 @@
                                 <td>{{ Code }}</td>
                             </tr>
                             <tr>
-                                <th>估價申請日期</th>
+                                <th>TSP_Quotation申請日期</th>
                                 <td>{{ ApplyDateTime }}</td>
                             </tr>
                             <tr>
                                 <th>公司名稱</th>
-                                <td>{{ CorporateName }}</td>
+                                <td>{{ SellerName }}</td>
                             </tr>
                             <tr>
-                                <th>事業別</th>
+                                <th>行業類別</th>
                                 <td>{{ CareerTypeName }}&#xA0;>&#xA0;{{ CareerSubTypeName }}</td>
                             </tr>
                             <tr>
@@ -56,7 +50,7 @@
                                 <td>{{ ContactMobilePhone }}</td>
                             </tr>
                             <tr>
-                                <th>管制編號</th>
+                                <th>TPS_VIP_ID</th>
                                 <td>{{ ControlNumber }}</td>
                             </tr>
                         </tbody>
@@ -64,16 +58,16 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th colspan="2">平台估價資料</th>
+                                <th colspan="2">平台TSP_Quotation資料</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th>估價處理方式</th>
+                                <th>TSP_Quotation處理方式</th>
                                 <td>{{ QuoteTypeName }}</td>
                             </tr>
                             <tr>
-                                <th>現場估價日期</th>
+                                <th>現場TSP_Quotation日期</th>
                                 <td>{{ QuoteDateTime }}</td>
                             </tr>
                             <tr>
@@ -81,7 +75,7 @@
                                 <td>{{ CollectFrequencyName }}&#xA0; ; &#xA0;{{ CollectWeekDayName }}</td>
                             </tr>
                             <tr [ngSwitch]="AcceptableAmount">
-                                <th>允收量</th>
+                                <th>配送額度</th>
                                 <td *ngSwitchCase="null"></td>
                                 <td *ngSwitchDefault>{{ AcceptableAmount }} /公斤</td>
                             </tr>
@@ -90,15 +84,15 @@
                                 <td>{{ ApplyWasteType }}類  {{ ApplyWasteTypeName }}</td>
                             </tr>
                             <tr>
-                                <th>清運地址</th>
+                                <th>宅配地址</th>
                                 <td>{{ ClearAddress }}</td>
                             </tr>
                             <tr>
-                                <th>廢棄物貯存地點</th>
+                                <th>倉儲地點</th>
                                 <td>{{ WasteStoragePlaceName }}</td>
                             </tr>
                             <tr>
-                                <th>估價狀態</th>
+                                <th>TSP_Quotation狀態</th>
                                 <td>
                                     <button [class]="'status-'+status">
                                         {{ QuoteStatusName }}
@@ -122,7 +116,7 @@
                                 <td>{{ PayItemName }}</td>
                             </tr>
                             <tr>
-                                <th>是否同意免簽</th>
+                                <th>是否簽收</th>
                                 <td [ngSwitch]="IsAgreeSignFree">
                                     <p *ngSwitchCase="true">
                                         是
@@ -135,7 +129,7 @@
                                 </td>
                             </tr>
                             <tr>
-                              <th>退水費、妥善處理記錄、派送三聯單</th>
+                              <th>紙本收據</th>
                               <td [ngSwitch]="IsNeedRecord">
                                   <p *ngSwitchCase="true">
                                       是
@@ -171,16 +165,6 @@
                             <ng-template pTemplate="body" ngFor let-ProvideEquip [ngForOf]="ProvideEquip" let-i="index">
                               <tr>
                                   <td>{{ i+1 }}.</td>
-                                  <!-- <td [ngSwitch]="QuoteProvideEquip">
-                                      <p *ngSwitchCase="1">
-                                          一立方子車
-                                      </p>
-                                      <p *ngSwitchCase="2">
-                                          十立方子車
-                                      </p>
-                                      <p *ngSwitchDefault>
-                                      </p>
-                                  </td> -->
                                   <td>{{ ProvideEquip.QuoteProvideEquipName }}</td>
                                   <td>{{ ProvideEquip.Qty }}</td>
                                   <td>{{ ProvideEquip.Price }}</td>
@@ -191,7 +175,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th colspan="7">廢棄物列表</th>
+                                <th colspan="7">廢棄物_List</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -205,7 +189,6 @@
                                 <th>單價(元)</th>
                             </tr>
                             <ng-template pTemplate="body"  ngFor let-WasteData [ngForOf]="WasteDatainfo" let-i="index">
-                              <!-- <ng-container *ngFor="let WasteData of QuoteinfoData.WasteData"> -->
                               <tr>
                                   <td>{{ i+1 }}.</td>
                                   <td>{{ WasteData.WasteCode }}</td>
@@ -227,7 +210,7 @@
                        </colgroup>
                         <thead>
                             <tr>
-                                <th colspan="3">估價歷程列表</th>
+                                <th colspan="3">TSP_Quotation歷程_List</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -235,7 +218,6 @@
                                 <th>進度項目</th>
                                 <th>回覆時間</th>
                                 <th>平台回覆註記</th>
-                                <!-- <th>功能</th> -->
                             </tr>
                             <ng-template pTemplate="body"  ngFor let-QuoteReplyLog [ngForOf]="QuoteReplyLog" let-i="index">
                               <tr>
@@ -247,47 +229,9 @@
                                             <span *ngSwitchDefault>
                                             </span>
                                       </button>
-                                    <!-- {{ QuoteReplyLog.QuoteStatusName }} -->
                                   </td>
                                   <td>{{ QuoteReplyLog.ReplyDateTime }}</td>
                                   <td>{{ QuoteReplyLog.ReplyNote }}</td>
-                                  <!-- <td class="td_btn-center">
-                                    <button  pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-org"
-                                      (click)="onButtonClick(i)" [disabled]="clickbut[i]">
-                                    </button>
-                                  </td> -->
-                                  <!-- <td class="td_btn-center" [ngSwitch]="QuoteinfoData.QuoteStatus">
-                                    <span *ngSwitchCase="2">
-                                      <span [ngSwitch]="QuoteReplyLog.QuoteStatus">
-                                        <span *ngSwitchCase="2">
-                                          <button  pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-org"
-                                          (click)="onButtonClick2(i)" [disabled]="click2">
-                                          </button>
-                                        </span>
-                                        <span *ngSwitchCase="4">
-                                          <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-org"
-                                            (click)="onButtonClick4(i)" [disabled]="click4">
-                                          </button>
-                                        </span>
-                                      </span>
-                                    </span>
-                                    <span *ngSwitchCase="4">
-                                      <span [ngSwitch]="QuoteReplyLog.QuoteStatus">
-                                        <span *ngSwitchCase="2">
-                                          <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-org"
-                                          (click)="onButtonClick2(i)" [disabled]="click2">
-                                          </button>
-                                        </span>
-                                        <span *ngSwitchCase="4">
-                                          <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-org"
-                                            (click)="onButtonClick4(i)" [disabled]="click4">
-                                          </button>
-                                        </span>
-                                      </span>
-                                    </span>
-                                    <span *ngSwitchDefault>
-                                    </span>
-                                  </td> -->
                               </tr>
                             </ng-template>
                         </tbody>
@@ -319,24 +263,6 @@
                           <i class="fa fa-lg fa-fw fa-pencil-square-o"></i>編輯TSP_Quotation</button>
                       </div>
                     </div>
-                        <!-- <colgroup>
-                            <col style="width: 118px">
-                            <col style="width: 108px">
-                            <col style="width: 443px">
-                            <col style="width: 141px">
-                            <col style="width: 130px">
-                            <col style="width: 214px">
-                        </colgroup> -->
-                    <!-- <div class="form-group btn-top">
-                        <div class="row mx-0 justify-content-center align-items-center">
-                            <div class="text-center">
-                                <div>
-                                    <button type="button" class="btn btn-lg btn-success" data-toggle="modal"
-                                        data-target="#myModal4"><i class="fa  fa-arrow-right"></i>立即申請合約！</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </form>
@@ -350,4 +276,3 @@
   </div>
 </div>
 
-<!-- <app-modify-quotation [addQuoteinfoData]="QuoteinfoData.Code"></app-modify-quotation> -->

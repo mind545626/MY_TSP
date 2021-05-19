@@ -11,7 +11,7 @@ import { Table } from 'primeng/table';
 import { FilterUtils } from 'primeng/utils';
 
 import { RegisterService } from '@app/core/services/Register.service';
-import { CorporateService } from '@app/core/services/Corporate.service';
+import { SellerService } from '@app/core/services/Seller.service';
 import { MessageService } from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -39,7 +39,7 @@ export class ModifyQuotationComponent implements OnInit {
 
   // 表單值
   Code: string
-  CorporateName: string;
+  SellerName: string;
   CareerTypeDesc: string;
   CareerSubTypeDesc: string;
   ContactPerson: string;
@@ -95,9 +95,6 @@ export class ModifyQuotationComponent implements OnInit {
   FESysCode2Level: FESysCode2Level[];
   FESysCodeAddress: FESysCodeAddress[];
 
-  // CollectFrequencyType: FESysCode[];
-  // CollectWeekDayType: FESysCode[];
-  // WasteUnitType: FESysCode[];
 
   PayItemType: FESysCode2Level[];
   CareerType: FESysCode2Level[];
@@ -146,7 +143,7 @@ export class ModifyQuotationComponent implements OnInit {
     private location: Location,
     private messageService: MessageService,
     private RegisterService: RegisterService,
-    private CorporateService: CorporateService,
+    private SellerService: SellerService,
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
   ) {
@@ -166,7 +163,7 @@ export class ModifyQuotationComponent implements OnInit {
     this.UserData = JSON.parse(localStorage.getItem('UserData'))
 
 
-    this.CorporateName = this.UserData.body.CorporateName
+    this.SellerName = this.UserData.body.SellerName
     this.CareerTypeDesc = this.UserData.body.CareerTypeDesc
     this.CareerSubTypeDesc = this.UserData.body.CareerSubTypeDesc
     this.ContactPerson = this.UserData.body.ContactPerson
@@ -224,7 +221,7 @@ export class ModifyQuotationComponent implements OnInit {
             this.QuoteProvideEquip$ = of(<SelectItem[]>data.body);
           });
 
-          //估價類型
+          //TSP_Quotation類型
           this.RegisterService.getSysCodeDropDown({ Type: "QuoteType" }).subscribe((data: ResponseObj) => {
             this.QuoteType$ = of(<SelectItem[]>data.body);
           });
@@ -244,7 +241,7 @@ export class ModifyQuotationComponent implements OnInit {
 
           // 獲取TSP_Quotation資料
           if (this.QuoteinfoData == null) {
-            this.CorporateService.getQuoteDetai(this.CodeKey).subscribe((data: ResponseQuoteinfoData) => {
+            this.SellerService.getQuoteDetai(this.CodeKey).subscribe((data: ResponseQuoteinfoData) => {
               this.QuoteinfoData = data.body
               setTimeout(() => {
                 this.getdata()
@@ -278,17 +275,17 @@ export class ModifyQuotationComponent implements OnInit {
         CollectFrequency: null,
         //收集週日
         CollectWeekDay: null,
-        //同意免簽
+        //簽收
         IsAgreeSignFree: null,
         //申請廢物類型
         ApplyWasteType: null,
-        //清運郵遞區號
+        //宅配郵遞區號
         ClearZipCode: null,
-        //清運城市
+        //宅配城市
         ClearCity: null,
-        //清運鄉鎮
+        //宅配鄉鎮
         ClearDistrict: null,
-        //清運路段
+        //宅配路段
         ClearRoad: [null, Validators.required],
         //廢物存放處
         WasteStoragePlace: null,
@@ -296,7 +293,7 @@ export class ModifyQuotationComponent implements OnInit {
         PayMethod: null,
         //付款項目
         PayItem: null,
-        //需要記錄(退水費妥善處理記錄三聯單)
+        //需要記錄紙本收據
         IsNeedRecord: null,
 
         // 提供設備
@@ -309,14 +306,14 @@ export class ModifyQuotationComponent implements OnInit {
       });
 
 
-    // 載入刪除設備(暫寫)
+    // 載入Delet 設備(暫寫)
     this.removeAll()
 
     $("html, body").animate({ scrollTop: 0 }, "slow");
 
     this.items = [
       { icon: 'pi pi-home', label: '我的會員首頁', routerLink: '/company/order-progress' },
-      { label: '估價管理列表', routerLink: '/company/quotation' },
+      { label: 'TSP_Quotation管理_List', routerLink: '/company/quotation' },
       { label: 'TSP_Quotation資料' },
       { label: '編輯TSP_Quotation' },
     ];
@@ -353,7 +350,7 @@ export class ModifyQuotationComponent implements OnInit {
       /** 每月月份短样式 */
       monthNamesShort: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
       today: '今日',
-      clear: '刪除'
+      clear: 'Delet '
     }
     this.today = new Date().toLocaleString('zh-TW', { hour12: false }).substr(0, 16);
 
@@ -439,7 +436,7 @@ export class ModifyQuotationComponent implements OnInit {
     (this.QuoteDataForm.get('ProvideEquip') as FormArray).removeAt(No);
     this.addbtn()
   }
-  // 全部刪除
+  // 全部Delet
   removeAll(): void {
     const formArray = (this.QuoteDataForm.get('ProvideEquip') as FormArray);
     while (formArray.length !== 0) {
@@ -467,7 +464,7 @@ export class ModifyQuotationComponent implements OnInit {
   removeWasteData(No: number): void {
     (this.QuoteDataForm.get('WasteData') as FormArray).removeAt(No);
   }
-  // 全部刪除(保留第一個)
+  // 全部Delet (保留第一個)
   removeWasteDataAll(): void {
     const WasteDataformArray = (this.QuoteDataForm.get('WasteData') as FormArray);
     while (WasteDataformArray.length > 1) {
@@ -492,17 +489,17 @@ export class ModifyQuotationComponent implements OnInit {
     console.log(this.updataQuote, 'the form')
     if (this.QuoteDataForm.valid == true) {
       this.updataQuote = this.QuoteDataForm.value;
-      this.CorporateService.addUpdateQuote(this.updataQuote)
+      this.SellerService.addUpdateQuote(this.updataQuote)
         .subscribe((data: ResponseObj) => {
         })
-      this.messageService.add({ severity: 'success', summary: '成功', detail: '估價編輯儲存成功' });
+      this.messageService.add({ severity: 'success', summary: '成功', detail: 'TSP_Quotation編輯儲存成功' });
       setTimeout(() => {
         this.router.navigate(['/company/quotation/quotation-info/'], { queryParams: { id: this.Code } });
         // this.router.navigateByUrl('/company/quotation/quotation-info');
       }, 2000);
     }
     else {
-      this.messageService.add({ severity: 'error', summary: '失敗', detail: '估價編輯儲存失敗，請確認表單填寫正確或者網路連線問題' });
+      this.messageService.add({ severity: 'error', summary: '失敗', detail: 'TSP_Quotation編輯儲存失敗，請確認表單填寫正確或者網路連線問題' });
       $("html, body").animate({ scrollTop: 0 }, "slow");
     }
   }
@@ -541,11 +538,11 @@ export class ModifyQuotationComponent implements OnInit {
     let WasteDatalength = this.QuoteinfoData.WasteData.length
     let int1: number
     let int2: number
-    // 利用for迴圈新增 ProvideEquip Array的對應的Row欄位
+    // 利用for迴圈Add  ProvideEquip Array的對應的Row欄位
     for (int1 = 0; int1 < ProvideEquiplength; int1++) {
       this.addContactForm()
     }
-    // 利用for迴圈新增 WasteData Array的對應的Row欄位
+    // 利用for迴圈Add  WasteData Array的對應的Row欄位
     for (int2 = 1; int2 < WasteDatalength; int2++) {
       this.addWasteDataForm()
     }
