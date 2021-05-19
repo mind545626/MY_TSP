@@ -1,4 +1,4 @@
-import { Quote } from './../../../../../core/models/case';
+import { Quote } from '@app/core/models/case';
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 
 import { Customer, Quotation } from '@app/services/customer';

@@ -105,13 +105,13 @@ export class CustomerService {
 // @Injectable({ providedIn: 'root' })
 // export class TestIrmsService {
 
-//   private IrmsFEBillboardUrl = 'http://192.168.89.17:8011/IRMSAPI/api/FEBillboard/GetBillboardList';
-//   private IrmsFEBillboardDetailUrl = 'http://192.168.89.17:8011/IRMSAPI/api/FEBillboard/GetBillboardDetail';
+//   private IrmsFEBillboardUrl = 'http://192.0.0.1:1000/IRMSAPI/api/FEBillboard/GetBillboardList';
+//   private IrmsFEBillboardDetailUrl = 'http://192.0.0.1:1000/IRMSAPI/api/FEBillboard/GetBillboardDetail';
 
-//   private IrmsFENewsUrl = 'http://192.168.89.17:8011/IRMSAPI/api/FENews/GetNewsList';
-//   private IrmsFENewsDetailUrl = 'http://192.168.89.17:8011/IRMSAPI/api/FENews/GetNewsDetail';
+//   private IrmsFENewsUrl = 'http://192.0.0.1:1000/IRMSAPI/api/FENews/GetNewsList';
+//   private IrmsFENewsDetailUrl = 'http://192.0.0.1:1000/IRMSAPI/api/FENews/GetNewsDetail';
 
-//   private MyIrmsUrl = 'api/TestApi'; 
+//   private MyIrmsUrl = 'api/TestApi';
 
 //   httpOptions = {
 //     headers: new HttpHeaders({
