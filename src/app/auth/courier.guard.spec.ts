@@ -1,6 +1,6 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 
-import { CourierGuard } from './waste-move.guard';
+import { CourierGuard } from './courier.guard';
 
 describe('CourierGuard', () => {
   beforeEach(() => {

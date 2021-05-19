@@ -84,8 +84,6 @@ export class IndexComponent implements OnInit {
       {
         // console.log(data,'getBaseResultToBillboard');
         this.FEBillboard = data.body;
-        // this.FileList = data.body.FileList
-        // console.log(data.body.FileList,'this.FileList');
         if (data.body === null) {
           this.FEBillboard = []
       }
@@ -163,7 +161,6 @@ export class IndexComponent implements OnInit {
       baseZIndex: 10000,
     });
     console.log(dataBillboard,'dataBillboard')
-    // console.log(dataBillboard.Id, "2222222222222222222222222222")
   }
 
 

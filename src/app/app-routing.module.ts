@@ -13,8 +13,8 @@ import { ModifyRegisterComponent } from './features/TSP/modify/modify-register/m
 import { ModifyPasswordCheckComponent } from './features/TSP/modify/modify-password-check/modify-password-check.component';
 import { AuthGuard } from './auth/auth.guard';
 import { SellerGuard } from './auth/Seller.guard';
-import { BuyerGuard } from './auth/waste-deal.guard';
-import { CourierGuard } from './auth/waste-move.guard';
+import { BuyerGuard } from './auth/buyer.guard';
+import { CourierGuard } from './auth/courier.guard';
 
 
 // -------------API伺服器頁面-------------

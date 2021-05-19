@@ -1,6 +1,6 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 
-import { BuyerGuard } from './waste-deal.guard';
+import { BuyerGuard } from './buyer.guard';
 
 describe('BuyerGuard', () => {
   beforeEach(() => {

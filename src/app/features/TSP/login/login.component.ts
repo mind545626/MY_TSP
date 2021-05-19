@@ -168,7 +168,7 @@ export class LoginComponent implements OnInit {
 
   getUrl() {
     if (window.location.href.indexOf("220.134.112.17") != -1) {   //外網
-      this.Url = "http://220.134.112.174:8011/TSPAPI"
+      this.Url = "http://192.0.0.1:1000/TSPAPI"
     } else {   //內網
       this.Url = "/TSPAPI";
     }

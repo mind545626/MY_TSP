@@ -7,7 +7,7 @@ import { ResponseObj } from "@app/core/models/user";
 // import { ResponseContentType } from "@angular/http";
 import { pipe } from 'rxjs';
 
-// const SERVER_URL = '//220.134.112.174:8087/GTAISapi'; // env
+// const SERVER_URL = '//192.0.0.1:8087/GTAISapi'; // env
 
 const VALIDATION = {
     // headers: new HttpHeaders({

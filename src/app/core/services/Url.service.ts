@@ -15,10 +15,10 @@ export class UrlService {
 
   getUrl() {
 
-    if (window.location.href.indexOf("220.134.112.17") != -1) {   //外網
-      this.Url = "http://220.134.112.174:8011/TSPAPI/";
+    if (window.location.href.indexOf("192.0.0.1") != -1) {   //外網
+      this.Url = "http://192.0.0.1:1000/TSPAPI/";
     } else {   //內網
-      // this.Url = "http://192.168.89.17:8011/TSPAPI/api/";
+      // this.Url = "http://192.0.0.1:1000/TSPAPI/api/";
       this.Url = "/TSPAPI/";
     }
     //console.info(' url ' , this.Url+this.router.url);

@@ -2,9 +2,9 @@
 
 // const baseUrl = environment.baseUrl; // env
 // 對內IP
-// const baseUrl = 'http://192.168.89.17:8011/TSPAPI/api/'
+// const baseUrl = 'http://192.0.0.1:1000/TSPAPI/api/'
 // 對外IP
-// const baseUrl = 'http://220.134.112.174:8011/TSPAPI/api/'
+// const baseUrl = 'http://192.0.0.1:1000/TSPAPI/api/'
 
 export const config: any = {
 
